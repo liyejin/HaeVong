@@ -1,0 +1,19 @@
+/* 430*932 */
+
+.nav_list > ul{
+    background-color: #F6F6F6;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.nav_list > ul > li{
+    align-items: center;
+}
+
+.nav_list > ul > li > img{
+    width: 100%;
+}

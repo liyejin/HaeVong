@@ -1,0 +1,41 @@
+.main{
+    margin-left: 20px;
+    margin-right:20px ;
+}
+.org_apply_list_table{
+    display: flex;
+    flex-direction: column;
+}
+.org_apply_list_row{
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ccc;
+}
+.num{
+    width: 40px;
+}
+.name{
+    width: 40px;
+}
+.email{
+    width:200px;
+}
+.regdate{
+    width:100px;
+}
+.status{
+    width:40px;
+    border-radius: 20px;
+    background-color: #006FAD;
+    color: white;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}
+.status1{
+    width: 80px;
+}
