@@ -1,0 +1,95 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+  width: 430px;
+}
+.header {
+  font-size: 24px;
+  text-align: center;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+  position: sticky;
+}
+#s1 {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+#s1 > form > input {
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 35px;
+  font-size: 16px;
+  /* padding: 10px; */
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+}
+
+#s1 > form > input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.org_date_txt {
+  color: #aaa;
+  font-size: 17px;
+  position: absolute;
+  top: 30px;
+}
+
+#s1 > form > .org_date {
+  padding-right: 0px;
+  margin-top: 17px;
+  margin-left: 120px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#s1 > form > span {
+  color: #aaa;
+  font-size: 17px;
+}
+#s1 > form > .org_deadline {
+  padding-right: 0px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+#s1 > form > .org_file {
+  margin-bottom: 20px;
+}
+#s1 > form > .org_post_box {
+  margin-bottom: 20px;
+}
+#s1 > form > .org_submit {
+  width: 430px;
+}
+#s1 > form > .org_submit > .cancel {
+  width: 100px;
+  height: 50px;
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  transition: all 250ms;
+}
+#s1 > form > .org_submit > .enroll {
+  width: 280px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  transition: all 250ms;
+}
+#s1 > form > .org_submit > .cancel:hover {
+  background-color: #e1332d;
+}
+#s1 > form > .org_submit > .enroll:hover {
+  background-color: #006fad;
+}
