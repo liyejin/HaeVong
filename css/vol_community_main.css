@@ -1,0 +1,73 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.header {
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+  position: sticky;
+  font-size: 22px;
+}
+
+.vol_header_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header_nav > ul {
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  gap: 25px;
+}
+.header_nav > ul > a > li {
+  border: 0.5px solid #aaa;
+  border-radius: 10px;
+  padding: 3px;
+  transition: all 250ms;
+}
+.header_nav > ul > a > li:hover {
+  border: 0.5px solid #aaa;
+  border-radius: 10px;
+  padding: 3px;
+  color: black;
+  background-color: #c2e2ff;
+}
+.main > section {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 17.5px;
+}
+
+.main > section > span:nth-child(2) {
+  margin-left: 120 px;
+  border: 0.5px solid #aaa;
+  border-radius: 10px;
+  padding: 3px;
+  transition: all 250ms;
+}
+.main > section > span:nth-child(2) {
+  margin-left: 120 px;
+  border: 0.5px solid #aaa;
+  border-radius: 10px;
+  padding: 3px;
+  transition: all 250ms;
+}
+.main > #s1 > .all_main {
+  margin-left: 130px;
+}
+.main > #s2 > .participate_main {
+  margin-left: 189px;
+}
+.main > #s3 > .review_main {
+  margin-left: 166px;
+}
+.main > #s4 > .daily_main {
+  margin-left: 215px;
+}

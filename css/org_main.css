@@ -1,0 +1,135 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+  width: 430px;
+}
+.header {
+  height: 60px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+/* sticky를 넣아면 됩니다,  */
+.main {
+  display: flex;
+  margin-bottom: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: 30px; */
+  /* margin: 0 20px; */
+}
+.main > .org_profile {
+  width: 100%;
+  position: relative;
+  /* max-width: 500px; */
+  /* margin-top: 40px; */
+  /* margin-right: 20px;
+  margin-left: 20px; */
+  /* margin-bottom: 20px; */
+}
+.main > .org_profile > img {
+  width: 100%;
+}
+.main > .org_profile > :nth-child(2) {
+  width: 7%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.main > .org_profile > .org_profile_name {
+  position: absolute;
+  bottom: 20px;
+  margin-left: 20px;
+  color: white;
+  font-size: 20px;
+}
+.main > .org_profile > .org_profile_name > span {
+  font-size: 24px;
+  font-weight: bold;
+}
+.main > .org_profile > .org_profile_name > span > span {
+  font-size: 20px;
+}
+.guide > img {
+  width: 100%;
+}
+.d_day {
+  width: 430px;
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}
+.d_day_content {
+  border: var(--border-line);
+  border-radius: 3px;
+  width: 250px;
+  text-align: right;
+  align-self: flex-end;
+  margin-top: 20px;
+  margin-right: 20px;
+  padding-right: 5px;
+  font-size: 16px;
+}
+.recruit {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.recruit > ul {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  gap: 30px;
+}
+
+.recruit > ul > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: var(--border-line);
+  border-radius: 3px;
+  width: 100px;
+  height: 130px;
+  gap: 5px;
+  transition: all 250ms;
+}
+
+.recruit > ul > a:hover {
+  color: #e8e8e8;
+  background-color: #006fad;
+}
+.recruit > ul > a > li {
+  font-size: 20px;
+}
+/* nav는 어쩔수 없이 fix  */
+.nav_list {
+  position: fixed;
+  bottom: 0;
+}
+.nav_list > ul {
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav_list > ul > li {
+  align-items: center;
+}
+
+.nav_list > ul > li > img {
+  width: 100%;
+}

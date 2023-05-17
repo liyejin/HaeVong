@@ -1,0 +1,172 @@
+/* ==================== reset ==================== */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+html,
+body,
+div,
+span,
+object,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+strong,
+sub,
+sup,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+summary,
+small,
+b,
+i,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+video {
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+img,
+fieldset {
+  border: none;
+}
+
+address,
+caption,
+cite,
+code,
+em,
+strong,
+th {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 100%;
+}
+
+q:after,
+q:before {
+  content: '';
+}
+
+abbr,
+acronym {
+  border: none;
+}
+
+img,
+input {
+  vertical-align: middle;
+}
+
+hr {
+  display: none;
+}
+
+li img,
+dd img {
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.wrap {
+  padding: 0 12px;
+}
+
+/* ==================== display ==================== */
+.d-none {
+  display: none;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
