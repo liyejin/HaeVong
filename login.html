@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/login.css" type="text/css" />
+    <title>로그인 페이지</title>
+  </head>
+  <body>
+    <section class="main" id="a">
+      <script defer="defer">
+        var main = document.getElementById("a");
+        var x = 0;
+        main.style.backgroundPosition = `${x}px`;
+        main.style.backgroundColor = "black";
+        window.setInterval(() => {
+          x -= 1;
+          main.style.backgroundPosition = `${x}px`;
+        }, 50);
+      </script>
+
+      <div class="alpha">
+        <div class="total">
+          <div class="box">
+            <img src="./img/Hlogo.png" />
+            <p>
+              세상을 이끄는 우리들의<br />
+              행복나눔 플랫폼
+            </p>
+
+            <span>봉사를 일상으로</span>
+            <br />
+            <span>국내 최대 봉사활동 커뮤니티</span>
+          </div>
+          <div class="href">
+            <div class="login">
+              <a href="#"><img src="./img/kakaoLogin.png" alt="" /></a>
+              <a href="#"><img src="./img/googleLogin.png" alt="" /></a>
+            </div>
+            <div class="text">
+              <div>
+                <a href="#">이메일 로그인 </a>|
+                <a href="#">이메일 회원가입</a>
+              </div>
+
+              <a href="#">기업회원 이신가요?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

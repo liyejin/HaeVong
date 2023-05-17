@@ -1,25 +1,40 @@
 /* 430*932 (iphone 14 pro max) */
 
 @media(max-width:430px) {
-    *{
+    * {
         list-style: none;
     }
 
-    /* body{
-        
-    } */
-    /* 바디 */
+    body {
+        margin: 0;
+        padding: 0;
 
-    .header{
+    }
+
+    .body::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari에서 스크롤바 숨김 */
+    }
+
+    /* 바디 */
+    .body {
+        overflow: auto;
+        flex-direction: column;
+        overflow: scroll;
+        width: 100%;
+        height: 854px;
+    }
+
+    .header {
         position: relative;
     }
 
-    .header>h1{
+    .header>h1 {
         text-align: center;
     }
 
     /* 나중에 백그라운드 이미지로 돋보기창 */
-    .header>.search-bar{
+    .header>.search-bar {
         position: absolute;
         width: 80%;
         left: 8%;
@@ -27,36 +42,214 @@
         padding: 8px;
         z-index: 1;
     }
+
     /* 헤더 */
 
 
-    .section_1{
+    .section_1 {
         position: relative;
     }
 
-    .section_1>img{
+    .section_1>img {
         width: 100%;
         margin-top: 60px;
     }
-    /* 본문_1 */
-    
 
-    .section_2>div{
+    /* 본문_1 */
+
+    .section_2_img_list::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari에서 스크롤바 숨김 */
+    }
+
+    .section_2>div {
         position: relative;
     }
-    
-    .section_2>div>h1{
+
+    .section_2>div>h1 {
         margin-left: 3%;
     }
 
-    .section_2>div>img{
+    .section_2>div>img {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        padding: 3px;
+        margin: 3px;
+
+    }
+
+    .section_2_img_list {
+        display: flex;
+        overflow: scroll;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .section_2_img_list>ul>li {
+        padding: 5px;
+        margin: 5px;
+
+    }
+
+    .section_2_img_list>li>a>img {
+        padding: 5px;
+    }
+
+    /* 본문_2 */
+
+    .section_3>ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .section_3>ul>li>a {
+        padding: 3px;
+    }
+
+
+
+    /* 본문_3*/
+
+
+
+    /* 본문_4*/
+
+    .section_5>div {
+        position: relative;
+    }
+
+    .section_5>div>h1 {
+        margin-left: 3%;
+    }
+
+    .section_5>div>img {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        padding: 3;
+        margin: 3;
+
+    }
+
+    .section_5_img_list {
+        display: flex;
+        overflow: scroll;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .section_5_img_list::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari에서 스크롤바 숨김 */
+    }
+
+
+    .section_5_img_list>li>a>img {
+        padding: 5px;
+    }
+
+    /* 본문_5*/
+
+    .section_6>div {
+        position: relative;
+    }
+
+    .section_6>div>h1 {
+        margin-left: 3%;
+    }
+
+    .section_6>div>img {
         position: absolute;
         top: 0;
         right: 10px;
     }
 
-    .section_2_img_list{
+    .section_6_img_list {
+        display: flex;
+        overflow: scroll;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .section_6_img_list>li>a>img {
+        padding: 5px;
+    }
+
+    .section_6_img_list::-webkit-scrollbar {
+        display: none;
+        /* Chrome/Safari에서 스크롤바 숨김 */
+    }
+
+    /*본문 6*/
+
+    .section_7>div {
+        position: relative;
+        padding: 5px;
+    }
+
+    .section_7>div>h1 {
+        margin-left: 3%;
+    }
+
+    .section_7>div>img {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        padding: 3;
+        margin: 3;
+
+    }
+
+    .section_7>ul {
+        display: flex;
+        flex-direction: row;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .section_7>ul>li {
+        padding: 5;
+        margin: 5;
+    }
+
+    /* .section_7_img_list>li>a>img {
+        padding: 5px;
+    } */
+
+    /*본문 7*/
+    footer {
+        display: flex;
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        bottom: 0;
+        width: 100%
+    }
+
+    .footer_nav>ul {
         display: flex;
     }
-    /* 본문_2 */
+
+    .footer_nav>ul>li {
+        display: flex;
+
+    }
+
+    .footer_nav>ul>li>a {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer_nav>.footer_nav_list {
+        margin: 0;
+        padding: 0;
+        bottom: 0;
+        width: 100%
+    }
+
+    /*네브바*/
 }

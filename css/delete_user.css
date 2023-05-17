@@ -1,0 +1,73 @@
+@import url(index.css);
+
+.body {
+    display: flex;
+
+}
+
+.header {
+    height: 10%;
+    width: 100%;
+    top: 0;
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid black;
+    box-shadow: inset;
+
+}
+
+.header>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 10%;
+}
+
+.main {
+    display: flex;
+    margin: 0;
+
+    position: relative;
+    height: 80%;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.delete_message {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.radio_box {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 7%;
+    margin-top: 7%;
+    height: 90%;
+    justify-content: space-between;
+    gap: 15px;
+
+}
+
+.radio_box>.textarea {}
+
+.footer {
+    height: 7%;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.footer {
+    color: white;
+}
