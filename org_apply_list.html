@@ -7,55 +7,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/org_apply_list.css">
+    <script defer src="./js/modal.js"></script>
     <title>신청자 내역</title>
+    
 </head>
 
-<body>
-    <section class="main">
+<body id="body"> 
+    <header class="header">
+        <ul class="org_header_top">
+            <li class="org_header_top_li_1" id="back_btn">
+                <img src="./img/뒤로가기아이콘.png" alt="뒤로가기">
+            </li>
+            <li class="org_header_top_li_2">
+                <h1>신청자 내역</h1>
+            </li>
+            <li class="org_header_top_li_3" id = "more_btn">
+                <img src="./img/점세개아이콘.png" alt="점세개아이콘">
+            </li>
+        </ul>
+    </header>
+    <section class="main" id="main">
         <table class="org_apply_list_table">
             <tr class="org_apply_list_row">
-                <th class="num">번호</th>
-                <th class="name">성명</th>
-                <th class="email">이메일</th>
-                <th class="regdate">등록일</th>
-                <th class="status1">수락 여부</th>
+                <th class="num_h">번호</th>
+                <th class="name_h">성명</th>
+                <th class="email_h">이메일</th>
+                <th class="regdate_h">등록일</th>
+                <th class="status_h">상태</th>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">1</td>
                 <td class="name">김*수</td>
                 <td class="email">aaaa@aaaa.aaa</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status">수락</td>
+                <td class="status_approved">수락</td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">2</td>
                 <td class="name">김*연</td>
                 <td class="email">aaaasafa@aaasdfaa.aaa</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status">수락</td>
+                <td class="status_approved">수락</td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">3</td>
                 <td class="name">김*리</td>
                 <td class="email">aaaadaa@adaddaa.aaa</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status">수락</td>
+                <td class="status_approved">수락</td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">4</td>
                 <td class="name">김*수</td>
                 <td class="email">aaaa@aaaa.aaa</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status">수락</td>
+                <td class="status_approved">수락</td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">5</td>
                 <td class="name">김*수</td>
                 <td class="email">aaaa@aaaa.aaa</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status">수락</td>
+                <td class="status_pending">대기중</td>
             </tr>
         </table>
+    </section>
+    <section class="modal" id="modal">
+        <div>
+            <ul class="modal_list">
+                <li class="modal_list_item1"><img src="./img/close.png" id="close_btn" alt="닫기버튼"></li>
+                <li class="modal_list_item2">수락대기 신청자</li>
+                <li class="modal_list_item2">전체신청자</li>
+            </ul>
+        </div>
     </section>
 </body>
 

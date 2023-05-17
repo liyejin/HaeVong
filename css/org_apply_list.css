@@ -1,8 +1,28 @@
+body{
+    width: 430px;
+    height: 756px;
+}
+.header{
+    padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+    position: sticky;
+}
+.org_header_top_li_2>h1{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.org_header_top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .main{
     margin-left: 20px;
     margin-right:20px ;
 }
 .org_apply_list_table{
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
 }
@@ -12,23 +32,50 @@
     padding-bottom: 12px;
     border-bottom: 2px solid #ccc;
 }
-.num{
+.num_h{
+    font-size: 16px;
     width: 40px;
+}
+.num{
+    font-size: 14px;
+    width: 40px;
+}
+.name_h{
+    width: 50px;
 }
 .name{
-    width: 40px;
+    width: 50px;
+    font-size: 14px;
 }
 .email{
+    font-size: 14px;
+    width:200px;
+}
+.email_h{
     width:200px;
 }
 .regdate{
+    font-size: 14px;
     width:100px;
 }
-.status{
+.regdate_h{
+    width:100px;
+}
+.status_h{
+    width: 56px;
+}
+.status_approved{
     width:40px;
     border-radius: 20px;
     background-color: #006FAD;
+    font-size: 14px;
     color: white;
+}.status_pending{
+    width:56px;
+    border-radius: 20px;
+    background-color: #ccc;
+    font-size: 14px;
+    color: black;
 }
 th{
     text-align: center;
@@ -38,4 +85,34 @@ td{
 }
 .status1{
     width: 80px;
+}
+.modal{
+    width: 288px;
+    height:756px;
+    background-color: white;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    display: none;
+    position: absolute;
+    left:142px;
+    top: 0;
+}
+.modal_list{
+    display: flex;
+    flex-direction: column;
+}
+.modal_list_item1{
+    margin: 24px;
+    margin-bottom: 36px;
+    align-self: flex-end;
+    
+}
+.modal_list_item2{
+    font-size: 16px;
+    margin-left:20px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ccc;
 }
