@@ -1,128 +1,71 @@
 /* 430*932 (iphone 14 pro max) */
 
-@media (max-width: 430px) {
-  * {
-    list-style: none;
-  }
+@media(max-width:430px) {
+    * {
+        list-style: none;
+    }
 
-  body {
-    /* margin-left: 10px;
-    margin-right: 10px; */
-    padding: 0;
-  }
+    @media (max-width: 430px) {
+        * {
+            list-style: none;
+        }
 
-  .header {
-    position: relative;
-  }
+        /* body{
+        
+    } */
+        /* 바디 */
 
-  .header > h1 {
-    text-align: center;
-  }
+        .header {
+            position: relative;
+        }
 
-  /* 나중에 백그라운드 이미지로 돋보기창 */
-  .header > .search-bar {
-    position: absolute;
-    width: 80%;
-    left: 8%;
-    border-radius: 10px;
-    padding: 8px;
-    z-index: 1;
-  }
-  /* 헤더 */
+        .header>h1 {
+            text-align: center;
+        }
 
-  .section_1 {
-    position: relative;
-  }
-  .section_1 > img {
-    width: 100%;
-    margin-top: 60px;
-  }
-  /* 본문_1 */
+        /* 나중에 백그라운드 이미지로 돋보기창 */
+        .header>.search-bar {
+            position: absolute;
+            width: 80%;
+            left: 8%;
+            border-radius: 10px;
+            padding: 8px;
+            z-index: 1;
+        }
 
-  .section_2 > .section_2_img_list {
-    display: flex;
-    overflow: scroll;
-    padding: 0;
-    justify-content: space-between;
-    gap: 10px;
-  }
+        /* 헤더 */
 
-  .section_2 > div {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  /* 본문_2 */
-  .section_3 > .main_icon {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0;
-    padding: 6px;
-    /* position: absolute; */
-  }
 
-  .section_4 > div {
-    width: 100%;
-    height: 100px;
-    background-image: url("../img/메인배너2.png");
-    background-size: cover;
+        .section_1 {
+            position: relative;
+        }
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+        .section_1>img {
+            width: 100%;
+            margin-top: 60px;
+        }
 
-  .section_5 > .section_5_img_list {
-    display: flex;
-    overflow: scroll;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 0;
-  }
+        /* 본문_1 */
 
-  .section_5 > div {
-    height: 50px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+        .section_2>div {
+            position: relative;
+        }
 
-  .section_6 > div {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+        .section_2>div>h1 {
+            margin-left: 3%;
+        }
 
-  .section_6 > .section_6_img_list {
-    display: flex;
-    overflow: scroll;
-    justify-content: center;
-    gap: 10px;
-    padding: 0;
-  }
+        .section_2>div>img {
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
 
-  .section_7 > div {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+        .section_2_img_list {
+            display: flex;
+        }
 
-  .section_7 > .section_7_img_list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0;
-  }
-
-  .footer_nav > .footer_nav_list {
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
+        /* 본문_2 */
+    }
 }
