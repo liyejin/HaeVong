@@ -1,32 +1,72 @@
-body{
-    width: 430px;
-    height: 756px;
-}
-.header{
-    padding: 40px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
-    position: sticky;
-}
-.org_header_top_li_2>h1{
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.org_header_top{
+.org_vol_list > div {
+    /* Auto layout */
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.main{
-    margin-left: 20px;
-    margin-right:20px ;
-}
+    justify-content: center;
+    align-items: center;
+  
+    gap: 10px;
+  
+    width: 410px;
+    height: 174px;
+  
+    background: #f6f7f8;
+    border-radius: 30px;
+  
+    position: relative;
+  }
+  
+.org_vol_list_info {
+    /* display: flex;
+    flex-direction: column; */
+    width: 220px;
+    height: 116px;
+    margin-left: 10px;
+    position: relative;
+  
+    /* Inside auto layout */
+  
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+.org_vol_title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .org_vol_date {
+    font-size: 14px;
+  }
+  
+  .org_vol_write_date {
+    font-size: 14px;
+  }
+  
+  /* 상세보기 버튼 */
+  .org_vol_list_detail_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffed8f;
+    border-radius: 100px;
+  
+    width: 82px;
+    height: 28px;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+  
+    font-size: 14px;
+  }
+  
 .org_apply_list_table{
     margin-top: 40px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .org_apply_list_row{
+    width: 390px;
     display: flex;
     margin-bottom: 20px;
     padding-bottom: 12px;
@@ -47,12 +87,12 @@ body{
     width: 50px;
     font-size: 14px;
 }
-.email{
+.phone{
     font-size: 14px;
-    width:200px;
+    width:120px;
 }
-.email_h{
-    width:200px;
+.phone_h{
+    width:120px;
 }
 .regdate{
     font-size: 14px;
@@ -63,19 +103,6 @@ body{
 }
 .status_h{
     width: 56px;
-}
-.status_approved{
-    width:40px;
-    border-radius: 20px;
-    background-color: #006FAD;
-    font-size: 14px;
-    color: white;
-}.status_pending{
-    width:56px;
-    border-radius: 20px;
-    background-color: #ccc;
-    font-size: 14px;
-    color: black;
 }
 th{
     text-align: center;
@@ -91,7 +118,6 @@ td{
     height:756px;
     background-color: white;
     position: static;
-    display: flex;
     flex-direction: column;
     align-self: flex-end;
     display: none;
@@ -115,4 +141,20 @@ td{
     margin-bottom: 20px;
     padding-bottom: 12px;
     border-bottom: 2px solid #ccc;
+}
+.org_status>*{
+    width: 56px;
+    text-align: center;
+    border-radius: 20px;
+}
+.org_status_approved{
+    background-color: #C2E2FF;
+}
+.org_status_waiting{
+    background-color: #AAAAAA;
+}
+.org_status_refused{
+    background-color: #C66B6B;
+    color: white;
+
 }
