@@ -21,9 +21,14 @@ body{
     flex-direction: column;
     
 }
+.org_login>img{
+    margin-bottom: 12px;
+}
 .org_login>p>span{
     font-size: 20px;
+    font-weight: medium;
     padding-bottom: 2px;
+    padding-left: 8px;
 }
 .org_login_item{
     margin-bottom: 36px;
@@ -65,7 +70,7 @@ body{
     border: 0;
     background-color: #006FAD;
     color: white;
-    width:100%;
+    width:430px;
     height: 70px;
     font-size: 16px;
     position:fixed;
