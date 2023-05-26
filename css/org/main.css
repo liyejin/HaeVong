@@ -1,48 +1,49 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-* {
-  font-family: 'Noto Sans KR', sans-serif;
-}
 body {
   width: 430px;
 }
+/* 헤더 */
 .header {
-  height: 60px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  /* position: sticky; */
+  width: 430px;
+  height: 80px;
+  box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
 }
-/* sticky를 넣아면 됩니다,  */
+/* 헤더 글씨  */
+.header > .header-title {
+  margin: 0 auto;
+}
+/*기관메인*/
 .main {
+  background-color: #fef8ea;
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* gap: 30px; */
-  /* margin: 0 20px; */
 }
+/* 기관메인 프로필*/
 .main > .org_profile {
-  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
   position: relative;
-  /* max-width: 500px; */
-  /* margin-top: 40px; */
-  /* margin-right: 20px;
-  margin-left: 20px; */
-  /* margin-bottom: 20px; */
 }
+/* 기관메인 프로필 사진 */
 .main > .org_profile > img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.main > .org_profile > :nth-child(2) {
-  width: 7%;
+/* 기관메인 프로필 수정 아이콘 */
+.main > .org_profile > .icon_edit {
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: 20px;
   right: 20px;
 }
+/* 기관메인 회사이름 */
 .main > .org_profile > .org_profile_name {
   position: absolute;
   bottom: 20px;
@@ -53,22 +54,18 @@ body {
 .main > .org_profile > .org_profile_name > span {
   font-size: 24px;
   font-weight: bold;
+  color: white;
 }
 .main > .org_profile > .org_profile_name > span > span {
   font-size: 20px;
+  color: white;
 }
+/* 기관메인 해봉가이드*/
 .guide > img {
   width: 100%;
 }
-.d_day {
-  width: 430px;
-  display: flex;
-  justify-content: right;
-  margin-top: 10px;
-}
+/* 기관메인 디데이체크*/
 .d_day_content {
-  border: var(--border-line);
-  border-radius: 3px;
   width: 250px;
   text-align: right;
   align-self: flex-end;
@@ -77,59 +74,139 @@ body {
   padding-right: 5px;
   font-size: 16px;
 }
-.recruit {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.recruit > ul {
+/* 공고관리,고객센터 */
+.recruit > .recruit_box {
+  width: 390px;
+  height: 80px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 70px;
-  gap: 30px;
+  gap: 45px;
 }
-
-.recruit > ul > a {
+/* 공고관리 */
+.recruit > .recruit_box > .recruit_post {
+  background-color: #ffffff;
+  width: 250px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+}
+.recruit > .recruit_box > .recruit_post:hover {
+  background: #fff1a7;
+  font-weight: bold;
+}
+/* 고객센터 */
+.recruit > .recruit_box > .org_cs {
+  background-color: #ffffff;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+}
+.recruit > .recruit_box > .org_cs:hover {
+  background: #fff1a7;
+  font-weight: bold;
+}
+.ing {
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 390px;
+  height: 245px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: var(--border-line);
-  border-radius: 3px;
-  width: 100px;
-  height: 130px;
-  gap: 5px;
-  transition: all 250ms;
 }
-
-.recruit > ul > a:hover {
-  color: #e8e8e8;
-  background-color: #006fad;
+.ing_header {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  font-size: 18px;
+  flex-direction: row;
+  gap: 215px;
 }
-.recruit > ul > a > li {
-  font-size: 20px;
+.ing_header > div > span {
+  color: #5d5fa1;
 }
-/* nav는 어쩔수 없이 fix  */
-.nav_list {
-  position: fixed;
-  bottom: 0;
+.ing_header > img {
+  width: 30px;
+  height: 30px;
 }
-.nav_list > ul {
-  background-color: #f6f6f6;
+.ing_footer {
+  font-size: 16px;
+  background-color: #ffffff;
+  margin-left: 15;
+  width: 390px;
+  height: 160px;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+.ing_container {
+  background-color: #f6f7f8;
+  margin-top: 25px;
+  width: 175px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding-top: 10px;
   padding-bottom: 10px;
 }
-
-.nav_list > ul > li {
-  align-items: center;
+.ing_container > .ing_contents {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.ing_container > .ing_contents > .ing_detail > span {
+  color: red;
+  font-weight: bold;
 }
 
-.nav_list > ul > li > img {
-  width: 100%;
+.ing_container > .ing_contents > .ing_detail:nth-child(2) {
+  margin-left: 30px;
+}
+.apply {
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 390px;
+  height: 130px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.apply_header {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  font-size: 18px;
+  flex-direction: row;
+  gap: 215px;
+}
+.apply_header > div > span {
+  color: #5d5fa1;
+}
+.apply_header > img {
+  width: 30px;
+  height: 30px;
+}
+.apply_footer {
+  display: flex;
+  flex-direction: column;
+}
+.apply_footer > .apply_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+.nav_footer {
+  margin-top: 20px;
+  bottom: 0;
+  width: 430px;
 }
