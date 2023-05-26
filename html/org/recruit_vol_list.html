@@ -6,69 +6,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/org/recruit_vol_list.css">
     <script defer src="../../js/modal.js"></script>
     <title>신청자 내역</title>
-    
+
 </head>
 
-<body id="body"> 
+<body id="body">
     <header class="header">
-        <ul class="org_header_top">
-            <li class="org_header_top_li_1" id="back_btn">
-                <img src="../../img/icon/icon_header_back.png" alt="뒤로가기">
-            </li>
-            <li class="org_header_top_li_2">
-                <h1>신청자 내역</h1>
-            </li>
-            <li class="org_header_top_li_3" id = "more_btn">
-                <img src="../../img/icon/icon_header_more.png" alt="점세개아이콘">
-            </li>
-        </ul>
+        <div class="header1">
+            <a href="" id="back_btn"><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"></a>
+            <div>신청자 내역</div>
+            <div href="" id="more_btn"><img src="../../img/icon/icon_header_more.png" alt="더보기"></div>
+        </div>
     </header>
     <section class="main" id="main">
+        <div class="org_vol_list">
+            <div class="org_vol_list_info">
+                    <span class="org_vol_title">행복보육원 봉사자 구인합..<br /></span>
+                    <span class="org_vol_date">5월 13일(월), 13:00~16:00</span>
+                    <span class="org_vol_write_date">2023/04/26</span>
+                    <a class="org_vol_list_detail_btn" href="#"><span>상세보기</span></a>
+            </div>
+        </div>
         <table class="org_apply_list_table">
             <tr class="org_apply_list_row">
                 <th class="num_h">번호</th>
                 <th class="name_h">성명</th>
-                <th class="email_h">이메일</th>
-                <th class="regdate_h">등록일</th>
+                <th class="phone_h">전화번호</th>
+                <th class="regdate_h">신청일</th>
                 <th class="status_h">상태</th>
             </tr>
-            <tr class="org_apply_list_row">
+            <tr class="org_apply_list_row" onclick="location.href='/user/info/23'">
                 <td class="num">1</td>
                 <td class="name">김*수</td>
-                <td class="email">aaaa@aaaa.aaa</td>
+                <td class="phone">010-1111-4444</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status_approved">수락</td>
+                <td>
+                    <div class="org_status">
+                        <div class="org_status_approved">승인</div>
+                    </div>
+                </td>
             </tr>
-            <tr class="org_apply_list_row">
+            <tr class="org_apply_list_row" onclick="location.href='/index.html'">
                 <td class="num">2</td>
                 <td class="name">김*연</td>
-                <td class="email">aaaasafa@aaasdfaa.aaa</td>
+                <td class="phone">010-1111-4444</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status_approved">수락</td>
+                <td>
+                    <div class="org_status">
+                        <div class="org_status_waiting">대기</div>
+                    </div>
+                </td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">3</td>
                 <td class="name">김*리</td>
-                <td class="email">aaaadaa@adaddaa.aaa</td>
+                <td class="phone">010-1111-4444</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status_approved">수락</td>
+                <td>
+                    <div class="org_status">
+                        <div class="org_status_waiting">거절</div>
+                    </div>
+                </td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">4</td>
                 <td class="name">김*수</td>
-                <td class="email">aaaa@aaaa.aaa</td>
+                <td class="phone">010-1111-4444</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status_approved">수락</td>
+                <td>
+                    <div class="org_status">
+                        <div class="org_status_waiting">대기</div>
+                    </div>
+                </td>
             </tr>
             <tr class="org_apply_list_row">
                 <td class="num">5</td>
                 <td class="name">김*수</td>
-                <td class="email">aaaa@aaaa.aaa</td>
+                <td class="phone">010-1111-4444</td>
                 <td class="regdate">2023-05-15</td>
-                <td class="status_pending">대기중</td>
+                <td>
+                    <div class="org_status">
+                        <div class="org_status_refused">거절</div>
+                    </div>
+                </td>
             </tr>
         </table>
     </section>
@@ -81,6 +104,21 @@
             </ul>
         </div>
     </section>
+    <footer class="footer">
+        <div class="btn_single">목록</div>
+    </footer>
+
+    <div class="org_status">
+        <div class="org_status_approved">승인</div>
+    </div>
+    <div class="org_status">
+        <div class="org_status_waiting">대기</div>
+    </div>
+    <div class="org_status">
+        <div class="org_status_refused">거절</div>
+    </div>
+
 </body>
+
 
 </html>

@@ -14,11 +14,13 @@ function modalOff() {
 more.addEventListener('click', () => {
     modalOn();
 });
-main.addEventListener('click', e => {
+modal.addEventListener('click', e => {
     const evTarget = e.target;
-    if (evTarget.classList.contains("modal")) { }
+    if (!(evTarget.classList.contains("modal"))){ 
     modalOff();
+    }
 })
 close_btn.addEventListener('click', ()=>{
     modalOff();
 })
+
