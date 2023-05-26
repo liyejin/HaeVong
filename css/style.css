@@ -44,7 +44,7 @@ body {
 }
 
 .footer {
-  <<<<<<< HEAD position: fixed;
+  position: fixed;
   display: flex;
   height: 60px;
   bottom: 0;
@@ -104,12 +104,13 @@ body {
   width: 100%;
 }
 
-=======position: fixed;
-display: flex;
-height: 60px;
-bottom: 0;
-width: 430px;
-flex-direction: row;
+.footer {
+  position: fixed;
+  display: flex;
+  height: 60px;
+  bottom: 0;
+  width: 430px;
+  flex-direction: row;
 
 }
 
@@ -168,5 +169,3 @@ flex-direction: row;
 ::-webkit-scrollbar {
   display: none;
 }
-
->>>>>>>Brian
