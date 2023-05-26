@@ -1,7 +1,7 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 * {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   color: #222222;
 }
 /* ==================== reset ==================== */
@@ -132,7 +132,7 @@ h6 {
 
 q:after,
 q:before {
-  content: '';
+  content: "";
 }
 
 abbr,
