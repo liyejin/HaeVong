@@ -1,0 +1,77 @@
+.org_header_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+.info_img {
+  margin: 20px 20px 0 20px;
+  width: 400px;
+  height: 230px;
+  background-image: url(../../img/user/org_profile.png);
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.info_img_btn {
+  position: absolute;
+  bottom: 21px;
+  right: 23px;
+  color: #efefef;
+  background-color: #aaaaaa80;
+  border-radius: 20px;
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.info_input {
+  width: 430px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px
+}
+
+
+.info_input_box {
+  margin-left: 22px;
+  padding-left: 22px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+
+  border: 1px solid #c1c1c1;
+  border-radius: 10px;
+  height: 40px;
+  width: 370px;
+  align-items: center;
+}
+
+.info_input_box * {
+  color: #c1c1c1;
+}
+
+.info_input_box_text {
+  border-style: none;
+  outline-style: none;
+}
+
+.info_input_delete_user {
+  margin-left: 44px;
+  color: #3f3f3f;
+}
+
+.submit_btn {
+  color: #efefef;
+}
+
+/* 
+  .org_vol_list>li {
+
+    display: flex;
+    align-items: center;
+  }
+   */
