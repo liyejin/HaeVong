@@ -3,6 +3,7 @@
 body {
   width: 430px;
 }
+
 /* 헤더 */
 .header {
   /* position: sticky; */
@@ -10,10 +11,12 @@ body {
   height: 80px;
   box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
 }
+
 /* 헤더 글씨  */
-.header > .header-title {
+.header>.header-title {
   margin: 0 auto;
 }
+
 /*기관메인*/
 .main {
   background-color: #fef8ea;
@@ -23,47 +26,55 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 /* 기관메인 프로필*/
-.main > .org_profile {
+.main>.org_profile {
   overflow: hidden;
   margin-top: 40px;
   position: relative;
 }
+
 /* 기관메인 프로필 사진 */
-.main > .org_profile > img {
+.main>.org_profile>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 /* 기관메인 프로필 수정 아이콘 */
-.main > .org_profile > .icon_edit {
+.main>.org_profile>.icon_edit {
   width: 25px;
   height: 25px;
   position: absolute;
   top: 20px;
   right: 20px;
 }
+
 /* 기관메인 회사이름 */
-.main > .org_profile > .org_profile_name {
+.main>.org_profile>.org_profile_name {
   position: absolute;
   bottom: 20px;
   margin-left: 20px;
   color: white;
   font-size: 20px;
 }
-.main > .org_profile > .org_profile_name > span {
+
+.main>.org_profile>.org_profile_name>span {
   font-size: 24px;
   font-weight: bold;
   color: white;
 }
-.main > .org_profile > .org_profile_name > span > span {
+
+.main>.org_profile>.org_profile_name>span>span {
   font-size: 20px;
   color: white;
 }
+
 /* 기관메인 해봉가이드*/
-.guide > img {
+.guide>img {
   width: 100%;
 }
+
 /* 기관메인 디데이체크*/
 .d_day_content {
   width: 250px;
@@ -74,8 +85,9 @@ body {
   padding-right: 5px;
   font-size: 16px;
 }
+
 /* 공고관리,고객센터 */
-.recruit > .recruit_box {
+.recruit>.recruit_box {
   width: 390px;
   height: 80px;
   margin-top: 20px;
@@ -83,8 +95,9 @@ body {
   flex-direction: row;
   gap: 45px;
 }
+
 /* 공고관리 */
-.recruit > .recruit_box > .recruit_post {
+.recruit>.recruit_box>.recruit_post {
   background-color: #ffffff;
   width: 250px;
   height: 80px;
@@ -93,12 +106,14 @@ body {
   align-items: center;
   border-radius: 14px;
 }
-.recruit > .recruit_box > .recruit_post:hover {
+
+.recruit>.recruit_box>.recruit_post:hover {
   background: #fff1a7;
   font-weight: bold;
 }
+
 /* 고객센터 */
-.recruit > .recruit_box > .org_cs {
+.recruit>.recruit_box>.org_cs {
   background-color: #ffffff;
   width: 80px;
   height: 80px;
@@ -107,10 +122,12 @@ body {
   align-items: center;
   border-radius: 14px;
 }
-.recruit > .recruit_box > .org_cs:hover {
+
+.recruit>.recruit_box>.org_cs:hover {
   background: #fff1a7;
   font-weight: bold;
 }
+
 .ing {
   background-color: #ffffff;
   border-radius: 14px;
@@ -120,6 +137,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .ing_header {
   margin-top: 20px;
   margin-left: 20px;
@@ -128,13 +146,16 @@ body {
   flex-direction: row;
   gap: 215px;
 }
-.ing_header > div > span {
+
+.ing_header>div>span {
   color: #5d5fa1;
 }
-.ing_header > img {
+
+.ing_header>img {
   width: 30px;
   height: 30px;
 }
+
 .ing_footer {
   font-size: 16px;
   background-color: #ffffff;
@@ -146,6 +167,7 @@ body {
   justify-content: center;
   gap: 10px;
 }
+
 .ing_container {
   background-color: #f6f7f8;
   margin-top: 25px;
@@ -156,20 +178,23 @@ body {
   justify-content: space-between;
   padding-bottom: 10px;
 }
-.ing_container > .ing_contents {
+
+.ing_container>.ing_contents {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
   margin-left: 5px;
 }
-.ing_container > .ing_contents > .ing_detail > span {
+
+.ing_container>.ing_contents>.ing_detail>span {
   color: red;
   font-weight: bold;
 }
 
-.ing_container > .ing_contents > .ing_detail:nth-child(2) {
+.ing_container>.ing_contents>.ing_detail:nth-child(2) {
   margin-left: 30px;
 }
+
 .apply {
   background-color: #ffffff;
   border-radius: 14px;
@@ -180,6 +205,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .apply_header {
   margin-top: 20px;
   margin-left: 20px;
@@ -188,23 +214,28 @@ body {
   flex-direction: row;
   gap: 215px;
 }
-.apply_header > div > span {
+
+.apply_header>div>span {
   color: #5d5fa1;
 }
-.apply_header > img {
+
+.apply_header>img {
   width: 30px;
   height: 30px;
 }
+
 .apply_footer {
   display: flex;
   flex-direction: column;
 }
-.apply_footer > .apply_container {
+
+.apply_footer>.apply_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
 }
+
 .nav_footer {
   margin-top: 20px;
   bottom: 0;
