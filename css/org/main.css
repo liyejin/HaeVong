@@ -3,9 +3,11 @@
 * {
   font-family: 'Noto Sans KR', sans-serif;
 }
+
 body {
   width: 430px;
 }
+
 .header {
   height: 60px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
@@ -15,6 +17,7 @@ body {
   align-items: center;
   width: 100%;
 }
+
 /* sticky를 넣아면 됩니다,  */
 .main {
   display: flex;
@@ -25,7 +28,8 @@ body {
   /* gap: 30px; */
   /* margin: 0 20px; */
 }
-.main > .org_profile {
+
+.main>.org_profile {
   width: 100%;
   position: relative;
   /* max-width: 500px; */
@@ -34,38 +38,46 @@ body {
   margin-left: 20px; */
   /* margin-bottom: 20px; */
 }
-.main > .org_profile > img {
+
+.main>.org_profile>img {
   width: 100%;
 }
-.main > .org_profile > :nth-child(2) {
+
+.main>.org_profile> :nth-child(2) {
   width: 7%;
   position: absolute;
   top: 20px;
   right: 20px;
 }
-.main > .org_profile > .org_profile_name {
+
+.main>.org_profile>.org_profile_name {
   position: absolute;
   bottom: 20px;
   margin-left: 20px;
   color: white;
   font-size: 20px;
 }
-.main > .org_profile > .org_profile_name > span {
+
+.main>.org_profile>.org_profile_name>span {
   font-size: 24px;
   font-weight: bold;
 }
-.main > .org_profile > .org_profile_name > span > span {
+
+.main>.org_profile>.org_profile_name>span>span {
   font-size: 20px;
 }
-.guide > img {
+
+.guide>img {
   width: 100%;
 }
+
 .d_day {
   width: 430px;
   display: flex;
   justify-content: right;
   margin-top: 10px;
 }
+
 .d_day_content {
   border: var(--border-line);
   border-radius: 3px;
@@ -77,11 +89,13 @@ body {
   padding-right: 5px;
   font-size: 16px;
 }
+
 .recruit {
   margin-left: 20px;
   margin-right: 20px;
 }
-.recruit > ul {
+
+.recruit>ul {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -90,7 +104,7 @@ body {
   gap: 30px;
 }
 
-.recruit > ul > a {
+.recruit>ul>a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,19 +118,22 @@ body {
   transition: all 250ms;
 }
 
-.recruit > ul > a:hover {
+.recruit>ul>a:hover {
   color: #e8e8e8;
   background-color: #006fad;
 }
-.recruit > ul > a > li {
+
+.recruit>ul>a>li {
   font-size: 20px;
 }
+
 /* nav는 어쩔수 없이 fix  */
 .nav_list {
   position: fixed;
   bottom: 0;
 }
-.nav_list > ul {
+
+.nav_list>ul {
   background-color: #f6f6f6;
   display: flex;
   flex-direction: row;
@@ -126,10 +143,10 @@ body {
   padding-bottom: 10px;
 }
 
-.nav_list > ul > li {
+.nav_list>ul>li {
   align-items: center;
 }
 
-.nav_list > ul > li > img {
+.nav_list>ul>li>img {
   width: 100%;
 }
