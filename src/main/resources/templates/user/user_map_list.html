@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>user_map_list</title>
-    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-    <link rel="stylesheet" href="/css/user/user_map_list.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../../static/css/reset.css" />
+    <link rel="stylesheet" href="../../static/css/user/user_map_list.css" />
+  </head>
+  <body>
     <main class="main">
+      <header class="header">
+        <div class="header1">
+          <a href=""
+            ><img
+              src="../../static/img/icon/icon_header_back.png"
+              alt="뒤로가기"
+          /></a>
+          <div>해봉여지도</div>
+          <div>
+            <img
+              src="../../static/img/icon/icon_header_more.png"
+              alt="더보기"
+            />
+          </div>
+        </div>
+      </header>
+      <!------------------------------헤더----------------------------------->
 
-        <header class="header">
-            <div class="header1">
-                <a href=""><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"></a>
-                <div>해봉여지도</div>
-                <div><img src="../../img/icon/icon_header_more.png" alt="더보기"></div>
-            </div>
-        </header>
-        <!------------------------------헤더----------------------------------->
+      <section class="map_bar">
+        <form action="">
+          <img
+            src="../../static/img/icon/icon_header_map.png"
+            alt="지도아이콘"
+          />
+          <input type="text" placeholder="찾으시는 봉사를 검색해주세요" />
+        </form>
+      </section>
+      <!------------------------------봉사 검색창---------------------------->
 
-
-        <section class="map_bar">
-            <form action="">
-                <img src="/img/icon/icon_header_map.png" alt="지도아이콘">
-                <input type="text" placeholder="찾으시는 봉사를 검색해주세요">
-            </form>
-        </section>
-        <!------------------------------봉사 검색창---------------------------->
-
-<!-- 
+      <!-- 
         <section class="map_category_box">
             <ul class="category_list">
                 <li>서울특별시</li>
@@ -51,21 +61,48 @@
                 <li>제주특별자치도</li>
             </ul>
         </section> -->
-        <!------------------------------지역 카테고리---------------------------->
+      <!------------------------------지역 카테고리---------------------------->
 
-
-        <nav class="nav_list">
-            <ul>
-                <li><a><img src="../../img/icon/icon_nav_home.png" alt="내브바아이콘1"></a></li>
-                <li><a><img src="../../img/icon/icon_nav_map.png" alt="내브바아이콘2"></a></li>
-                <li><a><img src="../../img/icon/icon_nav_community.png" alt="내브바아이콘3"></a></li>
-                <li><a><img src="../../img/icon/icon_nav_category.png" alt="내브바아이콘4"></a></li>
-                <li><a><img src="../../img/icon/icon_nav_mypage.png" alt="내브바아이콘5"></a></li>
-            </ul>
-        </nav>
-        <!--------------------------------네비바---------------------------->
-
-
+      <nav class="nav_list">
+        <ul>
+          <li>
+            <a
+              ><img
+                src="../../static/img/icon/icon_nav_home.png"
+                alt="내브바아이콘1"
+            /></a>
+          </li>
+          <li>
+            <a
+              ><img
+                src="../../static/img/icon/icon_nav_map.png"
+                alt="내브바아이콘2"
+            /></a>
+          </li>
+          <li>
+            <a
+              ><img
+                src="../../static/img/icon/icon_nav_community.png"
+                alt="내브바아이콘3"
+            /></a>
+          </li>
+          <li>
+            <a
+              ><img
+                src="../../static/img/icon/icon_nav_category.png"
+                alt="내브바아이콘4"
+            /></a>
+          </li>
+          <li>
+            <a
+              ><img
+                src="../../static/img/icon/icon_nav_mypage.png"
+                alt="내브바아이콘5"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+      <!--------------------------------네비바---------------------------->
     </main>
-</body>
+  </body>
 </html>
