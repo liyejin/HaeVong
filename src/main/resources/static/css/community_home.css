@@ -3,7 +3,7 @@
   flex-direction: row;
   list-style: none;
   margin-left: 20px;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 
@@ -54,6 +54,9 @@
   overflow: auto;
 }
 
+.section_planning_vol::-webkit-scrollbar {
+  display: none;
+}
 .section_planning_vol li {
   margin-right: 20px;
 }
@@ -62,7 +65,13 @@
 
 .section_community_news {
   display: flex;
-  overflow: auto;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.section_community_news::-webkit-scrollbar {
+  display: none;
 }
 
 .section_community_news li {
@@ -100,7 +109,7 @@
   height: 380px;
   width: 380px;
   border-radius: 16px;
-  background-image: url(../../img/user/community/community_main_post.png);
+  background-image: url(../img/user/community/community_main_post.png);
   margin-bottom: 20px;
   padding: 20px;
   background-repeat: no-repeat;
@@ -125,7 +134,7 @@
   height: 46px;
   width: 46px;
   border-radius: 100px;
-  background-image: url(../../img/org/img_pwd_change.png);
+  background-image: url(../img/org/img_pwd_change.png);
   margin-right: 10px;
 }
 

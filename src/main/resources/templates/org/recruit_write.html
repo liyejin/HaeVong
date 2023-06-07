@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>기관모집글등록</title>
-    <link rel="stylesheet" href="../../css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/org/recruit_write.css" />
+    <link rel="stylesheet" href="../../static/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    <link rel="stylesheet" href="../../static/css/org/recruit_write.css" />
   </head>
   <body>
     <header class="header">
       <div class="header1">
-          <a href="" id="back_btn"><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"></a>
-          <div>봉사 모집글 등록</div>
-          <div href="" id="more_btn"><img src="../../img/icon/icon_header_more.png" alt="더보기"></div>
+        <a href="" id="back_btn"
+          ><img src="../../static/img/icon/icon_header_back.png" alt="뒤로가기"
+        /></a>
+        <div>봉사 모집글 등록</div>
+        <div href="" id="more_btn">
+          <img src="../../static/img/icon/icon_header_more.png" alt="더보기" />
+        </div>
       </div>
-  </header>
+    </header>
     <section id="s1">
-
       <span class="org_date_txt">봉사 일자</span>
       <form class="org_date_form">
         <input class="org_date" type="datetime-local" />
@@ -46,7 +49,14 @@
             multiple
           />
         </div>
-        <textarea class="org_post_box" name="comment" rows="14" cols="20" placeholder="봉사 모집글에 관한 글을 작성해주세요" style="resize: none;"></textarea>
+        <textarea
+          class="org_post_box"
+          name="comment"
+          rows="14"
+          cols="20"
+          placeholder="봉사 모집글에 관한 글을 작성해주세요"
+          style="resize: none"
+        ></textarea>
       </form>
     </section>
 
@@ -54,6 +64,5 @@
       <button class="cancel">취소</button>
       <button class="enroll">모집등록</button>
     </div>
-    
   </body>
 </html>

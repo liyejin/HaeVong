@@ -1,71 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>(기관) 비밀번호 변경</title>
-    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/org/pwd_change_auth.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/org/pwd_change_auth.css"
+    />
+  </head>
+  <body>
     <main class="main">
+      <header class="header">
+        <div class="header1">
+          <a href=""
+            ><img
+              src="../../static/img/icon/icon_header_back.png"
+              alt="뒤로가기"
+          /></a>
+          <div>비밀번호 변경</div>
+          <a href=""
+            ><img src="../../static/img/icon/icon_header_more.png" alt="더보기"
+          /></a>
+        </div>
+      </header>
+      <!-- 헤더 -->
 
-        <header class="header">
-            <div class="header1">
-              <a href=""
-                ><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"
-              /></a>
-              <div>비밀번호 변경</div>
-              <a href=""
-                ><img src="../../img/icon/icon_header_more.png" alt="더보기"
-              /></a>
-            </div>
-          </header>
-    <!-- 헤더 -->
+      <section class="org_section_1">
+        <img src="../../static/img/org/img_certified.png" alt="본인확인" />
+      </section>
+      <!-- 본문1 -->
 
-    <section class="org_section_1">
-        <img src="../../img/org/img_certified.png" alt="본인확인">
-    </section>
-    <!-- 본문1 -->
-
-
-    <section class="org_section_2">
+      <section class="org_section_2">
         <h3>인증하기</h3>
         <ul class="org_section_2_list">
-            <li>
-                <div class="org_section_2_input1">
-                    <input type="radio" name="option" value="option1" id="email">
-                    <label for="email">담당자 이메일 인증</label>
-                </div>
-                <button type="button"><p>인증</p></button>
-            </li>
-            <li>
-                <div class="org_section_2_input2">
-                    <input type="radio" name="option" value="option2" id="phone">
-                    <lable for="phone">담당자 휴대전화 번호 인증</lable>
-                </div>
-                <button type="button"><p>인증</p></button>
-            </li>
+          <li>
+            <div class="org_section_2_input1">
+              <input type="radio" name="option" value="option1" id="email" />
+              <label for="email">담당자 이메일 인증</label>
+            </div>
+            <button type="button"><p>인증</p></button>
+          </li>
+          <li>
+            <div class="org_section_2_input2">
+              <input type="radio" name="option" value="option2" id="phone" />
+              <lable for="phone">담당자 휴대전화 번호 인증</lable>
+            </div>
+            <button type="button"><p>인증</p></button>
+          </li>
         </ul>
-        
+
         <div class="org_section_text_input">
-            <h3>인증번호 입력</h3>
-            <input type="text" name="security_num" placeholder="인증번호를 입력해주세요">
-            <button type="button" class="button">확인</button>
+          <h3>인증번호 입력</h3>
+          <input
+            type="text"
+            name="security_num"
+            placeholder="인증번호를 입력해주세요"
+          />
+          <button type="button" class="button">확인</button>
         </div>
-    </section>
-    <!-- 본문2 -->
+      </section>
+      <!-- 본문2 -->
 
-
-    <input
+      <input
         type="submit"
         value="확인"
         class="member_customer_service_input_submit"
-        />
-    <!-- 푸터 -->
-
-</main>
-</body>
+      />
+      <!-- 푸터 -->
+    </main>
+  </body>
 </html>
