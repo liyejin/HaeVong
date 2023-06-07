@@ -12,13 +12,13 @@ body{
     margin: 0;
     position: relative;
 }
-/* .main{
-    margin-left:36px;
-    margin-right:36px;
-} */
+.main{
+    margin-left:20px;
+    margin-right:20px;
+}
 .org_login{
     margin-top: 112px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 .org_login>p{
     display:flex;
