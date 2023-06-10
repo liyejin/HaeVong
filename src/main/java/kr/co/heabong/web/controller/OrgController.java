@@ -1,17 +1,25 @@
 package kr.co.heabong.web.controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.service.OrgVolServiceImpl;
+
 
 @Controller
 @RequestMapping("org")
 public class OrgController {
+	@Autowired
+	OrgVolServiceImpl service;
 	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 
-		return "main";
+		return "org/main";
 	}
 	
 	@RequestMapping("info")
@@ -96,10 +104,11 @@ public class OrgController {
 
 		return "vol_empty_list";
 	}
-	@RequestMapping("vol_list")
+	@RequestMapping("vol_list") //org/vol_list
 	public String getVol_list(Model model) {
-
-		return "vol_list";
+		List<OrgVol> list = service.getList();
+		model.addAttribute("list", list);
+		return "org/vol_list";  //templates/org/vol_list
 	}
 	@RequestMapping("vol_recruit")
 	public String getVol_recruit(Model model) {
@@ -111,5 +120,10 @@ public class OrgController {
 	public String getVol_write(Model model) {
 
 		return "vol_write";
+	}
+	@RequestMapping("vol")
+	public String vol() {
+		
+		return "org/vol";
 	}
 }

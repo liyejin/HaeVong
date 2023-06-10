@@ -1,0 +1,290 @@
+body {
+    width: 430px;
+    height: 932px;
+  }
+  .header>div {
+      /* padding: 40px; */
+      box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
+      display: flex;
+      justify-self: center;
+      flex-direction: row;
+      /* position: sticky; */
+      font-size: 24px;
+      font-weight: bold;
+      height: 80px;
+      width: 430px;
+      align-items: center;
+      justify-content: space-between;
+  
+      
+    }
+    
+    /*header1: back, 메뉴명, more이 있는 헤더*/
+    .header1>a:first-child{
+      margin-left: 30px;
+    }
+    .header1>div:last-child{
+      padding-right:30px;
+      /* more 숨기려면 */
+      /* visibility:hidden; */
+    }
+    /* header2: 로고있는 헤더 */
+    .header2>img{
+      margin: 0 auto;
+  
+    }
+  
+    
+  .main {
+    width: 430px;
+    height:792px;
+  }
+  .footer {
+      position: fixed;
+      display: flex;
+      height: 60px;
+      bottom: 0;
+      width: 430px;
+      flex-direction: row;
+  
+  }
+  .footer>*{
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    line-height: 60px;
+  }
+  
+  .btn_double_left {
+    text-align: center;
+    width: 150px;
+    background-color: gray;
+  }
+  .btn_double_right {
+    text-align: center;
+    width: 280px;
+    background-color: black;
+  }
+  .btn_single {
+    width: 430px;
+    background-color: black;
+    text-align: center;
+  }
+  .nav_list{
+    width: 430px;
+    position:fixed;
+    bottom:0;
+  }
+  .nav_list > ul{
+    background-color: #F6F6F6;
+    display: flex;
+    flex-direction: row;
+    width: 430px;
+    height: 80px;
+    justify-content: space-between;
+    /* padding-top: 3%; */
+    /* padding-bottom: 3%; */
+  }
+  
+  .nav_list > ul > li{
+    align-items: center;
+  }
+  
+  .nav_list > ul > li > img{
+    width: 100%;
+  }
+  
+  
+/* ---------------------네브바--------------------------   */
+
+
+.map_bar{
+    position: relative;
+}
+
+.map_bar > form > img{
+    position: absolute;
+    left: 30px;
+    top: 35px;
+}
+
+
+
+.map_bar > form > input{
+    padding: 5px;
+    border: 0.5px solid gainsboro;
+    width: 90%;
+    text-align: center;
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 15px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+}
+
+
+
+
+.map_box{
+    width: 195px;
+    height: 70px;
+    border-radius: 8px;
+    border: 1px solid #C1C1C1;
+    position: relative;
+}
+
+.map_box > img{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.map_box > ul{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.map_box > ul > li{
+    font-size: 12px;
+    text-align: center;
+}
+
+
+
+
+
+
+.org_vol_recruit_title_box{
+    height: 205px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.org_vol_recruit_title_box > ul{
+    height: 175px;
+    margin: 0 auto;
+}
+
+.org_vol_recruit_title_box > ul > div{
+    padding-top: 60px;
+}
+
+.org_vol_recruit_title_box > ul > div > li{
+    list-style: none;
+    line-height: 30px;
+    position: relative;
+}
+
+.org_vol_recruit_title_box > ul > div > li:nth-child(1){
+    font-size: 16px;
+}
+
+.org_vol_recruit_title_box > ul > div > li:nth-child(1) > img{
+    position: absolute;
+    right: 10px;
+}
+
+.org_vol_recruit_title_box > ul > div > li:nth-child(2){
+    font-size: 24px;
+}
+
+.org_vol_recruit_title_box > ul > div > li:nth-child(3){
+    font-size: 16px;
+}
+/* --------------------봉사 모집 제목 박스-------------------- */
+
+
+
+
+.org_vol_recruit_info > div > ul > li{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.org_vol_recruit_info{
+    height: 225px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.org_vol_recruit_box1{
+    background-color: #F6F7F8;
+    border-radius: 20px;
+    width: 190px;
+    height: 185px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ul_1,.ul_2,.ul_3,.ul_4,.ul_5,.ul_6,.ul_7{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.org_vol_recruit_box2{
+    background-color: #F6F7F8;
+    border-radius: 20px;
+    width: 120px;
+    height: 135px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.org_vol_recruit_box3{
+    background-color: #595959;
+    border-radius: 20px;
+    width: 150px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+}
+
+.org_vol_recruit_box3 > .ul_8 > li{
+    margin: 0;
+    color: white;
+}
+/* ------------------------------신청 마감일표시 박스----------------------------------- */
+
+
+
+.org_vol_recruit_content{
+    list-style: none;
+    width: 430px;
+    height: 730px;
+}
+
+.org_vol_recruit_content > .title{
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 57px;
+    padding-bottom: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.org_vol_recruit_content > .line_text{
+    font-size: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+/* --------------------봉사 모집 요강-------------------- */
