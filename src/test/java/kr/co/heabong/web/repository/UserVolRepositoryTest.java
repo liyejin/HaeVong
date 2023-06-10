@@ -22,7 +22,7 @@ class UserVolRepositoryTest {
 
 	//@Test 
 	void testFindAll() {
-		List<UserVol> list = repository.findAll();
+		UserVol post = repository.findAll();
 	}
 
 	@Test
