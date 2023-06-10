@@ -17,12 +17,12 @@ import kr.co.heabong.web.entity.UserVol;
 class UserVolRepositoryTest {
 
 	@Autowired
-	UserVolRepository repository;
+	private UserVolRepository repository;
 
 
 	//@Test 
 	void testFindAll() {
-		List<UserVol> list = repository.findAll();
+//		List<UserVol> list = repository.findAll();
 	}
 
 	@Test

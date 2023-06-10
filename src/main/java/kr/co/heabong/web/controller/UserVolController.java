@@ -16,7 +16,7 @@ import kr.co.heabong.web.service.UserVolService;
 public class UserVolController {
 
 	@Autowired
-	UserVolService service;
+	private UserVolService service;
 	
 	@GetMapping("/vol")
 	public String getList(Model model) {
