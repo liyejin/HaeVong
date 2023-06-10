@@ -15,7 +15,7 @@ import kr.co.heabong.web.service.OrgVolServiceImpl;
 @RequestMapping("org")
 public class OrgController {
 	@Autowired
-	OrgVolServiceImpl service;
+	OrgVolServiceImpl volService;
 	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 
@@ -106,7 +106,7 @@ public class OrgController {
 	}
 	@RequestMapping("vol_list") //org/vol_list
 	public String getVol_list(Model model) {
-		List<OrgVol> list = service.getList();
+		List<OrgVol> list = volService.getList();
 		model.addAttribute("list", list);
 		return "org/vol_list";  //templates/org/vol_list
 	}
