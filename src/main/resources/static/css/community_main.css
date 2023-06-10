@@ -1,0 +1,169 @@
+.community_categorybar {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.community_categorybar li {
+  display: flex;
+  flex-direction: row;
+  margin-right: 30px;
+}
+
+.community_categorybar li a {
+  display: block;
+  text-align: center;
+}
+
+.community_categorybar li a img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 커뮤니티 섹션 제목 */
+.community_section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* 커뮤니티 홈, 전체 메인 간격 */
+.community_main {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.community_main ul li {
+  margin-bottom: 40px;
+}
+
+.community_section_title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.community_section_title_explane {
+  font-size: 16px;
+}
+
+.section_planning_vol {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.section_planning_vol::-webkit-scrollbar {
+  display: none;
+}
+.section_planning_vol li {
+  margin-right: 20px;
+}
+
+/* 행복한 해봉이네 */
+
+.section_community_news {
+  display: flex;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.section_community_news::-webkit-scrollbar {
+  display: none;
+}
+
+.section_community_news li {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.section_community_news li div {
+  margin-top: 20px;
+}
+
+.section_community_news_title {
+  font-size: 18px;
+}
+
+.section_community_news_date {
+  font-size: 14px;
+  color: gray;
+}
+
+/* 공지사항 */
+.community_info_div {
+  margin-bottom: 60px;
+}
+
+/* 게시글 */
+.section_community_post li {
+  margin-bottom: 10px;
+}
+
+.section_community_post_img {
+  position: relative;
+  display: flex;
+  height: 380px;
+  width: 380px;
+  border-radius: 16px;
+  background-image: url(../img/user/community/community_main_post.png);
+  margin-bottom: 20px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  box-sizing: border-box; /* 패딩을 고려한 크기 설정을 위해 추가 */
+}
+
+.community_post_detail_btn {
+  position: absolute;
+  right: 20px;
+}
+
+.section_community_post_txt_title {
+  font-size: 18px;
+}
+
+.community_post_img_user_profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.community_post_img_user_profile_img {
+  height: 46px;
+  width: 46px;
+  border-radius: 100px;
+  background-image: url(../img/org/img_pwd_change.png);
+  margin-right: 10px;
+}
+
+.community_post_img_user_profile_txt span {
+  color: white;
+  opacity: 0.9;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.community_post_img_nums_icon {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../img/icon/icon_community_post_nums.svg);
+  background-repeat: no-repeat;
+  background-position: center; /* 배경 이미지를 가운데 정렬 */
+
+  padding: 20px;
+  left: 50%;
+  bottom: 0px;
+}
+
+.community_main_post_like_comment {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.community_main_post_like_comment div {
+  margin-left: 10px;
+}
