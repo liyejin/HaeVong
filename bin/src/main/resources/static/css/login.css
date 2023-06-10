@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main {
+    height: 932px;
+    width: 100%;
+    background-image: url("../img/login.jpg");
+    background-size: cover;
+}
+
+.alpha {
+    height: 932px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    position: relative;
+    margin-bottom: 100px;
+    padding: auto;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

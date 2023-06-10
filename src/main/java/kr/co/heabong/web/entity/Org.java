@@ -11,14 +11,14 @@ import lombok.Data;
 @Builder
 public class Org {
 
-private int id; 
-private String name; 
-private String email; 
-private String orgNum; 
-private String phoneNum; 
-private String roadAddress; 
-private String address; 
-private String profilePhoto; 
-private int districtId;
-private int metropolId;
+	private int id;
+	private String name;
+	private String email;
+	private String orgNum;
+	private String phoneNum;
+	private String roadAddress;
+	private String address;
+	private String profilePhoto;
+	private int districtId;
+	private int metropolId;
 }
