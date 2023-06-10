@@ -1,0 +1,231 @@
+.main {
+  overflow-y: scroll;
+  width: 430px;
+  /* background-color: #fef8ea; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  -mss-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+.main::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}
+.mypage_profile {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  gap: 80px;
+}
+.mypage_profile > .profile_txt {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 10px;
+  font-size: 20px;
+}
+.profile_txt > .title {
+  font-size: 16px;
+}
+.mypage_profile_name {
+  font-weight: bold;
+  color: skyblue;
+}
+.mypage_profile > .profile_pic {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.mypage_profile > .profile_pic > .pic {
+  width: 100px; /* 원하는 사이즈로 조정하세요 */
+  height: 100px; /* 원하는 사이즈로 조정하세요 */
+  border-radius: 50%;
+  overflow: hidden;
+}
+.pic > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mypage_mine {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  gap: 12px;
+  margin-top: 20px;
+  height: 120px;
+}
+/* 반복되는게 있어서 변수화 필요해보임! 물어보기 */
+.mypage_mine > .alarm {
+  width: 120px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.mypage_mine > .alarm > p {
+  position: absolute; /* 추가: p 태그를 절대적으로 설정 */
+  margin-top: 85px;
+}
+.mypage_mine > .alarm > .alarm_icon {
+  width: 70px;
+  height: 70px;
+  margin: 0px auto;
+  position: relative;
+}
+.mypage_mine > .alarm > .alarm_ho_icon {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  display: none;
+}
+.mypage_mine > .alarm {
+  width: 120px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.mypage_mine > .alarm > p {
+  position: absolute; /* 추가: p 태그를 절대적으로 설정 */
+  margin-top: 85px;
+}
+.mypage_mine > .alarm > .alarm_icon {
+  width: 70px;
+  height: 70px;
+  margin: 0px auto;
+  position: relative;
+}
+.mypage_mine > .alarm > .alarm_ho_icon {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  display: none;
+}
+.mypage_mine > .alarm:hover > .alarm_icon {
+  display: none;
+}
+
+.mypage_mine > .alarm:hover > .alarm_ho_icon {
+  display: block;
+}
+.mypage_mine > .apply {
+  width: 120px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.mypage_mine > .apply > p {
+  position: absolute; /* 추가: p 태그를 절대적으로 설정 */
+  margin-top: 85px;
+}
+.mypage_mine > .apply > .apply_icon {
+  width: 70px;
+  height: 70px;
+  margin: 0px auto;
+  position: relative;
+}
+.mypage_mine > .apply > .apply_ho_icon {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  display: none;
+}
+.mypage_mine > .apply:hover > .apply_icon {
+  display: none;
+}
+
+.mypage_mine > .apply:hover > .apply_ho_icon {
+  display: block;
+}
+
+.mypage_mine > .bookmark {
+  width: 120px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.mypage_mine > .bookmark > p {
+  position: absolute; /* 추가: p 태그를 절대적으로 설정 */
+  margin-top: 85px;
+}
+.mypage_mine > .bookmark > .bookmark_icon {
+  width: 70px;
+  height: 70px;
+  margin: 0px auto;
+  position: relative;
+}
+.mypage_mine > .bookmark > .bookmark_ho_icon {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  display: none;
+}
+.mypage_mine > .bookmark:hover > .bookmark_icon {
+  display: none;
+}
+
+.mypage_mine > .bookmark:hover > .bookmark_ho_icon {
+  display: block;
+}
+.my_post {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  height: 210px;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 18px;
+}
+.my_post > .mypage_mypost_img {
+  margin-top: 24px;
+  width: 390px;
+  height: 160px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  white-space: nowrap;
+  overflow: auto;
+}
+.my_post > .mypage_mypost_img > div {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  flex: 0 0 140px; /* 이 줄을 추가합니다 */
+}
+.my_post > .mypage_mypost_img > div > a > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+.cs > a > div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.cs > div > img {
+  width: 30px;
+  height: 30px;
+}
