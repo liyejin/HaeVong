@@ -5,14 +5,14 @@
 	<mapper namespace="kr.co.heabong.web.repository.UserVolRepository">
 	
 	<select id="findById" resultType="kr.co.heabong.web.entity.UserVol">
-	select *l,uiuh
+	select *
 	from user_vol
 	</select>
 	
 	<update id="save" parameterType="kr.co.heabong.web.entity.UserVol">
       UPDATE haevongdb.user_vol
     <set>
-         <if test="id != null">id = #{id},</if>
+         <if test="id != null">id =  #{id},</if>
          <if test="title != null">title = #{title},</if>
          <if test="regDate != null">reg_date = #{regDate},</if>
          <if test="date != null">date = #{date},</if>
