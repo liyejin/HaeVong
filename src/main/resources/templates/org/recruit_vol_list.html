@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org"
+>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/org/recruit_vol_list.css">
-    <script defer src="../../js/modal.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/org/recruit_vol_list.css">
+   <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script defer src="/js/modal.js"></script>
     <title>신청자 내역</title>
-
 </head>
 
 <body id="body">
     <header class="header">
         <div class="header1">
-            <a href="" id="back_btn"><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"></a>
+            <a href="#" id="back_btn"><img src="/img/icon/icon_header_back.png" alt="뒤로가기"></a>
             <div>신청자 내역</div>
-            <div href="" id="more_btn"><img src="../../img/icon/icon_header_more.png" alt="더보기"></div>
+            <div href="#" id="more_btn"><img src="/img/icon/icon_header_more.png" alt="더보기"></div>
         </div>
     </header>
     <section class="main" id="main">
@@ -38,58 +39,14 @@
                 <th class="regdate_h">신청일</th>
                 <th class="status_h">상태</th>
             </tr>
-            <tr class="org_apply_list_row" onclick="location.href='/user/info/23'">
+            <tr class="org_apply_list_row" onclick="location.href='/user/info/23'" th:each="u:${list}">
                 <td class="num">1</td>
-                <td class="name">김*수</td>
-                <td class="phone">010-1111-4444</td>
-                <td class="regdate">2023-05-15</td>
+                <td class="name" th:text="${u.name}"></td>
+                <td class="phone" th:text="${u.phoneNumber}"></td>
+                <td class="signupDate" th:text="${u.signupDate}"></td>
                 <td>
                     <div class="org_status">
                         <div class="org_status_approved">승인</div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="org_apply_list_row" onclick="location.href='/index.html'">
-                <td class="num">2</td>
-                <td class="name">김*연</td>
-                <td class="phone">010-1111-4444</td>
-                <td class="regdate">2023-05-15</td>
-                <td>
-                    <div class="org_status">
-                        <div class="org_status_waiting">대기</div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="org_apply_list_row">
-                <td class="num">3</td>
-                <td class="name">김*리</td>
-                <td class="phone">010-1111-4444</td>
-                <td class="regdate">2023-05-15</td>
-                <td>
-                    <div class="org_status">
-                        <div class="org_status_waiting">거절</div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="org_apply_list_row">
-                <td class="num">4</td>
-                <td class="name">김*수</td>
-                <td class="phone">010-1111-4444</td>
-                <td class="regdate">2023-05-15</td>
-                <td>
-                    <div class="org_status">
-                        <div class="org_status_waiting">대기</div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="org_apply_list_row">
-                <td class="num">5</td>
-                <td class="name">김*수</td>
-                <td class="phone">010-1111-4444</td>
-                <td class="regdate">2023-05-15</td>
-                <td>
-                    <div class="org_status">
-                        <div class="org_status_refused">거절</div>
                     </div>
                 </td>
             </tr>

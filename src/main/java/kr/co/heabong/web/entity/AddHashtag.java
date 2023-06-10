@@ -5,11 +5,9 @@ import org.springframework.stereotype.Component;
 import groovy.transform.builder.Builder;
 import lombok.Data;
 
-@Component
 @Data
-@Builder
-public class VolCategory {
-
-	private int id;
-	private String name;
+public class AddHashtag {
+	private int hashtagId;
+	private int postId;
 }
+

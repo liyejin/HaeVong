@@ -1,0 +1,27 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.heabong.web.repository.UserRepository">
+   <select id="findAll" resultType="kr.co.heabong.web.entity.User">
+      select * from user
+   </select>
+	<update id="update">
+	   UPDATE haevongdb.user
+	   <set>
+		  <if test="name != null">name = #{name},</if>
+		  <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+		  <if test="gender != null">gender = #{gender},</if>
+		  <if test="age != null">age = #{age},</if>
+		  <if test="birthDate != null">birth_date = #{birthDate},</if>
+		  <if test="nickname != null">nickname = #{nickname}</if>
+	   </set>
+   </update>
+   <delete id="delete">
+	   delete from user where name = #{name}
+   </delete>
+   <insert id="save">
+	<!--   INSERT INTO user(name, email, , RoomNum)
+		VALUES(5, '이순신', '2016-02-16', 1108);-->
+   </insert>
+   </mapper>

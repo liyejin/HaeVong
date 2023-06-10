@@ -2,26 +2,25 @@ package kr.co.heabong.web.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.repository.VolCategoryRepository;
 
+
+@Service
 public class VolCategoryServiceImp implements VolCategoryService{
-
+	@Autowired
+		private VolCategoryRepository repository;
+	
 	@Override
-	public List<VolCategory> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public VolCategory getCategory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setCategory() {
-		// TODO Auto-generated method stub
+	public List<VolCategory> getlist() {
 		
+		List<VolCategory> list = repository.findAll();
+		
+		return list;
 	}
+
 
 }
