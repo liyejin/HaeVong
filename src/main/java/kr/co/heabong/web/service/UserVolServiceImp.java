@@ -11,6 +11,7 @@ public class UserVolServiceImp implements UserVolService {
 
 	@Autowired
 	UserVolRepository repository;
+
 	@Override
 	public UserVol getUserVol() {
 		UserVol userVol = repository.findAll();
@@ -20,7 +21,7 @@ public class UserVolServiceImp implements UserVolService {
 	@Override
 	public void setUserVol() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
