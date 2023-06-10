@@ -1,0 +1,83 @@
+.main {
+    overflow: scroll;
+}
+
+.user_category_banner_main {
+    width: 100%;
+    height: 120px;
+    background-image: url(../img/user/user_category_banner_main.png);
+}
+
+.user_category_box {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.user_category_list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
+}
+
+.user_category_list_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_category_list_item_icon {
+    width: 60px;
+    height: 60px;
+    background-color: #9BC2E7;
+    color: #efefef;
+    border-radius: 30px;
+    align-items: center;
+    display: flex;
+}
+
+.user_category_banner_sub {
+    width: 100%;
+    height: 90px;
+    background-image: url(../img/user/user_category_banner_sub.png);
+}
+
+.user_category_recommended {
+    display: flex;
+    flex-direction: column;
+    width: 430px;
+    height: 350px;
+
+}
+
+.user_category_recommended_title {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: auto;
+
+
+
+}
+
+.user_category_recommended_list {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px;
+}
+
+.user_category_recommended_item {
+    width: 180px;
+}
+
+.user_category_recommended_item>img {
+    width: 170px;
+    height: 140px;
+}

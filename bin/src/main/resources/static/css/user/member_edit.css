@@ -1,0 +1,142 @@
+.header {
+    box-shadow: none;
+}
+
+.member_edit_info {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.member_edit_info_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.member_edit_info_img {
+    background-color: #000000;
+    border-radius: 100px;
+    width: 175px;
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.member_edit_info_img > img{
+    filter: invert(90%);
+}
+
+.member_edit_info_content {
+    margin-top: 20px;
+    margin-bottom: 50px
+}
+
+.member_edit_info_content_name {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+
+}
+
+.member_edit_btn {
+    display: flex;
+    border-bottom: 1px #c8c8c8 solid;
+    justify-content: center;
+    align-items: center;
+    width: 430px;
+}
+
+.member_edit_btn_item {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;;
+}
+
+button {
+    border: none;
+    background-color: #fff;
+}
+
+
+/* button:active {
+    outline: none;
+    box-shadow: none;
+  } */
+
+.member_edit_btn_box {
+    height: 459px;
+    border-top: 1px #c8c8c8 solid;
+    /* box-shadow: 0 0 10px 0 rgb(167, 167, 167); */
+}
+
+.member_edit_pwdchange_step_box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    gap: 70px;
+    flex-direction: column;
+}
+
+
+.member_edit_pwdchange_btn {
+    padding: 63px 50px 63px 50px;
+    border-bottom: 1px #c8c8c8 solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.border {
+    font-weight: bold;
+}
+
+.member_edit_pwdchange_step_box {
+    margin-top: 30px;
+    padding: 0 40px 56px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px;
+}
+
+.member_edit_pwdchange_step {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px;
+}
+
+.member_edit_pwdchange_step_item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: #d9d9d9;
+    color: #3d3d3d;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.now {
+    background-color: #006FAD;
+    color: #ffffff;
+}
+
+.member_edit_pwdchange_step_text {
+    text-align: center;
+}

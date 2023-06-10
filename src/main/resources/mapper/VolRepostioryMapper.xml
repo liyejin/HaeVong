@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.VolCategoryRepository">
+  <select id="findAll" resultType="kr.co.heabong.web.entity.VolCategory">
+    select * from vol_category 
+  </select>
+  <select id="findByOffsetAndSize" resultType="kr.co.heabong.web.entity.VolCategory">
+	  select * from
+		vol_category 
+	  limit #{offset}, #{size} 
+  </select>
+  <select id="findById" resultType="kr.co.heabong.web.entity.VolCategory">
+		select * from vol_category where id=#{id}
+	</select>
+	<update id="update">
+		UPDATE haevongdb.vol_category
+		<set>
+			<if test="name != null">name = #{name},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	<delete id="delete">
+		delete from vol_category where id=#id}
+	</delete>
+	<insert id="save" parameterType="kr.co.heabong.web.entity.VolCategory">
+  insert into users (id, username, password)
+  values (#{id}, #{username}, #{password})
+</insert>
+</mapper>

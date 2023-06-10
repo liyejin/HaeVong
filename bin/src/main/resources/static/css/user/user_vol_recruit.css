@@ -1,0 +1,246 @@
+body {
+    width: 430px;
+    height: 932px;
+  }
+  .header>div {
+      /* padding: 40px; */
+      box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
+      display: flex;
+      justify-self: center;
+      flex-direction: row;
+      /* position: sticky; */
+      font-size: 24px;
+      font-weight: bold;
+      height: 80px;
+      width: 430px;
+      align-items: center;
+      justify-content: space-between;
+  
+      
+    }
+    
+    /*header1: back, 메뉴명, more이 있는 헤더*/
+    .header1>a:first-child{
+      margin-left: 30px;
+    }
+    .header1>div:last-child{
+      padding-right:30px;
+      /* more 숨기려면 */
+      /* visibility:hidden; */
+    }
+    /* header2: 로고있는 헤더 */
+    .header2>img{
+      margin: 0 auto;
+  
+    }
+  
+    
+  .main {
+    width: 430px;
+    height:792px;
+  }
+  .footer {
+      position: fixed;
+      display: flex;
+      height: 60px;
+      bottom: 0;
+      width: 430px;
+      flex-direction: row;
+  
+  }
+  .footer>*{
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    line-height: 60px;
+  }
+  
+  .btn_double_left {
+    text-align: center;
+    width: 150px;
+    background-color: gray;
+  }
+  .btn_double_right {
+    text-align: center;
+    width: 280px;
+    background-color: black;
+  }
+  .btn_single {
+    width: 430px;
+    background-color: black;
+    text-align: center;
+  }
+  .nav_list{
+    width: 430px;
+    position:fixed;
+    bottom:0;
+  }
+  .nav_list > ul{
+    background-color: #F6F6F6;
+    display: flex;
+    flex-direction: row;
+    width: 430px;
+    height: 80px;
+    justify-content: space-between;
+    /* padding-top: 3%; */
+    /* padding-bottom: 3%; */
+  }
+  
+  .nav_list > ul > li{
+    align-items: center;
+  }
+  
+  .nav_list > ul > li > img{
+    width: 100%;
+  }
+/* ---------------------네브바--------------------------   */
+  
+
+
+
+
+.user_vol_post_notice_box{
+    width: 430px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user_vol_post_notice_box > li{
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 26px;
+    line-height: 70px;
+}
+
+.user_vol_post_notice_box > li:nth-child(2){
+    padding-bottom: 80px;
+}
+
+.user_vol_post_notice_box > li > a{
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
+}
+/* ------------------고객센터---------------------- */
+
+
+
+
+.user_vol_recruit_title > img{
+  width: 100%;
+}
+
+.user_vol_recruit_title_box{
+    height: 205px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.user_vol_recruit_title_box > ul{
+    height: 175px;
+    margin: 0 auto;
+}
+
+.user_vol_recruit_title_box > ul > div{
+    padding-top: 60px;
+}
+
+.user_vol_recruit_title_box > ul > div > li{
+    list-style: none;
+    line-height: 30px;
+    position: relative;
+}
+
+.user_vol_recruit_title_box > ul > div > li:nth-child(1){
+    font-size: 16px;
+}
+
+.user_vol_recruit_title_box > ul > div > li:nth-child(1) > img{
+    position: absolute;
+    right: 10px;
+}
+
+.user_vol_recruit_title_box > ul > div > li:nth-child(2){
+    font-size: 24px;
+}
+
+.user_vol_recruit_title_box > ul > div > li:nth-child(3){
+    font-size: 16px;
+}
+/* ------------------봉사 모집 제목 박스---------------------- */
+
+
+
+.user_vol_recruit_content{
+    list-style: none;
+    width: 430px;
+    height: 730px;
+    box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
+}
+
+.user_vol_recruit_content > .title{
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 57px;
+    padding-bottom: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.user_vol_recruit_content > .line_text{
+    font-size: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+/* -----------------봉사모집요강+봉사장소----------------------- */
+
+
+
+
+
+.user_vol_recruit_info > div > ul > li{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.user_vol_recruit_info{
+    height: 225px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.user_vol_recruit_box1{
+    background-color: #F6F7F8;
+    border-radius: 20px;
+    width: 190px;
+    height: 185px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ul_1,.ul_2,.ul_3,.ul_4,.ul_5,.ul_6{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user_vol_recruit_box2{
+    background-color: #F6F7F8;
+    border-radius: 20px;
+    width: 120px;
+    height: 185px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* ----------------------신청 마감일표시 박스--------------------------- */

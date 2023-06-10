@@ -1,0 +1,18 @@
+
+.select_menu{
+    width: 370px;
+    font-size: 18px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.select_menu > li{
+    margin-bottom: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
+}
+
+.select_menu > li:nth-child(1){
+    margin-top: 30px;
+}
