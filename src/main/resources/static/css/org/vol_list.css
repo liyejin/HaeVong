@@ -90,7 +90,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffed8f;
+  color: #ececec;
+  background-color: #64987F;
   border-radius: 100px;
 
   width: 82px;
@@ -101,7 +102,11 @@
 
   font-size: 14px;
 }
-
+.org_vol_list_btn_box{
+	display: flex;
+	flex-direction: row;
+	background-color: burlywood;
+}
 /* 더보기 버튼 */
 .org_vol_list_edit_btn {
   width: 3px;

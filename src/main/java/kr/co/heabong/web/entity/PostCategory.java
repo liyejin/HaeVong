@@ -8,4 +8,3 @@ public class PostCategory {
 	private int id;
 	private String name;
 }
-

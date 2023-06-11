@@ -1,0 +1,115 @@
+.profile_area {
+    margin: 0 20px 0 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+main {
+    margin-top: 10px;
+
+}
+
+.sa {
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 1000px;
+    margin: 0 20px 0 20px;
+    padding: 0;
+}
+
+.profile_edit_from {
+
+    display: flex;
+    height: 300px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 1000px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+}
+
+.submit {
+    width: 100%;
+    position: absolute;
+    bottom: 80px;
+    height: 50px;
+    background-color: #006FAD;
+    color: azure;
+    border-style: none;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.haedal {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.haedal>a {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.header {
+    display: flex;
+
+    align-items: center;
+}
+
+.icon_back {
+    margin-left: 20px;
+}
+
+.title {
+    margin-right: 35%;
+
+}
+
+.select_menu {
+
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.select_menu>li {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 4px;
+    height: 60px;
+    align-items: center;
+}
+
+.select_menu>li>a {
+    margin-left: 20px;
+}
+
+.question_form_box {
+    width: 100%;
+
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.question_form_box>input,
+select {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 85%;
+    height: 50px;
+    margin-right: 100px;
+    margin-bottom: 10px;
+}

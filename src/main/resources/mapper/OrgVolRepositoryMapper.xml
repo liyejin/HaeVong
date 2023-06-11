@@ -1,13 +1,52 @@
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.heabong.web.repository.OrgVolRepository">
-   <select id="findAll">
-      select * from org_vol
-   </select>
-    <select id="findByAddress">
-      select * from org_vol where road_address like '%${raodAddress}%'; 
-   </select>
-   
-   </mapper>
+	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
+		select * from org_vol 
+	</select>
+	<select id="findByOrgIdAndStatus" resultType="kr.co.heabong.web.entity.OrgVol">
+		select * from org_vol 
+		where org_id = #{orgId}
+		<if test="status == 'over'"> and date &lt; current_date()+1 </if>
+		<if test="status == 'on'"> and date &gt; current_date()+1 </if>
+	</select>
+	<select id="findByOffsetAndSize"
+		resultType="kr.co.heabong.web.entity.OrgVol">
+		select * from
+		org_vol
+		limit #{offset}, #{size}
+	</select>
+	<select id="findById" resultType="kr.co.heabong.web.entity.OrgVol">
+		select * from org_vol where id=#{id}
+	</select>
+	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> 
+		UPDATE haevongdb.org_vol 
+		<set>
+			<if test="orgVol.title != null">title = #{orgVol.title},</if>
+			<if test="orgVol.regdate != null">regdate = #{orgVol.regdate},</if>
+			<if test="orgVol.date != null">date = #{orgVol.date},</if>
+			<if test="orgVol.capacity != null">capacity = #{orgVol.capacity},</if>
+			<if test="orgVol.location != null">location = #{orgVol.location},</if>
+			<if test="orgVol.content != null">content = #{orgVol.content},</if>
+			<if test="orgVol.roadAddress != null">road_address = #{orgVol.roadAddress},</if>
+			<if test="orgVol.address != null">address = #{orgVol.address},</if>
+			<if test="orgVol.orgId != null">org_id = #{orgVol.orgId},</if>
+			<if test="orgVol.districtId != null">district_id = #{orgVol.districtId},</if>
+			<if test="orgVol.metropolId != null"> metropol_id= #{orgVol.metropolId},</if>
+			<if test="orgVol.volCategoryId != null">vol_category_id = #{orgVol.volCategoryId},</if>
+		</set>
+		WHERE id = #{orgVol.id} </update>
+	<delete id="delete">
+		delete from org_vol where id=#{id}
+	</delete>
+	<insert id="save" parameterType="kr.co.heabong.web.entity.OrgVol" useGeneratedKeys="true"
+    keyProperty="id">
+		insert into org_vol (title, date, capacity, location, content,
+		road_address, address, org_id, district_id, metropol_id,
+		vol_category_id)
+		values (#{orgVol.title}, #{orgVol.date}, #{orgVol.capacity}, #{orgVol.location},
+		#{orgVol.content}, #{orgVol.roadAddress}, #{orgVol.address}, #{orgVol.orgId}, #{orgVol.districtId},
+		#{orgVol.metropolId}, #{orgVol.volCategoryId})
+		
+	</insert>
+	
+</mapper>

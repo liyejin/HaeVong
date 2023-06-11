@@ -1,17 +1,28 @@
 package kr.co.heabong.web.controller;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.service.OrgVolServiceImpl;
 
 
 @Controller
 @RequestMapping("org")
 public class OrgController {
+	@Autowired
+	OrgVolServiceImpl volService;
 	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 
-		return "main";
+		return "org/main";
 	}
 	
 	@RequestMapping("info")
@@ -91,15 +102,24 @@ public class OrgController {
 	
 	
 	
-	@RequestMapping("vol_empty_list")
+	@RequestMapping("vol_list_empty")
 	public String getVol_empty_list(Model model) {
 
-		return "vol_empty_list";
+		return "org/vol_list_empty";
 	}
-	@RequestMapping("vol_list")
-	public String getVol_list(Model model) {
-
-		return "vol_list";
+	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
+	public String getVol_list(
+			@RequestParam(name="s", required=false)String status,
+			@RequestParam(name="o", required = true)int orgId,
+			Model model) {
+		List<OrgVol> list = volService.getList(orgId,status);
+		if (list.size()==0)
+			return "org/vol_list_empty";
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("orgId", orgId);
+		model.addAttribute("map", map);
+		return "org/vol_list";  //templates/org/vol_list
 	}
 	@RequestMapping("vol_recruit")
 	public String getVol_recruit(Model model) {
@@ -111,5 +131,10 @@ public class OrgController {
 	public String getVol_write(Model model) {
 
 		return "vol_write";
+	}
+	@RequestMapping("vol")
+	public String vol() {
+		
+		return "org/vol";
 	}
 }
