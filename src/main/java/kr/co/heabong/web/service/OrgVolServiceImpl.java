@@ -29,4 +29,12 @@ public class OrgVolServiceImpl implements OrgVolService {
 
 	}
 
+	@Override
+	public List<OrgVol> getList(int orgId, String status) {
+		// Org id와 상태로 OrgVol 리스트 가져오기
+		List<OrgVol> list = repository.findByOrgIdAndStatus(orgId, status);
+
+		return list;
+	}
+
 }

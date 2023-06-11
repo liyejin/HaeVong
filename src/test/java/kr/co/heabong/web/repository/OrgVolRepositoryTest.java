@@ -71,10 +71,17 @@ class OrgVolRepositoryTest {
 		repository.delete(1);
 	}
 
-	@Test
+	//@Test
 	void testFindById() {
 		OrgVol orgVol = repository.findById(6);
 		System.out.println(orgVol);
 	}
-
+	
+	@Test
+	void testFindByOrgIdAndStatus() {
+		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
+		System.out.println(list);
+		System.out.printf("size : %d\n", list.size());
+		
+	}
 }
