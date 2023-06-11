@@ -1,13 +1,11 @@
+
 package kr.co.heabong.web.entity;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Component;
-
-import groovy.transform.builder.Builder;
+import lombok.Builder;
 import lombok.Data;
 
-@Component
 @Data
 @Builder
 public class Post {

@@ -1,21 +1,24 @@
 package kr.co.heabong.web.entity;
 
-import org.springframework.stereotype.Component;
 
-import groovy.transform.builder.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Component
+
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
-	private int id; 
+	private Integer id; 
 	private String name; 
 	private String email; 
 	private String identityNumber; 
 	private String phoneNumber; 
-	private String gender; 
-	private int age; 
+	private Integer gender; 
+	private Integer age; 
 	private String signupDate; 
 	private String birthDate; 
 	private String profilePhoto; 
