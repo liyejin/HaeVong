@@ -11,7 +11,7 @@ import kr.co.heabong.web.service.UserVolRecruitService;
 @Controller
 @RequestMapping("userVolRecruit")
 public class UserVolRecruitController {
-	@Autowired
+	//@Autowired
 	private UserVolRecruitService service;
 	
 //	@GetMapping("list")

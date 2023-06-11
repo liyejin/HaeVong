@@ -1,24 +1,29 @@
 .map_apply_modal {
-  width: 390px;
-  height: 400px;
+  width: 356px;
+  height: 356px;
   display: flex;
   flex-direction: column;
-  background-color: #f2f2f2;
+  background-color: #FFFCF5;
   border-radius: 8px;
   position: relative;
 }
 
-.map_apply_modal > .modal_header {
+/* .map_apply_modal > .modal_header {
   width: 390px;
   height: 40px;
   background-color: #c2e2ff;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+} */
+
+.map_apply_modal > .modal_header{
+  position: relative;
 }
 
-.map_apply_modal > .modal_header > img {
-  margin-left: 350px;
-  margin-top: 7px;
+.map_apply_modal > .modal_header > img{
+  position: absolute;
+  filter: invert(100%);
+  right: 0;
 }
 
 .modal_container {
@@ -31,8 +36,8 @@
 .apply_modal_contents {
   display: flex;
   flex-direction: row;
-  margin-top: 30px;
 }
+
 .apply_modal_contents > .apply_modal_pic {
   width: 198px;
   height: 201px;
@@ -43,7 +48,8 @@
 
 
 .apply_modal_pic > img {
-  width: 170px;
+  width: 110px;
+  height: 110px;
   object-fit: cover;
   border-radius: 10px;
   margin-left: 20px;
@@ -51,29 +57,48 @@
 }
 
 .apply_modal_about {
-  width: 158px;
-  height: 102px;
-  margin-top: 75px;
+  width: 145px;
+  height: 60px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 20px;
   position: absolute;
-  right: 20px;
-  line-height: 18px;
+  right: 50px;
+  display: block;
+  border-top: 0.5px solid #C4C4C4;
+  border-bottom: 0.5px solid #C4C4C4; 
+  margin-top: 60px;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
-.apply_modal_about > span{
+.apply_modal_about > div{
+  line-height: 25px;
+}
+
+.apply_modal_about > div:nth-child(1){
   font-size: 16px;
-  margin-left: 20px;
-  width: 160px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.apply_modal_questions{
+
+.apply_modal_comment{
+  width: 150px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.apply_modal_comment > span{
+  font-size: 16px;
+}
+
+/* .apply_modal_questions{
   font-weight: bold;
   text-align: center;
   margin-top: 30px;
-}
+} */
 
 /* .apply_modal_date{
   position: absolute;
@@ -105,17 +130,19 @@
   bottom: 15px;
 }
 .apply_modal_button > .ap_btn_cancel {
-  background-color: #ffffff;
+  background-color: #D7D1C1;
   width: 80px;
   border-radius: 40px;
 }
 .apply_modal_button > .ap_btn_apply {
-  background-color: #c2e2ff;
+  background-color: #64987F;
   border-radius: 40px;
   width: 80px;
   color: white;
+  font-weight: bold;
 }
-.ap_btn_apply:hover {
+
+/* .ap_btn_apply:hover {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
@@ -140,4 +167,4 @@
 
 .ap_btn_cancel:active {
   transform: translate(0em, 0.2em);
-}
+} */

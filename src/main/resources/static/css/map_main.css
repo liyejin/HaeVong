@@ -164,14 +164,12 @@ body {
   border-radius: 20px;
   position: absolute;
   bottom: 0;
-}
-
-.map_category_box > h2{
-  font-weight: bold;
+  width: 50%;
 }
 
 .category_list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   margin-left: 10px;
@@ -180,14 +178,18 @@ body {
 
 .category_list > li{
   background-color: white;
-  border: 1px solid black;
+  border: 0.4px solid #C1C1C1;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: 110px;
+  text-align: center;
 }
 
-.category_list > li:nth-child(odd) {
+/* .category_list > li:nth-child(odd) {
   margin-right: 50%;
 }
 
 .category_list > li:nth-child(9){
   margin-right: 55%;
-}
+} */
 /* ----------------지역별 카테고리 슬라이드------------------- */
