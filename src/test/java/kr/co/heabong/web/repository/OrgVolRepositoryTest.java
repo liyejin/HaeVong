@@ -15,7 +15,7 @@ import kr.co.heabong.web.entity.OrgVol;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class OrgVolRepositoryTest {
-	@Autowired
+	//@Autowired
 	private OrgVolRepository repository;
 	//@Test
 	void testFindAll() {

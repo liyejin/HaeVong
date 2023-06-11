@@ -1,5 +1,7 @@
 package kr.co.heabong.web.entity;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +16,8 @@ import lombok.NoArgsConstructor;
 public class UserVol {
 	private int id;
 	private String title;
-	private Date regDate;
-	private Date date;
+	private LocalDateTime regdate;
+	private String date;
 	private int capacity;
 	private String place;
 	private String roadAddress;
