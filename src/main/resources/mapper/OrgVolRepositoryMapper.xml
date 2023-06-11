@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.heabong.web.repository.OrgVolRepository">
+   <select id="findAll">
+      select * from org_vol
+   </select>
+    <select id="findByAddress">
+      select * from org_vol where road_address like '%${raodAddress}%'; 
+   </select>
+   
+   </mapper>

@@ -5,5 +5,5 @@ import java.util.List;
 import kr.co.heabong.web.entity.VolCategory;
 
 public interface VolCategoryService {
-	List<VolCategory> getlist();
+	List<VolCategory> getList();
 }

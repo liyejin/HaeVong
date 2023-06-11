@@ -6,7 +6,7 @@ body {
 
 .main {
     overflow: auto;
-    margin-bottom: 70px;
+
 }
 
 .input {
@@ -24,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 7%;
+    padding-left: 7%;
     justify-content: space-between;
     gap: 10px;
     overflow: scroll;
@@ -39,7 +39,11 @@ body {
 
 .input>div>input {
     width: 80%;
-    border-style: none;
+
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #AAAAAA;
 }
 
 .input>div>hr {
@@ -59,4 +63,7 @@ body {
     font-style: white;
     background-color: #3d3d3d;
     border-style: none;
+    color: #eee;
+    
+    
 }

@@ -13,9 +13,15 @@ public class UserServiceImp implements UserService{
 		private UserRepository repository; 
 
 	@Override
-	public List<User> getlist() {
-		List<User>list = repository.findAll();
+	public List<User> getList() {
+		List<User>list =null;
 		return list;
+	}
+
+	@Override
+	public void setUser(User user) {
+		// TODO Auto-generated method stub
+		repository.save(user);
 	}
 
 }

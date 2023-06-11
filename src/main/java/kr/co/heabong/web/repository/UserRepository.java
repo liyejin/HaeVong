@@ -8,7 +8,7 @@ import kr.co.heabong.web.entity.User;
 
 @Mapper
 public interface UserRepository {
-	List<User>findAll();
+	
 	List<User>findAll(String name,String email,String identityNumber,String phoneNumber,String gender,int age,String birthDate,String nickname);
 
 	User findById(int id);

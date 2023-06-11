@@ -18,8 +18,8 @@ class UserRepositoryTest {
 
 	   //@Test
 	   void testFindAll() {
-		   List<User>list = repository.findAll();
-		   System.out.println(list);
+//		   List<User>list = repository.findAll();
+//		   System.out.println(list);
 	   }
 	   
 	   //@Test
@@ -38,7 +38,7 @@ class UserRepositoryTest {
 		   			   .birthDate("")
 		   			   .nickname("")
 		   			   .build();
-		   repository.update(user);
+		   repository.save(user);
 	   }
 	   
 	   //@Test

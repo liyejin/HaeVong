@@ -18,8 +18,8 @@ class RecruitVolListRepositoryTest {
 	
 	@Test
 	void testFindeAll() {
-		List<User>list = repository.findAll();
-		  System.out.println(list);
+		
+		
 	}
 
 	//@Test

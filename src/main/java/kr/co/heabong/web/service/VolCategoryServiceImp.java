@@ -7,20 +7,23 @@ import org.springframework.stereotype.Service;
 
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.repository.VolCategoryRepository;
-
-
 @Service
 public class VolCategoryServiceImp implements VolCategoryService{
+
 	@Autowired
-		private VolCategoryRepository repository;
+	public VolCategoryRepository repository;
 	
 	@Override
-	public List<VolCategory> getlist() {
+	public List<VolCategory> getList() {
+		// TODO Auto-generated method stub
 		
-		List<VolCategory> list = repository.findAll();
 		
+		List <VolCategory> list = repository.findAll();
 		return list;
 	}
 
+	
+
+	
 
 }
