@@ -56,19 +56,18 @@ body{
     outline: none;
     background-color: transparent;
 }
-.org_login_confirm{
-    margin-top: 48px;
 
-}
-.org_login_form_input{
+/*.org_login_form_input{
     margin-top:50px;
     margin-left:36px;
     margin-right:36px;
     margin-bottom: 100px;
-}
+}*/
 .org_login_confirm>input{
     border: 0;
-    background-color: #006FAD;
+    background-color: #3f3f3f;
+    margin : 0;
+    padding : 0;
     color: white;
     width:430px;
     height: 70px;
@@ -76,3 +75,5 @@ body{
     position:fixed;
     bottom:0;
 }
+
+

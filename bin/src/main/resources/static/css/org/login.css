@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'CWDangamAsac-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+}
+.main{
+    margin-left:36px;
+    margin-right:36px;
+}
+.org_login{
+    margin-top: 112px;
+}
+.org_login>p{
+    display:flex;
+    flex-direction: column;
+    
+}
+.org_login>img{
+    margin-bottom: 12px;
+}
+.org_login>p>span{
+    font-size: 20px;
+    font-weight: medium;
+    padding-bottom: 2px;
+    padding-left: 8px;
+}
+.org_login_item{
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    font-size:18px;
+    /* margin: 12px; */
+    
+}
+
+.org_login_form{
+    margin-top: 24px;
+}
+
+.org_login_service{
+    text-align: center;
+    margin-top: 56px;
+    align-items: center;
+    font-size: 14px;
+}
+.org_login_input{
+    padding: 12px 12px 4px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: transparent;
+}
+.org_login_confirm{
+    margin-top: 48px;
+
+}
+.org_login_form_input{
+    margin-top:50px;
+    margin-left:36px;
+    margin-right:36px;
+    margin-bottom: 100px;
+}
+.org_login_confirm>input{
+    border: 0;
+    background-color: #006FAD;
+    color: white;
+    width:430px;
+    height: 70px;
+    font-size: 16px;
+    position:fixed;
+    bottom:0;
+}

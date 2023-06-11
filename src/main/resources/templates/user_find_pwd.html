@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>기관 비밀번호 찾기</title>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+    <!-- style.css 적용 안합니다. -->
+    <link rel="stylesheet" type="text/css" href="/css/signin.css" />
+  </head>
+
+  <body>
+    <section class="main">
+      <section class="org_login">
+        <img src="/img/icon/icon_header_title.png" alt="해봉로고" />
+        <p><span>비밀번호를 찾기 위한</span><span>정보를 입력해주세요</span></p>
+      </section>
+    </section>
+    <!--로그인 후 성공시 메인페이지로 이동-->
+    <form action="index" method="post" class="org_login_form">
+      <div class="org_login_form_input">
+        <div class="org_login_item">
+          <label for="org_login_id" class="org_login_id_label"
+            >가입 이메일</label
+          >
+          <input
+            type="text"
+            id="org_login_id"
+            class="org_login_input"
+            placeholder="가입시 등록한 이메일을 입력해주세요"
+          />
+        </div>
+        <!--<div class="org_login_item">
+          <label for="org_login_pwd" class="org_login_pwd_label"
+            >기관 가입 이메일</label
+          >
+          <input
+            type="text"
+            id="org_login_pwd"
+            class="org_login_input"
+            placeholder="가입시 작성했던 이메일을 입력해 주세요"
+          />-->
+        </div>
+      </div>
+      <input type="submit" value="확인" class="org_login_confirm" />
+    </form>
+  </body>
+</html>

@@ -9,7 +9,7 @@ import kr.co.heabong.web.entity.Menu;
 import lombok.Data;
 
 import groovy.transform.builder.Builder;
-//import lombok.Data;
+import lombok.Data;
 //import lombok.Getter;
 //import lombok.Setter;
 //테스트 엔티티

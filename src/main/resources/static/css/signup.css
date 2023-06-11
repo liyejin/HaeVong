@@ -1,0 +1,62 @@
+body {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    overflow: auto;
+    margin-bottom: 70px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 13px;
+    align-items: flex-start;
+    height: 90%;
+
+
+}
+
+.input>div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 7%;
+    justify-content: space-between;
+    gap: 10px;
+    overflow: scroll;
+    align-items: flex-start;
+}
+
+.input>div {
+    margin-left: 5%;
+    margin-top: 5%;
+    padding: 0;
+}
+
+.input>div>input {
+    width: 80%;
+    border-style: none;
+}
+
+.input>div>hr {
+    width: 80%;
+    position: relative;
+    margin: 0;
+}
+
+
+
+.submit {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    font-size: large;
+    font-style: white;
+    background-color: #3d3d3d;
+    border-style: none;
+}

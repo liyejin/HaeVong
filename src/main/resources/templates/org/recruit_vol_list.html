@@ -41,9 +41,9 @@
             </tr>
             <tr class="org_apply_list_row" onclick="location.href='/user/info/23'" th:each="u:${list}">
                 <td class="num">1</td>
-                <td class="name" th:text="${u.name}"></td>
-                <td class="phone" th:text="${u.phoneNumber}"></td>
-                <td class="signupDate" th:text="${u.signupDate}"></td>
+                <td class="name" th:text="${u.name}">dddd</td>
+                <td class="phone" th:text="${u.phoneNumber}">2121</td>
+                <td class="regdate" th:text="${u.regdate}">2222</td>
                 <td>
                     <div class="org_status">
                         <div class="org_status_approved">승인</div>

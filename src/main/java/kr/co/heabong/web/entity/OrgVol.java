@@ -1,26 +1,29 @@
 package kr.co.heabong.web.entity;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-import groovy.transform.builder.Builder;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-@Component
-@Builder
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrgVol {
 	
 
 	private int id;
 	
 	private String title;
-	private String regdate;
-	private Date date;
+	private LocalDateTime regdate;
+	private String date;
 	private int capacity;
 	private String location;
 	private String content;
