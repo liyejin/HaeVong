@@ -3,7 +3,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.heabong.web.repository.UserRepository">
-   <select id="findAll" resultType="kr.co.heabong.web.entity.User">
+   <select id="findAll">
       select * from user
    </select>
 	<update id="update">
@@ -18,10 +18,10 @@
 	   </set>
    </update>
    <delete id="delete">
-	   delete from user where name = #{name}
+	   delete from user where id=#{id}
    </delete>
-   <insert id="save">
-	<!--   INSERT INTO user(name, email, , RoomNum)
-		VALUES(5, '이순신', '2016-02-16', 1108);-->
-   </insert>
+   <!--<insert id="save">
+	INSERT INTO user(uid, name, email, phone_number,gender, age, birth_date, profile_photo, nickname)
+		VALUES(uid=#{uid},name=#{name}, email=#{email}, phone_number=#{phoneNumber}, gender=#{gender}, age=#{age}, birth_date=#{birthDate}, profile_photo=#{profilePhoto}, nickname=#{nickname} );
+   </insert>-->
    </mapper>

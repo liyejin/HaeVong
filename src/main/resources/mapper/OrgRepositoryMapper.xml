@@ -1,11 +1,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.heabong.web.repository.OrgRepository">   <!--레퍼지토리의 implements라고 생각-->
-   <select id="findAll" resultType="kr.co.heabong.web.entity.Org"> 
-      select * from
-      org 
-      </select>
+   <!-- 카운트 필요 X -->
+   <!-- 기관은 필터링 기능 필요 X -->
+   <select id="findAll" > 
+	   select * from org 
+	</select>
       
-      <select id="findById" resultType="Org">
+      <select id="findById">
       select *
       from org where id=#{id}
    </select>
@@ -50,7 +51,6 @@ VALUES
 #{profilePhoto },
 #{districtId },
 #{metropolId });
-
    </insert>
       
    </mapper>

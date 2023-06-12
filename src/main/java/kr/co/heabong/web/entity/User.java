@@ -12,9 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-	private Integer id; 
+	private Integer id;
+	private String uid;
 	private String name; 
 	private String email; 
+	private String pwd;
 	private String identityNumber; 
 	private String phoneNumber; 
 	private Integer gender; 

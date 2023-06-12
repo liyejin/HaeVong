@@ -5,5 +5,10 @@ import java.util.List;
 import kr.co.heabong.web.entity.User;
 
 public interface UserService {
-	List<User> getlist();
+	List<User> getList();
+	
+	void setUser(User user);
+	
+	
+	
 }

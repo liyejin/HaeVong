@@ -1,100 +1,96 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/vol_category.css" />
+    <title>카테고리 추천</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="/css/reset.css" />
-	<link rel="stylesheet" href="/css/style.css" />
-	<link rel="stylesheet" href="/css/vol_category.css" />
-	<title>카테고리 추천</title>
-</head>
+  <body>
+    <header class="header">
+      <div class="header2">
+        <img src="../../img/icon/icon_header_title.png" alt="로고" />
+      </div>
+    </header>
+    <main class="main">
+      <div class="user_category_banner_main"></div>
+      <!-- 상단 배너 -->
+      <div class="user_category_box">
+        <ul class="user_category_list">
+          <li class="user_category_list_item" th:each="e:${list1}">
+            <a th:href="@{/list(c=${e.id})}">
+              <div class="user_category_list_item_icon">
+                <span th:text="${e.id}">카테고리</span>
+              </div>
+              <span th:text="${e.name}">참여해봉</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="user_category_list">
+          <li class="user_category_list_item" th:each="e:${list2}">
+            <a th:href="@{/list(c=${e.id})}">
+              <div class="user_category_list_item_icon">
+                <span th:text="${e.id}">카테고리</span>
+              </div>
+              <span th:text="${e.name}">참여해봉</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="user_category_list">
+          <li class="user_category_list_item" th:each="e:${list3}">
+            <a th:href="@{/list(c=${e.id})}">
+              <div class="user_category_list_item_icon">
+                <span th:text="${e.id}">카테고리</span>
+              </div>
+              <span th:text="${e.name}">참여해봉</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
-<body>
-	<header class="header">
-		<div class="header2">
-			<img src="../../img/icon/icon_header_title.png" alt="로고" />
-		</div>
-	</header>
-	<main class="main">
-		<div class="user_category_banner_main"></div>
-		<!-- 상단 배너 -->
-		<div class="user_category_box">
-			<ul class="user_category_list">
-				<li class="user_category_list_item" th:each="e:${list1}">
-					<a href="@{./list(c=${e.id})}">
-						<div class="user_category_list_item_icon">
-							<span th:text="${e.id}">카테고리</span>
-						</div>
-						<span th:text="${e.name}">참여해봉</span>
-					</a>
-				</li>
-				</ul>
-				<ul class="user_category_list">
-				<li class="user_category_list_item" th:each="e:${list2}">
-					<a href="@{./list(c=${e.id})}">
-						<div class="user_category_list_item_icon">
-							<span th:text="${e.id}">카테고리</span>
-						</div>
-						<span th:text="${e.name}">참여해봉</span>
-					</a>
-				</li>
-				</ul>
-				<ul class="user_category_list">
-				<li class="user_category_list_item" th:each="e:${list3}">
-					<a href="@{./list(c=${e.id})}">
-						<div class="user_category_list_item_icon">
-							<span th:text="${e.id}">카테고리</span>
-						</div>
-						<span th:text="${e.name}">참여해봉</span>
-					</a>
-				</li>
-				</ul>
-		</div>
+      <div class="user_category_banner_sub"></div>
+      <!-- 카테고리 아이콘 박스 -->
 
-		<div class="user_category_banner_sub"></div>
-		<!-- 카테고리 아이콘 박스 -->
+      <div class="user_category_recommended">
+        <div class="user_category_recommended_title">
+          <span>이런 봉사, 해본 적 있어?</span>
+          <a href="#"><img src="../../img/icon/icon_plus.png" alt="" /></a>
+        </div>
+        <!--  -->
+        <div class="user_category_recommended_list">
+          <div class="user_category_recommended_item">
+            <img src="../img/user/user_category_banner_main.png" alt="" />
+            <h1>제주 서귀포</h1>
+            <p>제주도 게스트 하우스 스텝 봉사</p>
+          </div>
+          <div class="user_category_recommended_item">
+            <img src="../img/user/user_category_banner_main.png" alt="" />
+            <h1>충남 예산</h1>
+            <p>농촌 비닐하우스 일손돕기</p>
+          </div>
+          <div class="user_category_recommended_item">
+            <img src="../img/user/user_category_banner_main.png" alt="" />
+            <h1>충남 예산</h1>
+            <p>농촌 비닐하우스 일손돕기</p>
+          </div>
+          <div class="user_category_recommended_item">
+            <img src="../img/user/user_category_banner_main.png" alt="" />
+            <h1>충남 예산</h1>
+            <p>농촌 비닐하우스 일손돕기</p>
+          </div>
+          <div class="user_category_recommended_item">
+            <img src="../img/user/user_category_banner_main.png" alt="" />
+            <h1>충남 예산</h1>
+            <p>농촌 비닐하우스 일손돕기</p>
+          </div>
+        </div>
+      </div>
+    </main>
 
-		<div class="user_category_recommended">
-			<div class="user_category_recommended_title">
-				<span>이런 봉사, 해본 적 있어?</span>
-				<a href="#"><img src="../../img/icon/icon_plus.png" alt="" /></a>
-			</div>
-			<!--  -->
-			<div class="user_category_recommended_list">
-				<div class="user_category_recommended_item">
-					<img src="../img/user/user_category_banner_main.png" alt="" />
-					<h1>제주 서귀포</h1>
-					<p>제주도 게스트 하우스 스텝 봉사</p>
-				</div>
-				<div class="user_category_recommended_item">
-					<img src="../img/user/user_category_banner_main.png" alt="" />
-					<h1>충남 예산</h1>
-					<p>농촌 비닐하우스 일손돕기</p>
-				</div>
-				<div class="user_category_recommended_item">
-					<img src="../img/user/user_category_banner_main.png" alt="" />
-					<h1>충남 예산</h1>
-					<p>농촌 비닐하우스 일손돕기</p>
-				</div>
-				<div class="user_category_recommended_item">
-					<img src="../img/user/user_category_banner_main.png" alt="" />
-					<h1>충남 예산</h1>
-					<p>농촌 비닐하우스 일손돕기</p>
-				</div>
-				<div class="user_category_recommended_item">
-					<img src="../img/user/user_category_banner_main.png" alt="" />
-					<h1>충남 예산</h1>
-					<p>농촌 비닐하우스 일손돕기</p>
-				</div>
-			</div>
-		</div>
-	</main>
-
-	<nav class="nav_list" th:replace="~{inc/nav}">
-		
-	</nav>
-</body>
-
+    <nav class="nav_list" th:replace="~{inc/nav}"></nav>
+  </body>
 </html>

@@ -14,7 +14,7 @@ public class RecruitVolListServiceImp implements RecruitVolListService{
 	
 	@Override
 	public List<User> getlist() {
-		List<User>list = repository.findAll();
+		List<User>list = null;
 		return list;
 	}
 
