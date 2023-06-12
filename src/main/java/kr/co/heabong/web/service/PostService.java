@@ -2,10 +2,13 @@ package kr.co.heabong.web.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.entity.Location;
 import kr.co.heabong.web.entity.Post;
-
+import kr.co.heabong.web.entity.User;
+@Service
 public interface PostService {
 
 	// 하나의 구인글 정보 가져오기
@@ -34,5 +37,6 @@ public interface PostService {
 
 	// 위치 기준으로 구인글 리스트 가져오기
 	List<Post> getListByLocation(Location location);
+
 
 }

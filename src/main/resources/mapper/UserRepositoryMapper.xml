@@ -6,6 +6,12 @@
    <select id="findAll" resultType="kr.co.heabong.web.entity.User">
       select * from user
    </select>
+   <select id="findByUserName">
+	   select * from user where id = ${id}
+   </select>
+   <select id="findByUserPhoto">
+	   SELECT profile_photo FROM user WHERE id = ${id}
+   </select>
    <update id="update">
       UPDATE haevongdb.user
       <set>
@@ -24,4 +30,5 @@
    <!--   INSERT INTO user(name, email, , RoomNum)
       VALUES(5, '이순신', '2016-02-16', 1108);-->
    </insert>
+   
    </mapper>

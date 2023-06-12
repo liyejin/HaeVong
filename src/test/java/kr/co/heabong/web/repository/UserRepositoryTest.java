@@ -28,7 +28,27 @@ class UserRepositoryTest {
 		   System.out.println(user);
 	   }
 	   
+	   //@Test
+	   void testFindByUserName() {
+		   User name = repository.findByUserName(1);
+		   System.out.println(name);
+	   }
+	   
+	   
 	   @Test
+	   void testFindByUserPhoto() {
+		   User name = repository.findByUserPhoto(1);
+		   System.out.println(name);
+	   }
+	   
+	   
+	   //@Test
+	   void testFindByMyPost() {
+		   List<User> myPost = repository.findByMyPost();
+		   System.out.println(myPost);
+	   }
+	   
+	   //@Test
 	   void testSave() {
 		   User user = User.builder()
 		   			   .name("")
@@ -40,6 +60,8 @@ class UserRepositoryTest {
 		   			   .build();
 		   repository.update(user);
 	   }
+	   
+	
 	   
 	   //@Test
 	   void testUpdate() {

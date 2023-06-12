@@ -16,4 +16,8 @@ public interface UserRepository {
 	int save(User user);
 	int update(User user);
 	int delete(int id);
+	User findByUserName(int id);
+	List<User> findByMyPost();
+	User findByUserPhoto(int id);
+	
 }
