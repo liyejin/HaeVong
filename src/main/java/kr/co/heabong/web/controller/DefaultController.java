@@ -16,7 +16,7 @@ public class DefaultController {
 	@GetMapping("/test")
 	public String getTest(Model model) {
 //		model.addAttribute();
-		return "test";
+		return "map_apply_modal";
 	}
 	
 	//테스트겸 만든거 (포스트 매핑)

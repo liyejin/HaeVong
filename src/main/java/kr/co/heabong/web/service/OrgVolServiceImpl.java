@@ -1,7 +1,6 @@
 package kr.co.heabong.web.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +17,10 @@ public class OrgVolServiceImpl implements OrgVolService {
 	}
 
 	@Override
-	public OrgVol get() {
+	public OrgVol getById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		OrgVol orgVol = repository.findById(id);
+		return orgVol;
 	}
 
 	@Override
@@ -30,10 +30,20 @@ public class OrgVolServiceImpl implements OrgVolService {
 	}
 
 	@Override
+	public List<OrgVol> getList(String address) {
+		// Org id와 상태로 OrgVol 리스트 가져오기
+		List<OrgVol> list = repository.findByAddress(address);
+
+		return list;
+	}	
+	
+	@Override
 	public List<OrgVol> getList(int orgId, String status) {
 		// Org id와 상태로 OrgVol 리스트 가져오기
 		List<OrgVol> list = repository.findByOrgIdAndStatus(orgId, status);
 
+		
+		
 		return list;
 	}
 

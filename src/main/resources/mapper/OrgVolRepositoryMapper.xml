@@ -15,6 +15,13 @@
 		org_vol
 		limit #{offset}, #{size}
 	</select>
+	
+	<select id="findByAddress">
+		select * from
+		org_vol
+		where address like '%${address}%'
+	</select>	
+	
 	<select id="findById" resultType="kr.co.heabong.web.entity.OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
