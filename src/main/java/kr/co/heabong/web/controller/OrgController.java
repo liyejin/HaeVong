@@ -18,96 +18,105 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.service.OrgService;
-import kr.co.heabong.web.service.OrgVolServiceImpl;
+import kr.co.heabong.web.service.OrgVolService;
+
 
 
 @Controller
 @RequestMapping("org")
 public class OrgController {
 	@Autowired
-	OrgVolServiceImpl volService;
+	OrgVolService volService;
 	
 	@Autowired
 	OrgService orgService;
 	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 
+		
+		
 		return "org/main";
 	}
 	
 	@RequestMapping("info")
 	public String getInfo(Model model) {
 
-		return "info";
+		return "org/info";
 	}
-	@RequestMapping("login")
-	public String getLogin(Model model) {
+	@RequestMapping("signin")
+	public String getSignIn(Model model) {
 
-		return "login";
+		return "org_signin";
+	}
+	
+	@GetMapping("signup")
+	public String getSignUp(Model model) {
+
+		return "org_signup";
 	}
 	
 	@RequestMapping("find_pwd")
 	public String getFind_pwd(Model model) {
 
-		return "find_pwd";
+		return "org/find_pwd";
 	}
 	@RequestMapping("membership_withdrawal")
 	public String getMembership_withdrawal(Model model) {
 
-		return "membership_withdrawal";
+		return "org/membership_withdrawal";
 	}
 	@RequestMapping("new_pwd")
 	public String getNew_pwd(Model model) {
 
-		return "new_pwd";
+		return "org/new_pwd";
 	}
 	@RequestMapping("pwd_change_auth")
 	public String getPwd_change_auth(Model model) {
 
-		return "pwd_change_auth";
+		return "org/pwd_change_auth";
 	}
 	
 	@RequestMapping("pwd_chang_insert")
 	public String getPwd_chang_insert(Model model) {
 
-		return "pwd_chang_insert";
+		return "org/pwd_chang_insert";
 	}
 	
 	
 	@RequestMapping("recruit_detail")
 	public String getRecruit_detail(Model model) {
 
-		return "recruit_detail";
+		return "org/recruit_detail";
 	}
 	
 	@RequestMapping("recruit_on_list")
 	public String getRecruit_on_list(Model model) {
 
-		return "recruit_on_list";
+		return "org/recruit_on_list";
 	}
 	
 	@RequestMapping("recruit_vol_list")
 	public String getRecruit_vol_list(Model model) {
 
-		return "recruit_vol_list";
+		return "org/recruit_vol_list";
 	}
 	
 	@RequestMapping("recruit_write")
 	public String getRecruit_write(Model model) {
 
-		return "recruit_write";
+		return "org/recruit_write";
 	}
 	
 	@RequestMapping("signup")
 	public String getSignup(Model model) {
 
-		return "signup";
+		return "org/signup";
 	}
 	
 	@RequestMapping("vol_edit")
 	public String getVol_edit(Model model) {
 
-		return "vol_edit";
+		return "org/vol_edit";
 	}
 	
 	
@@ -134,7 +143,7 @@ public class OrgController {
 	@RequestMapping("vol_recruit")
 	public String getVol_recruit(Model model) {
 
-		return "vol_recruit";
+		return "org/vol_recruit";
 	}
 
 
@@ -183,7 +192,7 @@ public class OrgController {
 	@RequestMapping("vol_write")
 	public String getVol_write(Model model) {
 
-		return "vol_write";
+		return "org/vol_write";
 	}
 	@RequestMapping("vol")
 	public String vol() {

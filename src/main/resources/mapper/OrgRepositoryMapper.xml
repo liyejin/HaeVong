@@ -9,7 +9,14 @@
       <select id="findById">
       select *
       from org where id=#{id}
+   		</select>
+ 
+   
+   <select id="findByRegNum">
+	   select *
+      from org where reg_num=#{regNum}
    </select>
+   
    <update id="update">
       UPDATE haevongdb.org
        <set>

@@ -40,7 +40,7 @@ public class MapController {
 
 		List<OrgVol> orgVolList = null;
 		List<Metropol> mtpList = metroService.getList();
-		List<VolCategory> volCategoryList = volCategoryService.getlist();
+		List<VolCategory> volCategoryList = volCategoryService.getList();
 		if(address!=null)
 			orgVolList  = orgVolService.getList();
 		else

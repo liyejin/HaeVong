@@ -6,8 +6,11 @@ public interface OrgService {
 	
 	List <Org> getList();
 	Org getById(int id);
+	Org getByRegNum(String regNum);
 
 	void setOrg(Org org);
 	
 	void delete(Org org);
+
+	boolean isValid(String regNum, String pwd);
 }

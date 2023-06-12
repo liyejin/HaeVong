@@ -5,10 +5,14 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 import groovy.transform.builder.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Org {
 
 	private int id;
@@ -21,4 +25,6 @@ public class Org {
 	private String profilePhoto;
 	private int districtId;
 	private int metropolId;
+	private String regNum;
+	private String pwd;
 }

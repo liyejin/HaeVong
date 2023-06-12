@@ -6,6 +6,10 @@
    <select id="findAll">
       select * from user
    </select>
+   <select id="findByUid" resultType="User">
+	   select * from user where uid=#{uid};
+   </select>
+   
 	<update id="update">
 	   UPDATE haevongdb.user
 	   <set>
@@ -20,6 +24,8 @@
    <delete id="delete">
 	   delete from user where id=#{id}
    </delete>
+	
+
    <!--<insert id="save">
 	INSERT INTO user(uid, name, email, phone_number,gender, age, birth_date, profile_photo, nickname)
 		VALUES(uid=#{uid},name=#{name}, email=#{email}, phone_number=#{phoneNumber}, gender=#{gender}, age=#{age}, birth_date=#{birthDate}, profile_photo=#{profilePhoto}, nickname=#{nickname} );

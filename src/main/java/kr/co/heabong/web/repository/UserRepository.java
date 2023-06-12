@@ -16,4 +16,6 @@ public interface UserRepository {
 	int save(User user);
 	int update(User user);
 	int delete(int id);
+	User findByUid(String uid);
+
 }

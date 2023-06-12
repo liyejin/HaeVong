@@ -12,6 +12,7 @@ public interface OrgVolService {
 	
 	OrgVol getById(int id);
 	void save();
+	List<OrgVol> getListByAddress(String address);
 	
 	
 }

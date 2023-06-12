@@ -8,7 +8,7 @@ public interface UserService {
 	List<User> getList();
 	
 	void setUser(User user);
-	
+	boolean isValid(String uid, String pwd);
 	
 	
 }

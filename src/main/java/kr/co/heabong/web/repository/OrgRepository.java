@@ -10,13 +10,16 @@ import kr.co.heabong.web.entity.Org;
 @Mapper
 public interface OrgRepository {
 
-	List <Org> findAll();
+	List<Org> findAll();
 
 	Org findById(int id);
-	
+
 	void update(int id);
-	
+
 	void save(Org org);
 
 	void delete(Org org);
+	
+	Org findByRegNum(String regNum);
+	
 }

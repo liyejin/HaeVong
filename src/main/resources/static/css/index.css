@@ -1,5 +1,13 @@
 body {
     background-color: #FEF8EA;
+    touch-action: manipulation;
+  -ms-content-zooming: none;
+  -ms-touch-action: manipulation;
+  zoom: 1;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
 }
 
 .main {
