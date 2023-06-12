@@ -17,7 +17,6 @@ public class VolCategoryServiceImp implements VolCategoryService{
 	
 	@Override
 	public List<VolCategory> getCateList() {
-		
 		List<VolCategory> list = repository.findAll();
 		return list;
 	}

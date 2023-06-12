@@ -4,15 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../css/reset.css" />
-    <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="../../css/user/mypage.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mypage.css" />
     <script src="../../js/user_mypage.js" defer></script>
 
     <title>마이페이지</title>
   </head>
   <body>
-    <!------------------------------헤더----------------------------------->
     <header class="header">
       <div class="header1">
         <a href=""
@@ -24,121 +23,81 @@
         /></a>
       </div>
     </header>
-    <!--header-->
+    
+    
     <main class="main">
-      <!----------------------------마이페이지 프로필----------------------------------->
+		
       <section class="mypage_profile">
         <div class="profile_txt">
           <p class="title">가치있는 일상 같이 만들어요!</p>
-          <p><span class="mypage_profile_name">김범수</span><span> 님</span></p>
+          <p><span class="mypage_profile_name" th:text="${userName.name}">김범수</span><span> 님</span></p>
           <p>
             <span>오늘로 함께한지 </span><span class="d_day_cnt1"> </span
             ><span>일💎</span>
           </p>
         </div>
         <div class="profile_pic">
-          <div class="pic">
-            <img src="../../img/user/mypage_profile.png" alt="" />
-          </div>
-          <div><a href="">프로필 수정</a></div>
+            <img th:src="@{${userProfilePhoto.profilePhoto}}" 
+              alt="" />
+          	<a href="">프로필 수정</a>
         </div>
       </section>
-      <!--------------------------해봉가이드----------------------------------->
+      
       <section class="mypage_guide">
         <a><img src="../../img/org/org_guide.png" alt="" /></a>
       </section>
+      
 
-      <!----------------------------신청관리,알림,찜한봉사------------------------------>
-      <section class="mypage_mine">
-        <div class="alarm">
-          <img
-            src="../../img/icon/mypage_alarm.svg"
-            alt=""
-            class="alarm_icon"
-          />
-          <img
-            src="../../img/icon/mypage_alarm_hover.svg"
-            alt=""
-            class="alarm_ho_icon"
-          />
-          <p>알림</p>
-        </div>
-        <div class="apply">
-          <img
-            src="../../img/icon/mypage_apply.svg"
-            alt=""
-            class="apply_icon"
-          />
-          <img
-            src="../../img/icon/mypage_apply_hover.svg"
-            alt=""
-            class="apply_ho_icon"
-          />
-          <p>신청 관리</p>
-        </div>
-        <div class="bookmark">
-          <img
-            src="../../img/icon/mypage_bookmark.svg"
-            alt=""
-            class="bookmark_icon"
-          />
-          <img
-            src="../../img/icon/mypage_bookmark_hover.svg"
-            alt=""
-            class="bookmark_ho_icon"
-          />
-          <p>찜한 봉사</p>
-        </div>
+      <section class="mypageCategory">
+        <ul>
+          <li>
+          <a href="#">
+			<div>
+              <span>📝<br></span>
+              <span>신청관리</span>
+            </div>
+          </a>
+          <a href="#">
+            <div>
+              <span>❤️<br></span>
+              <span>찜한봉사</span>
+            </div>
+          </a>
+          <a href="#">
+			<div>
+              <span>📣<br></span>
+              <span>고객지원</span>
+            </div>
+          </a>
+          <a href="#">
+			<div>
+              <span>⚙️<br></span>
+              <span>정보수정</span>
+            </div>
+          </a>
+          </li>
+        </ul>
       </section>
+      
+      
       <section class="my_post">
         <div class="mypage_mypost_title" id="imageContainer">
           <span>나의 게시글 > </span>
         </div>
         <div class="mypage_mypost_img">
-          <div>
-            <a href=""
-              ><img src="../../img/user/mypage_post.jpg" alt="게시글1"
+            <a th:href="@{${p.url}}"
+              th:each="p:${mypic}"><img src="@{p.url}" 
+               th:src="@{${p.url}}" alt="게시글1" 
             /></a>
-          </div>
-          <div>
-            <a href=""
-              ><img src="../../img/user/map/map_bar_list.jpg" alt="게시글2"
-            /></a>
-          </div>
-          <div>
-            <a href=""
-              ><img src="../../img/user/mypage_post.jpg" alt="게시글3"
-            /></a>
-          </div>
-          <div>
-            <a href=""
-              ><img src="../../img/user/mypage_post.jpg" alt="게시글4"
-            /></a>
-          </div>
-          <div>
-            <a href=""
-              ><img src="../../img/user/mypage_post.jpg" alt="게시글5"
-            /></a>
-          </div>
         </div>
       </section>
-      <!---------------------------고객센터-------------------------------------->
+      
       <section class="cs">
-        <p>고객 지원</p>
-        <a href="">
-          <div>
-            <img src="../../img/icon/🦆 icon _setting 2_.svg" alt="" /><span
-              >내 정보 수정</span
-            >
-          </div></a
-        >
-        <a href=""
-          ><div>
-            <img src="../../img/icon/🦆 icon _call calling_.svg" alt="" /><span
-              >고객센터</span
-            >
-          </div></a
-        >
+        <div>
+        <span>김범수님이 해봉과 함께한지 100일<br></span>
+        <span>김범수님이 해봉을 통해 함께한 봉사 13회</span>
+        </div>
+      
       </section>
     </main>
     <nav class="nav_list">
@@ -174,6 +133,5 @@
         </li>
       </ul>
     </nav>
-    <!--------------------------------네비바---------------------------->
   </body>
 </html>

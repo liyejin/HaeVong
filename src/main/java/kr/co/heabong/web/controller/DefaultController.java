@@ -1,6 +1,8 @@
 package kr.co.heabong.web.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.Post;
+import kr.co.heabong.web.entity.PostPhoto;
+import kr.co.heabong.web.entity.User;
+import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.service.PostPhotoService;
+import kr.co.heabong.web.service.PostService;
+import kr.co.heabong.web.service.UserService;
+import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.VolCategoryService;
 
 
@@ -21,6 +31,15 @@ import kr.co.heabong.web.service.VolCategoryService;
 public class DefaultController {
 	@Autowired
 	VolCategoryService volCategoryService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	UserVolService volService;
+	@Autowired
+	PostPhotoService postPhotoService;
+	
+//	@Autowired
+//	PostService postService;
 	
 	//테스트겸 만든거
 	@GetMapping("/test")
@@ -87,15 +106,29 @@ public class DefaultController {
 		List<OrgVol> mainCateList  = volCategoryService.getMainCategoryList();
 		model.addAttribute("mainCateList",mainCateList);
 		return "vol_category";
-		
-		
 	}
 	
+	
+//	마이페이지
 	@GetMapping("mypage")
-	public String getMypage(Model model) {
-//		model.addAttribute();
+	public String getMypage(
+							@RequestParam(name="uid",required = true) int id,
+							Model model) {
+//		받아와야될것:유저이름,내 게시글,마이페이지 카테고리,유저 프로필사진
+		User userName = userService.getUserName(id);
+		model.addAttribute("userName",userName);
+		
+		User userProfilePhoto = userService.findByUserPhoto(id);
+		model.addAttribute("userProfilePhoto",userProfilePhoto);
+		 
+		List<PostPhoto>myPostPhoto = postPhotoService.getMyPostPhoto();
+		model.addAttribute("mypic",myPostPhoto);
+		
+		
+		
 		return "mypage";
 	}
+
 	
 	
 	
