@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.User;
+import kr.co.heabong.web.service.ApplyOrgVolService;
+import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolServiceImpl;
 
 
@@ -19,8 +23,18 @@ import kr.co.heabong.web.service.OrgVolServiceImpl;
 public class OrgController {
 	@Autowired
 	OrgVolServiceImpl volService;
+	@Autowired
+	private OrgService service;
+	
+	@Autowired
+	private ApplyOrgVolService applyOrgVolService;
+
+	
 	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
+		
+		Org org = service.getListById(1);
+		model.addAttribute("org",org); // "뷰" ,컨트롤러
 
 		return "org/main";
 	}
@@ -77,9 +91,15 @@ public class OrgController {
 	}
 	
 	@RequestMapping("recruit_vol_list")
-	public String getRecruit_vol_list(Model model) {
+	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
 
-		return "recruit_vol_list";
+		List<User> userList = applyOrgVolService.getApplyList(orgVolID);
+		model.addAttribute("userList", userList);
+		
+
+		
+		
+		return "org/recruit_vol_list";
 	}
 	
 	@RequestMapping("recruit_write")

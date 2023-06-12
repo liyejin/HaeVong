@@ -22,7 +22,6 @@
 }
 /* 기관메인 프로필*/
 .org_profile {
-  margin-top: 40px;
   position: relative;
 }
 /* 기관메인 프로필사진*/
@@ -38,23 +37,16 @@
 .org_profile > .org_profile_pic > img {
   object-fit: cover;
 }
-/* 기관메인 프로필 수정 아이콘 */
-.org_profile > .org_profile_pic > .icon_edit {
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  top: 20px;
-  left: 380px;
-}
 /* 기관메인 회사이름 */
 .org_profile > .org_profile_pic > .org_profile_name {
   position: absolute;
   bottom: 30px;
-  left: 10px;
+  left: 30px;
   font-size: 20px;
   font-weight: bold;
   color: white;
-  text-shadow: -1px 0px rgb(53, 53, 53), 0px 1px rgb(53, 53, 53), 1px 0px rgb(53, 53, 53), 0px -1px rgb(53, 53, 53);
+  text-shadow: -1px 0px rgb(53, 53, 53), 0px 1px rgb(53, 53, 53),
+    1px 0px rgb(53, 53, 53), 0px -1px rgb(53, 53, 53);
 }
 /* 기관메인 회사이름 */
 .org_profile > .org_profile_pic > .org_profile_name > span {
@@ -65,11 +57,10 @@
 .d_day_content {
   background-color: white;
   border-radius: 10px;
-  width: 240px;
+  width: 365px;
   height: 60px;
-  margin-left: 160px;
-  margin-right: 10px;
-  text-align: right;
+  margin-left: 20px;
+  text-align: center;
   padding: 10px;
 }
 /* 공고관리,고객센터 */
@@ -83,33 +74,37 @@
 }
 
 /* 공고관리 */
-.recruit > .recruit_box > .recruit_post {
+.recruit > .recruit_box > .recruit_post > div {
   background-color: #ffffff;
-  width: 250px;
+  width: 80px;
   height: 80px;
+  gap: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 14px;
 }
 
-.recruit > .recruit_box > .recruit_post:hover {
+.recruit > .recruit_box > .recruit_post > div:hover {
   background: #fff1a7;
   font-weight: bold;
 }
 
 /* 고객센터 */
-.recruit > .recruit_box > .org_cs {
+.recruit > .recruit_box > .org_cs > div {
   background-color: #ffffff;
-  width: 150px;
+  width: 80px;
   height: 80px;
+  gap: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 14px;
 }
 
-.recruit > .recruit_box > .org_cs:hover {
+.recruit > .recruit_box > .org_cs > div:hover {
   background: #fff1a7;
   font-weight: bold;
 }
@@ -180,50 +175,4 @@
 
 .ing_container > .ing_contents > .ing_detail:nth-child(2) {
   margin-left: 30px;
-}
-
-/* 신청자 관리 */
-.apply {
-  background-color: #ffffff;
-  border-radius: 14px;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  width: 390px;
-  height: 130px;
-  padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.apply_header {
-  margin-top: 20px;
-  margin-left: 20px;
-  display: flex;
-  font-size: 18px;
-  flex-direction: row;
-  gap: 215px;
-}
-
-.apply_header > div > span {
-  color: #5d5fa1;
-}
-
-.apply_header > img {
-  width: 30px;
-  height: 30px;
-}
-
-.apply_footer {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-}
-
-.apply_footer > .apply_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px;
-  margin-left: 15px;
-  margin-right: 15px;
 }
