@@ -22,35 +22,15 @@
       <!-- 상단 배너 -->
       <div class="user_category_box">
          <ul class="user_category_list">
-            <li class="user_category_list_item" th:each="e:${list1}">
-               <a href="@{./list(c=${e.id})}">
+            <li class="user_category_list_item" th:each="cateList:${cateList}">
+               <a href="@{./list(c=${cateList.id})}">
                   <div class="user_category_list_item_icon">
-                     <span th:text="${e.id}">카테고리</span>
+                     <span th:text="${cateList.id}">봉사카테고리이미지</span>
                   </div>
-                  <span th:text="${e.name}">참여해봉</span>
+                  	<span th:text="${cateList.name}">봉사카테고리이름</span>
                </a>
             </li>
-            </ul>
-            <ul class="user_category_list">
-            <li class="user_category_list_item" th:each="e:${list2}">
-               <a href="@{./list(c=${e.id})}">
-                  <div class="user_category_list_item_icon">
-                     <span th:text="${e.id}">카테고리</span>
-                  </div>
-                  <span th:text="${e.name}">참여해봉</span>
-               </a>
-            </li>
-            </ul>
-            <ul class="user_category_list">
-            <li class="user_category_list_item" th:each="e:${list3}">
-               <a href="@{./list(c=${e.id})}">
-                  <div class="user_category_list_item_icon">
-                     <span th:text="${e.id}">카테고리</span>
-                  </div>
-                  <span th:text="${e.name}">참여해봉</span>
-               </a>
-            </li>
-            </ul>
+          </ul>
       </div>
 
       <div class="user_category_banner_sub"></div>
@@ -62,33 +42,15 @@
             <a href="#"><img src="/img/icon/icon_plus.png" alt="" /></a>
          </div>
          <!--  -->
-         <div class="user_category_recommended_list">
-            <div class="user_category_recommended_item">
+         <ul class="user_category_recommended_list">
+            <li class="user_category_recommended_item" th:each="mcateList:${mainCateList}">
                <img src="/img/user/user_category_banner_main.png" alt="" />
-               <h1>제주 서귀포</h1>
-               <p>제주도 게스트 하우스 스텝 봉사</p>
-            </div>
-            <div class="user_category_recommended_item">
-               <img src="/img/user/user_category_banner_main.png" alt="" />
-               <h1>충남 예산</h1>
-               <p>농촌 비닐하우스 일손돕기</p>
-            </div>
-            <div class="user_category_recommended_item">
-               <img src="/img/user/user_category_banner_main.png" alt="" />
-               <h1>충남 예산</h1>
-               <p>농촌 비닐하우스 일손돕기</p>
-            </div>
-            <div class="user_category_recommended_item">
-               <img src="/img/user/user_category_banner_main.png" alt="" />
-               <h1>충남 예산</h1>
-               <p>농촌 비닐하우스 일손돕기</p>
-            </div>
-            <div class="user_category_recommended_item">
-               <img src="/img/user/user_category_banner_main.png" alt="" />
-               <h1>충남 예산</h1>
-               <p>농촌 비닐하우스 일손돕기</p>
-            </div>
-         </div>
+               <a href="@{./list(c=${mcateList})}">
+	               <span th:text="${mcateList.title}">이색봉사 제목</span>
+	               <span>이색봉사 설명</span>
+               </a>
+            </li>
+         </ul>
       </div>
    </main>
 

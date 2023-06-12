@@ -11,5 +11,5 @@ import lombok.Data;
 public class VolCategory {
 
 	private int id;
-	private String name;
+	private String name;  
 }

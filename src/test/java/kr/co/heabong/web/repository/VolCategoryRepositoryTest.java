@@ -9,18 +9,22 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
+import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.VolCategory;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class VolCategoryRepositoryTest {
+	
 	@Autowired
 	private VolCategoryRepository repository;
-//	@Test
+	
+	//@Test
 	void testFindAll() {
 		List<VolCategory> list = repository.findAll();
 		System.out.println(list);
 	}
-	@Test
+	
+	//@Test
 	void testFindByOffsetAndSize() {
 		List<VolCategory> list = repository.findByOffsetAndSize(1,3);
 		System.out.println(list);
@@ -44,6 +48,11 @@ class VolCategoryRepositoryTest {
 	//@Test
 	void testFindById() {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testfindByCategoryMainPost() {
+		List<OrgVol> list = repository.findByCategoryMainPost(4);
 	}
 	
 

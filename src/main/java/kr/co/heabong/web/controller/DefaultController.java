@@ -1,16 +1,26 @@
 package kr.co.heabong.web.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.service.VolCategoryService;
 
 
 @Controller
 @RequestMapping("/")
 public class DefaultController {
+	@Autowired
+	VolCategoryService volCategoryService;
 	
 	//테스트겸 만든거
 	@GetMapping("/test")
@@ -66,9 +76,19 @@ public class DefaultController {
 	
 	//카테고리 목록 페이지
 	@GetMapping("vol_category")
-	public String getVol_category(Model model) {
-//		model.addAttribute();
+	public String getVol_category(
+			@RequestParam(name="s", required=false)String status,
+			@RequestParam(name="v", required = true)int volCategory,
+			Model model) {
+		//카테고리 
+		List<VolCategory> cateList = volCategoryService.getCateList();
+		model.addAttribute("cateList",cateList);
+		//게시글
+		List<OrgVol> mainCateList  = volCategoryService.getMainCategoryList();
+		model.addAttribute("mainCateList",mainCateList);
 		return "vol_category";
+		
+		
 	}
 	
 	@GetMapping("mypage")
@@ -76,6 +96,10 @@ public class DefaultController {
 //		model.addAttribute();
 		return "mypage";
 	}
+	
+	
+	
+	
 	
 	
 	
