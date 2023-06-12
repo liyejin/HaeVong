@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/org/recruit_vol_list.css">
+    <link rel="stylesheet" type="text/css" href="/css/org/vol_applicant_list.css">
    <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script defer src="/js/modal.js"></script>
@@ -32,18 +32,19 @@
             </div>
         </div>
         <table class="org_apply_list_table">
-            <tr class="org_apply_list_row">
+            <tr class="org_apply_list_row" >
                 <th class="num_h">번호</th>
                 <th class="name_h">성명</th>
                 <th class="phone_h">전화번호</th>
                 <th class="regdate_h">신청일</th>
                 <th class="status_h">상태</th>
             </tr>
-            <tr class="org_apply_list_row" onclick="location.href='/user/info/23'" th:each="u:${list}">
-                <td class="num">1</td>
+            <tr class="org_apply_list_row" onclick="location.href='/user/info/23'" th:each="u,uStat : ${userList}">
+				
+                <td class="num" th:text = "${uStat.count}">1</td>
                 <td class="name" th:text="${u.name}">dddd</td>
                 <td class="phone" th:text="${u.phoneNumber}">2121</td>
-                <td class="regdate" th:text="${u.regdate}">2222</td>
+                <td class="regdate">2222</td> 
                 <td>
                     <div class="org_status">
                         <div class="org_status_approved">승인</div>
@@ -55,7 +56,7 @@
     <section class="modal" id="modal">
         <div>
             <ul class="modal_list">
-                <li class="modal_list_item1"><img src="../../img/icon/close.png" id="close_btn" alt="닫기버튼"></li>
+                <li class="modal_list_item1"><img src="/img/icon/close.png" id="close_btn" alt="닫기버튼"></li>
                 <li class="modal_list_item2">수락대기 신청자</li>
                 <li class="modal_list_item2">전체신청자</li>
             </ul>
