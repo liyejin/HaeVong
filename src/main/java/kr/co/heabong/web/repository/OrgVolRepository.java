@@ -14,8 +14,8 @@ public interface OrgVolRepository {
 	List<OrgVol> findByOffsetAndSize(int offset, int size);
 	List<OrgVol> findByOrgIdAndStatus(int orgId, String status);
 	List<OrgVol> findByAddress(String address);
-	int save(@Param("orgVol")OrgVol orgVol);
-	int update(@Param("orgVol")OrgVol orgVol);
+	int save(OrgVol orgVol);
+	int update(OrgVol orgVol);
 	int delete(int id);
 	OrgVol findById(int id);
 }

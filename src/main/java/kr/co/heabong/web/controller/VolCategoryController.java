@@ -25,7 +25,7 @@ public class VolCategoryController {
 		public String list(Model model) {
 		
 			List<VolCategory>list = service.getCateList();
-			
+
 			return "vol_category";
 		}
 

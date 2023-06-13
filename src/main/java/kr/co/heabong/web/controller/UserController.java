@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.service.UserVolService;
+import kr.co.heabong.web.service.WishService;
 
 
 @Controller
@@ -21,7 +22,8 @@ import kr.co.heabong.web.service.UserVolService;
 public class UserController {
 	@Autowired
 	private UserVolService volService;
-	
+	@Autowired
+	private WishService wishService;
 	@GetMapping("customer_service")
 	public String getCustomer_service(Model model) {
 
@@ -80,8 +82,21 @@ public class UserController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("userId", userId);
+		map.put("category", "part");
 		model.addAttribute("map", map);
 		return "user/vol_list";  //templates/org/vol_list
+	}
+	@RequestMapping("vol_wish_list")
+	public String getVolWishList(
+			@RequestParam(name="u", required = true)int userId,
+			Model model) {
+		List<OrgVol> list = wishService.getOrgVolListByUser(userId);
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("userId", userId);
+		map.put("category", "wish");
+		model.addAttribute("map", map);
+		return "user/vol_list";
 	}
 
 

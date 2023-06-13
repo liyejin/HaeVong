@@ -29,7 +29,7 @@ class OrgVolRepositoryTest {
 		System.out.println(list);
 	}
 
-	//@Test
+	@Test
 	void testSave() {
 		OrgVol orgVol = OrgVol.builder()
 				.title("test")
@@ -47,7 +47,7 @@ class OrgVolRepositoryTest {
 		repository.save(orgVol);		
 	}
 
-//	@Test
+	//@Test
 	void testUpdate() {
 		OrgVol orgVol = OrgVol.builder()
 				.id(2)
@@ -77,7 +77,7 @@ class OrgVolRepositoryTest {
 		System.out.println(orgVol);
 	}
 	
-	@Test
+//	@Test
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);

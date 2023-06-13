@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -206,8 +207,14 @@ public class OrgController {
 	
 	@RequestMapping("vol_write")
 	public String getVol_write(Model model) {
+		
+		return "org/vol_post_write";
+	}
+	@PostMapping("vol_write")
+	public String getVol_write() {
+		
+		return "org/vol_post_write";
 
-		return "org/vol_write";
 	}
 	@RequestMapping("vol")
 	public String vol() {

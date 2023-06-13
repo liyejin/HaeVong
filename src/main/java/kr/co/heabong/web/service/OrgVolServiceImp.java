@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.repository.OrgVolRepository;
@@ -36,22 +37,29 @@ public class OrgVolServiceImp implements OrgVolService{
 	}
 
 	@Override
-	public List<OrgVol> getList(int orgId, String status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public OrgVol getById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void save() {
-		// TODO Auto-generated method stub
-		
+
+	public List<OrgVol> getList(int orgId, String status) {
+		// Org id와 상태로 OrgVol 리스트 가져오기
+		List<OrgVol> list = repository.findByOrgIdAndStatus(orgId, status);
+
+		return list;
 	}
 
-	
+	@Override
+	public int save(OrgVol orgVol) {
+		int save = repository.save(orgVol);
+		return save;
+	}
+
+	@Override
+	public OrgVol get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
