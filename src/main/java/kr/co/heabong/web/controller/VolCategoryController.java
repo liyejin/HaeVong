@@ -20,7 +20,7 @@ public class VolCategoryController {
 	@GetMapping("category")
 		public String list(Model model) {
 		
-			List<VolCategory>list = service.getlist();
+//			List<VolCategory>list = service.getlist();
 			
 			return "vol_category";
 		}

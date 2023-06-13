@@ -9,7 +9,7 @@ public interface OrgVolService {
 	List<OrgVol> getList();
 	List<OrgVol> getList(int orgId, String status);
 	OrgVol get();
-	void save();
+	int save(OrgVol orgVol);
 	
 	
 }
