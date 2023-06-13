@@ -86,6 +86,7 @@ public class UserController {
 		model.addAttribute("map", map);
 		return "user/vol_list";  //templates/org/vol_list
 	}
+	
 	@RequestMapping("vol_wish_list")
 	public String getVolWishList(
 			@RequestParam(name="u", required = true)int userId,

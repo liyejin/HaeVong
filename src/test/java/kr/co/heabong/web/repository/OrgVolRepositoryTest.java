@@ -17,6 +17,7 @@ import kr.co.heabong.web.entity.OrgVol;
 class OrgVolRepositoryTest {
 	//@Autowired
 	private OrgVolRepository repository;
+	
 	//@Test
 	void testFindAll() {
 		List<OrgVol> list = repository.findAll();
@@ -71,21 +72,22 @@ class OrgVolRepositoryTest {
 		repository.delete(1);
 	}
 
-@Test
+	@Test
 	void testFindById(int id) {
 		OrgVol orgVol = repository.findById(id);
 		System.out.println(orgVol);
 	}
-	
-<<<<<<< HEAD
-//	@Test
-=======
-	//@Test
->>>>>>> daisy
+
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);
 		System.out.printf("size : %d\n", list.size());
-		
 	}
+	
+	@Test
+	void testFindOrgVolListByCategoryId(int categoryId) {
+		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId);
+	}
+	
+	
 }

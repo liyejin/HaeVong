@@ -56,6 +56,10 @@
 		
 	</insert>
 	
+	<!--카테고리 메인 페이지-->
+	<select id="FindOrgVolListByCategoryId">
+		select * from org_vol where vol_category_id = #{categoryId}
+	</select>
 
 </mapper>
 	

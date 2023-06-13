@@ -76,6 +76,7 @@
   order: 1;
   flex-grow: 0;
 }
+
 .vol_title {
   font-size: 16px;
   font-weight: bold;
@@ -196,9 +197,7 @@
   margin-bottom: 40px;
 }
 
-.my_post_list > li > div {
-  /* position: absolute;  */
-}
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_empty_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 .vol_empty {

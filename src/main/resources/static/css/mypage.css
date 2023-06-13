@@ -67,18 +67,13 @@ body{
 }
 
 
-/*.mypageCategory {
+.mypageCategory {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 20px;
   justify-content: center;
-}*/
+}
 
-/*.mypageCategory ul li {
-
-  list-style: none;
-  text-align: center;
-}*/
 
 .mypageCategory > ul{
 	background-color: #FFFFFF;
@@ -94,7 +89,9 @@ body{
 	flex-direction: row;
 	justify-content: center;
 	text-align: center;
-	gap: 10px;
+	gap: 14px;
+	list-style: none;
+  	text-align: center;
 }
 
 .mypageCategory > ul > li > a > div{
@@ -119,6 +116,9 @@ body{
 }
 
 .mypage_mypost_title{
+	padding-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
 	position: relative;
 }
 
