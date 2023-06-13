@@ -1,13 +1,27 @@
 package kr.co.heabong.web.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.UserVol;
+import kr.co.heabong.web.service.UserVolService;
+
 
 @Controller
 @RequestMapping("user")
 public class UserController {
+	@Autowired
+	private UserVolService volService;
+	
 	@GetMapping("customer_service")
 	public String getCustomer_service(Model model) {
 
@@ -52,4 +66,25 @@ public class UserController {
 
 		return "edit_pwdchange_insert";
 	}
+	
+//	여기서부터 user_vol
+	
+	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
+	public String getVol_list(
+			@RequestParam(name="s", required=false)String status,
+			@RequestParam(name="u", required = true)int userId,
+			Model model) {
+		List<UserVol> list = volService.getList(userId,status);
+		if (list.size()==0)
+			return "org/vol_list_empty";
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		map.put("userId", userId);
+		model.addAttribute("map", map);
+		return "user/vol_list";  //templates/org/vol_list
+	}
+
+
+	
+	
 }

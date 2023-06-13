@@ -1,0 +1,48 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.ApplyOrgVolRepository">	<!--레퍼지토리의 implements라고 생각-->
+	
+	<select id="findAll" resultType="kr.co.heabong.web.entity.ApplyOrgVol"> 
+		select 
+		* from
+		apply_org_vol 
+		</select>
+		
+		<select id="findByOrgVolId">
+		select * from apply_org_vol where org_vol_id=#{orgVolId}
+	</select>
+	
+		<select id="findByUserId">
+		select * from apply_org_vol where user_id=#{userId}
+	</select>
+	
+	<update id="update">
+		UPDATE haevongdb.apply_org_vol
+		 <set>
+			 <if test="orgVolId">org_vol_id=#{orgVolId},</if>
+			 <if test="userId">user_id =#{userId},</if>
+			 <if test="status">status= #{status},</if>
+			 <if test="date">date=#{date}</if>
+		 </set>
+WHERE org_vol_id =#{orgVolId} AND user_id=#{userId}
+	</update>
+		<delete id="delete">
+		delete from apply_org_vol where org_vol_id=#{orgVolId} AND user_id=#{userId}
+	</delete>
+	<insert id="save">
+		INSERT INTO haevongdb.apply_org_vol
+(
+`org_vol_id`,
+`user_id`,
+`status`,
+`date`
+)
+VALUES
+(
+#{orgVolId },
+#{userId },
+#{status },
+#{date });
+
+	</insert>
+		
+	</mapper>

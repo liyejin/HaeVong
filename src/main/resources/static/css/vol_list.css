@@ -1,7 +1,7 @@
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ <org_vol_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
-.org_vol_category {
+.vol_category {
   margin: 20px;
   display: flex;
   position: relative;
@@ -9,7 +9,7 @@
   gap: 12px;
 }
 
-.org_vol_category > a {
+.vol_category > a {
   /* font style */
   font-size: 14px;
   font-weight: bold;
@@ -29,13 +29,13 @@
 
 /* <공고관리 게시글들>------------------------------------------------- */
 
-.org_vol_list {
+.vol_list {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.org_vol_list > li {
+.vol_list > li {
   /* Auto layout */
 
   display: flex;
@@ -53,13 +53,13 @@
   position: relative;
 }
 
-.org_vol_list_img {
+.vol_list_img {
   width: 130px;
   height: 130px;
   border-radius: 10px;
 }
 
-.org_vol_list_info {
+.vol_list_info {
   /* display: flex;
   flex-direction: column; */
   width: 220px;
@@ -73,20 +73,20 @@
   order: 1;
   flex-grow: 0;
 }
-.org_vol_title {
+.vol_title {
   font-size: 16px;
   font-weight: bold;
 }
-.org_vol_date {
+.vol_date {
   font-size: 14px;
 }
 
-.org_vol_write_date {
+.vol_write_date {
   font-size: 14px;
 }
 
 /* 상세보기 버튼 */
-.org_vol_list_detail_btn {
+.vol_list_detail_btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,13 +102,13 @@
 
   font-size: 14px;
 }
-.org_vol_list_btn_box{
+.vol_list_btn_box{
 	display: flex;
 	flex-direction: row;
 	background-color: burlywood;
 }
 /* 더보기 버튼 */
-.org_vol_list_edit_btn {
+.vol_list_edit_btn {
   width: 3px;
   height: 16px;
   position: absolute;
@@ -120,11 +120,11 @@
 
 /* <봉사기관 정보변경>------------------------------------------------- */
 
-.org_info_img {
+.info_img {
   margin: 20px;
   width: 400px;
   height: 230px;
-  background-image: url(../../img/user/org_profile.png);
+  background-image: url(../../img/user/profile.png);
   background-repeat: no-repeat;
 
   position: relative;
@@ -133,13 +133,13 @@
    */
 }
 
-.org_info_edit_btn {
+.info_edit_btn {
   position: absolute;
   bottom: 21px;
   right: 23px;
 }
 
-.org_info_edit {
+.info_edit {
   list-style-type: none;
 
   /* 테두리 스타일 */
@@ -161,12 +161,12 @@
 }
 
 /* 기관명,대표자명 수정불가 -> 회색 */
-.org_info_edit_fix {
+.info_edit_fix {
   color: #aaaaaa;
 }
 
 /* 수정 입력폼 */
-.org_info_edit > li > input {
+.info_edit > li > input {
   border: none;
   font-size: 18px;
   padding-top: 3px;
@@ -175,7 +175,7 @@
 
 /* 기업회원 탈퇴 */
 
-.org_membership_withdrawal {
+.membership_withdrawal {
   margin-left: 10px;
   font-size: 16px;
   text-decoration-line: underline;
@@ -194,8 +194,8 @@
   /* position: absolute;  */
 }
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@ <org_vol_empty_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-.org_vol_empty {
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_empty_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.vol_empty {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,7 +204,7 @@
   height: 792px;
 }
 
-.org_vol_empty img {
+.vol_empty img {
   display: flex;
   justify-content: center;
   align-items: center;

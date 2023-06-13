@@ -3,6 +3,7 @@ package kr.co.heabong.web.repository;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -22,24 +23,24 @@ class UserVolRepositoryTest {
 
 	//@Test 
 	void testFindAll() {
-//		List<UserVol> list = repository.findAll();
+		List<UserVol> list = repository.findAll();
+		System.out.println(list);
 	}
 
-	@Test
+	//@Test
 	void testFindById() {
 
-		UserVol userVol = repository.findById(2);
-		System.out.println(userVol);
+		List<UserVol> list = repository.findByOffsetAndSize(0,6);
+		System.out.println(list);
 	}
 
-	@Test void testSave() {
+	//@Test 
+	void testSave() {
 		UserVol userVol = UserVol.builder()
-						 .id(1)
 						 .title("이름")
-						 .regDate(null)
-						 .date(null)
+						 .date("2022-09-19")
 						 .capacity(1)
-						 .place("")
+						 .place("아아")
 						 .roadAddress("백범로")
 						 .address("서울시 마포구")
 						 .userId(1)
@@ -51,13 +52,37 @@ class UserVolRepositoryTest {
 
 		repository.save(userVol);
 	}
+	
+	//@Test 
+	void testUpdate() {
+		UserVol userVol = UserVol.builder()
+						 .title("이름")
+						 .date("2022-09-19")
+						 .capacity(1)
+						 .place("")
+						 .roadAddress("백범로")
+						 .address("서울시 마포구")
+						 .userId(1)
+						 .districtId(1)
+						 .metropolId(1)
+						 .volCategoryId(1)
+						 .content("제목입니다")
+						 .build();
 
-//	@Test void testUpdate() {
-//	}
-
+		repository.update(userVol);
+	}
+	
 	//@Test
 	void testDelete() {
-//		UserVol userVol = UserVol;
+		repository.delete(1);
+	}
+	
+	@Test
+	void testFindByUserIdAndStatus() {
+		List<UserVol> list = repository.findByUserIdAndStatus(1, "over");
+		System.out.println(list);
+		System.out.printf("size : %d\n", list.size());
+		
 	}
 
 }

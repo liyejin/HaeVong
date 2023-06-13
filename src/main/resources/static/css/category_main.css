@@ -17,10 +17,14 @@
 }
 
 .user_category_list {
-    display: flex;
+/*    display: flex;
     justify-content: space-around;
-    gap: 20px;
-
+    gap: 20px;*/
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px; /* 원하는 간격 설정 */
+  list-style-type: none;
 }
 
 .user_category_list_item {

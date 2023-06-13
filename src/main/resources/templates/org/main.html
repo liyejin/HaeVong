@@ -5,41 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>기관메인</title>
-    <script src="/src/main/resources/static/js/org_main.js"></script>
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/org/main.css" />
+    <script src="/js/org_main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/css/org/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body>
     <header class="header">
-      <div class="header1">
-        <a href=""
-          ><img src="/src/main/resources/static/img/icon/icon_header_back.png" alt="뒤로가기"
-        /></a>
-        <div><img src="/src/main/resources/static/img/icon/icon_header_title.png" alt=""></div>
-        <a href=""
-          ><img src="/src/main/resources/static/img/icon/icon_header_more.png" alt="더보기"
-        /></a>
-      </div>
+      <img
+        class="header-title"
+        src="/img/icon/icon_header_title.png"
+        alt="헤더타이틀이미지"
+      />
     </header>
-
     <div class="main">
       <section class="org_profile">
         <div class="org_profile_pic">
-          <img src="/src/main/resources/static/img/org/org_main_profile.png" alt="기관이미지" />
-          <img
-            class="icon_edit"
-            src="/src/main/resources/static/img/icon/icon_org_profile_edit.png"
-            alt="기관프로필설정"
-          />
+          <img src="/img/org/org_main_profile.png" alt="기관이미지" />
           <p class="org_profile_name">
-            어서오세요 <br />(주)해봉이네<span> 님</span></span>
+            어서오세요! <br />(주)해봉이네<span> 님</span></span>
           </p>
         </div>
       </section>
-      <div class="guide">
-        <img src="/src/main/resources/static/img/org/org_guide.png" alt="해봉가이드" />
-      </div>
       <div class="d_day_content">
         <span>우리 기관과 함께한지 <span class="d_day_cnt1"></span>일💛</span>
         <br />
@@ -49,14 +36,16 @@
       </div>
       <section class="recruit">
         <div class="recruit_box">
-          <div class="recruit_post"><p>공고관리</p></div>
-          <div class="org_cs"><p>고객센터</p></div>
+          <div class="recruit_post"><div><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고작성</p></div></div>
+          <div class="org_cs"><div><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고관리</p></div></div>
+          <div class="org_cs"><div><img src="/img/icon/org_main_recruit.svg" alt=""><p>고객센터</p></div></div>
+          <div class="org_cs"><div><img src="/img/icon/org_main_edit.svg" alt=""><p>정보수정</p></div></div>
         </div>
       </section>
       <section class="ing">
         <div class="ing_header">
-          <div>진행중 모집 <span>8</span></div>
-          <img src="/src/main/resources/static/img/icon/icon_plus.png" alt="더보기" />
+          <div>진행중 모집 <span> 2</span></div>
+          <img src="/img/icon/icon_plus.png" alt="더보기" />
         </div>
         <div class="ing_footer">
           <div class="ing_container">
@@ -97,28 +86,10 @@
           </div>
         </div>
       </section>
-      <section class="apply">
-        <div class="apply_header">
-          <div>신청자 관리 <span>8</span></div>
-          <img src="/src/main/resources/static/img/icon/icon_plus.png" alt="더보기" />
-        </div>
-        <div class="apply_footer">
-          <div class="apply_container">
-            <div class="apply_detail">김도연</div>
-            <div class="apply_detail">010-2222-3333</div>
-            <div class="apply_detail">23-05-16</div>
-          </div>
-          <div class="apply_container">
-            <div class="apply_detail">김도연</div>
-            <div class="apply_detail">010-2222-3333</div>
-            <div class="apply_detail">23-05-16</div>
-          </div>
-        </div>
-      </section>
     </div>
     <nav class="nav_footer">
       <a href="">
-        <img src="/src/main/resources/static/img/org/org_main_ad.png" alt="" />
+        <img src="/img/org/org_main_ad.png" alt="" />
       </a>
     </nav>
   </body>

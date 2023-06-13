@@ -6,4 +6,8 @@
    <select id="findAll">
       select * from vol_category ;
    </select>
+   <select id="findByCategoryMainPost">
+	   select * from org_vol where vol_category_id = ${id}
+   </select>
+   
    </mapper>

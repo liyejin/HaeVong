@@ -19,15 +19,14 @@ import kr.co.heabong.web.service.VolCategoryService;
 public class VolCategoryController {
 
 	@Autowired
-	private VolCategoryService service;
-
-	@ResponseBody
-	@GetMapping("/test")
-	public List<VolCategory> getLists() {
-		List<VolCategory> list = service.getList();
-
-		for (VolCategory m : list) {
-			System.out.println(m.getId() + " : " + m.getName());
+		private VolCategoryService service;
+		
+	@GetMapping("category")
+		public String list(Model model) {
+		
+			List<VolCategory>list = service.getCateList();
+			
+			return "vol_category";
 		}
 
 		return list;
