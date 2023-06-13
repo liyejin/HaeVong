@@ -62,15 +62,6 @@ public class DefaultController {
 		return "login";
 	}
 
-	// 로그인 페이지
-
-	@ResponseBody
-	@PostMapping("signin")
-	public String getTest1(Model model) {
-//		model.addAttribute();
-
-		return "Submitted Data: " + model.toString();
-	}
 
 	// 개인 로그인
 	@GetMapping("user_signin")

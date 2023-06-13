@@ -13,7 +13,9 @@ body {
 .main {
     overflow: auto;
 }
-
+.main::-webkit-scrollbar{
+	display: none;
+}
 /* 기본 셋업 */
 .user_index_top_img_box {
     position: relative;
