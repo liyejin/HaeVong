@@ -18,9 +18,9 @@ public class OrgVolServiceImpl implements OrgVolService {
 	}
 
 	@Override
-	public OrgVol get() {
-		// TODO Auto-generated method stub
-		return null;
+	public OrgVol get(int id) {
+		OrgVol orgVol = repository.findById(id);
+		return orgVol;
 	}
 
 	@Override

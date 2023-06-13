@@ -5,7 +5,7 @@
 		select 
 		* from
 		apply_org_vol 
-		</select>
+		</select>	
 		
 		<select id="findByOrgVolId">
 		select * from apply_org_vol where org_vol_id=#{orgVolId}

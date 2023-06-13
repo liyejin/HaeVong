@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import kr.co.heabong.web.entity.ApplyOrgVol;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.User;
+import kr.co.heabong.web.entity.UserApplyView;
 import kr.co.heabong.web.repository.ApplyOrgVolRepository;
 import kr.co.heabong.web.repository.OrgVolRepository;
+import kr.co.heabong.web.repository.UserApplyViewRepository;
 import kr.co.heabong.web.repository.UserRepository;
 
 import java.time.LocalDateTime;
@@ -23,12 +25,14 @@ public class ApplyOrgVolServiceImp implements ApplyOrgVolService{
 	UserRepository userRepository;
 	@Autowired
 	OrgVolRepository orgVolRepository;
+	@Autowired
+	UserApplyViewRepository userApplyViewRepository;
 
 
 	@Override
 	public List<User> getApplyList(int orgVolId) {
 		List<User>userList = new ArrayList<>();
-		List<ApplyOrgVol>applyVolList=	repository.findByOrgVolId(orgVolId); // 
+		List<ApplyOrgVol>applyVolList=	repository.findByOrgVolId(orgVolId); 
 		for(ApplyOrgVol a : applyVolList ) {
 		int userId = a.getUserId();
 		User user=userRepository.findById(userId);// 딱 하나의 아이디로 찾은 유저
@@ -40,16 +44,13 @@ public class ApplyOrgVolServiceImp implements ApplyOrgVolService{
 
 
 	@Override
-	public List<OrgVol> getOrgVolList(int orgVolId) {
-		List<OrgVol>orgVolList = new ArrayList<>();
-		List<ApplyOrgVol>applyVolList=	repository.findByOrgVolId(orgVolId); 
-		for(ApplyOrgVol b : applyVolList ) {
-			int OrgId = b.getOrgVolId();
-			OrgVol orgVol=orgVolRepository.findById(OrgId);
-			orgVolList.add(orgVol);
-			}
+	public List<UserApplyView> getApplicantlList(int orgVolId) {
 		
-		return orgVolList;
+		List<UserApplyView>applyVolList=	userApplyViewRepository.findById(orgVolId);
+
+		return applyVolList;
 	}
+
+
 
 }

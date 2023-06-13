@@ -1,0 +1,13 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.UserApplyViewRepository">
+	
+	<select id="findAll" resultType="kr.co.heabong.web.entity.UserApplyView"> 
+		select 
+		* from
+		UserApplyView
+		</select>	
+		
+		<select id="findById">
+		select * from UserApplyView where org_vol_id=#{orgVolId}
+	</select>
+	</mapper>

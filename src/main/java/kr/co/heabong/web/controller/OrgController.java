@@ -1,6 +1,7 @@
 package kr.co.heabong.web.controller;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.User;
+import kr.co.heabong.web.entity.UserApplyView;
 import kr.co.heabong.web.service.ApplyOrgVolService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolServiceImpl;
@@ -21,8 +23,10 @@ import kr.co.heabong.web.service.OrgVolServiceImpl;
 @Controller
 @RequestMapping("org")
 public class OrgController {
+	
 	@Autowired
 	OrgVolServiceImpl volService;
+	
 	@Autowired
 	private OrgService service;
 	
@@ -34,7 +38,7 @@ public class OrgController {
 	public String getMain(Model model) {
 		
 		Org org = service.getListById(1);
-		model.addAttribute("org",org); // "뷰" ,컨트롤러
+		model.addAttribute("org",org); 
 
 		return "org/main";
 	}
@@ -92,12 +96,13 @@ public class OrgController {
 	
 	@RequestMapping("recruit_vol_list")
 	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
-
-		List<User> userList = applyOrgVolService.getApplyList(orgVolID);
+	
+		
+		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
 		model.addAttribute("userList", userList);
 		
-
-		
+		OrgVol orgVol= volService.get(orgVolID);
+		model.addAttribute("orgVol", orgVol);
 		
 		return "org/recruit_vol_list";
 	}
@@ -127,6 +132,7 @@ public class OrgController {
 
 		return "org/vol_list_empty";
 	}
+	
 	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
 	public String getVol_list(
 			@RequestParam(name="s", required=false)String status,
@@ -141,6 +147,7 @@ public class OrgController {
 		model.addAttribute("map", map);
 		return "org/vol_list";  //templates/org/vol_list
 	}
+	
 	@RequestMapping("vol_recruit")
 	public String getVol_recruit(Model model) {
 
@@ -152,9 +159,13 @@ public class OrgController {
 
 		return "vol_write";
 	}
-	@RequestMapping("vol")
-	public String vol() {
+
+	@RequestMapping("vol_post_detail")
+	public String vol_post_detail(@RequestParam("id") int orgVolID, Model model) {
+	
+		OrgVol orgVol= volService.get(orgVolID);
+		model.addAttribute("orgVol", orgVol);
 		
-		return "org/vol";
+		return "org/vol_post_detail";
 	}
 }

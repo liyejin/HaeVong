@@ -8,7 +8,7 @@ import kr.co.heabong.web.entity.OrgVol;
 public interface OrgVolService {
 	List<OrgVol> getList();
 	List<OrgVol> getList(int orgId, String status);
-	OrgVol get();
+	OrgVol get(int id);
 	void save();
 	
 	
