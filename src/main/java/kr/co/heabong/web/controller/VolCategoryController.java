@@ -29,8 +29,6 @@ public class VolCategoryController {
 			return "vol_category";
 		}
 
-		return list;
-	}
 
 	@GetMapping("/")
 	public String getList(

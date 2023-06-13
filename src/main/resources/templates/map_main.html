@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/css/map_main.css" />
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/application_modal.css">
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
 		integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
 		crossorigin="anonymous"></script>
@@ -37,7 +38,7 @@
 		</script>
 
 		<!--지도-->
-		<div id="map" style="width: 430px; height: 772px">
+		<div id="map" style="width: 430px; height: 782px">
 
 			<!--검색창/포스트 매핑 구현 예정-->
 			<div class="map_bar">
@@ -45,21 +46,57 @@
 					<img src="/img/icon/icon_header_map.png" alt="지도아이콘" />
 					<input type="text" placeholder="찾으시는 봉사를 검색해주세요" name="search"/>
 				</form>
-				</section>
 			</div>
 
 		
 
-			<section class="map_category_box">
-				<div class="map_category_box_title" type="button">카테고리</div>
-				<ul class="category_list" th:each="d:${dl}">
-				
-					<a href="/map/main/name=서울" th:href="@{/map/main(name=${d.name})}">
-						<li th:text="${d.name}">서울특별시</li>
-					</a>
-				
+			<section class="map_category_box" id="map_category_box">
+				<div class="map_category_box_title" id="map_category_box_title" type="button"></div>
+				<div class="select_category_tab">
+					<div class="select_category left" >
+						<h1 class="left">지역선택</h1>
+						<span class="left">서울특별시 </span>>
+					</div>
+					<div class="select_category right" >
+						<h1 class="right">내 주변 봉사</h1>		
+							<select disabled class="right">
+								<option>카테고리</option>
+							<option value="#" th:each="vol:${volCategory}" th:value="${vol.id}" th:text="${vol.name}">카테고리</option>			
+					    </select>
+					</div>
+				</div>
+				<ul class="category_list">
+						<li th:each="m:${mtp}" th:text="${m.name}" th:class="${m.name}" onclick="filter(this)">서울특별시</li>			
+						
 				</ul>
-		</div>
+				
+				<ul class="org_vol_list">
+					<!--<li class="org_vol" th:each="org_vol:${org_volList}" th:text="${org_vol.name}" th:class="${org_vol.name}" onclick="filter(this)">-->
+					<li class="org_vol"th:each="m:${mtp}">
+						<img src="/img/org/org_main_profile.png"/>
+						<div class="org_vol_text_container">
+							<div class="org_vol_text_box">
+								<span class="org_vol_name" th:text="${m.name}">사랑의 연탄봉사</span>
+								<span class="org_vol_address">마포구 백범로</span>
+								<span class="org_vol_location">현재 위치로부터 300m</span>
+								<div class="org_vol_capacity">
+									모집인원
+								<span class="org_vol_capacity_now">3</span>
+								/
+								<span class="org_vol_capacity_max">10</span>
+								</div>
+								
+								
+							</div>
+							<button class="org_vol_btn" type="button">신청</div>
+						</div>
+
+					</li>
+					
+					
+				</ul>
+			</section>
+	
 
 		<script src="/js/map.js"></script>
 

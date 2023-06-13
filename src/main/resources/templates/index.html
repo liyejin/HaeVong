@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>해봉 메인페이지</title>
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/index.css" type="text/css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/index.css" type="text/css" />
   </head>
   <body>
     <main class="main">
@@ -15,13 +15,13 @@
         <div class="user_index_top_img_box">
           <a href="#"
             ><img
-              src="../img/icon/icon_header_title.png"
+              src="/img/icon/icon_header_title.png"
               alt="로고 아이콘"
               class="user_index_top_img_box_logo"
           /></a>
 
           <a href="#" class="user_index_top_img_box_search_icon"
-            ><img src="../img/icon/icon_search.png" alt="돋보기 아이콘"
+            ><img src="/img/icon/icon_search.png" alt="돋보기 아이콘"
           /></a>
           <div class="user_index_top_img_box_introduction">
             <div class="user_index_top_img_box_introduction_title">
@@ -43,7 +43,7 @@
       <div class="user_index_search">
         <div class="user_index_search_box">
           <a href="#" class="user_index_search_icon">
-            <img src="../img/icon/icon_search.png" alt="돋보기 아이콘" />
+            <img src="/img/icon/icon_search.png" alt="돋보기 아이콘" />
           </a>
 
           <input
@@ -58,13 +58,10 @@
         <div class="index_section_title"><span>지금 바로 봉사신청</span></div>
 
         <div class="index_section_list">
-          <a
-            href="../templates/org/recruit_vol_list.html"
-            class="index_section_item"
-          >
+          <a href="org/recruit_vol_list.html" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_list_banner_1.png"
+                src="/img/user/index_list_banner_1.png"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -80,7 +77,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_list_banner_2.png"
+                src="/img/user/index_list_banner_2.png"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -97,7 +94,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_list_banner_3.png"
+                src="/img/user/index_list_banner_3.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -121,7 +118,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_category_list_1.svg"
+                src="/img/user/index_category_list_1.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -131,7 +128,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_category_list_2.svg"
+                src="/img/user/index_category_list_2.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -141,7 +138,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_category_list_3.svg"
+                src="/img/user/index_category_list_3.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -151,7 +148,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_category_list_4.svg"
+                src="/img/user/index_category_list_4.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -161,7 +158,7 @@
           <a href="#" class="index_section_item">
             <div>
               <img
-                src="../static/img/user/index_category_list_5.svg"
+                src="/img/user/index_category_list_5.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
@@ -200,7 +197,7 @@
           <div class="index_review_item">
             <img
               class="index_review_img"
-              src="../static/img/user/index_review_list_1.svg"
+              src="/img/user/index_review_list_1.svg"
             />
             <div class="index_review_info">
               <span class="index_review_info_title"
@@ -215,7 +212,7 @@
           <div class="index_review_item">
             <img
               class="index_review_img"
-              src="../static/img/user/index_review_list_2.svg"
+              src="/img/user/index_review_list_2.svg"
             />
             <div class="index_review_info">
               <span class="index_review_info_title"
@@ -230,7 +227,7 @@
           <div class="index_review_item">
             <img
               class="index_review_img"
-              src="../static/img/user/index_review_list_3.svg"
+              src="/img/user/index_review_list_3.svg"
             />
             <div class="index_review_info">
               <span class="index_review_info_title"
@@ -266,7 +263,8 @@
               </div>
             </div>
             <span
-              >마르코로호 쇼핑하러 가기<img src="/img/icon/icon_right.png"
+              >마르코로호 쇼핑하러 가기<img
+                src="/img/icon/icon_right.png"
             /></span>
           </div>
         </div>
@@ -284,10 +282,10 @@
           <div class="index_photo_box">
             <div class="index_photo_list">
               <img
-                src="../static/img/user/index_best_photo_list_1.svg"
+                src="/img/user/index_best_photo_list_1.svg"
                 alt="랜덤사진"
               /><img
-                src="../static/img/user/index_best_photo_list_2.svg"
+                src="/img/user/index_best_photo_list_2.svg"
                 alt="랜덤사진"
               /><img
                 src="/img/user/index_best_photo_list_3.svg"
@@ -296,10 +294,10 @@
             </div>
             <div class="index_photo_list">
               <img
-                src="../static/img/user/index_best_photo_list_4.svg"
+                src="/img/user/index_best_photo_list_4.svg"
                 alt="랜덤사진"
               /><img
-                src="../static/img/user/index_best_photo_list_5.svg"
+                src="/img/user/index_best_photo_list_5.svg"
                 alt="랜덤사진"
               /><img
                 src="/img/user/index_best_photo_list_6.svg"
@@ -313,30 +311,8 @@
       <!-- 랜덤 사진 -->
     </main>
 
-    <nav class="nav_list">
-      <ul>
-        <li>
-          <a href="#"
-            ><img src="/img/icon/icon_nav_home.png" alt="내브바아이콘1"
-          /></a>
-        </li>
-        <li>
-          <a><img src="/img/icon/icon_nav_map.png" alt="내브바아이콘2" /></a>
-        </li>
-        <li>
-          <a
-            ><img src="/img/icon/icon_nav_community.png" alt="내브바아이콘3"
-          /></a>
-        </li>
-        <li>
-          <a
-            ><img src="/img/icon/icon_nav_category.png" alt="내브바아이콘4"
-          /></a>
-        </li>
-        <li>
-          <a><img src="/img/icon/icon_nav_mypage.png" alt="내브바아이콘5" /></a>
-        </li>
-      </ul>
+    <nav class="nav_list" th:replace="~{inc/nav}">
+      
     </nav>
   </body>
 </html>

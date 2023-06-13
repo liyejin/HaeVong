@@ -29,5 +29,29 @@ public class OrgVolServiceImp implements OrgVolService{
 		return list;
 	}
 
+	@Override
+	public List<OrgVol> getList(String address) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrgVol> getList(int orgId, String status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OrgVol getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

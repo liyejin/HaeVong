@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.heabong.web.entity.Org;
+import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.repository.OrgRepository;
 
 @Service
@@ -43,6 +44,30 @@ public class OrgServiceImp implements OrgService{
 	public void delete(Org org) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	@Override
+	public boolean isValid(String regNum, String pwd) {
+		// TODO Auto-generated method stub
+		Org org = repository.findByRegNum(regNum);
+		
+		if(org == null)
+			return false;
+		else if(!org.getPwd().equals(pwd))
+			return false;
+		
+		return true;
+	}
+
+
+
+	@Override
+	public Org getByRegNum(String regNum) {
+		// TODO Auto-generated method stub
+		Org org = repository.findByRegNum(regNum);
+		return org;
 	}
 
 }

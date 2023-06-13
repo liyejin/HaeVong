@@ -9,8 +9,8 @@ import kr.co.heabong.web.entity.User;
 @Mapper
 public interface UserRepository {
 	
-	List<User>findAll(String name,String email,String identityNumber,String phoneNumber,String gender,int age,String birthDate,String nickname);
-
+//	List<User>findAll(String name,String email,String identityNumber,String phoneNumber,String gender,int age,String birthDate,String nickname);
+	List<User>findAll();
 	User findById(int id);
 	
 	int save(User user);
@@ -19,5 +19,6 @@ public interface UserRepository {
 	User findByUserName(int id);
 	List<User> findByMyPost();
 	User findByUserPhoto(int id);
-	
+	User findByUid(String uid);
 }
+	

@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -500px 0;
+        /* 이동할 위치 */
+    }
+}
+
+.main {
+    height: 932px;
+    width: 100%;
+    background-image: url("/img/user/login_background.jpg");
+    background-size: cover;
+    animation: moveBackground 30s infinite linear;
+    /* 애니메이션 속성 */
+}
+
+.alpha {
+    height: 932px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    position: relative;
+    margin-bottom: 100px;
+    padding: auto;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+p,
+span {
+    color: #efefef;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #ABABAB;
+}
+
+.icon_check {
+    width: 24px;
+    height: 24px;
+}

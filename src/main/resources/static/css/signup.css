@@ -5,7 +5,14 @@ body {
 }
 
 .main {
-    overflow: auto;
+
+       overflow-y: auto;
+    overflow-x: hidden; 
+
+}
+.main::-webkit-scrollbar{
+	display: none;
+
 
 }
 
@@ -27,8 +34,12 @@ body {
     padding-left: 7%;
     justify-content: space-between;
     gap: 10px;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden; 
     align-items: flex-start;
+}
+.input>div::-webkit-scrollbar{
+	display: none;
 }
 
 .input>div {

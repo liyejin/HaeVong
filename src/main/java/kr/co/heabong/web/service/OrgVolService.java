@@ -7,9 +7,10 @@ import kr.co.heabong.web.entity.OrgVol;
 
 public interface OrgVolService {
 	List<OrgVol> getList();
+	List<OrgVol> getList(String address);
 	List<OrgVol> getList(int orgId, String status);
-	OrgVol get();
+	
+	OrgVol getById(int id);
 	void save();
-	
-	
+	List<OrgVol> getListByAddress(String address);
 }

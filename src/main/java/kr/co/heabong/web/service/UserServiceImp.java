@@ -13,7 +13,7 @@ public class UserServiceImp implements UserService{
 		private UserRepository repository; 
 
 	@Override
-	public List<User> getlist() {
+	public List<User> getList() {
 		List<User>list = repository.findAll();
 		
 		return list;
@@ -38,5 +38,19 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		repository.save(user);
 	}
+	
+	@Override
+	public boolean isValid(String uid, String pwd) {
+		User user = repository.findByUid(uid);
+		
+		if(user == null)
+			return false;
+		else if(!user.getPwd().equals(pwd))
+			return false;
+		
+		return true;
+	}
+
+	
 
 }

@@ -1,21 +1,17 @@
 body {
     background-color: #FEF8EA;
     touch-action: manipulation;
-    -ms-content-zooming: none;
-    -ms-touch-action: manipulation;
-    zoom: 1;
-    user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
+  -ms-content-zooming: none;
+  -ms-touch-action: manipulation;
+  zoom: 1;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
 }
 
 .main {
     overflow: auto;
-}
-
-.main::-webkit-scrollbar {
-    display: none;
 }
 
 /* 기본 셋업 */
@@ -61,12 +57,12 @@ body {
     font-weight: bold;
 }
 
-.user_index_top_img_box_introduction_title>span {
+.user_index_top_img_box_introduction_title > span{
     color: rgb(255, 252, 244);
 }
 
 
-.user_index_top_img_box_introduction_content>p {
+.user_index_top_img_box_introduction_content > p {
     color: rgb(255, 252, 244);
 }
 
@@ -107,7 +103,7 @@ body {
     position: relative;
 }
 
-.user_index_search_icon>img {
+.user_index_search_icon > img{
     position: absolute;
     left: 10px;
     top: 4px;
@@ -135,7 +131,7 @@ body {
 }
 
 
-.index_section_title>span {
+.index_section_title > span {
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -160,7 +156,7 @@ body {
 }
 
 
-.index_section_item_img {
+.index_section_item_img{
     border-radius: 6px;
     width: 180px;
     height: 187px;
@@ -292,7 +288,7 @@ body {
     gap: 22px;
 }
 
-.index_review_img {
+.index_review_img{
     width: 130px;
 }
 
@@ -301,7 +297,7 @@ body {
     font-size: 16px;
 }
 
-.index_review_info_context {
+.index_review_info_context{
     font-size: 14px;
 }
 
@@ -333,22 +329,22 @@ body {
     margin-left: 50px;
 }
 
-.index_sponsor_box>span {
+.index_sponsor_box > span{
     font-weight: bold;
     color: white;
     margin-left: 120px;
 }
 
-.index_sponsor_box>span>img {
+.index_sponsor_box > span > img{
     margin-left: 10px;
 }
 
-.index_sponsor_img>span {
+.index_sponsor_img > span{
     font-weight: lighter;
     color: white;
 }
 
-.index_sponsor_content>span {
+.index_sponsor_content > span{
     font-weight: normal;
     color: white;
 }
@@ -391,7 +387,7 @@ body {
     flex-direction: column;
 }
 
-.photo_title {
+.photo_title{
     margin: 0;
 }
 

@@ -13,6 +13,7 @@ public interface UserService {
 	User getUserName(int id);
 	User findByUserPhoto(int id);
 	
+	boolean isValid(String uid, String pwd);
 	
 
 }
