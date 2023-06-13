@@ -71,8 +71,8 @@ public class UserController {
 	
 	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
 	public String getVol_list(
-			@RequestParam(name="s", required=false)String status,
-			@RequestParam(name="u", required = true)int userId,
+			@RequestParam(name="s", required= false)String status,
+			@RequestParam(name="u", required = false)int userId,
 			Model model) {
 		List<UserVol> list = volService.getList(userId,status);
 		if (list.size()==0)
