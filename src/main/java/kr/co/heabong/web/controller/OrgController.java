@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.time.LocalDate;
 import java.time.Period;
@@ -19,17 +20,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.User;
+import kr.co.heabong.web.entity.UserApplyView;
 import kr.co.heabong.web.service.ApplyOrgVolService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 
-
-
 @Controller
 @RequestMapping("org")
 public class OrgController {
+	
 	@Autowired
-	private OrgVolService volService;
+private OrgVolService volService;
+
 	@Autowired
 	private OrgService orgService;
 	
@@ -43,8 +45,6 @@ public class OrgController {
 		Org org = orgService.getById(1);
 		model.addAttribute("org",org); // "뷰" ,컨트롤러
 
-		
-		
 		return "org/main";
 	}
 	
@@ -107,11 +107,10 @@ public class OrgController {
 	
 	@RequestMapping("recruit_vol_list")
 	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
-
-		List<User> userList = applyOrgVolService.getApplyList(orgVolID);
-		model.addAttribute("userList", userList);
+	
 		
-
+		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
+		model.addAttribute("userList", userList);
 		
 		
 		return "org/recruit_vol_list";
@@ -142,6 +141,7 @@ public class OrgController {
 
 		return "org/vol_list_empty";
 	}
+	
 	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
 	public String getVol_list(
 			@RequestParam(name="s", required=false)String status,
@@ -156,6 +156,7 @@ public class OrgController {
 		model.addAttribute("map", map);
 		return "org/vol_list";  //templates/org/vol_list
 	}
+	
 	@RequestMapping("vol_recruit")
 	public String getVol_recruit(Model model) {
 
@@ -216,9 +217,11 @@ public class OrgController {
 		return "org/vol_post_write";
 
 	}
-	@RequestMapping("vol")
-	public String vol() {
+
+	@RequestMapping("vol_post_detail")
+	public String vol_post_detail(@RequestParam("id") int orgVolID, Model model) {
+	
 		
-		return "org/vol";
+		return "org/vol_post_detail";
 	}
 }

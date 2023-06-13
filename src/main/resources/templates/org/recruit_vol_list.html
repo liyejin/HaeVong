@@ -23,14 +23,16 @@
         </div>
     </header>
     <section class="main" id="main">
-        <div class="org_vol_list">
-            <div class="org_vol_list_info">
-                    <span class="org_vol_title">행복보육원<br>봉사자 구인</span>
-                    <span class="org_vol_date">5월 13일(월)<br>13:00~16:00</span>
-                    <span class="org_vol_write_date">2023/04/26</span>
-                    <a class="org_vol_list_detail_btn" href="#"><span>상세보기</span></a>
-            </div>
+        <div class="org_vol_list" >
+        <div class="org_district"><span th:text="${orgVol.metropolId}">광주광역시</span> <span th:text="${orgVol.districtId}">북구</span ></div>
+        <div class="org_vol_title"th:text="${orgVol.title}" >행복보육원 봉사자 구인합니다 장소는 어디냐면요</div>
+        <div class="org">
+          <span class="org_name"th:text="${orgVol.orgId}">(주)행복보육원</span>
+          <span> | </span>
+          <span class="org_time">1시간전</span>
+          <!--시간계산 아직 남음-->
         </div>
+      </div>
         <table class="org_apply_list_table">
             <tr class="org_apply_list_row" >
                 <th class="num_h">번호</th>
@@ -39,18 +41,21 @@
                 <th class="regdate_h">신청일</th>
                 <th class="status_h">상태</th>
             </tr>
-            <tr class="org_apply_list_row" onclick="location.href='/user/info/23'" th:each="u,uStat : ${userList}">
-				
-                <td class="num" th:text = "${uStat.count}">1</td>
-                <td class="name" th:text="${u.name}">dddd</td>
-                <td class="phone" th:text="${u.phoneNumber}">2121</td>
-                <td class="regdate">2222</td> 
-                <td>
-                    <div class="org_status">
-                        <div class="org_status_approved">승인</div>
-                    </div>
-                </td>
-            </tr>
+          <tr class="org_apply_list_row" th:each="u,uStat : ${userList}">
+    <td class="num" th:text = "${uStat.count}">1</td>
+    <td class="name" th:text = "${u.name}" >dddd</td>
+    <td class="phone"th:text = "${u.phoneNumber}" >2121</td>
+    <td class="regdate" th:text = "${u.date}">2222</td>
+    <td>
+        <div class="org_status">
+            <div class="org_status_approved" th:if ="${u.status=='1'}">승인</div>
+            <div class="org_status_waiting" th:if = "${u.status=='0'}">대기</div>
+            <div class="org_status_refused" th:if = "${u.status=='2'}">거절</div>
+        </div>
+    </td>
+	</div>
+</tr>
+
         </table>
     </section>
     <section class="modal" id="modal">

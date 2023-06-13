@@ -1,3 +1,29 @@
+.main {
+  background-color: #f3f7fa;
+}
+.org_vol_list {
+  margin-top: 10px;
+  width: 430px;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfdfd;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.org_vol_list > .org_district {
+  margin-top: 30px;
+}
+.org_vol_list > div {
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.org_vol_list > .org_vol_title {
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px; /* 텍스트를 표시할 최대 너비 */
+}
 .org_vol_list > .org_vol_list_info{
     /* Auto layout */
     margin-top: 20px;

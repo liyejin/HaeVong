@@ -71,13 +71,17 @@ class OrgVolRepositoryTest {
 		repository.delete(1);
 	}
 
-	//@Test
-	void testFindById() {
-		OrgVol orgVol = repository.findById(6);
+@Test
+	void testFindById(int id) {
+		OrgVol orgVol = repository.findById(id);
 		System.out.println(orgVol);
 	}
 	
+<<<<<<< HEAD
 //	@Test
+=======
+	//@Test
+>>>>>>> daisy
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);

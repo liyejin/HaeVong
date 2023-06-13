@@ -11,6 +11,7 @@ public interface OrgVolService {
 
 	List<OrgVol> getList(int orgId, String status);
 
+
 	OrgVol getById(int id);
 	
 	List<OrgVol> getListByAddress(String address);
