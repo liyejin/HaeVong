@@ -78,6 +78,7 @@ class OrgVolRepositoryTest {
 		System.out.println(orgVol);
 	}
 
+	//@Test
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);
