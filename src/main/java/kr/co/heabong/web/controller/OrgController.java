@@ -152,6 +152,7 @@ public class OrgController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("orgId", orgId);
+		map.put("status", status);
 		model.addAttribute("map", map);
 		return "org/vol_list"; // templates/org/vol_list
 	}

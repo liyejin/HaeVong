@@ -21,13 +21,13 @@
   justify-content: center;
 
   /* box layout */
-  background-color: #ffed8f;
+  background-color:#f2f2f2;
   border-radius: 100px;
   width: 120px;
   height: 30px;
 }
 .vol_category > a.selected {
-  background-color: #f2f2f2;
+  background-color: #ffed8f;
 }
 
 /* <공고관리 게시글들>------------------------------------------------- */
@@ -94,6 +94,16 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
+  bottom: 0;
+  width: inherit;
+}
+.vol_list_btn_box_org{
+/*  position: absolute;*/
+  margin-top: 36px;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   bottom: 0;
   width: inherit;
 }
