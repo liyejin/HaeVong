@@ -77,11 +77,8 @@ class OrgVolRepositoryTest {
 		System.out.println(orgVol);
 	}
 	
-<<<<<<< HEAD
-//	@Test
-=======
+
 	//@Test
->>>>>>> daisy
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);
