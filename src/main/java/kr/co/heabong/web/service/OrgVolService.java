@@ -22,5 +22,7 @@ public interface OrgVolService {
 
 	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
 
+	List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword);
+
 
 }

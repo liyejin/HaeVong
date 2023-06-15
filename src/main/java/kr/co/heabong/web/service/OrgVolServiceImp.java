@@ -72,4 +72,10 @@ public class OrgVolServiceImp implements OrgVolService{
 		return list;
 	}
 
+	@Override
+	public List<OrgVol> getOrgVolListBySearch(int categoryId,String serchKeyword) {
+		List<OrgVol>list = repository.FindOrgVolListBySearch(categoryId,serchKeyword);
+		return list;
+	}
+
 }
