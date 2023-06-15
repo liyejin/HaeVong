@@ -15,7 +15,7 @@ import kr.co.heabong.web.entity.OrgVol;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class OrgVolRepositoryTest {
-	//@Autowired
+	@Autowired
 	private OrgVolRepository repository;
 	
 	//@Test
@@ -30,7 +30,7 @@ class OrgVolRepositoryTest {
 		System.out.println(list);
 	}
 
-	@Test
+	//@Test
 	void testSave() {
 		OrgVol orgVol = OrgVol.builder()
 				.title("test")
@@ -72,7 +72,7 @@ class OrgVolRepositoryTest {
 		repository.delete(1);
 	}
 
-	@Test
+	//@Test
 	void testFindById(int id) {
 		OrgVol orgVol = repository.findById(id);
 		System.out.println(orgVol);
@@ -84,9 +84,15 @@ class OrgVolRepositoryTest {
 		System.out.printf("size : %d\n", list.size());
 	}
 	
+	//@Test
+	void testFindOrgVolListByCategoryId() {
+		List<OrgVol> list = repository.FindOrgVolListByCategoryId(1);
+	}
+	
 	@Test
-	void testFindOrgVolListByCategoryId(int categoryId) {
-		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId);
+	void testOrgVolListBySearch() {
+		List<OrgVol>list = repository.FindOrgVolListBySearch(1,"네이버");
+		System.out.println(list);
 	}
 	
 	

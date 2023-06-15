@@ -19,4 +19,5 @@ public interface OrgVolRepository {
 	int delete(int id);
 	OrgVol findById(int id);
 	List<OrgVol> FindOrgVolListByCategoryId(int categoryId);
+	List<OrgVol> FindOrgVolListBySearch(int categoryId,String serchKeyword);
 }

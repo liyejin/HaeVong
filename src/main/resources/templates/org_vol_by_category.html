@@ -27,6 +27,17 @@
 			<a href="#" th:href="@{vol_wish_list(u=${map.userId})}" th:if="${map.category} == 'part'"><span>찜한 봉사</span></a>
 			<a href="#" class="selected" th:href="@{vol_wish_list(u=${map.userId})}" th:if="${map.category} == 'wish'"><span>찜한 봉사</span></a>-->
 		<!--</div>-->
+		
+		<div class="search_bar">
+		<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get">
+			
+			<input type="number" hidden placeholder="카테고리" name="cid" th:value="${cid}"/>
+			<input type="text" placeholder="찾으시는 봉사를 검색해주세요" name="sk"/>
+			<input type="submit">
+		</form>
+		</div>
+		<!--검색창-->
+		
 		<ul class="vol_list">
 			<li th:each="vol:${orgVolList}">
 				<img class="vol_list_img" src="/img/org/org_vol_list_img.png" alt="모집공고이미지" />

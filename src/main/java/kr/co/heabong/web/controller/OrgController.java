@@ -53,6 +53,7 @@ private OrgVolService volService;
 
 		return "org/info";
 	}
+	
 	@RequestMapping("signin")
 	public String getSignIn(Model model) {
 
@@ -80,6 +81,7 @@ private OrgVolService volService;
 
 		return "org/new_pwd";
 	}
+	
 	@RequestMapping("pwd_change_auth")
 	public String getPwd_change_auth(Model model) {
 
