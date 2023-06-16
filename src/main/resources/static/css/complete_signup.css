@@ -1,6 +1,36 @@
 body{
 	display: flex;
+
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+}
+.main{
+	margin : 347px 64px 347px 64px;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+.title{
+	font-size: 20px;
+} 
+
+.btn_span{
+	width:300px;
+	height:50px;
+	display: flex;
 	
+	background-color: #000000;
+	align-items: center;
+	justify-content: center;
+}
+.btn_span>span{
+	font-size:24px; 
+	font-weight: bold; 
+	color: #FFFFFF; 
 }

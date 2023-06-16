@@ -44,7 +44,8 @@ public class OrgVolServiceImp implements OrgVolService{
 	@Override
 	public OrgVol getById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		OrgVol orgVol = repository.findById(id);
+		return orgVol;
 	}
 
 	@Override

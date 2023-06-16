@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +32,7 @@ import kr.co.heabong.web.service.PostService;
 import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.VolCategoryService;
+import kr.co.heabong.web.security.config.MyUserDetails;
 
 
 @Controller
@@ -43,7 +48,8 @@ public class DefaultController {
 	PostPhotoService postPhotoService;
 	@Autowired
 	OrgService orgService;
-	
+	@Autowired
+	MyUserDetails myUserDetails ;
 //	@Autowired
 //	PostService postService;
 	
@@ -71,8 +77,19 @@ public class DefaultController {
 
 	// 메인
 	@GetMapping("/")
-	public String getIndex(Model model) {
+	public String getIndex(Model model, @AuthenticationPrincipal MyUserDetails user) {
 //		model.addAttribute();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                UserDetails userDetails = (UserDetails) principal;
+                System.out.println("현재 로그인한 사용자: " + userDetails.getUsername());
+            }
+        }
+        
+        System.out.println("GET / 유저 메인 페이지로 이동");
 		return "index";
 	}
 
@@ -87,20 +104,11 @@ public class DefaultController {
 	// 개인 로그인
 	@GetMapping("user_signin")
 	public String getSignIn() {
-
+		
 		return "user_signin";
 	}
 
-	@PostMapping("user_signin")
-	public String setSignIn(String uid, String pwd) {
-		System.out.println(uid);
-		System.out.println(pwd);
-
-		if (!userService.isValid(uid, pwd))
-			return "redirect:/user_signin?error";
-		
-		return "redirect:/";
-	}
+	
 
 	@GetMapping("user_signup")
 	public String getUserSignUp(Model model) {
@@ -108,12 +116,7 @@ public class DefaultController {
 		return "user_signup";
 	}
 
-	@PostMapping("complete_user_signup")
-	public String setUserSignUp(User user, Model model) {
-		// model.addAttribute();
-
-		return "complete_user_signup" + user.toString();
-	}
+	
 
 	// 기관 로그인
 	@GetMapping("org_signin")
@@ -198,4 +201,14 @@ public class DefaultController {
 		return "mypage";
 	}
 
+	
+	
+	@GetMapping("complete_signup")
+	public String setUserSignUp(User user, Model model) {
+		// model.addAttribute();
+
+		return "complete_signup";
+	}
+	
+	
 }
