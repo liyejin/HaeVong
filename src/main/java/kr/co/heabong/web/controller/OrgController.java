@@ -51,6 +51,17 @@ public class OrgController {
 	@Autowired
 	private ApplyOrgVolService applyOrgVolService;
 	
+	@Autowired
+	private DistrictService districtService;
+	
+	@Autowired
+	private MetroService metroService;
+
+	@Autowired
+	private VolCategoryService volCategoryService;
+	
+	
+	
 	@GetMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 		
