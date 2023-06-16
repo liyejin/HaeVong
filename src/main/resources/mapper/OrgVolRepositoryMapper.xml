@@ -42,7 +42,7 @@
 		</set>
 		WHERE id = #{id} </update>
 	<delete id="delete">
-		delete from org_vol where id=#{id}
+		delete from org_vol where id=${id}
 	</delete>
 	<insert id="save" parameterType="kr.co.heabong.web.entity.OrgVol" useGeneratedKeys="true"
     keyProperty="id">

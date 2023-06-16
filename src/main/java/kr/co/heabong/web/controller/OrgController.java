@@ -3,6 +3,7 @@ package kr.co.heabong.web.controller;
 import java.util.HashMap;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -184,11 +185,16 @@ public class OrgController {
 	public String getVol_list(@RequestParam(name = "s", required = false) String status,
 			@RequestParam(name = "o", required = true) int orgId, Model model) {
 		List<OrgVol> list = volService.getList(orgId, status);
+//		for (OrgVol orgVol : list) {
+//			DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//			orgVol.getRegdate().format(dateTimeFormatter);
+//		}
 		if (list.size() == 0)
 			return "org/vol_list_empty";
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("orgId", orgId);
+		map.put("status", status);
 		model.addAttribute("map", map);
 		return "org/vol_list"; // templates/org/vol_list
 	}
