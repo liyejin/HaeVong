@@ -36,7 +36,6 @@ class OrgVolRepositoryTest {
 				.title("test")
 				.date("2023-06-22")
 				.capacity(12)
-				.location("location")
 				.content("content")
 				.roadAddress("road_address")
 				.address("address")
@@ -55,7 +54,6 @@ class OrgVolRepositoryTest {
 				.title("test")
 				.date("2023-06-22")
 				.capacity(12)
-				.location("location")
 				.content("content")
 				.roadAddress("road_address")
 				.address("address")
@@ -77,8 +75,7 @@ class OrgVolRepositoryTest {
 		OrgVol orgVol = repository.findById(id);
 		System.out.println(orgVol);
 	}
-
-	//@Test
+	@Test
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);

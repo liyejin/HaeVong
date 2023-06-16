@@ -18,7 +18,7 @@ class VolCategoryRepositoryTest {
 	@Autowired
 	private VolCategoryRepository repository;
 	
-	//@Test
+	@Test
 	void testFindAll() {
 		List<VolCategory> list = repository.findAll();
 		System.out.println(list);

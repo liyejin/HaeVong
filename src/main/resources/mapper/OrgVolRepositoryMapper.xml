@@ -32,7 +32,6 @@
 			<if test="regdate != null">regdate = #{regdate},</if>
 			<if test="date != null">date = #{date},</if>
 			<if test="capacity != null">capacity = #{capacity},</if>
-			<if test="location != null">location = #{location},</if>
 			<if test="content != null">content = #{content},</if>
 			<if test="roadAddress != null">road_address = #{roadAddress},</if>
 			<if test="address != null">address = #{address},</if>
@@ -47,10 +46,10 @@
 	</delete>
 	<insert id="save" parameterType="kr.co.heabong.web.entity.OrgVol" useGeneratedKeys="true"
     keyProperty="id">
-		insert into org_vol (title, date, capacity, location, content,
+		insert into org_vol (title, date, capacity,content,
 		road_address, address, org_id, district_id, metropol_id,
 		vol_category_id)
-		values (#{title}, #{date}, #{capacity}, #{location},
+		values (#{title}, #{date}, #{capacity},
 		#{content}, #{roadAddress}, #{address}, #{orgId}, #{districtId},
 		#{metropolId}, #{volCategoryId})
 	</insert>

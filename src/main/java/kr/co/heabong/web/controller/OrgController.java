@@ -6,9 +6,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +27,13 @@ import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.UserApplyView;
+import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.service.ApplyOrgVolService;
+import kr.co.heabong.web.service.DistrictService;
+import kr.co.heabong.web.service.MetroService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
+import kr.co.heabong.web.service.VolCategoryService;
 
 @Controller
 @RequestMapping("org")
@@ -40,8 +47,17 @@ public class OrgController {
 
 	@Autowired
 	private ApplyOrgVolService applyOrgVolService;
+	
+	@Autowired
+	private DistrictService districtService;
+	
+	@Autowired
+	private MetroService metroService;
 
-	@RequestMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
+	@Autowired
+	private VolCategoryService volCategoryService;
+	
+	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 
 		Org org = orgService.getById(1);
@@ -115,9 +131,11 @@ public class OrgController {
 	@RequestMapping("recruit_vol_list")
 	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
 
+		OrgVol orgVol = volService.getById(orgVolID);
 		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
 		model.addAttribute("userList", userList);
-
+		model.addAttribute("orgVol", orgVol);
+		
 		return "org/recruit_vol_list";
 	}
 
@@ -135,8 +153,10 @@ public class OrgController {
 
 	@RequestMapping("vol_edit")
 	public String getVol_edit(Model model) {
+		List<VolCategory> cateList = volCategoryService.getCateList();
+		model.addAttribute("cateList",cateList);
 
-		return "org/vol_edit";
+		return "org/vol_post_edit";
 	}
 
 	@RequestMapping("vol_list_empty")
@@ -165,8 +185,10 @@ public class OrgController {
 	}
 
 	@GetMapping("vol_post_detail")
-	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgId) {
-		OrgVol orgVol = volService.getById(orgId);
+	public String getVol_post_detail(Model model,
+			@RequestParam(name="id"	)int orgVolId
+			) {
+		OrgVol orgVol = volService.getById(orgVolId);
 		Org org = orgService.getById(orgVol.getOrgId());
 		model.addAttribute("orgVol", orgVol);
 		model.addAttribute("org", org);
@@ -204,23 +226,22 @@ public class OrgController {
 
 	@GetMapping("vol_write")
 	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
+		List<VolCategory> cateList = volCategoryService.getCateList();
+		model.addAttribute("cateList",cateList);
 		model.addAttribute("orgId",orgId);
 		return "org/vol_post_write";
 	}
-
-	@PostMapping("vol_write")
+	
+	@PostMapping("vol_write") // 정보를 받기 
 	public String postMethod(OrgVol orgVol) {
-		System.out.println(orgVol.getId());
-		System.out.println(orgVol.getCapacity());
-		int save = volService.save(orgVol);
-		System.out.printf("save: %d\n", save);
-		return "org/vol_post_write";
+		
+		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
+		int districtId= districtService.getById(orgVol.getRoadAddress().split(" ")[1],metropolId);
+	
+		   int save = volService.save(orgVol);
+		   System.out.println(save);
+		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
 	}
 
-	@RequestMapping("vol_post_detail")
-	public String vol_post_detail(@RequestParam("id") int orgVolID, Model model) {
-
-		return "org/vol_post_detail";
-	}
 }
