@@ -21,6 +21,18 @@ public class DistrictServiceImp implements DistrictService{
 		List<District> list = repository.findAll();
 		return list;
 	}
+
+	@Override
+	public int getById(String name,int metropolId) {
+		int districtId = repository.findByName(name,metropolId);
+		return districtId;
+	}
+
+	@Override
+	public int getById(String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	 
 	
 }

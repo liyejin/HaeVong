@@ -24,12 +24,11 @@ public class OrgVol {
 	private String title;
 	private LocalDateTime regdate;
 	private String date;
-	private int capacity;
-	private String location;
+	private Integer capacity;
 	private String content;
 	private String roadAddress;
 	private String address;
-	private int orgId;
+	private Integer orgId;
 	private int districtId;
 	private int metropolId;
 	private int volCategoryId;

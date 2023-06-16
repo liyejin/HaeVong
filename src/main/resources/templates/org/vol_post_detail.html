@@ -53,9 +53,9 @@
         <section class="org_vol_recruit_title_box">
           <ul>
             <div>
-              <li><span>서울/ 마포구</li>
-              <li th:text="${orgVol.title}">행복보육원 봉사자 구인합니다.</li>
-              <li ><span th:text="${orgVol.orgId}">(주)행복보육원</span> │ <span>1</span>시간전</li>
+              <li><span th:text="${orgVol.roadAddress}">도로명주소</li>
+              <li th:text="${orgVol.title}">게시글제목</li>
+              <li ><span th:text="${org.name}">기관명</span> │ <span th:text="${dDay}">남은시간</span>시간전</li>
             </div>
           </ul>
         </section>
@@ -71,7 +71,7 @@
           </ul>
           <ul class="ul_2">
             <li>봉사장소</li>
-            <li th:text=${orgVol.location}>행복보육원</li>
+            <li th:text=${orgVol.address}>행복보육원</li>
           </ul>
           <ul class="ul_3">
             <li>마감일</li>
@@ -137,7 +137,7 @@
       <div class="vol_post_warn">
         <a href=""><p>봉사 참여시 유의사항</p></a>
       </div>
-
+ <input type="submit" class="btn_single" value="수정하기"></input>
     </main>
   </body>
 </html>
