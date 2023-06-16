@@ -20,4 +20,9 @@ public interface OrgVolService {
 
 	int save(OrgVol orgVol);
 
+	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
+
+	List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword);
+
+
 }

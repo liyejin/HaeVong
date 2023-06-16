@@ -35,7 +35,7 @@
           </p>
           <p>
             <span>오늘로 함께한지 </span><span class="d_day_cnt1"> </span
-            ><span>일💎</span>
+            ><span> 일</span>
           </p>
         </div>
         <div class="profile_pic">
@@ -45,36 +45,36 @@
       </section>
 
       <section class="mypage_guide">
-        <a><img src="../../img/org/org_guide.png" alt="" /></a>
+        <a><img src="/img/org/org_guide.png" alt="" /></a>
       </section>
 
       <section class="mypageCategory">
         <ul>
           <li>
-            <a href="#">
-              <div>
-                <span>📝<br /></span>
-                <span>신청관리</span>
-              </div>
-            </a>
-            <a href="#">
-              <div>
-                <span>❤️<br /></span>
-                <span>찜한봉사</span>
-              </div>
-            </a>
-            <a href="#">
-              <div>
-                <span>📣<br /></span>
-                <span>고객지원</span>
-              </div>
-            </a>
-            <a href="#">
-              <div>
-                <span>⚙️<br /></span>
-                <span>정보수정</span>
-              </div>
-            </a>
+          <a href="login">
+			<div>
+              <span>📝<br></span>
+              <span>신청관리</span>
+            </div>
+          </a>
+          <a href="login">
+            <div>
+              <span>❤️<br></span>
+              <span>찜한봉사</span>
+            </div>
+          </a>
+          <a href="login">
+			<div>
+              <span>📣<br></span>
+              <span>고객지원</span>
+            </div>
+          </a>
+          <a href="login">
+			<div>
+              <span>⚙️<br></span>
+              <span>정보수정</span>
+            </div>
+          </a>
           </li>
         </ul>
       </section>
@@ -82,6 +82,7 @@
       <section class="my_post">
         <div class="mypage_mypost_title" id="imageContainer">
           <span>나의 게시글 > </span>
+          <img src="/img/icon/icon_plus.png">
         </div>
         <div class="mypage_mypost_img">
           <a th:href="@{${p.url}}" th:each="p:${mypic}"
@@ -91,11 +92,10 @@
       </section>
 
       <section class="cs">
-        <div>
-          <span>김범수님이 해봉과 함께한지 100일<br /></span>
-          <span>김범수님이 해봉을 통해 함께한 봉사 13회</span>
-        </div>
+        <span>김범수님이 해봉과 함께한지💛 일<br></span>
+        <span>김범수님이 해봉을 통해 함께한 봉사🤝 회</span>  
       </section>
+      
     </main>
     <nav class="nav_list" th:replace="~{inc/nav}"></nav>
   </body>

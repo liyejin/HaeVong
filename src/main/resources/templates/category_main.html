@@ -17,12 +17,13 @@
       </div>
     </header>
     <main class="main">
+		
       <div class="user_category_banner_main"></div>
       <!-- 상단 배너 -->
       <div class="user_category_box">
         <ul class="user_category_list">
           <li class="user_category_list_item" th:each="cateList:${cateList}">
-            <a href="@{./list(c=${cateList.id})}">
+            <a th:href="@{/org_vol_by_category(cid=${cateList.id})}">
               <div class="user_category_list_item_icon">
                 <span th:text="${cateList.id}">봉사카테고리이미지</span>
               </div>

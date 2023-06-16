@@ -1,4 +1,5 @@
 package kr.co.heabong.web.controller;
+
 import java.util.HashMap;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,13 +38,13 @@ import kr.co.heabong.web.service.VolCategoryService;
 @Controller
 @RequestMapping("org")
 public class OrgController {
-	
+
 	@Autowired
-private OrgVolService volService;
+	private OrgVolService volService;
 
 	@Autowired
 	private OrgService orgService;
-	
+
 	@Autowired
 	private ApplyOrgVolService applyOrgVolService;
 	
@@ -51,77 +54,87 @@ private OrgVolService volService;
 	@Autowired
 	private MetroService metroService;
 
+<<<<<<< HEAD
 	@Autowired
 	private VolCategoryService volCategoryService;
 	
 	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
+=======
+	@RequestMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
+>>>>>>> 4bdeababa88d8a4081f64e209bfa9dd7abc12891
 	public String getMain(Model model) {
-		
+
 		Org org = orgService.getById(1);
-		model.addAttribute("org",org); // "뷰" ,컨트롤러
+		model.addAttribute("org", org); // "뷰" ,컨트롤러
 
 		return "org/main";
 	}
-	
+
 	@RequestMapping("info")
 	public String getInfo(Model model) {
 
 		return "org/info";
 	}
+
+	
 	@RequestMapping("signin")
 	public String getSignIn(Model model) {
 
 		return "org_signin";
 	}
-	
+
 	@GetMapping("signup")
 	public String getSignUp(Model model) {
 
 		return "org_signup";
 	}
-	
+
 	@RequestMapping("find_pwd")
 	public String getFind_pwd(Model model) {
 
 		return "org/find_pwd";
 	}
+
 	@RequestMapping("membership_withdrawal")
 	public String getMembership_withdrawal(Model model) {
 
 		return "org/membership_withdrawal";
 	}
+
 	@RequestMapping("new_pwd")
 	public String getNew_pwd(Model model) {
 
 		return "org/new_pwd";
 	}
+
+	
 	@RequestMapping("pwd_change_auth")
 	public String getPwd_change_auth(Model model) {
 
 		return "org/pwd_change_auth";
 	}
-	
+
 	@RequestMapping("pwd_chang_insert")
 	public String getPwd_chang_insert(Model model) {
 
 		return "org/pwd_chang_insert";
 	}
-	
-	
+
 	@RequestMapping("recruit_detail")
 	public String getRecruit_detail(Model model) {
 
 		return "org/recruit_detail";
 	}
-	
+
 	@RequestMapping("recruit_on_list")
 	public String getRecruit_on_list(Model model) {
 
 		return "org/recruit_on_list";
 	}
-	
+
 	@RequestMapping("recruit_vol_list")
 	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
+<<<<<<< HEAD
 	
 		OrgVol orgVol = volService.getById(orgVolID);
 		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
@@ -129,21 +142,27 @@ private OrgVolService volService;
 		model.addAttribute("orgVol", orgVol);
 		
 		
+=======
+
+		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
+		model.addAttribute("userList", userList);
+
+>>>>>>> 4bdeababa88d8a4081f64e209bfa9dd7abc12891
 		return "org/recruit_vol_list";
 	}
-	
-	@RequestMapping("recruit_write")
-	public String getRecruit_write(Model model) {
 
-		return "org/recruit_write";
-	}
-	
+//	@RequestMapping("recruit_write")
+//	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
+//		model.addAttribute(orgId);
+//		return "org/recruit_write";
+//	}
+
 	@RequestMapping("signup")
 	public String getSignup(Model model) {
 
 		return "org/signup";
 	}
-	
+
 	@RequestMapping("vol_edit")
 	public String getVol_edit(Model model) {
 		List<VolCategory> cateList = volCategoryService.getCateList();
@@ -151,78 +170,77 @@ private OrgVolService volService;
 
 		return "org/vol_post_edit";
 	}
-	
-	
-	
+
 	@RequestMapping("vol_list_empty")
 	public String getVol_empty_list(Model model) {
 
 		return "org/vol_list_empty";
 	}
-	
-	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
-	public String getVol_list(
-			@RequestParam(name="s", required=false)String status,
-			@RequestParam(name="o", required = true)int orgId,
-			Model model) {
-		List<OrgVol> list = volService.getList(orgId,status);
-		if (list.size()==0)
+
+	@RequestMapping("vol_list") // org/vol_list // 기관 봉사 리스트
+	public String getVol_list(@RequestParam(name = "s", required = false) String status,
+			@RequestParam(name = "o", required = true) int orgId, Model model) {
+		List<OrgVol> list = volService.getList(orgId, status);
+		if (list.size() == 0)
 			return "org/vol_list_empty";
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("orgId", orgId);
 		model.addAttribute("map", map);
-		return "org/vol_list";  //templates/org/vol_list
+		return "org/vol_list"; // templates/org/vol_list
 	}
-	
+
 	@RequestMapping("vol_recruit")
 	public String getVol_recruit(Model model) {
 
 		return "org/vol_recruit";
 	}
 
-
 	@GetMapping("vol_post_detail")
+<<<<<<< HEAD
 	public String getVol_post_detail(Model model,
 			@RequestParam(name="id"	)int orgVolId
 			) {
 		OrgVol orgVol = volService.getById(orgVolId);
+=======
+	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgId) {
+		OrgVol orgVol = volService.getById(orgId);
+>>>>>>> 4bdeababa88d8a4081f64e209bfa9dd7abc12891
 		Org org = orgService.getById(orgVol.getOrgId());
 		model.addAttribute("orgVol", orgVol);
 		model.addAttribute("org", org);
 
-		
-		//현재 시간
-	
-        // 시간 포맷 지정
-  
-        
-        // 형식에 맞게 시간 출력
+		// 현재 시간
+
+		// 시간 포맷 지정
+
+		// 형식에 맞게 시간 출력
 //        String formattedTime = currentTime.format(formatter);
 //        System.out.println(orgVol.getDate());
 
 //        LocalDateTime dateTime = LocalDateTime.parse(orgVol.getDate(), formatter);
 //      System.out.println(dateTime);
-        
-//        LocalDate dateDate = dateTime.toLocalDate();
-        
-        String dateString = orgVol.getDate();
-        String pattern = "yyyy-MM-dd";  
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-        LocalDate date = LocalDate.parse(dateString, formatter);
 
-    	LocalDateTime currentTime = LocalDateTime.now();
-    	LocalDate nowDate = currentTime.toLocalDate();
-        
-        Period period = Period.between(nowDate, date);
-        
-        int restDate = period.getDays()+(period.getMonths()*30);
+//        LocalDate dateDate = dateTime.toLocalDate();
+
+		String dateString = orgVol.getDate();
+		String pattern = "yyyy-MM-dd";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		LocalDate date = LocalDate.parse(dateString, formatter);
+
+		LocalDateTime currentTime = LocalDateTime.now();
+		LocalDate nowDate = currentTime.toLocalDate();
+
+		Period period = Period.between(nowDate, date);
+
+		int restDate = period.getDays() + (period.getMonths() * 30);
 //        System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
 
-        model.addAttribute("dDay",restDate);
-		
+		model.addAttribute("dDay", restDate);
+
 		return "org/vol_post_detail";
 	}
+<<<<<<< HEAD
 	
 	@GetMapping("vol_write")
 	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
@@ -245,6 +263,29 @@ private OrgVolService volService;
 		   System.out.println(save);
 		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
+=======
+
+	@GetMapping("vol_write")
+	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
+		model.addAttribute("orgId",orgId);
+		return "org/vol_post_write";
+	}
+
+	@PostMapping("vol_write")
+	public String postMethod(OrgVol orgVol) {
+		System.out.println(orgVol.getId());
+		System.out.println(orgVol.getCapacity());
+		int save = volService.save(orgVol);
+		System.out.printf("save: %d\n", save);
+		return "org/vol_post_write";
+
+	}
+
+	@RequestMapping("vol_post_detail")
+	public String vol_post_detail(@RequestParam("id") int orgVolID, Model model) {
+
+		return "org/vol_post_detail";
+>>>>>>> 4bdeababa88d8a4081f64e209bfa9dd7abc12891
 	}
 
 }

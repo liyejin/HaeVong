@@ -1,8 +1,6 @@
 package kr.co.heabong.web.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,15 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
-import kr.co.heabong.web.entity.Post;
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
-import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.PostPhotoService;
-import kr.co.heabong.web.service.PostService;
 import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.VolCategoryService;
@@ -38,7 +33,9 @@ public class DefaultController {
 	@Autowired
 	UserService userService;
 	@Autowired
-	UserVolService volService;
+	UserVolService userVolService;
+	@Autowired
+	OrgVolService orgVolService;
 	@Autowired
 	PostPhotoService postPhotoService;
 	@Autowired
@@ -163,7 +160,7 @@ public class DefaultController {
 	}
 
 	// 카테고리 목록 페이지
-	@GetMapping("vol_category")
+	@GetMapping("category_main")
 	public String getVol_category(
 			@RequestParam(name="s", required=false)String status,
 			@RequestParam(name="v", required = true)int volCategory,
@@ -174,7 +171,7 @@ public class DefaultController {
 		//게시글
 		List<OrgVol> mainCateList  = volCategoryService.getMainCategoryList();
 		model.addAttribute("mainCateList",mainCateList);
-		return "vol_category";
+		return "category_main";
 	}
 	
 	
@@ -193,9 +190,42 @@ public class DefaultController {
 		List<PostPhoto>myPostPhoto = postPhotoService.getMyPostPhoto();
 		model.addAttribute("mypic",myPostPhoto);
 		
-		
-		
 		return "mypage";
 	}
+	
+	
+	@GetMapping("vol_list")
+	public void getUserVolList(
+			@RequestParam(name="id",required = false) int id,
+			Model model
+			) {
+		model.addAttribute("u",model);
+		
+	}
+	
+	
+//	분야별 봉사 검색 기능
+	@GetMapping("orgvol")
+	public String getOrgVolListByCategory(
+			@RequestParam(name="cid",required = true) int categoryId,
+			@RequestParam(name="sk",required = false) String serchKeyword,
+			Model model) {
+		
+		List<OrgVol> orgVolList = null;
+		
+		if(serchKeyword==null)
+			orgVolList = orgVolService.getOrgVolListByCategoryId(categoryId);
+		else if(serchKeyword!=null)
+			orgVolList = orgVolService.getOrgVolListBySearch(categoryId,serchKeyword);
+	
+		model.addAttribute("orgVolList",orgVolList);
+		model.addAttribute("cid", categoryId);
+		
+		return "org_vol_by_category";
+	}
+	
+	
+	
+	
 
 }

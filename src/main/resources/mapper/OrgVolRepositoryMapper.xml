@@ -52,9 +52,20 @@
 		values (#{title}, #{date}, #{capacity},
 		#{content}, #{roadAddress}, #{address}, #{orgId}, #{districtId},
 		#{metropolId}, #{volCategoryId})
-		
 	</insert>
 	
+	<!--카테고리 메인 페이지-->
+	<select id="FindOrgVolListByCategoryId">
+		select * from org_vol where vol_category_id = #{categoryId}
+	</select>
+	
+	<!--카테고리 페이지 검색창-->
+	<select id="FindOrgVolListBySearch">
+		SELECT * 
+		FROM org_vol 
+		WHERE vol_category_id = ${categoryId}
+		AND (title LIKE '%${serchKeyword}%' OR content LIKE '%${serchKeyword}%');
+	</select>
 
 </mapper>
 	
