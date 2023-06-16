@@ -62,7 +62,8 @@ public class OrgVolServiceImp implements OrgVolService{
 	@Override
 	public OrgVol get() {
 		// TODO Auto-generated method stub
-		return null;
+		OrgVol orgVol = repository.findById(id);
+		return orgVol;
 	}
 
 

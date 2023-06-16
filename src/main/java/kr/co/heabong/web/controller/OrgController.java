@@ -13,6 +13,9 @@ import java.time.Period;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,22 +51,22 @@ public class OrgController {
 	@Autowired
 	private ApplyOrgVolService applyOrgVolService;
 	
-	@Autowired
-	private DistrictService districtService;
-	
-	@Autowired
-	private MetroService metroService;
-
-	@Autowired
-	private VolCategoryService volCategoryService;
-	
-
-	@RequestMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
+	@GetMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
-
+		
 		Org org = orgService.getById(1);
-		model.addAttribute("org", org); // "뷰" ,컨트롤러
+		model.addAttribute("org",org); // "뷰" ,컨트롤러
 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+
+            if (principal instanceof UserDetails) {
+                UserDetails userDetails = (UserDetails) principal;
+                System.out.println("현재 로그인한 사용자: " + userDetails.getUsername());
+            }
+        }
+        System.out.println("GET / 기관 메인 페이지로 이동");
 		return "org/main";
 	}
 
