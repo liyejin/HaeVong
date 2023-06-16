@@ -59,12 +59,7 @@ public class OrgVolServiceImp implements OrgVolService{
 	}
 
 
-	@Override
-	public OrgVol get() {
-		// TODO Auto-generated method stub
-		OrgVol orgVol = repository.findById(id);
-		return orgVol;
-	}
+	
 
 
 	@Override
@@ -77,6 +72,12 @@ public class OrgVolServiceImp implements OrgVolService{
 	public List<OrgVol> getOrgVolListBySearch(int categoryId,String serchKeyword) {
 		List<OrgVol>list = repository.FindOrgVolListBySearch(categoryId,serchKeyword);
 		return list;
+	}
+
+	@Override
+	public OrgVol get() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
