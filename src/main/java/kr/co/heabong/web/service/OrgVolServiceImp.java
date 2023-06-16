@@ -72,4 +72,10 @@ public class OrgVolServiceImp implements OrgVolService{
 		return list;
 	}
 
+	@Override
+	public int delete(int id) {
+		int delete = repository.delete(id);
+		return delete;
+	}
+
 }

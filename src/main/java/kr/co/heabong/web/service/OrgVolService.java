@@ -21,6 +21,7 @@ public interface OrgVolService {
 	int save(OrgVol orgVol);
 
 	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
-
+	
+	int delete(int id);
 
 }

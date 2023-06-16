@@ -15,7 +15,7 @@ import kr.co.heabong.web.entity.OrgVol;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class OrgVolRepositoryTest {
-	//@Autowired
+	@Autowired
 	private OrgVolRepository repository;
 	
 	//@Test
@@ -30,7 +30,7 @@ class OrgVolRepositoryTest {
 		System.out.println(list);
 	}
 
-	@Test
+	//@Test
 	void testSave() {
 		OrgVol orgVol = OrgVol.builder()
 				.title("test")
@@ -55,7 +55,6 @@ class OrgVolRepositoryTest {
 				.title("test")
 				.date("2023-06-22")
 				.capacity(12)
-				.location("location")
 				.content("content")
 				.roadAddress("road_address")
 				.address("address")
@@ -69,10 +68,23 @@ class OrgVolRepositoryTest {
 
 	//@Test
 	void testDelete() {
-		repository.delete(1);
+		OrgVol orgVol = OrgVol.builder()
+				.id(2)
+				.title("test")
+				.date("2023-06-22")
+				.capacity(12)
+				.location("location")
+				.content("content")
+				.roadAddress("road_address")
+				.address("address")
+				.orgId(1)
+				.districtId(1)
+				.metropolId(1)
+				.volCategoryId(1)
+				.build();
 	}
 
-	@Test
+	//@Test
 	void testFindById(int id) {
 		OrgVol orgVol = repository.findById(id);
 		System.out.println(orgVol);
@@ -85,10 +97,14 @@ class OrgVolRepositoryTest {
 		System.out.printf("size : %d\n", list.size());
 	}
 	
-	@Test
+	//@Test
 	void testFindOrgVolListByCategoryId(int categoryId) {
 		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId);
 	}
 	
+	@Test
+	void testDelete1() {
+		repository.delete(65);
+	}
 	
 }

@@ -16,7 +16,7 @@ public interface OrgVolRepository {
 	List<OrgVol> findByAddress(String address);
 	int save(OrgVol orgVol);
 	int update(OrgVol orgVol);
-	int delete(int id);
 	OrgVol findById(int id);
 	List<OrgVol> FindOrgVolListByCategoryId(int categoryId);
+	int delete(int id);
 }

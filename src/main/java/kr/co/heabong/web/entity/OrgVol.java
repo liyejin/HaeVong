@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class OrgVol {
 	
 
-	private int id;
+	private Integer id;
 	
 	private String title;
 	private LocalDateTime regdate;
