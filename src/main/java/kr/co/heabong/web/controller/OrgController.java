@@ -57,7 +57,8 @@ public class OrgController {
 	@Autowired
 	private VolCategoryService volCategoryService;
 	
-	@RequestMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
+
+	@RequestMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
 
 		Org org = orgService.getById(1);
@@ -185,10 +186,8 @@ public class OrgController {
 	}
 
 	@GetMapping("vol_post_detail")
-	public String getVol_post_detail(Model model,
-			@RequestParam(name="id"	)int orgVolId
-			) {
-		OrgVol orgVol = volService.getById(orgVolId);
+	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgId) {
+		OrgVol orgVol = volService.getById(orgId);
 		Org org = orgService.getById(orgVol.getOrgId());
 		model.addAttribute("orgVol", orgVol);
 		model.addAttribute("org", org);
@@ -243,5 +242,5 @@ public class OrgController {
 		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
 	}
-
+	
 }
