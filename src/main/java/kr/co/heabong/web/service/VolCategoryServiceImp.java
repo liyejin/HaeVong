@@ -37,6 +37,13 @@ public class VolCategoryServiceImp implements VolCategoryService{
 		List<OrgVol> list = repository.findByCategoryMainPost(4);		
 		return list;
 	}
+
+	@Override
+	public VolCategory getById(int id) {
+		// TODO Auto-generated method stub
+		VolCategory orgVolCategory = repository.findById(id);
+		return orgVolCategory;
+	}
 	
 //	@Override
 //	public int getCateId() {

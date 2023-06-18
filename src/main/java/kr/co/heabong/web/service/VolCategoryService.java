@@ -9,4 +9,5 @@ public interface VolCategoryService {
 	List<VolCategory> getList();
 	List<VolCategory> getCateList();
 	List<OrgVol> getMainCategoryList();
+	VolCategory getById(int id);
 }

@@ -164,9 +164,17 @@ public class OrgController {
 	}
 
 	@RequestMapping("vol_edit")
-	public String getVol_edit(Model model) {
+	public String getVol_edit(@RequestParam(name="id", required=true) int volId,
+			Model model) {
+		OrgVol orgVol = volService.getById(volId);
+		int volCategoryId = orgVol.getVolCategoryId();
+		VolCategory volCategory = volCategoryService.getById(volCategoryId);
+		String volCategoryName = volCategory.getName();
 		List<VolCategory> cateList = volCategoryService.getCateList();
 		model.addAttribute("cateList", cateList);
+		model.addAttribute("vol", orgVol);
+		model.addAttribute("volCategory",volCategory);
+		
 
 		return "org/vol_post_edit";
 	}

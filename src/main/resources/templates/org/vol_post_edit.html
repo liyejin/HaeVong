@@ -31,13 +31,13 @@
 
         <form action="vol_write" class="org_vol_form"  method="post">
 	<select class="category" name="volCategoryId">
-		<option value="선택안함">카테고리</option>
-		  <option th:each="c : ${cateList}"  th:value="${c.id}" th:text="${c.name}">카테고리</option>
+		<option value="선택안함"  th:text="${volCategory.name}">카테고리</option>
+		  <option th:each="c : ${cateList}" th:text="${c.name}">카테고리</option>
 	</select>
-                <input type="text" class="title" id="title" placeholder="글 제목"   name = "title">
-                <input type="text" class="number" placeholder="모집 인원"  name = "capacity">
-                <input type="text" class="location" placeholder="봉사 장소" onclick="daumMap(this)" name = "roadAddress" >
-                <input type="text" class="address" placeholder="상세주소"  name = "address" >
+                <input type="text" class="title" id="title" placeholder="글 제목"   name = "title" th:value="${vol.title}">
+                <input type="text" class="number" placeholder="모집 인원"  name = "capacity" th:value="${vol.capacity}">
+                <input type="text" class="location" placeholder="봉사 장소" onclick="daumMap(this)" name = "roadAddress" th:value="${vol.roadAddress}">
+                <input type="text" class="address" placeholder="상세주소"  name = "address" th:value="${vol.address}" >
 <script>
   function daumMap(inputField){ new daum.Postcode({
         oncomplete: function(data) {
@@ -48,13 +48,13 @@
     }
 </script>
         <!--        <input type="text" class="due_date" placeholder="마감일"  name = "date"> 봉사일자 -3일 때리기 -->
-                <input type="date" class="date" placeholder="봉사 일자"  name = "date">
+                <input type="date" class="date" placeholder="봉사 일자"  name = "date" th:value="${vol.date}">
 
         <textarea placeholder="
         봉사 모집 요강
         봉사 모집글에 관한 글을 작성해주세요.
         타인에 대한 무분별한 비방이나 욕설은 
-        경고없이 삭제될 수 있습니다." class="org_vol_post_content_input" style="resize: none;" name="content" autofocus></textarea>
+        경고없이 삭제될 수 있습니다." class="org_vol_post_content_input" style="resize: none;" name="content" th:text="${vol.content}" autofocus></textarea>
         <input type="submit" class="btn_single" value="수정완료"></input>
      
     </form>

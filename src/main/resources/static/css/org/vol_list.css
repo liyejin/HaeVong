@@ -44,9 +44,9 @@ body {
 
 .vol_list>li {
 	/* Auto layout */
-
+	background-color: #ffffff;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 
 	margin-bottom: 20px;
@@ -54,26 +54,30 @@ body {
 	width: 410px;
 	height: 174px;
 
-	background: #ECECEC;
+	/*background: #ECECEC;*/
 	border-radius: 30px;
 
 	position: relative;
 }
 
 .vol_list_img {
+	margin-left: 20px;
 	width: 130px;
 	height: 130px;
 	border-radius: 10px;
+	align-self: center;
 }
 
 .vol_list_info {
-	/* display: flex;
-  flex-direction: column; */
+	display: flex;
+	flex-direction: column;
 	width: 220px;
 	height: 116px;
 	margin-left: 10px;
+	margin-right: 20px;
 	position: relative;
-
+	
+	justify-content: center;
 	/* Inside auto layout */
 
 	flex: none;
@@ -82,26 +86,35 @@ body {
 }
 
 .vol_section {
+	height: fit-content;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 .vol_regdate {
+	margin-right:10px;
 	color: #A7A7A7;
 	font-size: 12px;
 	text-align: right;
 }
 
 .vol_title {
+	align-self: flex-start;
+	height: 50px;
 	margin-left: 20px;
 	font-size: 16px;
 	font-weight: bold;
-	width: 85%;
+	width: inherit;
 	text-align: justify;
 }
 
-.vol_date {
+.vol_date_section {
+	width: inherit;
 	margin-left: 20px;
+}
+
+.vol_date {
 	font-size: 14px;
 }
 
@@ -110,7 +123,7 @@ body {
 }
 
 .vol_list_btn_box {
-	position: absolute;
+	/*	position: absolute;*/
 	display: flex;
 	flex-direction: row;
 	justify-content: end;
@@ -119,8 +132,9 @@ body {
 }
 
 .vol_list_btn_box_org {
-	/*  position: absolute;*/
-	margin-top: 36px;
+	/*	position: absolute;*/
+	margin-top: 16px;
+	margin-bottom: 12px;
 	width: inherit;
 	display: flex;
 	flex-direction: row;
