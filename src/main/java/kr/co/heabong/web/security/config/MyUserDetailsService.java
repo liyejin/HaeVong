@@ -29,6 +29,7 @@ public class MyUserDetailsService implements UserDetailsService {
 			Org org = orgService.getByRegNum(username);
 			MyUserDetails userDetails = new MyUserDetails();
 			userDetails.setUsername(username);
+			userDetails.setName(org.getName());
 			userDetails.setId(org.getId());
 			userDetails.setEmail(org.getEmail());
 			userDetails.setPassword(org.getPwd());

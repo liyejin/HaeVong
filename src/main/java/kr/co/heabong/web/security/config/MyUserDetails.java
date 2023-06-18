@@ -14,8 +14,18 @@ public class  MyUserDetails implements UserDetails {
 	private int id;
 	private String email;
 	private String password;
-	private String username;
+	private String name;
+	private String username; // userID, 고정일수밖에없다.
 	private List <GrantedAuthority> authorities;
+	
+	
+	public void setName(String name) {
+	      this.name = name;
+	   }
+
+	   public String getName() {
+	      return name;
+	   }
 	
 	public void setPassword(String password) {
 		this.password = password;
