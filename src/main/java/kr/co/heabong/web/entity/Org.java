@@ -27,4 +27,5 @@ public class Org {
 	private int metropolId;
 	private String regNum;
 	private String pwd;
+	
 }

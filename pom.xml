@@ -56,8 +56,6 @@
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
-
-
 		<!--먼지 모르겠음-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
