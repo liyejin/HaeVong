@@ -70,6 +70,7 @@
 
 	<!-- 마이페이지 -->
 	<select id="FindMyApplyOrgVolListById">
+
 	select * 
 	from apply_org_vol join org_vol 
 	on apply_org_vol.org_vol_id = org_vol.id where apply_org_vol.user_id = ${userId} ; 
