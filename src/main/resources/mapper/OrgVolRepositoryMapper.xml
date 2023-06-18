@@ -42,7 +42,7 @@
 		</set>
 		WHERE id = #{id} </update>
 	<delete id="delete">
-		delete from org_vol where id=#{id}
+		delete from org_vol where id=${id}
 	</delete>
 	<insert id="save" parameterType="kr.co.heabong.web.entity.OrgVol" useGeneratedKeys="true"
     keyProperty="id">
@@ -65,6 +65,15 @@
 		FROM org_vol 
 		WHERE vol_category_id = ${categoryId}
 		AND (title LIKE '%${serchKeyword}%' OR content LIKE '%${serchKeyword}%');
+	</select>
+
+
+	<!-- 마이페이지 -->
+	<select id="FindMyApplyOrgVolListById">
+
+	select * 
+	from apply_org_vol join org_vol 
+	on apply_org_vol.org_vol_id = org_vol.id where apply_org_vol.user_id = ${userId} ; 
 	</select>
 
 </mapper>

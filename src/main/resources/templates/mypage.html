@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/mypage.css" />
+    <link rel="stylesheet" href="../static//css/reset.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/mypage.css" />
     <script src="../../js/user_mypage.js" defer></script>
 
     <title>마이페이지</title>
@@ -30,7 +30,7 @@
           <p class="title">가치있는 일상 같이 만들어요!</p>
           <p>
             <span class="mypage_profile_name" th:text="${userName.name}"
-              >김범수</span
+              >회원</span
             ><span> 님</span>
           </p>
           <p>
@@ -51,30 +51,30 @@
       <section class="mypageCategory">
         <ul>
           <li>
-          <a href="login">
-			<div>
-              <span>📝<br></span>
-              <span>신청관리</span>
-            </div>
-          </a>
-          <a href="login">
-            <div>
-              <span>❤️<br></span>
-              <span>찜한봉사</span>
-            </div>
-          </a>
-          <a href="login">
-			<div>
-              <span>📣<br></span>
-              <span>고객지원</span>
-            </div>
-          </a>
-          <a href="login">
-			<div>
-              <span>⚙️<br></span>
-              <span>정보수정</span>
-            </div>
-          </a>
+            <a href="login">
+              <div>
+                <span>📝<br /></span>
+                <span>신청관리</span>
+              </div>
+            </a>
+            <a href="login">
+              <div>
+                <span>❤️<br /></span>
+                <span>찜한봉사</span>
+              </div>
+            </a>
+            <a href="login">
+              <div>
+                <span>📣<br /></span>
+                <span>고객지원</span>
+              </div>
+            </a>
+            <a href="login">
+              <div>
+                <span>⚙️<br /></span>
+                <span>정보수정</span>
+              </div>
+            </a>
           </li>
         </ul>
       </section>
@@ -82,7 +82,7 @@
       <section class="my_post">
         <div class="mypage_mypost_title" id="imageContainer">
           <span>나의 게시글 > </span>
-          <img src="/img/icon/icon_plus.png">
+          <img src="/img/icon/icon_plus.png" />
         </div>
         <div class="mypage_mypost_img">
           <a th:href="@{${p.url}}" th:each="p:${mypic}"
@@ -92,10 +92,9 @@
       </section>
 
       <section class="cs">
-        <span>김범수님이 해봉과 함께한지💛 일<br></span>
-        <span>김범수님이 해봉을 통해 함께한 봉사🤝 회</span>  
+        <span>김범수님이 해봉과 함께한지💛 일<br /></span>
+        <span>김범수님이 해봉을 통해 함께한 봉사🤝 회</span>
       </section>
-      
     </main>
     <nav class="nav_list" th:replace="~{inc/nav}"></nav>
   </body>

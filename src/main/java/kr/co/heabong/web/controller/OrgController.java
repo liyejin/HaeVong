@@ -3,6 +3,7 @@ package kr.co.heabong.web.controller;
 import java.util.HashMap;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -50,34 +51,32 @@ public class OrgController {
 
 	@Autowired
 	private ApplyOrgVolService applyOrgVolService;
-	
+
 	@Autowired
 	private DistrictService districtService;
-	
+
 	@Autowired
 	private MetroService metroService;
 
 	@Autowired
 	private VolCategoryService volCategoryService;
-	
-	
-	
-	@GetMapping("main")//빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
+
+	@GetMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model) {
-		
+
 		Org org = orgService.getById(1);
-		model.addAttribute("org",org); // "뷰" ,컨트롤러
+		model.addAttribute("org", org); // "뷰" ,컨트롤러
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
+		if (authentication != null && authentication.isAuthenticated()) {
+			Object principal = authentication.getPrincipal();
 
-            if (principal instanceof UserDetails) {
-                UserDetails userDetails = (UserDetails) principal;
-                System.out.println("현재 로그인한 사용자: " + userDetails.getUsername());
-            }
-        }
-        System.out.println("GET / 기관 메인 페이지로 이동");
+			if (principal instanceof UserDetails) {
+				UserDetails userDetails = (UserDetails) principal;
+				System.out.println("현재 로그인한 사용자: " + userDetails.getUsername());
+			}
+		}
+		System.out.println("GET / 기관 메인 페이지로 이동");
 		return "org/main";
 	}
 
@@ -87,7 +86,6 @@ public class OrgController {
 		return "org/info";
 	}
 
-	
 	@RequestMapping("signin")
 	public String getSignIn(Model model) {
 
@@ -118,7 +116,6 @@ public class OrgController {
 		return "org/new_pwd";
 	}
 
-	
 	@RequestMapping("pwd_change_auth")
 	public String getPwd_change_auth(Model model) {
 
@@ -150,15 +147,15 @@ public class OrgController {
 		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
 		model.addAttribute("userList", userList);
 		model.addAttribute("orgVol", orgVol);
-		
+
 		return "org/recruit_vol_list";
 	}
 
-//	@RequestMapping("recruit_write")
-//	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
-//		model.addAttribute(orgId);
-//		return "org/recruit_write";
-//	}
+	// @RequestMapping("recruit_write")
+	// public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
+	// model.addAttribute(orgId);
+	// return "org/recruit_write";
+	// }
 
 	@RequestMapping("signup")
 	public String getSignup(Model model) {
@@ -169,7 +166,7 @@ public class OrgController {
 	@RequestMapping("vol_edit")
 	public String getVol_edit(Model model) {
 		List<VolCategory> cateList = volCategoryService.getCateList();
-		model.addAttribute("cateList",cateList);
+		model.addAttribute("cateList", cateList);
 
 		return "org/vol_post_edit";
 	}
@@ -184,11 +181,17 @@ public class OrgController {
 	public String getVol_list(@RequestParam(name = "s", required = false) String status,
 			@RequestParam(name = "o", required = true) int orgId, Model model) {
 		List<OrgVol> list = volService.getList(orgId, status);
+		// for (OrgVol orgVol : list) {
+		// DateTimeFormatter dateTimeFormatter =
+		// DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		// orgVol.getRegdate().format(dateTimeFormatter);
+		// }
 		if (list.size() == 0)
 			return "org/vol_list_empty";
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("orgId", orgId);
+		map.put("status", status);
 		model.addAttribute("map", map);
 		return "org/vol_list"; // templates/org/vol_list
 	}
@@ -200,8 +203,8 @@ public class OrgController {
 	}
 
 	@GetMapping("vol_post_detail")
-	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgId) {
-		OrgVol orgVol = volService.getById(orgId);
+	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgVolId) {
+		OrgVol orgVol = volService.getById(orgVolId);
 		Org org = orgService.getById(orgVol.getOrgId());
 		model.addAttribute("orgVol", orgVol);
 		model.addAttribute("org", org);
@@ -211,13 +214,13 @@ public class OrgController {
 		// 시간 포맷 지정
 
 		// 형식에 맞게 시간 출력
-//        String formattedTime = currentTime.format(formatter);
-//        System.out.println(orgVol.getDate());
+		// String formattedTime = currentTime.format(formatter);
+		// System.out.println(orgVol.getDate());
 
-//        LocalDateTime dateTime = LocalDateTime.parse(orgVol.getDate(), formatter);
-//      System.out.println(dateTime);
+		// LocalDateTime dateTime = LocalDateTime.parse(orgVol.getDate(), formatter);
+		// System.out.println(dateTime);
 
-//        LocalDate dateDate = dateTime.toLocalDate();
+		// LocalDate dateDate = dateTime.toLocalDate();
 
 		String dateString = orgVol.getDate();
 		String pattern = "yyyy-MM-dd";
@@ -230,7 +233,7 @@ public class OrgController {
 		Period period = Period.between(nowDate, date);
 
 		int restDate = period.getDays() + (period.getMonths() * 30);
-//        System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
+		// System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
 
 		model.addAttribute("dDay", restDate);
 
@@ -240,21 +243,29 @@ public class OrgController {
 	@GetMapping("vol_write")
 	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
 		List<VolCategory> cateList = volCategoryService.getCateList();
-		model.addAttribute("cateList",cateList);
-		model.addAttribute("orgId",orgId);
+		model.addAttribute("cateList", cateList);
+		model.addAttribute("orgId", orgId);
 		return "org/vol_post_write";
 	}
-	
-	@PostMapping("vol_write") // 정보를 받기 
+
+	@PostMapping("vol_write") // 정보를 받기
 	public String postMethod(OrgVol orgVol) {
-		
+
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
 		int districtId= districtService.getById(orgVol.getRoadAddress().split(" ")[1],metropolId);
 	
 		   int save = volService.save(orgVol);
 		   System.out.println(save);
+		   
 		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
 	}
-	
+
+	@RequestMapping("vol_post_detail")
+
+	public String vol_post_detail(@RequestParam("id") int orgVolID, Model model) {
+
+		return "org/vol_post_detail";
+	}
+
 }

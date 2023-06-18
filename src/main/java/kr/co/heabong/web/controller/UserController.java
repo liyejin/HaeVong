@@ -28,12 +28,12 @@ public class UserController {
 	@GetMapping("index")
 	public String index(HttpSession session) throws IOException {
 
-		
-		
-//		manager.setUsersByUsernameQuery("select name username, pwd password, 1 enabled from org where name=?");//username, password, enabled(컬럼명 반드시 일치시켜줄것)
-//		manager.setAuthoritiesByUsernameQuery("select name username, r.name authority from role r join org o on o.role_id=r.id where username=?");//username, authority
-		
-		
+		// manager.setUsersByUsernameQuery("select name username, pwd password, 1
+		// enabled from org where name=?");//username, password, enabled(컬럼명 반드시 일치시켜줄것)
+		// manager.setAuthoritiesByUsernameQuery("select name username, r.name authority
+		// from role r join org o on o.role_id=r.id where username=?");//username,
+		// authority
+
 		return "index";
 	}
 
@@ -41,6 +41,7 @@ public class UserController {
 	private UserVolService volService;
 	@Autowired
 	private WishService wishService;
+
 	@GetMapping("customer_service")
 	public String getCustomer_service(Model model) {
 
@@ -89,15 +90,15 @@ public class UserController {
 		return "edit_pwdchange_insert";
 	}
 
-//	여기서부터 user_vol
-	
-	@RequestMapping("vol_list") //org/vol_list // 기관 봉사 리스트
+	// 여기서부터 user_vol
+
+	@RequestMapping("vol_list") // org/vol_list // 기관 봉사 리스트
 	public String getVol_list(
-			@RequestParam(name="s", required= false)String status,
-			@RequestParam(name="u", required = false)int userId,
+			@RequestParam(name = "s", required = false) String status,
+			@RequestParam(name = "u", required = false) int userId,
 			Model model) {
-		List<UserVol> list = volService.getList(userId,status);
-		if (list.size()==0)
+		List<UserVol> list = volService.getList(userId, status);
+		if (list.size() == 0)
 			return "org/vol_list_empty";
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
@@ -106,10 +107,10 @@ public class UserController {
 		model.addAttribute("map", map);
 		return "user/vol_list"; // templates/org/vol_list
 	}
-	
+
 	@RequestMapping("vol_wish_list")
 	public String getVolWishList(
-			@RequestParam(name="u", required = true)int userId,
+			@RequestParam(name = "u", required = true) int userId,
 			Model model) {
 		List<OrgVol> list = wishService.getOrgVolListByUser(userId);
 		Map<String, Object> map = new HashMap<>();

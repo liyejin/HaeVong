@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/vol_list.css" />
+  </head>
+
+  <header class="header">
+    <div class="header1">
+      <a href="#"
+        ><img
+          src="/img/icon/icon_header_back.png"
+          th:onclick="history.back()"
+          alt="뒤로가기"
+      /></a>
+      <div>내 봉사 현황</div>
+      <a href=""><img src="/img/icon/icon_header_more.png" alt="더보기" /></a>
+    </div>
+  </header>
+
+  <body>
+    <section class="main">
+      <div class="vol_category">
+        <a href="#"><span>신청 내역</span></a>
+        <a href="#"><span>지난 봉사</span></a>
+      </div>
+      <ul class="vol_list" th:each="o_vol:${orgVol}">
+        <li>
+          <img
+            class="vol_list_img"
+            src="/img/org/org_vol_list_img.png"
+            alt="모집공고이미지"
+          />
+          <div class="vol_list_info">
+            <span th:text="${o_vol.title}" class="vol_title"
+              >행복보육원 봉사자 구인합니다.<br
+            /></span>
+            <span class="vol_date" th:text="${o_vol.date}"
+              >5월 13일(월), 13:00~16:00</span
+            >
+            <span class="vol_write_date" th:text="${o_vol.regdate}"
+              >2023/04/26</span
+            >
+            <ul class="vol_list_btn_box">
+              <li>
+                <a
+                  class="vol_list_detail_btn"
+                  href="#"
+                  th:href="@{./vol(id=${o_vol.id})}"
+                  >상세보기</a
+                >
+              </li>
+              <!-- <li><a class="vol_list_detail_btn" href="#" th:href="@{./vol(id=${vol.id})}">수정하기</a></li> -->
+            </ul>
+          </div>
+
+          <img
+            class="vol_list_edit_btn"
+            src="/img/icon/icon_vol_list_more.png"
+            alt="모집공고_아이콘"
+          />
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>

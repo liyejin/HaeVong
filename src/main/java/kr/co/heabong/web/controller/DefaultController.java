@@ -29,7 +29,6 @@ import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.VolCategoryService;
 import kr.co.heabong.web.security.config.MyUserDetails;
 
-
 @Controller
 @RequestMapping("/")
 public class DefaultController {
@@ -45,21 +44,20 @@ public class DefaultController {
 	PostPhotoService postPhotoService;
 	@Autowired
 	OrgService orgService;
-	@Autowired
-	MyUserDetails myUserDetails ;
-//	@Autowired
-//	PostService postService;
-	
+
+	// @Autowired
+	// PostService postService;
+
 	@GetMapping("/modal")
 	public String getM(Model model) {
-//		model.addAttribute();
+		// model.addAttribute();
 		return "map_apply_modal";
 	}
 
 	// 테스트겸 만든거
 	@GetMapping("/test")
 	public String getTest(Model model) {
-//		model.addAttribute();
+		// model.addAttribute();
 		return "map_apply_modal";
 	}
 
@@ -74,19 +72,8 @@ public class DefaultController {
 
 	// 메인
 	@GetMapping("/")
-	public String getIndex(Model model, @AuthenticationPrincipal MyUserDetails user) {
-//		model.addAttribute();
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-
-            if (principal instanceof UserDetails) {
-                UserDetails userDetails = (UserDetails) principal;
-                System.out.println("현재 로그인한 사용자: " + userDetails.getUsername());
-            }
-        }
-        
-        System.out.println("GET / 유저 메인 페이지로 이동");
+	public String getIndex(Model model) {
+		// model.addAttribute();
 		return "index";
 	}
 
@@ -97,23 +84,29 @@ public class DefaultController {
 		return "login";
 	}
 
-
 	// 개인 로그인
 	@GetMapping("user_signin")
 	public String getSignIn() {
-		
+
 		return "user_signin";
 	}
 
-	
+	@PostMapping("user_signin")
+	public String setSignIn(String uid, String pwd) {
+		System.out.println(uid);
+		System.out.println(pwd);
+
+		if (!userService.isValid(uid, pwd))
+			return "redirect:/user_signin?error";
+
+		return "redirect:/";
+	}
 
 	@GetMapping("user_signup")
 	public String getUserSignUp(Model model) {
 
 		return "user_signup";
 	}
-
-	
 
 	// 기관 로그인
 	@GetMapping("org_signin")
@@ -124,22 +117,18 @@ public class DefaultController {
 
 	// 기관 로그인
 	@PostMapping("org_signin")
-	public String setOrgSignin(String regNum, String pwd , HttpSession session) {
+	public String setOrgSignin(String regNum, String pwd, HttpSession session) {
 		System.out.println(regNum);
 		System.out.println(pwd);
 
 		if (!orgService.isValid(regNum, pwd))
 			return "redirect:/org_signin?error";
-		
-		
+
 		Org org = orgService.getByRegNum(regNum);
 		session.setAttribute("org", org);
-		
+
 		return "redirect:/org/main";
 	}
-	
-	
-
 
 	// 기관 가입
 	@GetMapping("org_signup")
@@ -165,80 +154,66 @@ public class DefaultController {
 	// 카테고리 목록 페이지
 	@GetMapping("category_main")
 	public String getVol_category(
-			@RequestParam(name="s", required=false)String status,
-			@RequestParam(name="v", required = true)int volCategory,
+			@RequestParam(name = "s", required = false) String status,
+			@RequestParam(name = "v", required = true) int volCategory,
 			Model model) {
-		//카테고리 
+		// 카테고리
 		List<VolCategory> cateList = volCategoryService.getCateList();
-		model.addAttribute("cateList",cateList);
-		//게시글
-		List<OrgVol> mainCateList  = volCategoryService.getMainCategoryList();
-		model.addAttribute("mainCateList",mainCateList);
+		model.addAttribute("cateList", cateList);
+		// 게시글
+		List<OrgVol> mainCateList = volCategoryService.getMainCategoryList();
+		model.addAttribute("mainCateList", mainCateList);
 		return "category_main";
 	}
-	
-	
-//	마이페이지
+
+	// <My Page> : 로그인 기능 구현 전이라, default에서 로그인 한 상태 기준으로 기능 구현 했습니다.
+	// profile section ----------------------------
 	@GetMapping("mypage")
 	public String getMypage(
-							@RequestParam(name="uid",required = true) int id,
-							Model model) {
-//		받아와야될것:유저이름,내 게시글,마이페이지 카테고리,유저 프로필사진
+			@RequestParam(name = "uid", required = true) int id,
+			Model model) {
+
+		// user name
 		User userName = userService.getUserName(id);
-		model.addAttribute("userName",userName);
-		
+		model.addAttribute("userName", userName);
+
+		// profile photo
 		User userProfilePhoto = userService.findByUserPhoto(id);
-		model.addAttribute("userProfilePhoto",userProfilePhoto);
-		 
-		List<PostPhoto>myPostPhoto = postPhotoService.getMyPostPhoto();
-		model.addAttribute("mypic",myPostPhoto);
-		
+		model.addAttribute("userProfilePhoto", userProfilePhoto);
+
+		// My post photo
+		List<PostPhoto> myPostPhoto = postPhotoService.getMyPostPhoto();
+		model.addAttribute("mypic", myPostPhoto);
+
 		return "mypage";
 	}
-	
-	
+
 	@GetMapping("vol_list")
 	public void getUserVolList(
-			@RequestParam(name="id",required = false) int id,
-			Model model
-			) {
-		model.addAttribute("u",model);
-		
+			@RequestParam(name = "id", required = false) int id,
+			Model model) {
+		model.addAttribute("u", model);
+
 	}
-	
-	
-//	분야별 봉사 검색 기능
+
+	// 분야별 봉사 검색 기능
 	@GetMapping("orgvol")
 	public String getOrgVolListByCategory(
-			@RequestParam(name="cid",required = true) int categoryId,
-			@RequestParam(name="sk",required = false) String serchKeyword,
+			@RequestParam(name = "cid", required = true) int categoryId,
+			@RequestParam(name = "sk", required = false) String serchKeyword,
 			Model model) {
-		
+
 		List<OrgVol> orgVolList = null;
-		
-		if(serchKeyword==null)
+
+		if (serchKeyword == null)
 			orgVolList = orgVolService.getOrgVolListByCategoryId(categoryId);
-		else if(serchKeyword!=null)
-			orgVolList = orgVolService.getOrgVolListBySearch(categoryId,serchKeyword);
-	
-		model.addAttribute("orgVolList",orgVolList);
+		else if (serchKeyword != null)
+			orgVolList = orgVolService.getOrgVolListBySearch(categoryId, serchKeyword);
+
+		model.addAttribute("orgVolList", orgVolList);
 		model.addAttribute("cid", categoryId);
-		
+
 		return "org_vol_by_category";
 	}
-	
-	
-	
-	
 
-	
-	
-	@GetMapping("complete_signup")
-	public String setUserSignUp(User user, Model model) {
-		// model.addAttribute();
-
-		return "complete_signup";
-	}
-	
-	
 }

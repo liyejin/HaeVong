@@ -2,6 +2,8 @@ package kr.co.heabong.web.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import kr.co.heabong.web.entity.OrgVol;
 
 public interface OrgVolService {
@@ -11,9 +13,8 @@ public interface OrgVolService {
 
 	List<OrgVol> getList(int orgId, String status);
 
-
 	OrgVol getById(int id);
-	
+
 	List<OrgVol> getListByAddress(String address);
 
 	OrgVol get();
@@ -24,5 +25,7 @@ public interface OrgVolService {
 
 	List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword);
 
+	int delete(int id);
 
+	List<OrgVol> getMyApplyOrgVolList(int userId);
 }
