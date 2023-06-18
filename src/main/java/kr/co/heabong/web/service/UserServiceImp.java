@@ -35,9 +35,9 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public void setUser(User user) {
-		// TODO Auto-generated method stub
 		repository.save(user);
 	}
+	
 	
 	@Override
 	public boolean isValid(String uid, String pwd) {
@@ -53,7 +53,6 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public User getByUid(String uid) {
-		// TODO Auto-generated method stub
 		User user = repository.findByUid(uid);
 		return user;
 	}
