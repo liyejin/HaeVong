@@ -1,16 +1,21 @@
 package kr.co.heabong.web.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.service.UserVolService;
@@ -19,6 +24,19 @@ import kr.co.heabong.web.service.WishService;
 @Controller
 @RequestMapping("user")
 public class UserController {
+
+	@GetMapping("index")
+	public String index(HttpSession session) throws IOException {
+
+		// manager.setUsersByUsernameQuery("select name username, pwd password, 1
+		// enabled from org where name=?");//username, password, enabled(컬럼명 반드시 일치시켜줄것)
+		// manager.setAuthoritiesByUsernameQuery("select name username, r.name authority
+		// from role r join org o on o.role_id=r.id where username=?");//username,
+		// authority
+
+		return "index";
+	}
+
 	@Autowired
 	private UserVolService volService;
 	@Autowired

@@ -12,6 +12,8 @@ public interface UserService {
 	void setUser(User user);
 	User getUserName(int id);
 	User findByUserPhoto(int id);
+	User getByUid(String uid);
+	
 	
 	boolean isValid(String uid, String pwd);
 	

@@ -58,12 +58,6 @@ public class OrgVolServiceImp implements OrgVolService {
 	}
 
 	@Override
-	public OrgVol get() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<OrgVol> getOrgVolListByCategoryId(int categoryId) {
 		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId);
 		return list;
@@ -81,6 +75,19 @@ public class OrgVolServiceImp implements OrgVolService {
 		List<OrgVol> list = repository.FindMyApplyOrgVolListById(userId);
 
 		return list;
+	}
+
+	@Override
+	public OrgVol get() {
+		// TODO Auto-generated method stub
+		return null;
+
+	}
+
+	@Override
+	public int delete(int id) {
+		int delete = repository.delete(id);
+		return delete;
 	}
 
 }

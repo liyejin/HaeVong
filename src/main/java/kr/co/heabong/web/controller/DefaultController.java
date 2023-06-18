@@ -3,6 +3,10 @@ package kr.co.heabong.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +27,7 @@ import kr.co.heabong.web.service.PostPhotoService;
 import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.VolCategoryService;
+import kr.co.heabong.web.security.config.MyUserDetails;
 
 @Controller
 @RequestMapping("/")
@@ -101,13 +106,6 @@ public class DefaultController {
 	public String getUserSignUp(Model model) {
 
 		return "user_signup";
-	}
-
-	@PostMapping("complete_user_signup")
-	public String setUserSignUp(User user, Model model) {
-		// model.addAttribute();
-
-		return "complete_user_signup" + user.toString();
 	}
 
 	// 기관 로그인

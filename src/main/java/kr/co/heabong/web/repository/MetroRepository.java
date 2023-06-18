@@ -10,5 +10,6 @@ import kr.co.heabong.web.entity.Metropol;
 public interface MetroRepository {
 
 	List<Metropol> findAll();
+	int findByName(String name); // 메트로 아이디
 	
 }

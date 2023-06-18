@@ -21,5 +21,10 @@ class DistrictRepositoryTest {
 		List<District> ls = repo.findAll();
 		System.out.println(ls);
 	}
+	@Test
+	void testFindByName() {
+//		int districtId = repo.findByName("마포구");
+//		System.out.println(districtId);
+	}
 
 }

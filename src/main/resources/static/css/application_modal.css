@@ -38,7 +38,6 @@
   height: 201px;
   border-radius: 10px;
   overflow: hidden;
-  margin: 0 10px;
 }
 
 .apply_modal_pic > img {
@@ -52,11 +51,10 @@
 .apply_modal_about {
   width: 158px;
   height: 102px;
-  margin-top: 75px;
+  margin-top: 83px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 20px;
   position: absolute;
   right: 20px;
   line-height: 18px;

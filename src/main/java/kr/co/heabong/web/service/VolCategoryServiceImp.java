@@ -14,6 +14,9 @@ public class VolCategoryServiceImp implements VolCategoryService{
 	@Autowired
 	public VolCategoryRepository repository;
 	
+	@Autowired
+	
+	
 	@Override
 	public List<VolCategory> getList() {
 		// TODO Auto-generated method stub
@@ -34,6 +37,12 @@ public class VolCategoryServiceImp implements VolCategoryService{
 		List<OrgVol> list = repository.findByCategoryMainPost(4);		
 		return list;
 	}
+	
+//	@Override
+//	public int getCateId() {
+//		int cateId = repository.f	
+//		return id;
+//	}
 	
 
 

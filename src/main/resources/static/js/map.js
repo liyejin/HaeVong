@@ -122,7 +122,7 @@ if (Array.isArray(oData)) {
   });
 }
 
-function filter(element) {
+function filter(x) {
   let url = "?name=" + element.innerText;
   location.href = url;
 }

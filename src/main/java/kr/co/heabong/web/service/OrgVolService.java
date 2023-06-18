@@ -21,13 +21,11 @@ public interface OrgVolService {
 
 	int save(OrgVol orgVol);
 
-	List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword);
-
-	// <My Page>
-	// profile section ----------------------------
 	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
 
-	// My page category section ----------------------------
-	List<OrgVol> getMyApplyOrgVolList(int userId);
+	List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword);
 
+	int delete(int id);
+
+	List<OrgVol> getMyApplyOrgVolList(int userId);
 }

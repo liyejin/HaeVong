@@ -7,4 +7,6 @@ import kr.co.heabong.web.entity.Metropol;
 public interface MetroService {
 
 	List<Metropol> getList();
+	int getById(String name);
+	
 }

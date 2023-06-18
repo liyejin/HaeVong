@@ -6,4 +6,7 @@
    <select id="findAll">
       select * from metropol
    </select>
+      <select id="findByName" resultType="int">
+    select id from metropol where name like '%${name}%'
+   </select>
    </mapper>
