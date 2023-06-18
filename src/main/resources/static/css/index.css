@@ -1,406 +1,511 @@
 body {
-  background-color: #fef8ea;
-  touch-action: manipulation;
-  -ms-content-zooming: none;
-  -ms-touch-action: manipulation;
-  zoom: 1;
-  user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
+    background-color: #FEF8EA;
 }
 
 .main {
-  overflow: auto;
-}
-
-.main::-webkit-scrollbar {
-  display: none;
+    overflow: auto;
 }
 
 /* 기본 셋업 */
 .user_index_top_img_box {
-  position: relative;
+    position: relative;
 
-  background-image: url("../img/user/index_top_banner.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 380px;
+    background-image: url('../img/user/index_top_banner.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 440px;
 }
 
 .user_index_top_img_box_logo {
-  position: absolute;
-  top: 41px;
-  left: 26px;
-  filter: invert(100%);
+    position: absolute;
+    top: 41px;
+    left: 26px;
+    filter: invert(100%);
 }
+
 
 /* 돋보기 아이콘 나중에 검색창 onclick이면 돋보기 아이콘 사라지게 하기 */
 .user_index_top_img_box_search_icon {
-  position: absolute;
-  top: 55px;
-  right: 49px;
+    position: absolute;
+    top: 55px;
+    right: 49px;
 }
 
 .user_index_top_img_box_introduction {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  height: 136px;
-  left: 30px;
-  bottom: 77px;
-  justify-content: space-between;
-  gap: 16px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 136px;
+    left: 30px;
+    bottom: 77px;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .user_index_top_img_box_introduction_title {
-  font-size: 22px;
-  font-weight: bold;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.user_index_top_img_box_introduction_title > span {
-  color: rgb(255, 252, 244);
+.user_index_top_img_box_introduction_title > span{
+    color: rgb(255, 252, 244);
 }
+
 
 .user_index_top_img_box_introduction_content > p {
-  color: rgb(255, 252, 244);
-  font-size: 14px;
+    color: rgb(255, 252, 244);
 }
 
 .user_index_top_img_box_slide {
-  position: absolute;
-  width: 300px;
-  height: 3px;
-  border-radius: 30px;
-  background-color: #3f3f3f;
-  display: flex;
-  flex-direction: center;
-  left: 61px;
-  bottom: 42px;
+    position: absolute;
+    width: 300px;
+    height: 3px;
+    border-radius: 30px;
+    background-color: #3f3f3f;
+    display: flex;
+    flex-direction: center;
+    left: 61px;
+    bottom: 42px;
+    display:none;
 }
 
 .user_index_top_img_box_slide_bar {
-  width: 50px;
-  height: 3px;
-  border-radius: 30px;
-  background-color: #efefef70;
-  left: 0;
+    width: 50px;
+    height: 3px;
+    border-radius: 30px;
+    background-color: #efefef70;
+    left: 0;
+    display:none;
 }
 
 /* 상단 사진 컨테이너 */
 .user_index_search {
-  display: flex;
+    display: flex;
+
 }
 
 .user_index_search_box {
-  display: flex;
-  margin: 20px 25px 20px 25px;
-  width: 380px;
-  height: 36px;
-  border-radius: 25px;
-  gap: 16px;
-  background-color: #ffffff;
-  position: relative;
+    display: flex;
+    margin: 0 25px 40px 25px;
+    width: 380px;
+    height: 36px;
+    border-radius: 25px;
+    gap: 16px;
+    background-color: #ffffff;
+    position: relative;
 }
 
-.user_index_search_icon > img {
-  position: absolute;
-  left: 10px;
-  top: 4px;
+.user_index_search_icon > img{
+    position: absolute;
+    left: 10px;
+    top: 4px;
 }
 
 .user_index_search_input {
-  width: 200px;
-  border-style: none;
-  outline-style: none;
+    width: 200px;
+    border-style: none;
+    outline-style: none;
 }
 
 /* 검색 창 */
 .index_section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 70px;
 }
 
 .index_section_title {
-  display: flex;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 50px;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
 }
+
 
 .index_section_title > span {
-  margin-top: 50px;
-  margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
-/* 스크롤이랑 좀 떨어지게 못하나? */
+
+
+
 .index_section_list {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-left: 50px;
-  margin-right: 50px;
-  overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-left: 30px;
+    margin-right: 30px;
+    overflow: auto;
 }
 
 .index_section_item {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.index_section_item_img {
-  border-radius: 6px;
-  width: 180px;
-  height: 187px;
+
+.index_section_item_img{
+    border-radius: 6px;
+    width: 110px;
+    height: 110px;
 }
+
 
 .index_section_item_location {
-  color: #767676;
-  font-weight: bold;
-  font-size: 14px;
+    color: #767676;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .index_section_item_title {
-  font-weight: bold;
-  font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
+
+
+
+
+
+/* -------index_section_item_2-------- */
+.index_section_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.index_section_title_2 {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+
+.index_section_title_2 > span {
+    margin-bottom: 30px;
+}
+
+.index_section_list_2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width:380px;
+    height:160px;
+    overflow-y: hidden;
+}
+
+.index_section_item_2 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.index_section_item_2 > div{
+    border-radius: 6px;
+    width: 110px;
+    height: 110px;
+}
+
+
+.index_section_item_location_2 {
+    color: #767676;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.index_section_item_title_2 {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
+
+
 
 /* 지금 바로 봉사신청 */
 .index_section_category_list {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  overflow: auto;
-  margin-left: 50px;
-  margin-right: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    overflow: auto;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .index_section_category_item {
-  position: relative;
+    position: relative;
 }
 
 .index_section_item_category_img {
-  border-radius: 6px;
-  width: 180px;
-  height: 180px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 22px;
+    border-radius: 6px;
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 22px;
+
 }
 
-.index_section_item_category > h2 {
-  color: #efefef;
-  font-size: 24px;
-  font-weight: bold;
-  z-index: 1;
-  left: 13px;
-  bottom: 52px;
+.index_section_item_category>h2 {
+    color: #efefef;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1;
+    left: 13px;
+    bottom: 52px;
 }
 
-.index_section_item_category > p {
-  color: #efefef;
-  font-size: 16px;
-  z-index: 1;
-  position: absolute;
-  left: 13px;
-  bottom: 6px;
+
+.index_section_item_category>p {
+    color: #efefef;
+    font-size: 16px;
+    z-index: 1;
+    position: absolute;
+    left: 13px;
+    bottom: 6px;
+
 }
 
-/* 봉사 카테고리 */
+
+/* 카드뉴스_1 */
+.card_news{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    gap:20px;
+}
+
+.card_news_1{
+    width: 173px;
+    height: 270px;
+}
+
 .index_news_box {
-  position: relative;
-  width: 300px;
-  height: 350px;
-  background-color: #fff;
-  margin: 0 auto;
+    position: relative;
+    width: 173px;
+    height: 270px;
+    background-color: #fff;
+    margin: 0 auto;
 }
 
 .index_news_img {
-  background-color: #e5cf8b;
-  /* position: absolute; */
-  /* top: 0;
+    background-color: #E5CF8B;
+    background-image: url("../img/user/cardnews_img_1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: absolute; */
+    /* top: 0;
     left: 0; */
-  width: 300px;
-  height: 180px;
-  border-top-left-radius: 22px;
-  border-top-right-radius: 22px;
+    width: 174px;
+    height: 145px;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
 }
 
-.index_news_box > span {
-  position: absolute;
-  width: 300px;
-  height: 350px;
+.index_news_box>span {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+
 }
 
 .index_news_text {
-  margin-top: 10px;
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    /* margin-top: 10px;
+    margin-left: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position:absolute;
+    text-align: left;
+    padding:10px;
 }
 
 .index_news_text_category {
-  padding-top: 10px;
-  font-weight: bold;
-  font-size: 14px;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .index_news_text_title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: -20px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 0;
 }
 
 .index_news_text_context {
-  font-size: 16px;
+    font-size: 12px;
+    line-height: 15px;
 }
 
-/* 해봉 뉴스 */
+
+/* 카드뉴스_2 */
+.card_news_2 > .index_news_box >.index_news_img {
+    background-color: #5C78DE;
+    background-image: url("../img/user/cardnews_img_2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: absolute; */
+    /* top: 0;
+    left: 0; */
+    width: 174px;
+    height: 145px;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+}
+
+
+
+
+
+
+/* 봉사후기 */
 .index_review_list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-  margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width:370px;
+    height:362px;
 }
 
 .index_review_item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 22px;
 }
 
-.index_review_img {
-  width: 130px;
+.index_review_img{
+    width: 100px;
 }
 
 .index_review_info_title {
-  font-weight: bold;
-  font-size: 16px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.index_review_info_context {
-  font-size: 14px;
+.index_review_info_context{
+    font-size: 14px;
 }
 
 /* 봉사 후기 */
 .sponsor_title {
-  margin-top: 22px;
-  margin-bottom: 22px;
+    margin-top: 22px;
+    margin-bottom: 30px;
 }
 
 .index_sponsor {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.index_section_title > span{
+    margin: 0;
 }
 
 .index_sponsor_box {
-  width: 350px;
-  height: 270px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  background-color: #823030;
-  color: #efefef;
-  margin-left: 50px;
+    width: 370px;
+    height: 272px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    background-color: #823030;
+    color: #efefef;
+    margin-left:30px;
+    margin-right:30px;
+    margin-bottom: 70px;
 }
 
-.index_sponsor_box > span {
-  font-weight: bold;
-  color: white;
-  margin-left: 120px;
+.index_sponsor_box > span{
+    font-weight: bold;
+    color: white;
+    margin-left: 120px;
+    padding:7px;
 }
 
-.index_sponsor_box > span > img {
-  margin-left: 10px;
+.index_sponsor_box > span > img{
+    margin-left: 10px;
 }
 
-.index_sponsor_img > span {
-  font-weight: lighter;
-  color: white;
+.index_sponsor_img > span{
+    font-weight: lighter;
+    color: white;
 }
 
-.index_sponsor_content > span {
-  font-weight: normal;
-  color: white;
+.index_sponsor_content > span{
+    font-weight: normal;
+    color: white;
 }
 
 .index_sponsor_img {
-  width: 350px;
-  height: 220px;
-  background-image: url("/img/user/index_add_img.png");
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+    width: 370px;
+    height: 272px;
+    background-image: url("../img/user/index_add_img.png");
+    background-size: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-.index_sponsor_img > span {
-  margin-left: 22px;
+.index_sponsor_img>span {
+    margin-left: 22px;
 }
 
 .index_sponsor_content {
-  font-weight: bold;
-  margin-left: 22px;
+    font-weight: bold;
+    margin-left: 22px;
 }
 
 /* 해봉 스폰서 */
 .photo_title {
-  margin-top: 22px;
-  margin-bottom: 22px;
+    margin-top: 22px;
 }
 
 .index_photo {
-  margin-left: 50px;
-  margin-right: 50px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
-.photo_title {
-  margin: 0;
+.photo_title{
+    margin-bottom: 30px;
 }
 
 .index_photo_box {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: space-between;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
 }
 
-.index_photo_list {
-  display: flex;
-
-  justify-content: space-between;
-  gap: 5px;
+.index_photo_list>img {
+    width: 94px;
+    height: 94px;
+    border-radius: 4px;
+    margin: 3px;
 }
 
-.index_photo_list > img {
-  width: 100px;
-  height: 100px;
-  border-radius: 4px;
-}
 
 /* 랜덤 사진 */

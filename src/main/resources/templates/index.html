@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>해봉 메인페이지</title>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/index.css" type="text/css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/index.css" type="text/css"/>
   </head>
   <body>
     <main class="main">
-		
-     
-      
+
       <section class="index_section">
         <div class="user_index_top_img_box">
           <a href="#"
             ><img
-              src="/img/icon/icon_header_title.png"
+              src="../img/icon/icon_header_title.png"
               alt="로고 아이콘"
               class="user_index_top_img_box_logo"
           /></a>
 
           <a href="#" class="user_index_top_img_box_search_icon"
-            ><img src="/img/icon/icon_search.png" alt="돋보기 아이콘"
+            ><img src="../img/icon/icon_search.png" alt="돋보기 아이콘"
           /></a>
           <div class="user_index_top_img_box_introduction">
             <div class="user_index_top_img_box_introduction_title">
@@ -44,11 +41,12 @@
         </div>
       </section>
 
+
       <!-- 상단 사진 컨테이너 -->
       <div class="user_index_search">
         <div class="user_index_search_box">
           <a href="#" class="user_index_search_icon">
-            <img src="/img/icon/icon_search.png" alt="돋보기 아이콘" />
+            <img src="../img/icon/icon_search.png" alt="돋보기 아이콘"/>
           </a>
 
           <input
@@ -58,141 +56,179 @@
           />
         </div>
       </div>
-      <!-- 검색 창 -->
-      <section class="index_section">
-        <div class="index_section_title"><span>지금 바로 봉사신청</span></div>
 
+
+
+
+    <!-- 여기,해봉에서만 만날 수 있는 봉사 -->
+      <section class="index_section">
+        
+       <div class="index_section_title"><span>여기,<br>해봉에서만 만날 수 있는 봉사</span></div>
         <div class="index_section_list">
-          <a href="org/recruit_vol_list.html" class="index_section_item">
+          <a href="#" class="index_section_item">
             <div>
               <img
-                src="/img/user/index_list_banner_1.png"
+                src="../img/user/index_category_list_1.svg"
                 alt="봉사 이미지"
                 class="index_section_item_img"
               />
             </div>
+          </a>
 
+          <a href="#" class="index_section_item">
             <div>
-              <span class="index_section_item_location">인천 서구<br /></span
-              ><span class="index_section_item_title"
+              <img
+                src="../img/user/index_category_list_2.svg"
+                alt="봉사 이미지"
+                class="index_section_item_img"
+              />
+            </div>
+          </a>
+
+          <a href="#" class="index_section_item">
+            <div>
+              <img
+                src="../img/user/index_category_list_3.svg"
+                alt="봉사 이미지"
+                class="index_section_item_img"
+              />
+            </div>
+          </a>
+
+          <a href="#" class="index_section_item">
+            <div>
+              <img
+                src="../img/user/index_category_list_4.svg"
+                alt="봉사 이미지"
+                class="index_section_item_img"
+              />
+            </div>
+          </a>
+
+          <a href="#" class="index_section_item">
+            <div>
+              <img
+                src="../img/user/index_category_list_5.svg"
+                alt="봉사 이미지"
+                class="index_section_item_img"
+              />
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+
+
+
+
+
+      <!-- 검색 창 -->
+      <section class="index_section_2">
+        <div class="index_section_title_2"><span>지금 바로 봉사신청</span></div>
+        <div class="index_section_list_2">
+
+          <a href="#" class="index_section_item_2">
+            <div>
+              <img
+                src="../img/user/banner_list_3.png"
+                alt="봉사 이미지"
+                class="index_section_item_img_2"
+              />
+            </div>
+            <div>
+              <span class="index_section_item_location_2">인천 서구<br></span
+              ><span class="index_section_item_title_2"
                 >미리네 유기견 보호센터</span
               >
             </div>
           </a>
-          <a href="#" class="index_section_item">
+
+          <a href="#" class="index_section_item_2">
             <div>
               <img
-                src="/img/user/index_list_banner_2.png"
+                src="../img/user/banner_list_2.png"
                 alt="봉사 이미지"
-                class="index_section_item_img"
+                class="index_section_item_img_2"
               />
             </div>
-
             <div>
-              <span class="index_section_item_location"
-                >마포구 백범로<br /></span
-              ><span class="index_section_item_title"
+              <span class="index_section_item_location_2">마포구 백범로<br></span
+              ><span class="index_section_item_title_2"
                 >새싹 보육원 일손돕기</span
               >
             </div>
           </a>
-          <a href="#" class="index_section_item">
+
+          <a href="#" class="index_section_item_2">
             <div>
               <img
-                src="/img/user/index_list_banner_3.svg"
+                src="../img/user/banner_list_1.png"
                 alt="봉사 이미지"
-                class="index_section_item_img"
+                class="index_section_item_img_2"
               />
             </div>
-
             <div>
-              <span class="index_section_item_location"
-                >서울시 영등포구<br /></span
-              ><span class="index_section_item_title">달동네 연탄봉사</span>
+              <span class="index_section_item_location_2">서울시 영등포구<br></span
+              ><span class="index_section_item_title_2">도연 요양원 활동봉사</span>
             </div>
+
           </a>
         </div>
       </section>
 
-      <!-- 여기,해봉에서만 만날 수 있는 봉사 -->
-      <section class="index_section">
-        <div class="index_section_title">
-          <span>여기,<br />해봉에서만 만날 수 있는 봉사</span>
-        </div>
-        <div class="index_section_list">
-          <a href="#" class="index_section_item">
-            <div>
-              <img
-                src="/img/user/index_category_list_1.svg"
-                alt="봉사 이미지"
-                class="index_section_item_img"
-              />
-            </div>
-          </a>
 
-          <a href="#" class="index_section_item">
-            <div>
-              <img
-                src="/img/user/index_category_list_2.svg"
-                alt="봉사 이미지"
-                class="index_section_item_img"
-              />
-            </div>
-          </a>
+  
 
-          <a href="#" class="index_section_item">
-            <div>
-              <img
-                src="/img/user/index_category_list_3.svg"
-                alt="봉사 이미지"
-                class="index_section_item_img"
-              />
-            </div>
-          </a>
-
-          <a href="#" class="index_section_item">
-            <div>
-              <img
-                src="/img/user/index_category_list_4.svg"
-                alt="봉사 이미지"
-                class="index_section_item_img"
-              />
-            </div>
-          </a>
-
-          <a href="#" class="index_section_item">
-            <div>
-              <img
-                src="/img/user/index_category_list_5.svg"
-                alt="봉사 이미지"
-                class="index_section_item_img"
-              />
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- 봉사 카테고리 -->
+      <!-- 카드뉴스 -->
       <section class="index_section">
         <div class="index_section_title">
           <span>새로운 해봉이를<br />위한 해봉 뉴우-스</span>
         </div>
-        <div class="index_news_box">
-          <div class="index_news_img"></div>
 
-          <div class="index_news_text">
-            <span class="index_news_text_category">이색봉사</span>
-            <br />
-            <span class="index_news_text_title">너 이런 봉사 해봉?</span>
-            <br />
-            <span class="index_news_text_context"
-              >해봉과 함께하는, 해봉에서만 만날<br />수 있는 이색 봉사 구경하러
-              와!</span
-            >
-          </div>
-        </div>
+        <ul class="card_news">
+
+          <li class="card_news_1">
+            <div class="index_news_box">
+              <div class="index_news_img"></div>
+              <div class="index_news_text">
+                <span class="index_news_text_category">이색봉사</span>
+                <br />
+                <span class="index_news_text_title">너 이런 봉사 해봉?</span>
+                <br />
+                <span class="index_news_text_context"
+                  >해봉과 함께하는, 해봉에서만 만날수 있는 이색 봉사 구경하러
+                  와!</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="card_news_2">
+            <div class="index_news_box">
+              <div class="index_news_img"></div>
+              <div class="index_news_text">
+                <span class="index_news_text_category">이색봉사</span>
+                <br />
+                <span class="index_news_text_title">너 이런 봉사 해봉?</span>
+                <br />
+                <span class="index_news_text_context"
+                  >해봉과 함께하는, 해봉에서만 만날수 있는 이색 봉사 구경하러
+                  와!</span>
+              </div>
+            </div>
+          </li>
+
+        </ul>
       </section>
-      <!-- 해봉뉴스 -->
+
+
+
+
+
+
+
+
+      <!-- 봉사후기 -->
       <section class="index_section">
         <div class="index_section_title">
           <span>해봉이들의 <br />봉사후기 구경하기</span>
@@ -202,53 +238,57 @@
           <div class="index_review_item">
             <img
               class="index_review_img"
-              src="/img/user/index_review_list_1.svg"
+              src="../img/user/index_review_list_1.svg"
             />
             <div class="index_review_info">
               <span class="index_review_info_title"
                 >매주 사랑스러운 댕댕이들을 보..</span
               ><br />
-              <span class="index_review_info_context"
+              <p class="index_review_info_context"
                 >강아지를 너무 사랑하지만 1인 가구의 비애로 인해 항상 바라만
-                봤어야 했는데, 해봉을 통해 유기견 봉사를 통해서 매주</span
+                봤어야 했는데, 해봉을 통해 유기견 봉사를 통해서 매주</p
               >
             </div>
           </div>
           <div class="index_review_item">
             <img
               class="index_review_img"
-              src="/img/user/index_review_list_2.svg"
+              src="../img/user/index_review_list_2.svg"
             />
             <div class="index_review_info">
               <span class="index_review_info_title"
                 >너무 재밌었던 마라톤 봉사 후기!</span
               ><br />
-              <span class="index_review_info_context"
-                >오늘은 친구들과 다같이 마라톤 봉사를 했다! 생애 처음하는
-                봉사였는데 너무너무 행복하고 즐거웠다.일정 거리를 달리</span
+              <p class="index_review_info_context"
+                >오늘은 친구들과 다같이 마라톤 봉사를 했다! 생애 처음하는 봉사였는데
+                너무너무 행복하고 즐거웠다.일정 거리를 달리</p
               >
             </div>
           </div>
           <div class="index_review_item">
             <img
               class="index_review_img"
-              src="/img/user/index_review_list_3.svg"
+              src="../img/user/index_review_list_3.svg"
             />
             <div class="index_review_info">
               <span class="index_review_info_title"
                 >도시락 배달 봉사 다녀왔어요.</span
               >
-              <span class="index_review_info_context"
+              <p class="index_review_info_context"
                 >저번주 주말, 금천구에서 열린 사랑의 도시락 배달 봉사에
-                다녀왔습니다. 날씨도 화창하고 진행 봉사 요원분들도 정말
-                친절하</span
+                다녀왔습니다. 날씨도 화창하고 진행 봉사 요원분들도 정말 친절하</p
               >
             </div>
           </div>
         </div>
       </section>
+
+
+
+
+
       <!-- 봉사 후기 -->
-      <section class="index_section">
+      <section class="index_section_sponsor">
         <div class="index_sponsor">
           <div class="index_section_title sponsor_title">
             <span
@@ -262,19 +302,17 @@
             <div class="index_sponsor_img">
               <span class="index_sponsor_title">마르코로호</span>
               <div class="index_sponsor_content">
-                <span>순간을 함께하는 작은 것들<br /></span>
-                <span>할머니들이 직접 제작한<br /></span>
+                <span>순간을 함께하는 작은 것들<br></span>
+                <span>할머니들이 직접 제작한<br></span>
                 <span>다양한 소품들</span>
               </div>
             </div>
-            <span
-              >마르코로호 쇼핑하러 가기<img src="/img/icon/icon_right.png"
-            /></span>
+            <span>마르코로호 쇼핑하러 가기<img src="../img/icon/icon_right.png"></span>
           </div>
         </div>
       </section>
       <!-- 해봉 스폰서-->
-      <section class="index_section">
+      <section class="index_section_photo">
         <div class="index_photo">
           <div class="index_section_title photo_title">
             <span
@@ -286,27 +324,21 @@
           <div class="index_photo_box">
             <div class="index_photo_list">
               <img
-                src="/img/user/index_best_photo_list_1.svg"
+                src="../img/user/index_best_photo_list_1.png"
                 alt="랜덤사진"
               /><img
-                src="/img/user/index_best_photo_list_2.svg"
+                src="../img/user/index_best_photo_list_2.png"
                 alt="랜덤사진"
-              /><img
-                src="/img/user/index_best_photo_list_3.svg"
-                alt="랜덤사진"
-              />
+              /><img src="../img/user/index_best_photo_list_3.png" alt="랜덤사진" />
             </div>
             <div class="index_photo_list">
               <img
-                src="/img/user/index_best_photo_list_4.svg"
+                src="../img/user/index_best_photo_list_4.png"
                 alt="랜덤사진"
               /><img
-                src="/img/user/index_best_photo_list_5.svg"
+              src="../img/user/index_best_photo_list_5.png"
                 alt="랜덤사진"
-              /><img
-                src="/img/user/index_best_photo_list_6.svg"
-                alt="랜덤사진"
-              />
+              /><img src="../img/user/index_best_photo_list_6.png" alt="랜덤사진" />
             </div>
           </div>
         </div>
@@ -315,6 +347,38 @@
       <!-- 랜덤 사진 -->
     </main>
 
-    <nav class="nav_list" th:replace="~{inc/nav}"></nav>
+    <nav class="nav_list">
+      <ul>
+        <li>
+          <a href="#"
+            ><img src="../img/icon/icon_nav_home.png"  alt="내브바아이콘1"
+          /></a>
+        </li>
+        <li>
+          <a
+            ><img src="../img/icon/icon_nav_map.png" alt="내브바아이콘2"
+          /></a>
+        </li>
+        <li>
+          <a
+            ><img
+              src="../img/icon/icon_nav_community.png"
+              alt="내브바아이콘3"
+          /></a>
+        </li>
+        <li>
+          <a
+            ><img
+              src="../img/icon/icon_nav_category.png"
+              alt="내브바아이콘4"
+          /></a>
+        </li>
+        <li>
+          <a
+            ><img src="../img/icon/icon_nav_mypage.png" alt="내브바아이콘5"
+          /></a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>
