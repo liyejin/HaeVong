@@ -68,6 +68,7 @@ body {
     flex-direction: center;
     left: 61px;
     bottom: 42px;
+    display:none;
 }
 
 .user_index_top_img_box_slide_bar {
@@ -76,6 +77,7 @@ body {
     border-radius: 30px;
     background-color: #efefef70;
     left: 0;
+    display:none;
 }
 
 /* 상단 사진 컨테이너 */
@@ -86,7 +88,7 @@ body {
 
 .user_index_search_box {
     display: flex;
-    margin: 20px 25px 20px 25px;
+    margin: 0 25px 40px 25px;
     width: 380px;
     height: 36px;
     border-radius: 25px;
@@ -113,34 +115,35 @@ body {
     flex-direction: column;
     justify-content: space-between;
     gap: 14px;
+    margin-bottom: 70px;
 }
 
 .index_section_title {
     display: flex;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 
 .index_section_title > span {
     margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 
-/* 스크롤이랑 좀 떨어지게 못하나? */
+
+
 .index_section_list {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
     overflow: auto;
 }
 
 .index_section_item {
-
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -150,8 +153,8 @@ body {
 
 .index_section_item_img{
     border-radius: 6px;
-    width: 180px;
-    height: 187px;
+    width: 110px;
+    height: 110px;
 }
 
 
@@ -165,6 +168,71 @@ body {
     font-weight: bold;
     font-size: 16px;
 }
+
+
+
+
+
+/* -------index_section_item_2-------- */
+.index_section_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.index_section_title_2 {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+
+.index_section_title_2 > span {
+    margin-bottom: 30px;
+}
+
+.index_section_list_2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width:380px;
+    height:160px;
+    overflow-y: hidden;
+}
+
+.index_section_item_2 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.index_section_item_2 > div{
+    border-radius: 6px;
+    width: 110px;
+    height: 110px;
+}
+
+
+.index_section_item_location_2 {
+    color: #767676;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.index_section_item_title_2 {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
+
+
 
 /* 지금 바로 봉사신청 */
 .index_section_category_list {
@@ -211,25 +279,40 @@ body {
 
 }
 
-/* 봉사 카테고리 */
+
+/* 카드뉴스_1 */
+.card_news{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    gap:20px;
+}
+
+.card_news_1{
+    width: 173px;
+    height: 270px;
+}
+
 .index_news_box {
     position: relative;
-    width: 300px;
-    height: 350px;
+    width: 173px;
+    height: 270px;
     background-color: #fff;
     margin: 0 auto;
 }
 
 .index_news_img {
     background-color: #E5CF8B;
+    background-image: url("../img/user/cardnews_img_1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     /* position: absolute; */
     /* top: 0;
     left: 0; */
-    width: 300px;
-    height: 180px;
+    width: 174px;
+    height: 145px;
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
-
 }
 
 .index_news_box>span {
@@ -240,36 +323,63 @@ body {
 }
 
 .index_news_text {
-    margin-top: 10px;
-    margin-left: 20px;
+    /* margin-top: 10px;
+    margin-left: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position:absolute;
+    text-align: left;
+    padding:10px;
 }
 
 .index_news_text_category {
-    padding-top: 10px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .index_news_text_title {
-    font-size: 24px;
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: -20px;
+    line-height: 0;
 }
 
 .index_news_text_context {
-    font-size: 16px;
+    font-size: 12px;
+    line-height: 15px;
 }
 
-/* 해봉 뉴스 */
+
+/* 카드뉴스_2 */
+.card_news_2 > .index_news_box >.index_news_img {
+    background-color: #5C78DE;
+    background-image: url("../img/user/cardnews_img_2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: absolute; */
+    /* top: 0;
+    left: 0; */
+    width: 174px;
+    height: 145px;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+}
+
+
+
+
+
+
+/* 봉사후기 */
 .index_review_list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
-    margin-left: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width:370px;
+    height:362px;
 }
 
 .index_review_item {
@@ -281,7 +391,7 @@ body {
 }
 
 .index_review_img{
-    width: 130px;
+    width: 100px;
 }
 
 .index_review_info_title {
@@ -296,20 +406,22 @@ body {
 /* 봉사 후기 */
 .sponsor_title {
     margin-top: 22px;
-    margin-bottom: 22px;
-
+    margin-bottom: 30px;
 }
 
 .index_sponsor {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 16px;
+}
+
+.index_section_title > span{
+    margin: 0;
 }
 
 .index_sponsor_box {
-    width: 350px;
-    height: 270px;
+    width: 370px;
+    height: 272px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -318,13 +430,16 @@ body {
     gap: 10px;
     background-color: #823030;
     color: #efefef;
-    margin-left: 50px;
+    margin-left:30px;
+    margin-right:30px;
+    margin-bottom: 70px;
 }
 
 .index_sponsor_box > span{
     font-weight: bold;
     color: white;
     margin-left: 120px;
+    padding:7px;
 }
 
 .index_sponsor_box > span > img{
@@ -342,12 +457,12 @@ body {
 }
 
 .index_sponsor_img {
-    width: 350px;
-    height: 220px;
-    background-image: url('/img/user/index_add_img.png');
+    width: 370px;
+    height: 272px;
+    background-image: url("../img/user/index_add_img.png");
+    background-size: cover;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -366,45 +481,31 @@ body {
 /* 해봉 스폰서 */
 .photo_title {
     margin-top: 22px;
-    margin-bottom: 22px;
 }
 
 .index_photo {
-    margin-left: 50px;
-    margin-right: 50px;
     display: flex;
     justify-content: space-between;
-    gap: 20px;
     align-items: center;
     flex-direction: column;
 }
 
 .photo_title{
-    margin: 0;
+    margin-bottom: 30px;
 }
 
 .index_photo_box {
     display: flex;
     flex-direction: column;
-
-    justify-content: space-between;
-    gap: 10px;
-
-}
-
-.index_photo_list {
-    display: flex;
-
-    justify-content: space-between;
-    gap: 5px;
+    /* justify-content: space-between; */
 }
 
 .index_photo_list>img {
-    width: 100px;
-    height: 100px;
+    width: 94px;
+    height: 94px;
     border-radius: 4px;
-
-
+    margin: 3px;
 }
+
 
 /* 랜덤 사진 */
