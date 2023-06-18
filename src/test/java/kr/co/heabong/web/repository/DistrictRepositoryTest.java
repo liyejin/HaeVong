@@ -23,7 +23,7 @@ class DistrictRepositoryTest {
 	}
 	@Test
 	void testFindByName() {
-		int districtId = repo.findByName("마포구");
+		int districtId = repo.findByName("마포구",1);
 		System.out.println(districtId);
 	}
 

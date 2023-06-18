@@ -186,8 +186,8 @@ public class OrgController {
 	}
 
 	@GetMapping("vol_post_detail")
-	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgId) {
-		OrgVol orgVol = volService.getById(orgId);
+	public String getVol_post_detail(Model model, @RequestParam(name = "id") int orgVolId) {
+		OrgVol orgVol = volService.getById(orgVolId);
 		Org org = orgService.getById(orgVol.getOrgId());
 		model.addAttribute("orgVol", orgVol);
 		model.addAttribute("org", org);
@@ -239,6 +239,7 @@ public class OrgController {
 	
 		   int save = volService.save(orgVol);
 		   System.out.println(save);
+		   
 		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
 	}
