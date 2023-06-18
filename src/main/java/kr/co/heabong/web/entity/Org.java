@@ -1,6 +1,6 @@
 package kr.co.heabong.web.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
@@ -18,6 +18,7 @@ public class Org {
 	private int id;
 	private String name;
 	private String email;
+	private String signUpDate;
 	private String orgNum;
 	private String phoneNum;
 	private String roadAddress;
