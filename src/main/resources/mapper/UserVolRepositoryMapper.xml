@@ -51,4 +51,12 @@
 	VALUES (#{title}, #{date}, #{capacity}, #{place}, #{roadAddress},
 	    #{address}, #{userId}, #{districtId}, #{metropolId}, #{volCategoryId}, #{content})
 	</insert>
+	<!-- My page category section -->
+	<select id="FindMyApplyUserVolListById">
+	select *
+	from apply_user_vol join user_vol 
+	on apply_user_vol.user_vol_id = user_vol.id where apply_user_vol.user_id = #{userId} ; 
+
+	</select>
+
 	</mapper>

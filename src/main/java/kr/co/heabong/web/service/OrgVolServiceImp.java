@@ -10,17 +10,17 @@ import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.repository.OrgVolRepository;
 
 @Service
-public class OrgVolServiceImp implements OrgVolService{
+public class OrgVolServiceImp implements OrgVolService {
 
 	@Autowired
 	private OrgVolRepository repository;
-	
+
 	@Override
 	public List<OrgVol> getList() {
 		// TODO Auto-generated method stub
 		List<OrgVol> list = repository.findAll();
 		return list;
-		
+
 	}
 
 	@Override
@@ -39,11 +39,10 @@ public class OrgVolServiceImp implements OrgVolService{
 	@Override
 	public OrgVol getById(int id) {
 		OrgVol orgVol = repository.findById(id);
-		
-	      return orgVol;
-	
-	}
 
+		return orgVol;
+
+	}
 
 	public List<OrgVol> getList(int orgId, String status) {
 		// Org id와 상태로 OrgVol 리스트 가져오기
@@ -58,13 +57,11 @@ public class OrgVolServiceImp implements OrgVolService{
 		return save;
 	}
 
-
 	@Override
 	public OrgVol get() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	@Override
 	public List<OrgVol> getOrgVolListByCategoryId(int categoryId) {
@@ -73,8 +70,16 @@ public class OrgVolServiceImp implements OrgVolService{
 	}
 
 	@Override
-	public List<OrgVol> getOrgVolListBySearch(int categoryId,String serchKeyword) {
-		List<OrgVol>list = repository.FindOrgVolListBySearch(categoryId,serchKeyword);
+	public List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword) {
+		List<OrgVol> list = repository.FindOrgVolListBySearch(categoryId, serchKeyword);
+		return list;
+	}
+
+	// My page category section ----------------------------
+	@Override
+	public List<OrgVol> getMyApplyOrgVolList(int userId) {
+		List<OrgVol> list = repository.FindMyApplyOrgVolListById(userId);
+
 		return list;
 	}
 

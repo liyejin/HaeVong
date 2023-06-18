@@ -56,7 +56,6 @@ public class OrgController {
 		return "org/info";
 	}
 
-	
 	@RequestMapping("signin")
 	public String getSignIn(Model model) {
 
@@ -87,7 +86,6 @@ public class OrgController {
 		return "org/new_pwd";
 	}
 
-	
 	@RequestMapping("pwd_change_auth")
 	public String getPwd_change_auth(Model model) {
 
@@ -121,11 +119,11 @@ public class OrgController {
 		return "org/recruit_vol_list";
 	}
 
-//	@RequestMapping("recruit_write")
-//	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
-//		model.addAttribute(orgId);
-//		return "org/recruit_write";
-//	}
+	// @RequestMapping("recruit_write")
+	// public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
+	// model.addAttribute(orgId);
+	// return "org/recruit_write";
+	// }
 
 	@RequestMapping("signup")
 	public String getSignup(Model model) {
@@ -176,13 +174,13 @@ public class OrgController {
 		// 시간 포맷 지정
 
 		// 형식에 맞게 시간 출력
-//        String formattedTime = currentTime.format(formatter);
-//        System.out.println(orgVol.getDate());
+		// String formattedTime = currentTime.format(formatter);
+		// System.out.println(orgVol.getDate());
 
-//        LocalDateTime dateTime = LocalDateTime.parse(orgVol.getDate(), formatter);
-//      System.out.println(dateTime);
+		// LocalDateTime dateTime = LocalDateTime.parse(orgVol.getDate(), formatter);
+		// System.out.println(dateTime);
 
-//        LocalDate dateDate = dateTime.toLocalDate();
+		// LocalDate dateDate = dateTime.toLocalDate();
 
 		String dateString = orgVol.getDate();
 		String pattern = "yyyy-MM-dd";
@@ -195,7 +193,7 @@ public class OrgController {
 		Period period = Period.between(nowDate, date);
 
 		int restDate = period.getDays() + (period.getMonths() * 30);
-//        System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
+		// System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
 
 		model.addAttribute("dDay", restDate);
 
@@ -204,7 +202,7 @@ public class OrgController {
 
 	@GetMapping("vol_write")
 	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
-		model.addAttribute("orgId",orgId);
+		model.addAttribute("orgId", orgId);
 		return "org/vol_post_write";
 	}
 
@@ -223,4 +221,5 @@ public class OrgController {
 
 		return "org/vol_post_detail";
 	}
+
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.repository.UserVolRepository;
 
@@ -36,8 +35,13 @@ public class UserVolServiceImp implements UserVolService {
 	@Override
 	public void setUserVol() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	@Override
+	public List<UserVol> getMyApplyUserVolList(int userId) {
+		List<UserVol> list = repository.FindMyApplyUserVolListById(userId);
+		return list;
+	}
 
 }

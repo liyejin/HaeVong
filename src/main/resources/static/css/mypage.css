@@ -3,11 +3,11 @@
   display: none;
 }
 
-body{
-  background-color: #FFFCF5;
+body {
+  background-color: #fffcf5;
 }
 
-.main{
+.main {
   /*overflow-y: scroll;*/
   width: 430px;
   /* background-color: #fef8ea; */
@@ -24,12 +24,12 @@ body{
   height: 200px;
   display: flex;
   flex-direction: row;
-/*  margin-top: 40px;
+  /*  margin-top: 40px;
   margin-bottom: 10px;*/
   padding-top: 50px;
   padding-bottom: 50px;
   gap: 80px;
-  background-color:  rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .mypage_profile > .profile_txt {
   display: flex;
@@ -44,10 +44,9 @@ body{
 }
 .mypage_profile_name {
   font-weight: bold;
-  color: #64987F;
+  color: #64987f;
 }
 .mypage_profile > .profile_pic {
-
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -66,7 +65,6 @@ body{
   object-fit: cover;
 }
 
-
 .mypageCategory {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -74,37 +72,34 @@ body{
   justify-content: center;
 }
 
-
-.mypageCategory > ul{
-	background-color: #FFFFFF;
-	border-radius: 15px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-top: 30px;
-	padding: 30px;
+.mypageCategory > ul {
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+  padding: 30px;
 }
 
-.mypageCategory > ul > li{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	text-align: center;
-	gap: 14px;
-	list-style: none;
-  	text-align: center;
+.mypageCategory > ul > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  list-style: none;
+  text-align: center;
 }
 
-.mypageCategory > ul > li > a > div{
-	padding: 10px;
+.mypageCategory > ul > li > a > div {
+  padding: 10px;
 }
 
-.mypageCategory > ul > li > a > div > span:nth-child(even){
-	font-size: 14px;
+.mypageCategory > ul > li > a > div > span:nth-child(even) {
+  font-size: 14px;
 }
 
-
-
-.my_post{
+.my_post {
   display: flex;
   flex-direction: column;
   width: 390px;
@@ -112,24 +107,24 @@ body{
   margin-left: 20px;
   margin-top: 20px;
   font-size: 18px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
-.mypage_mypost_title{
-	padding-top: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	position: relative;
+.mypage_mypost_title {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
 }
 
-.mypage_mypost_title > span{
-	font-size: 20px;
-	font-weight: bold;
+.mypage_mypost_title > span {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.mypage_mypost_title > img{
-	position: absolute;
-	right: 10px;
+.mypage_mypost_title > img {
+  position: absolute;
+  right: 10px;
 }
 
 .my_post > .mypage_mypost_img {
@@ -141,12 +136,12 @@ body{
   gap: 5px;
   white-space: nowrap;
   overflow: auto;
-/*  overflow-x: hidden;*/
+  /*  overflow-x: hidden;*/
 }
 
-.my_post > .mypage_mypost_img > a> img{
-	width: 180px;
-	border-radius: 15px;
+.my_post > .mypage_mypost_img > a > img {
+  width: 180px;
+  border-radius: 15px;
 }
 
 /*.my_post > .mypage_mypost_img > div {
@@ -171,16 +166,15 @@ body{
   margin-top: 20px;
   margin-bottom: 50px;
   font-size: 18px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 15px;
   padding: 20px;
 }
 
-
-.cs > span{
-	font-size: 14px;
-	text-align: center;
-	line-height: 5px;
+.cs > span {
+  font-size: 14px;
+  text-align: center;
+  line-height: 5px;
 }
 
 /*
