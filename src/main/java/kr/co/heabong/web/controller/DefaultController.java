@@ -171,7 +171,7 @@ public class DefaultController {
 	// profile section ----------------------------
 	@GetMapping("mypage")
 	public String getMypage(
-			@RequestParam(name = "uid", required = true) int id,
+			@RequestParam(name = "uid", required = false) int id,
 			Model model) {
 
 		// user name
@@ -186,7 +186,7 @@ public class DefaultController {
 		List<PostPhoto> myPostPhoto = postPhotoService.getMyPostPhoto();
 		model.addAttribute("mypic", myPostPhoto);
 
-		return "mypage";
+		return "mypage_user";
 	}
 
 	@GetMapping("vol_list")

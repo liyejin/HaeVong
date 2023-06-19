@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
   <head>
@@ -8,21 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>기관메인</title>
-    <script src="/js/org_main.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/css/org/main.css" />
   </head>
   <body>
-	  
     <header class="header">
       <div class="header1">
-        <a href=""
-          ><img src="/img/icon/icon_header_back.png" alt="뒤로가기"
-        />
-        <div><img src="/img/icon/icon_header_title.png" alt=""></div>
-        <a href=""
-          ><img src="/img/icon/icon_header_more.png" alt="더보기"
+       <img class="title" src="/img/icon/icon_header_title.png" alt="헤더">
+        <a href="/logout" 
+          ><img src="/img/icon/icon_header_more.png" alt="로그아웃"
         /></a>
       </div>
     </header>
@@ -31,15 +25,19 @@
         <div class="org_profile_pic">
           <img src="/img/org/org_main_profile.png" alt="기관이미지" />
           <p class="org_profile_name">
-            어서오세요! <br />(주)해봉이네<span> 님</span></span>
+            어서오세요! <br /><span sec:authentication="principal.name">(주)해봉이네</span><span> 님</span>
           </p>
         </div>
       </section>
+      
+      <script th:inline="javascript">
+		  var org = /*[[${org}]]*/ null;
+	  </script>
       <div class="d_day_content">
-        <span>우리 기관과 함께한지 <span class="d_day_cnt1"></span>일💛</span>
+        <span>우리 기관과 함께한지 <span class="d_day_cnt1" ></span>일💛</span>
         <br />
         <span
-          >해봉을 통해 만난 봉사자 <span class="d_day_cnt2">127</span>명💎</span
+          >해봉을 통해 만난 봉사자 <span class="d_day_cnt2">0</span>명💎</span
         >
       </div>
       <section class="recruit">
@@ -63,7 +61,7 @@
             </div>
             <div class="ing_contents">
               <div class="ing_detail">봉사장소</div>
-              <div class="ing_detail">행복보육원</div>
+              <div class="ing_detail" sec:authentication="principal.name">행복보육원</div>
             </div>
             <div class="ing_contents">
               <div class="ing_detail">마감일자</div>
@@ -95,6 +93,7 @@
         </div>
       </section>
     </div>
+    <script src="/js/org_main.js"></script>
     <nav class="nav_footer">
       <a href="">
         <img src="/img/org/org_main_ad.png" alt="" />

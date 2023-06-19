@@ -1,5 +1,6 @@
 package kr.co.heabong.web.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,12 @@ public class OrgServiceImp implements OrgService{
 		Org org = repository.findById(id);
 		return org;
 	}
+	
+	/*
+	 * @Override public Date getBySignUpdate(int id){ Org org =
+	 * repository.findById(id); Date signUpDate = org.getSignUpDate(); return
+	 * signUpDate; }
+	 */
 
 
 
@@ -62,12 +69,22 @@ public class OrgServiceImp implements OrgService{
 	}
 
 
-
+	
 	@Override
 	public Org getByRegNum(String regNum) {
-		// TODO Auto-generated method stub
 		Org org = repository.findByRegNum(regNum);
+		
 		return org;
 	}
+
+
+	@Override
+	public String getBySignUpdate(int id) {
+		Org org = repository.findById(id); 
+		String signUpDate = org.getSignUpDate();
+		return signUpDate;
+	}
+
+
 
 }

@@ -20,7 +20,8 @@ public class OrgVolController {
 	
 	@GetMapping
 	public List<OrgVol> getList(){
-		return service.getList();
+		List<OrgVol> list = service.getList();
+		return list;
 	}
 	@DeleteMapping
 	public int delete(Integer id) {
