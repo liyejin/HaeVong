@@ -90,4 +90,10 @@ public class OrgVolServiceImp implements OrgVolService {
 		return delete;
 	}
 
+	@Override
+	public int edit(OrgVol orgVol) {
+		int edit = repository.update(orgVol);
+		return edit;
+	}
+
 }
