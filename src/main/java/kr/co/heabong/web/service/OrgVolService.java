@@ -20,6 +20,7 @@ public interface OrgVolService {
 	OrgVol get();
 
 	int save(OrgVol orgVol);
+	int edit(OrgVol orgVol);
 
 	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
 

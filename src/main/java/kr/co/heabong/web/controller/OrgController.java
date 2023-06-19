@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -261,12 +262,25 @@ public class OrgController {
 
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
 		int districtId= districtService.getById(orgVol.getRoadAddress().split(" ")[1],metropolId);
-	
+		orgVol.setMetropolId(metropolId);
+		orgVol.setDistrictId(districtId);
 		   int save = volService.save(orgVol);
 		   System.out.println(save);
 		   
 		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
+	}
+	@PostMapping("vol_edit")
+	public String volEdit(OrgVol orgVol) {
+		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
+		int districtId= districtService.getById(orgVol.getRoadAddress().split(" ")[1],metropolId);
+		orgVol.setMetropolId(metropolId);
+		orgVol.setDistrictId(districtId);
+		System.out.println(orgVol.getId());   
+		   int edit = volService.edit(orgVol);
+		   System.out.println(edit);
+		System.out.println(orgVol.getId());   
+		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 	}
 
 	@RequestMapping("vol_post_detail")

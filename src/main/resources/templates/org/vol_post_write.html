@@ -34,6 +34,7 @@
 		<option value="선택안함">카테고리</option>
 		  <option th:each="c : ${cateList}"  th:value="${c.id}" th:text="${c.name}">카테고리</option>
 	</select>
+				<input type="number" class="org_id" id="org_id" name="orgId" th:value = "${orgId}" hidden>
                 <input type="text" class="title" id="title" placeholder="글 제목"   name = "title">
                 <input type="text" class="number" placeholder="모집 인원"  name = "capacity">
                 <input type="text" class="location" placeholder="봉사 장소" onclick="daumMap(this)" name = "roadAddress" >
