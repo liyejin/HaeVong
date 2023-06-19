@@ -7,47 +7,45 @@ import org.springframework.stereotype.Service;
 
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.repository.UserRepository;
+
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 	@Autowired
-		private UserRepository repository; 
+	private UserRepository repository;
 
 	@Override
 	public List<User> getList() {
-		List<User>list = repository.findAll();
-		
+		List<User> list = repository.findAll();
+
 		return list;
 	}
-	
+
 	@Override
-	public User getUserName(int id){
+	public User getUserName(int id) {
 		User userName = repository.findByUserName(id);
 		return userName;
 	}
 
 	@Override
 	public User findByUserPhoto(int id) {
-	  User profilePhoto = repository.findByUserPhoto(id);
+		User profilePhoto = repository.findByUserPhoto(id);
 		return profilePhoto;
 	}
-
-
 
 	@Override
 	public void setUser(User user) {
 		repository.save(user);
 	}
-	
-	
+
 	@Override
 	public boolean isValid(String uid, String pwd) {
 		User user = repository.findByUid(uid);
-		
-		if(user == null)
+
+		if (user == null)
 			return false;
-		else if(!user.getPwd().equals(pwd))
+		else if (!user.getPwd().equals(pwd))
 			return false;
-		
+
 		return true;
 	}
 
@@ -56,7 +54,5 @@ public class UserServiceImp implements UserService{
 		User user = repository.findByUid(uid);
 		return user;
 	}
-
-	
 
 }
