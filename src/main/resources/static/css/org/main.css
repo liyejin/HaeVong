@@ -166,6 +166,10 @@
   flex-direction: row;
   margin-top: 5px;
   margin-left: 5px;
+     white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px; /* 텍스트를 표시할 최대 너비 */
 }
 
 .ing_container > .ing_contents > .ing_detail > span {

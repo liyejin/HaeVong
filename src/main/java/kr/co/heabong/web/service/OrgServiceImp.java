@@ -69,12 +69,22 @@ public class OrgServiceImp implements OrgService{
 	}
 
 
+	
+	@Override
+	public Org getByRegNum(String regNum) {
+		Org org = repository.findByRegNum(regNum);
+		
+		return org;
+	}
 
 
 	@Override
-	public Date getBySignUpdate(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getBySignUpdate(int id) {
+		Org org = repository.findById(id); 
+		String signUpDate = org.getSignUpDate();
+		return signUpDate;
 	}
+
+
 
 }

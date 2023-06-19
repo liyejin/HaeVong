@@ -8,11 +8,12 @@ public interface OrgService {
 	List <Org> getList();
 	Org getById(int id);
 
-	/* Org getByRegNum(String regNum); */
-	Date getBySignUpdate(int id);
+	Org getByRegNum(String regNum); 
+	String getBySignUpdate(int id);
 	void setOrg(Org org);
 	
 	void delete(Org org);
 
 	boolean isValid(String regNum, String pwd);
+
 }
