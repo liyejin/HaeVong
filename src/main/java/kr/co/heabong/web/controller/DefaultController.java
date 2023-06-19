@@ -73,7 +73,8 @@ public class DefaultController {
 	// 메인
 	@GetMapping("/")
 	public String getIndex(Model model) {
-		// model.addAttribute();
+		List<OrgVol> list = orgVolService.getList();
+		model.addAttribute("orgVOl",list);
 		return "index";
 	}
 

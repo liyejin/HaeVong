@@ -37,12 +37,19 @@
 .user_category_list_item_icon {
     width: 60px;
     height: 60px;
-    background-color: #64987F;
     color: #efefef;
     border-radius: 30px;
     align-items: center;
     display: flex;
+	justify-content: center;
 }
+
+.user_category_list_item_icon > img{
+	
+filter: opacity(0.5) drop-shadow(0 0 0 rgb(64, 128, 128));
+width: 40px;
+}
+
 
 .user_category_banner_sub {
     width: 100%;
