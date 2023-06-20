@@ -27,7 +27,7 @@ public class UserVolController {
 	public String getList(Model model) {
 		UserVol userVol = userVolService.getUserVol();
 		model.addAttribute("userVol", userVol);
-		return "user/user_vol_recruit";
+		return "user/vol_recruit";
 	}
 
 	// My page category section ----------------------------

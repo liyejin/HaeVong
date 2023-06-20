@@ -28,4 +28,7 @@ public interface UserRepository {
 	User findByUserPhoto(int id);
 
 	User findByUid(String uid);
+
+	// My page
+	User findUserInfoById(int id);
 }

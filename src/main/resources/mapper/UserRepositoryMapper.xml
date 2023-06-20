@@ -34,4 +34,10 @@
 		VALUES(uid=#{uid},name=#{name}, email=#{email}, phone_number=#{phoneNumber}, gender=#{gender}, age=#{age}, birth_date=#{birthDate}, profile_photo=#{profilePhoto}, nickname=#{nickname} );
    </insert>
    
+
+   <!-- My page -->
+    <select id="findUserInfoById">
+      select * from user where id = ${id} ;
+   </select>
+
    </mapper>

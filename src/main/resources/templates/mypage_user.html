@@ -32,17 +32,12 @@
         <div class="profile_txt">
           <p class="title">가치있는 일상 같이 만들어요!</p>
           <p>
-            <span class="mypage_profile_name" th:text="${userName.name}"
-              >회원</span
+            <span class="mypage_profile_name" th:text="${user.name}">회원</span
             ><span> 님</span>
-          </p>
-          <p>
-            <span>오늘로 함께한지 </span><span class="d_day_cnt1"> </span
-            ><span> 일</span>
           </p>
         </div>
         <div class="profile_pic">
-          <img th:src="@{${userProfilePhoto.profilePhoto}}" alt="" />
+          <img th:src="@{${user.profilePhoto}}" alt="" />
           <a href="">프로필 수정</a>
         </div>
       </section>
@@ -54,7 +49,7 @@
       <section class="mypageCategory">
         <ul>
           <li>
-            <a th:href="@{user/myapply?uid=1}">
+            <a th:href="@{myapply?(uid=${user.id})}">
               <div>
                 <span>📝<br /></span>
                 <span>신청관리</span>
@@ -84,7 +79,7 @@
 
       <section class="my_post">
         <div class="mypage_mypost_title" id="imageContainer">
-          <span>나의 게시글 > </span>
+          <span>나의 게시글 </span>
           <img src="/img/icon/icon_plus.png" />
         </div>
         <div class="mypage_mypost_img">
