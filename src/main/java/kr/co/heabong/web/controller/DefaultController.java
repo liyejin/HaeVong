@@ -188,13 +188,13 @@ public class DefaultController {
 	
 	
 	// 기관 비밀번호 찾기(포스트)
-		@PostMapping("user_find_pwd")
-		public String setUserPwd() {
+	@PostMapping("user_find_pwd")
+	public String setUserPwd(String uid, String pwd) {
 
-			
-			
-			return "user_find_pwd";
-		}
+		System.out.println(uid + " " + pwd);
+		
+		return "redirect:/user_signin";
+	}
 
 	// 카테고리 목록 페이지
 	@GetMapping("category_main")
