@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="../css/reset.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/vol_list.css" />
+	<script src="/js/org/org_vol.js"></script>
 </head>
 
 <header class="header">
@@ -29,6 +30,9 @@
 		<!--</div>-->
 		
 		<div class="search_bar">
+		<div class="category" name="volCategoryId">
+		  <option class="catelist" th:each="c : ${volCategory}"  th:value="${c.id}" th:text="${c.name}">카테고리</option>
+		</option>
 		<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get">
 			
 			<input type="number" hidden placeholder="카테고리" name="cid" th:value="${cid}"/>
