@@ -15,7 +15,7 @@ public class  MyUserDetails implements UserDetails {
 	private String name;
 	private String email;
 	private String password;
-	private String name;
+	
 	private String username; // userID, 고정일수밖에없다.
 	private List <GrantedAuthority> authorities;
 	
@@ -44,15 +44,7 @@ public class  MyUserDetails implements UserDetails {
 		this.id = id;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
-	
 	public String getEmail() {
 		return email;
 	}
