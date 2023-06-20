@@ -12,6 +12,7 @@ public class  MyUserDetails implements UserDetails {
 
 	
 	private int id;
+	private String name;
 	private String email;
 	private String password;
 	private String username;
@@ -32,7 +33,16 @@ public class  MyUserDetails implements UserDetails {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -59,7 +69,6 @@ public class  MyUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return password;
 	}
-
 
 	@Override
 	public String getUsername() {

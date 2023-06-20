@@ -16,6 +16,8 @@ public interface UserService {
 	
 	
 	boolean isValid(String uid, String pwd);
+
+	User getUserName(String name);
 	
 
 }

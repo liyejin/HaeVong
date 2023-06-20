@@ -6,5 +6,7 @@ import kr.co.heabong.web.entity.MetropolView;
 
 public interface MetropolViewService {
 
-		List<MetropolView> getListByMetropolId(int metropolId);
+	List<MetropolView> getList();
+
+	List<MetropolView> getListByMetropolId(int metropolId);
 }
