@@ -326,3 +326,28 @@ input::placeholder {
   color: white;
   line-height: 60px;
 }
+.map_container{
+	width: 360px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 35px;
+	margin-right: 35px;
+	border: 0.4px solid #BBBBBB;
+}
+.map{
+	 margin-left: 25px; 
+	 z-index: -1;
+	
+	margin : 0px
+}
+.map_location{
+	width: 340px;
+	height : 50px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding-left: 20px;
+	gap : 8px;
+	background-color: #FAFAFA;
+}

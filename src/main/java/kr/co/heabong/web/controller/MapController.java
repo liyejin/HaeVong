@@ -38,7 +38,6 @@ public class MapController {
 	
 	
 	//맵 가져오기
-	@ResponseBody
 	@GetMapping("/main")
 	public String getList(Model model,
 			@RequestParam(name = "metropol", defaultValue = "서울", required = false) String metropol,

@@ -35,6 +35,7 @@
           </div>
         </div>
       </header>   
+      
       <script th:inline="javascript">
 			//  변수에 데이터를 할당
 			var ovData = /*[[${orgVol}]]*/ null;
@@ -116,16 +117,14 @@
           한해, 따로 연락 드리겠습니다!
         </li>
         <li class="title">봉사 장소</li>
-        <li style="padding-bottom: 70px;">
-			<div id="map" style="width: 350px; height: 300px; margin-left: 25px; z-index: -1;">
+        <li class="map_container" >
+			<div class="map" id="map" style="width: 360px; height: 300px;"></div>
+			<div class="map_location"><img src="/img/icon/icon_map_nav.svg" /><span  th:text="${orgVol.roadAddress}"></span></div>
+			
 		</li>
       </ul>
-
-<script src="/js/map.js"></script>
-      <nav class="nav_list" th:replace="~{inc/nav}"></nav>
-     
-        <li>지~도..api 들어올곳</li>
-      </ul>
+			
+        
       <div class="br3"></div>
       <div class="vol_post_cs">
         <a href=""><p>고객센터 문의하기</p></a>
@@ -135,5 +134,7 @@
       </div>
  <a href = "vol_edit" th:href="@{vol_edit(id=${orgVol.id})}"><div class="btn_single">수정하기</div></a>
     </main>
+    <script src="/js/map.js"></script>
+   <nav class="nav_list" th:replace="~{inc/nav}"></nav>
   </body>
 </html>
