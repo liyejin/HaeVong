@@ -70,7 +70,7 @@ public class OrgController {
 
 	Org org = orgService.getById(user.getId());
 	model.addAttribute("org",org);
-	System.out.println(user.getId());
+	
 
 		return "org/main";
 	}

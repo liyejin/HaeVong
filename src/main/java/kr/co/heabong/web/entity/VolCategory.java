@@ -15,4 +15,5 @@ public class VolCategory {
 
 	private int id;
 	private String name;  
+	private String icon;
 }

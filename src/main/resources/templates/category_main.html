@@ -24,7 +24,7 @@
           <li class="user_category_list_item" th:each="cateList:${cateList}">
             <a th:href="@{/org_vol_by_category(cid=${cateList.id})}">
               <div class="user_category_list_item_icon">
-                <span th:text="${cateList.id}">봉사카테고리이미지</span>
+                <img th:src = "/img/icon/${cateList.icon}">봉사카테고리이미지</img>
               </div>
               <span th:text="${cateList.name}">봉사카테고리이름</span>
             </a>
