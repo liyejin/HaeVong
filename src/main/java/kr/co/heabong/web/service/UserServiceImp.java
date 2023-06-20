@@ -61,5 +61,13 @@ public class UserServiceImp implements UserService {
 		User user = repository.findUserInfoById(id);
 		return user;
 	}
+	@Override
+	public User getUserName(String name) {
+		// TODO Auto-generated method stub
+		User user = repository.findByUid(name);
+		return user;
+	}
+
+	
 
 }

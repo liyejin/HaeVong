@@ -1,12 +1,10 @@
 package kr.co.heabong.web.controller;
 
 import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,19 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.security.config.HeabongConfig;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.PostPhotoService;
 import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.VolCategoryService;
-import kr.co.heabong.web.security.config.MyUserDetails;
 
 @Controller
 @RequestMapping("/")
@@ -44,7 +43,8 @@ public class DefaultController {
 	PostPhotoService postPhotoService;
 	@Autowired
 	OrgService orgService;
-
+	@Autowired
+	HeabongConfig config;
 	// @Autowired
 	// PostService postService;
 
@@ -109,6 +109,41 @@ public class DefaultController {
 		return "user_signup";
 	}
 
+	
+	@PostMapping("user_signup")
+	public String setUserSignUp(Model model, User user) {
+
+//		String idNum = user.getIdentityNumber();
+//		String[] idArr  = idNum.split("-");
+//		if(idArr)
+//		
+//		user.setIdentityNumber()
+		
+		System.out.println(user);
+		user.setIdentityNumber(user.getBirthDate()+user.getGender());
+		if(user.getGender()%2 == 1) 
+			user.setGender(1);
+		else
+			user.setGender(2);
+		
+		 LocalDateTime currentDateTime = LocalDateTime.now();
+		 int year = currentDateTime.getYear();
+	     int twoDigitYear = year % 100; // 년도의 두 자리수 계산
+	     
+	     String frontTwoDigits = user.getBirthDate().substring(0, 2); // 앞 두 자리만 잘라내기
+	     int result = Integer.parseInt(frontTwoDigits); // int로 변환
+		
+	     
+	     user.setAge(twoDigitYear-result+100);
+	     user.setPwd(config.passwordEncoder().encode(user.getPwd()));
+		System.out.println("changed : " + user);
+		userService.setUser(user);
+		
+		
+		
+		return "redirect:/login";
+	}
+	
 	// 기관 로그인
 	@GetMapping("org_signin")
 	public String getOrgSignin() {
@@ -151,13 +186,20 @@ public class DefaultController {
 
 		return "user_find_pwd";
 	}
+	
+	
+	// 기관 비밀번호 찾기(포스트)
+	@PostMapping("user_find_pwd")
+	public String setUserPwd(String uid, String pwd) {
+
+		System.out.println(uid + " " + pwd);
+		
+		return "redirect:/user_signin";
+	}
 
 	// 카테고리 목록 페이지
 	@GetMapping("category_main")
-	public String getVol_category(
-			@RequestParam(name = "s", required = false) String status,
-			@RequestParam(name = "v", required = true) int volCategory,
-			Model model) {
+	public String getVol_category(Model model) {
 		// 카테고리
 		List<VolCategory> cateList = volCategoryService.getCateList();
 		model.addAttribute("cateList", cateList);
@@ -189,7 +231,6 @@ public class DefaultController {
 			@RequestParam(name = "cid", required = true) int categoryId,
 			@RequestParam(name = "sk", required = false) String serchKeyword,
 			Model model) {
-
 		List<OrgVol> orgVolList = null;
 //		카테고리 전체 가져오기
 		List<VolCategory> volCategory = volCategoryService.getCateList(); 
