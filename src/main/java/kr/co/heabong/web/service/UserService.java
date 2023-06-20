@@ -20,4 +20,7 @@ public interface UserService {
 
 	boolean isValid(String uid, String pwd);
 
+	// My page
+	User getUserInfoById(int id);
+
 }

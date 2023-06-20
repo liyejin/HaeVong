@@ -167,26 +167,12 @@ public class DefaultController {
 		return "category_main";
 	}
 
-	// <My Page> : 로그인 기능 구현 전이라, default에서 로그인 한 상태 기준으로 기능 구현 했습니다.
+	// <My Page> : default, user 페이지 따로 있습니다.
 	// profile section ----------------------------
 	@GetMapping("mypage")
-	public String getMypage(
-			@RequestParam(name = "uid", required = false) int id,
-			Model model) {
+	public String getMypage(Model model) {
 
-		// user name
-		User userName = userService.getUserName(id);
-		model.addAttribute("userName", userName);
-
-		// profile photo
-		User userProfilePhoto = userService.findByUserPhoto(id);
-		model.addAttribute("userProfilePhoto", userProfilePhoto);
-
-		// My post photo
-		List<PostPhoto> myPostPhoto = postPhotoService.getMyPostPhoto();
-		model.addAttribute("mypic", myPostPhoto);
-
-		return "mypage_user";
+		return "mypage_default";
 	}
 
 	@GetMapping("vol_list")

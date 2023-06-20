@@ -55,4 +55,11 @@ public class UserServiceImp implements UserService {
 		return user;
 	}
 
+	// My page
+	@Override
+	public User getUserInfoById(int id) {
+		User user = repository.findUserInfoById(id);
+		return user;
+	}
+
 }

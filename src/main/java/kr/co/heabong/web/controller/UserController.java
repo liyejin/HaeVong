@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.PostPhoto;
+import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.UserVol;
+import kr.co.heabong.web.service.PostPhotoService;
+import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
 import kr.co.heabong.web.service.WishService;
 
@@ -41,6 +45,10 @@ public class UserController {
 	private UserVolService volService;
 	@Autowired
 	private WishService wishService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private PostPhotoService postPhotoService;
 
 	@GetMapping("customer_service")
 	public String getCustomer_service(Model model) {
@@ -88,6 +96,23 @@ public class UserController {
 	public String getEdit_pwdchange_insert(Model model) {
 
 		return "edit_pwdchange_insert";
+	}
+
+	// <My Page> : default, user 페이지 따로 있습니다.
+	@GetMapping("mypage")
+	public String getMypage(
+			@RequestParam(name = "uid", required = false) Integer id,
+			Model model) {
+
+		// user name, profile photo
+		User user = userService.getUserInfoById(id);
+		model.addAttribute("user", user);
+
+		// My post photo
+		List<PostPhoto> myPostPhoto = postPhotoService.getMyPostPhoto();
+		model.addAttribute("mypic", myPostPhoto);
+
+		return "mypage_user";
 	}
 
 	// 여기서부터 user_vol
