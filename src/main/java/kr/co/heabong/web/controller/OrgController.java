@@ -66,12 +66,9 @@ public class OrgController {
 
 	@GetMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model,@AuthenticationPrincipal MyUserDetails user) {
-		
-		
-
+	
 	Org org = orgService.getById(user.getId());
 	model.addAttribute("org",org);
-	
 
 		return "org/main";
 	}
