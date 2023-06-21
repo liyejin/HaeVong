@@ -144,7 +144,7 @@ public class OrgController {
 		model.addAttribute("userList", userList);
 		model.addAttribute("orgVol", orgVol);
 
-		return "org/recruit_vol_list?id="+orgVol.getId();
+		return "org/recruit_vol_list";
 	}
 
 	// @RequestMapping("recruit_write")

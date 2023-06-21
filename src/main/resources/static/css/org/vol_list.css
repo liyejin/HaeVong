@@ -4,7 +4,7 @@ body {
 }
 
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
-.vol_category {
+.vol_status_section {
 	margin: 20px;
 	display: flex;
 	position: relative;
@@ -12,7 +12,7 @@ body {
 	gap: 12px;
 }
 
-.vol_category>a {
+.vol_status_section>a {
 	/* font style */
 	font-size: 14px;
 	font-weight: bold;
@@ -30,10 +30,16 @@ body {
 	height: 30px;
 }
 
-.vol_category>a.selected {
+.vol_status_section>a.selected {
 	background-color: #64987F;
 }
 
+.vol_status_section>a.status-button{
+	background-color: #ffffff;
+}
+.vol_status_section>a.status-button-selected{
+	background-color: #64987F;
+}
 /* <공고관리 게시글들>------------------------------------------------- */
 
 .vol_list {
@@ -68,7 +74,7 @@ body {
 	align-self: center;
 }
 
-.vol_list_info {
+.vol_list_info{
 	display: flex;
 	flex-direction: column;
 	width: 220px;
