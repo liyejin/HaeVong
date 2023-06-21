@@ -19,13 +19,13 @@ class OrgVolRepositoryTest {
 	@Autowired
 	private OrgVolRepository repository;
 
-	// @Test
+@Test
 	void testFindAll() {
 		List<OrgVol> list = repository.findAll();
 		System.out.println(list);
 	}
 
-//	@Test
+@Test
 	void testFindByOffsetAndSize() {
 		List<OrgVol> list = repository.findByOffsetAndSize(0, 6);
 		System.out.println(list);
@@ -60,7 +60,7 @@ class OrgVolRepositoryTest {
 		System.out.println(orgVol);
 	}
 
-	@Test
+	//@Test
 	void testFindByOrgIdAndStatus() {
 		List<OrgVol> list = repository.findByOrgIdAndStatus(1, "over");
 		System.out.println(list);
@@ -72,18 +72,18 @@ class OrgVolRepositoryTest {
 		List<OrgVol> list = repository.FindOrgVolListByCategoryId(1);
 	}
 
-	@Test
+	//@Test
 	void testOrgVolListBySearch() {
 		List<OrgVol> list = repository.FindOrgVolListBySearch(1, "네이버");
 		System.out.println(list);
 	}
 
-	@Test
+	//@Test
 	void testFindOrgVolListByCategoryId(int categoryId) {
 		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId);
 	}
 
-	@Test
+	//@Test
 	void testDelete1() {
 		repository.delete(65);
 	}

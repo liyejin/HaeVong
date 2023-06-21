@@ -23,7 +23,8 @@
     <div class="main">
       <section class="org_profile">
         <div class="org_profile_pic">
-          <img src="/img/org/org_main_profile.png" alt="기관이미지" />
+          <img th:src="'/img/org/'+${org.profilePhoto}" alt="기관이미지" />
+      
           <p class="org_profile_name">
             어서오세요! <br /><span sec:authentication="principal.name">(주)해봉이네</span><span> 님</span>
           </p>
