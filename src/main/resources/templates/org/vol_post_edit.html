@@ -38,8 +38,8 @@
 		<input type="text" class="title" id="title" placeholder="글 제목" name="title" th:value="${vol.title}">
 		<input type="text" class="number" placeholder="모집 인원" name="capacity" th:value="${vol.capacity}">
 		<input type="text" class="location" placeholder="봉사 장소" onclick="daumMap(this)" name="roadAddress"
-			th:value="${vol.roadAddress}">
-		<input type="text" class="address" placeholder="상세주소" name="address" th:value="${vol.address}">
+			th:value="${vol.roadAddress}" readonly>
+		<input type="text" class="address" placeholder="상세주소" name="address" th:value="${vol.address}" >
 		<script>
 			function daumMap(inputField) {
 				new daum.Postcode({
