@@ -11,7 +11,7 @@ public interface OrgService {
 
 	Org getByRegNum(String regNum); 
 	
-	Org getByOrgPhoto(int id);
+	String getByOrgPhoto(int id);
 	
 	String getBySignUpdate(int id);
 	

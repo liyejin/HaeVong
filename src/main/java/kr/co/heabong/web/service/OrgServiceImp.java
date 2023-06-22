@@ -88,9 +88,10 @@ public class OrgServiceImp implements OrgService{
 
 
 	@Override
-	public Org getByOrgPhoto(int id) {
+	public String getByOrgPhoto(int id) {
 		
-		Org orgProfile = repository.findByOrgPhoto(id);
+		String orgProfile = repository.findByOrgPhoto(id);
+		
 		return orgProfile;
 	}
 
