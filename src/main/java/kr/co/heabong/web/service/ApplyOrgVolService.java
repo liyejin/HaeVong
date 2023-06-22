@@ -15,5 +15,7 @@ public interface ApplyOrgVolService {
 	List<User> getApplyList(int orgVolId);
 
 	List<UserApplyView> getApplicantlList(int orgVolId);
+	
+	int changeApplicantStatus(int orgVolId, int userId, int status);
 
 }

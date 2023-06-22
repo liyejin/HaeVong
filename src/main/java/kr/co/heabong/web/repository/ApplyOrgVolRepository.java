@@ -16,6 +16,7 @@ public interface ApplyOrgVolRepository {
 	List<UserApplyView> findViewAll();
 	List<UserApplyView> findViewByOrgVolId(int orgVolId);
 
+	ApplyOrgVol get(int orgVolId, int userId);
 	
 	int save(ApplyOrgVol  applyOrgVol);
 
