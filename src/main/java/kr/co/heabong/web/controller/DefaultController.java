@@ -74,7 +74,7 @@ public class DefaultController {
 	@GetMapping("/")
 	public String getIndex(Model model) {
 		List<OrgVol> list = orgVolService.getList();
-		model.addAttribute("orgVOl",list);
+		model.addAttribute("orgVOl", list);
 		return "index";
 	}
 
@@ -214,7 +214,7 @@ public class DefaultController {
 	@GetMapping("mypage")
 	public String getMypage(Model model) {
 
-		return "mypage_default";
+		return "mypage";
 	}
 
 	@GetMapping("vol_list")
@@ -232,8 +232,8 @@ public class DefaultController {
 			@RequestParam(name = "sk", required = false) String serchKeyword,
 			Model model) {
 		List<OrgVol> orgVolList = null;
-//		카테고리 전체 가져오기
-		List<VolCategory> volCategory = volCategoryService.getCateList(); 
+		// 카테고리 전체 가져오기
+		List<VolCategory> volCategory = volCategoryService.getCateList();
 
 		if (serchKeyword == null)
 			orgVolList = orgVolService.getOrgVolListByCategoryId(categoryId);
@@ -242,8 +242,7 @@ public class DefaultController {
 
 		model.addAttribute("orgVolList", orgVolList);
 		model.addAttribute("cid", categoryId);
-		model.addAttribute("volCategory",volCategory);
-		
+		model.addAttribute("volCategory", volCategory);
 
 		return "org_vol_by_category";
 	}
