@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.UserVol;
+import kr.co.heabong.web.security.config.MyUserDetails;
 import kr.co.heabong.web.service.PostPhotoService;
 import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
@@ -101,18 +103,18 @@ public class UserController {
 	// <My Page> : default, user 페이지 따로 있습니다.
 	@GetMapping("mypage")
 	public String getMypage(
-			@RequestParam(name = "uid", required = false) Integer id,
+			@AuthenticationPrincipal MyUserDetails user,
 			Model model) {
 
 		// user name, profile photo
-		User user = userService.getUserInfoById(id);
-		model.addAttribute("user", user);
+		User userProfile = userService.getUserInfoById(user.getId());
+		model.addAttribute("user", userProfile);
 
 		// My post photo
 		List<PostPhoto> myPostPhoto = postPhotoService.getMyPostPhoto();
 		model.addAttribute("mypic", myPostPhoto);
 
-		return "mypage_user";
+		return "user/mypage";
 	}
 
 	// 여기서부터 user_vol

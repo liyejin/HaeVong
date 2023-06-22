@@ -1,0 +1,21 @@
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.heabong.web.repository.ApplyOrgVolViewRepository">	<!--레퍼지토리의 implements라고 생각-->
+	
+	<select id="findMyApplyOrgVolList" resultType="kr.co.heabong.web.entity.ApplyOrgVolView"> 
+		select 
+		* from applyOrgVolView
+        where user_id = #{uid} and date &gt; CURDATE()
+    </select>	
+
+	<select id="findMyAttendOrgVolList" resultType="kr.co.heabong.web.entity.ApplyOrgVolView"> 
+		select 
+		* from applyOrgVolView
+        where user_id = #{uid} and date &lt; curdate()
+    </select>	
+
+
+		
+	</mapper>

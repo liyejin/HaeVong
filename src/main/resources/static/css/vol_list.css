@@ -1,4 +1,6 @@
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* <vol_list>  
+1. user/my_vol_manage.html (유저 내 봉사 관리페이지)
+*/
 
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
 .vol_category {
@@ -21,13 +23,13 @@
   justify-content: center;
 
   /* box layout */
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
   border-radius: 100px;
   width: 120px;
   height: 30px;
 }
 .vol_category > a.selected {
-  background-color: #64987F;
+  background-color: #64987f;
 }
 
 /* <공고관리 게시글들>------------------------------------------------- */
@@ -69,9 +71,9 @@
   height: 116px;
   margin-left: 10px;
   position: relative;
-  
+
   /* Inside auto layout */
-  
+
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -89,7 +91,7 @@
   font-size: 14px;
 }
 
-.vol_list_btn_box{
+.vol_list_btn_box {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -97,8 +99,8 @@
   bottom: 0;
   width: inherit;
 }
-.vol_list_btn_box_org{
-/*  position: absolute;*/
+.vol_list_btn_box_org {
+  /*  position: absolute;*/
   margin-top: 36px;
   width: inherit;
   display: flex;
@@ -113,7 +115,7 @@
   justify-content: center;
   align-items: center;
   color: #ececec;
-  background-color: #64987F;
+  background-color: #64987f;
   border-radius: 100px;
 
   width: 82px;
@@ -207,8 +209,6 @@
   margin-bottom: 40px;
 }
 
-
-
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_empty_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 .vol_empty {
   display: flex;
@@ -223,4 +223,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/*  user/my_vol_manage.html (유저 내 봉사 관리페이지)  */
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 신청내역/지난봉사 아이콘 */
+.category > a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #ececec;
+  background-color: #64987f;
+  border-radius: 100px;
+  padding: 5px 10px;
+  margin: 5px 10px; /* 요소 사이에 간격을 주기 위해 마진 추가 */
 }

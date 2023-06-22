@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.service.OrgVolService;
+
 // 나중에 RestController로 바꿀때 
 @RestController("apiOrgVolController")
 @RequestMapping("api/org-vols")
@@ -17,17 +18,18 @@ public class OrgVolController {
 
 	@Autowired
 	private OrgVolService service;
-	
+
 	@GetMapping
-	public List<OrgVol> getList(){
+	public List<OrgVol> getList() {
 		List<OrgVol> list = service.getList();
 		return list;
 	}
+
 	@DeleteMapping
 	public int delete(Integer id) {
 		return service.delete(id);
 	}
-	
-	
-	
+
+	// <My Apply : 내가 신청한 기관 봉사목록 페이지>
+
 }
