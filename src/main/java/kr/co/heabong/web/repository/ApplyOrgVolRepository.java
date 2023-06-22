@@ -16,11 +16,9 @@ public interface ApplyOrgVolRepository {
 	List<UserApplyView> findViewAll();
 	List<UserApplyView> findViewByOrgVolId(int orgVolId);
 
-<<<<<<< HEAD
-=======
+
 	ApplyOrgVol get(int orgVolId, int userId);
-	
->>>>>>> Kloudy
+
 	int save(ApplyOrgVol  applyOrgVol);
 
 	int update(ApplyOrgVol  applyOrgVol);
