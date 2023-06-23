@@ -2,6 +2,9 @@ body {
   width: 430px;
   height: 932px;
 }
+*::-webkit-scrollbar{
+	display: none;
+}
 .header>div {
     /* padding: 40px; */
 /*    box-shadow: 0 10px 10px -5px rgb(167, 167, 167);*/
@@ -40,7 +43,7 @@ body {
   
 .main {
   width: 430px;
-  height:792px;
+ 
 }
 
 .member_customer_service_menu_list{

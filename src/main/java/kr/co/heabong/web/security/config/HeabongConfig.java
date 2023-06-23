@@ -26,6 +26,8 @@ public class HeabongConfig {
 	private UserService userService;
 	@Autowired
 	private CustomLoginSuccessHandler customLoginSuccessHandler;
+	@Autowired
+	private CustomLoginFailHandler customLoginFailHandler;
 //	private PasswordEncoder passwordEncoder;
 	
 	//필터를 사용하려면?필요한 설정
@@ -51,7 +53,9 @@ public class HeabongConfig {
 		)
 		.formLogin(form->form
 				.loginPage("/user_signin")//Get요청a
-				.successHandler(customLoginSuccessHandler))
+				.successHandler(customLoginSuccessHandler)
+				.failureHandler(customLoginFailHandler))
+//		 		.failureHandler(customLoginFailHandler)
 				.logout(logout->logout
 				.logoutUrl("/logout"));
 		
