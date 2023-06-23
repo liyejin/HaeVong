@@ -17,7 +17,6 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	@Override
 	public List<OrgVol> getList() {
-		// TODO Auto-generated method stub
 		List<OrgVol> list = repository.findAll();
 		return list;
 
@@ -32,7 +31,6 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	@Override
 	public List<OrgVol> getList(String address) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
