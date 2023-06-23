@@ -46,8 +46,9 @@
 
 .user_category_list_item_icon > img{
 	
-filter: opacity(0.5) drop-shadow(0 0 0 rgb(64, 128, 128));
-width: 40px;
+	filter: opacity(0.5) drop-shadow(0 0 0 rgb(0, 128, 255));
+	width: 40px;
+	
 }
 
 
@@ -70,9 +71,11 @@ width: 40px;
     display: flex;
     justify-content: space-between;
     gap: auto;
+}
 
-
-
+.user_category_recommended_title > span{
+	font-size:20px;
+	font-weight: bold;
 }
 
 .user_category_recommended_list {

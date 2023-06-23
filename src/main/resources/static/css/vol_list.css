@@ -3,6 +3,36 @@
 */
 
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
+
+.category {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  overflow-x: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.category::-webkit-scrollbar {
+  width: 0.5em; /* 스크롤바 너비 */
+}
+
+.category > .catelist {
+  background-color: #64987f;
+  width: 100px;
+  color: white;
+  text-align: center;
+  border-radius: 15px;
+  white-space: nowrap;
+  padding: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.category > .catelist:hover {
+  font-weight: bold;
+}
+
 .vol_category {
   margin: 20px;
   display: flex;
@@ -83,6 +113,7 @@
   font-size: 16px;
   font-weight: bold;
 }
+
 .vol_date {
   font-size: 14px;
 }
@@ -109,6 +140,7 @@
   bottom: 0;
   width: inherit;
 }
+
 /* 상세보기 버튼 */
 .vol_list_detail_btn {
   display: flex;
@@ -126,6 +158,7 @@
 
   font-size: 14px;
 }
+
 /* 더보기 버튼 */
 .vol_list_edit_btn {
   width: 3px;
@@ -136,6 +169,48 @@
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ <> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+.submit_form {
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.querytext {
+  display: flex;
+  margin-left: 20px;
+  width: 320px;
+  height: 36px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  border: 0.5px solid gainsboro;
+  position: absolute;
+  top: 0;
+}
+
+.querytext::placeholder {
+  text-align: center; /* 가운데 정렬 */
+}
+
+.querytext[type="text"] {
+  caret-color: transparent; /* 커서를 투명하게 만듭니다. */
+}
+
+.submit {
+  width: 60px;
+  height: 36px;
+  border-radius: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 20px;
+}
+
+.submit[type="text"]:active,
+.submit[type="submit"]:active,
+.submit[type="button"]:active {
+  transform: translateY(2px); /* 아래로 2픽셀 이동 */
+}
 
 /* <봉사기관 정보변경>------------------------------------------------- */
 
@@ -223,25 +298,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/*  user/my_vol_manage.html (유저 내 봉사 관리페이지)  */
-
-.category {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 신청내역/지난봉사 아이콘 */
-.category > a {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  color: #ececec;
-  background-color: #64987f;
-  border-radius: 100px;
-  padding: 5px 10px;
-  margin: 5px 10px; /* 요소 사이에 간격을 주기 위해 마진 추가 */
 }

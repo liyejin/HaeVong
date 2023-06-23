@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/vol_category.css" />
-    <title>카테고리 추천</title>
+    <script src="/js/category_main.js"></script>
+    <title>카테고리</title>
   </head>
 
   <body>
@@ -25,6 +26,8 @@
             <a th:href="@{/orgvol?(cid=${cateList.id})}">
 				<!--참여해봉?(cid=${참여해봉의.id}) / cid=키 cateList.id=값-->
 				<!--로컬호스트8080/orgvol?cid=1-->
+				
+				<!--카테고리 아이콘 이미지-->
               <div class="user_category_list_item_icon">
                  <img th:src = "@{/img/icon/} + ${cateList.icon}"/>
               </div>
