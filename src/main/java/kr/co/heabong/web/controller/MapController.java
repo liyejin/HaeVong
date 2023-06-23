@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.heabong.web.entity.Metropol;
+import kr.co.heabong.web.entity.MetropolView;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.service.MetroService;
+import kr.co.heabong.web.service.MetropolViewService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.VolCategoryService;
@@ -31,24 +33,31 @@ public class MapController {
 	private MetroService metroService;
 	@Autowired
 	private VolCategoryService volCategoryService;
+	@Autowired
+	private MetropolViewService metropolViewService;
+	
 	
 	//맵 가져오기
 	@GetMapping("/main")
 	public String getList(Model model,
-			@RequestParam(name = "address", defaultValue = "서울", required = false) String address
+			@RequestParam(name = "metropol", defaultValue = "서울", required = false) String metropol,
+			@RequestParam(name = "district", defaultValue = "마포구", required = false) String district
 			) {
 
 		List<OrgVol> orgVolList = null;
 		List<Metropol> mtpList = metroService.getList();
 		List<VolCategory> volCategoryList = volCategoryService.getList();
-		if(address!=null)
+		
+		if(metropol!=null)
 			orgVolList  = orgVolService.getList();
 		else
-			orgVolList  = orgVolService.getList(address);
+			orgVolList  = orgVolService.getList(metropol);
 		
+		List<MetropolView> mtpvList =  metropolViewService.getList();
 		
 		model.addAttribute("ol", orgVolList);
 		model.addAttribute("mtp", mtpList);
+		model.addAttribute("mtpvList",mtpvList);
 		model.addAttribute("volCategory", volCategoryList);
 		return "map_main";
 	}

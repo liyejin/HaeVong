@@ -33,14 +33,14 @@
 
 		<script th:inline="javascript">
 			//  변수에 데이터를 할당
-			var oData = /*[[${ol}]]*/ null;
-			var dData = /*[[${dl}]]*/ null;
+			let oData = /*[[${ol}]]*/ null;
+			let dData = /*[[${dl}]]*/ null;
 		</script>
 
 		
 
 		<!--지도-->
-		<div id="map" style="width: 430px; height: 782px">
+		<div id="map" style="width: 360px; height: 200px; border: 0.4px soild #BBBBBB;" >
 
 			<!--검색창/포스트 매핑 구현 예정-->
 			<div class="map_bar">
@@ -87,8 +87,6 @@
 								/
 								<span class="org_vol_capacity_max">10</span>
 								</div>
-								
-								
 							</div>
 							<button class="org_vol_btn" type="button">신청</div>
 						</div>

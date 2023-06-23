@@ -22,6 +22,7 @@
               type="text"
               placeholder="이름을 입력해 주세요 (실명기재)"
               name="name"
+              required
             />
             <hr />
           </div>
@@ -31,6 +32,7 @@
               type="text"
               placeholder="아이디로 사용하실 문자열을 입력해주세요"
               name="uid"
+              required
             />
             <hr />
           </div>
@@ -40,56 +42,83 @@
           <div>
            <input type="text" placeholder="이메일을 입력해 주세요" 
             	name="email"
+            	required
             />
             <hr />
           </div>
           
           <div>
+			  <span>앞 6자리와 -를 제외한 뒷 한자리를 입력해주세요</span>
            <input
               type="text"
-              placeholder="생년월일을 입력해주세요"
-              name="identityNumber"
+              name="birthDate"
+              required
             />
+            -
+            <input
+              type="text"
+              name="gender"
+              required
+            />
+            
+            
             <hr />
           </div>
 
-          
+		<!--비밀번호 확인 구현-->          
           <div>
-           <input type="text" placeholder="8~20자리 (영 대/소문자, 숫자, 특수문자 조합) " 
-            name="pwd"/>
+           <input type="text" placeholder="비밀번호 8~20자리 (영 대/소문자, 숫자, 특수문자 조합)" 
+            name="pwd"
+            required />
             <hr />
           </div>
           
           
           <div>
             <input type="text" placeholder="비밀번호 확인" 
-            name="pwd2"/>
+            
+            required/>
             <hr width="100px"/>
           </div>
           
-          
+          <!--비밀번호 확인 구현-->       
           
           <div>
 			<input
               type="text"
               placeholder="-를 제외한 전화번호를 입력해주세요."
               name="phoneNumber"
+              required
             />
             <hr />
           </div>
-          
-          
-          <div>
-           <input
+                 
+                 <div>
+			<input
               type="text"
-              placeholder="8~20자리 (영 대/소문자, 숫자, 특수문자 조합)"
-              name="birthDate"
+              placeholder="닉네임으로 사용하실 문자열을 입력해주세요."
+              name="nickname"
+              required
             />
             <hr />
+          </div>
+                 
+         
+         
+        <div style="display: flex; justify-content: center;">
+	          <input
+				  type="file"
+				  name="profilePhoto"
+				  id="profilePhotoInput"
+				  style="display: none;" 
+				/>
+			<label for="profilePhotoInput">
+  			<img src="img/icon/icon_file.svg" width="30px" height="30px" alt="파일 선택" style="cursor: pointer;"/>
+		</label>
+</div>
+
           </div>
         </div>
-        
-        
    	<input class="submit" type="submit"  value="가입하기">
       </form>
     </section>

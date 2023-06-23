@@ -1,16 +1,25 @@
-console.log(oData);
+
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+
   mapOption = {
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
     level: 3, // 지도의 확대 레벨
   };
 
-var draggableElement = document.getElementById("map_category_box_title");
+
+// 지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+if (Array.isArray(oData)) {
+	
+	var draggableElement = document.getElementById("map_category_box_title");
 var box = document.getElementById("map_category_box");
 
 var offsetX, offsetY;
 var isDragging = false;
-
 draggableElement.addEventListener("mousedown", function (event) {
   isDragging = true;
   /*- draggableElement.offsetLeft;*/
@@ -30,15 +39,9 @@ document.addEventListener("mousemove", function (event) {
 document.addEventListener("mouseup", function () {
   isDragging = false;
 });
-
 /*드래그 이벤트*/
-// 지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption);
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-if (Array.isArray(oData)) {
+	
+	
   oData.forEach(function (element) {
     console.log(element);
     // 주소로 좌표를 검색합니다
@@ -87,6 +90,7 @@ if (Array.isArray(oData)) {
 } else {
   console.log(oData);
   // 주소로 좌표를 검색합니다
+  console.log(oData +"is one ");
   geocoder.addressSearch(oData.roadAddress, function (result, status) {
     console.log(kakao.maps.services.Status);
     // 정상적으로 검색이 완료됐으면

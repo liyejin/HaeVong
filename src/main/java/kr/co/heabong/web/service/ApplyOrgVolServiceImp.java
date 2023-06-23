@@ -50,4 +50,12 @@ public class ApplyOrgVolServiceImp implements ApplyOrgVolService {
 		return applyVolList;
 	}
 
+	@Override
+	public int changeApplicantStatus(int orgVolId, int userId, int status) {
+		ApplyOrgVol applyOrgVol = repository.get(orgVolId, userId);
+		applyOrgVol.setStatus(status);
+		int update = repository.update(applyOrgVol);
+		return update;
+	}
+
 }

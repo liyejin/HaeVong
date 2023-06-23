@@ -29,10 +29,18 @@
    <delete id="delete">
  delete from user where name = #{name}
    </delete>
-   <insert id="save">
-   INSERT INTO user(uid, name, email, phone_number,gender, age, birth_date, profile_photo, nickname)
-		VALUES(uid=#{uid},name=#{name}, email=#{email}, phone_number=#{phoneNumber}, gender=#{gender}, age=#{age}, birth_date=#{birthDate}, profile_photo=#{profilePhoto}, nickname=#{nickname} );
-   </insert>
+   <insert id="save" parameterType="kr.co.heabong.web.entity.User">
+   INSERT INTO user(uid,name, email, pwd, phone_number, gender, 
+ <if test="age != null">age,</if>
+   birth_date, 
+   <if test="profilePhoto != null">profile_photo, </if>
+   nickname, role_id)
+		VALUES(#{uid},#{name}, #{email},#{pwd},#{phoneNumber},#{gender},
+		<if test="age != null">#{age},</if>
+		 #{birthDate}, 
+		 <if test="profilePhoto != null">#{profilePhoto},</if>
+		 #{nickname},1);
+</insert>
    
 
    <!-- My page -->

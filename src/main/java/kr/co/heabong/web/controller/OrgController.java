@@ -66,12 +66,9 @@ public class OrgController {
 
 	@GetMapping("main") // 빈칸으로 놔둘지 고민해봐야할듯(루트 -> / )
 	public String getMain(Model model,@AuthenticationPrincipal MyUserDetails user) {
-		
-		
-
+	
 	Org org = orgService.getById(user.getId());
 	model.addAttribute("org",org);
-	
 
 		return "org/main";
 	}
@@ -136,7 +133,7 @@ public class OrgController {
 		return "org/recruit_on_list";
 	}
 
-	@RequestMapping("recruit_vol_list")
+	@RequestMapping("vol/applicants")
 	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
 
 		OrgVol orgVol = volService.getById(orgVolID);
@@ -144,7 +141,7 @@ public class OrgController {
 		model.addAttribute("userList", userList);
 		model.addAttribute("orgVol", orgVol);
 
-		return "org/recruit_vol_list?id="+orgVol.getId();
+		return "org/applicants";
 	}
 
 	// @RequestMapping("recruit_write")
@@ -198,12 +195,6 @@ public class OrgController {
 		map.put("status", status);
 		model.addAttribute("map", map);
 		return "org/vol_list"; // templates/org/vol_list
-	}
-
-	@RequestMapping("vol_recruit")
-	public String getVol_recruit(Model model) {
-
-		return "org/vol_recruit";
 	}
 
 	@GetMapping("vol_post_detail")

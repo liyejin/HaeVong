@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="../css/reset.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/org/vol_list.css" />
-	<!--<script defer th:inline="javascript" src="../js/org/vol_list.js"></script>-->
+	<script defer src="../js/org/vol_list.js"></script>
 </head>
 <!--org vol list입니다-->
 <header class="header">
@@ -23,43 +23,45 @@
 <body>
 
 	<section class="main">
-		<div class="vol_category">
-			<a href="#" th:href="@{vol_list(o=${map.orgId},s='on')}" th:if="${map.status} == 'over'"><span>모집중
-					공고</span></a>
-			<a href="#" class="selected" th:href="@{vol_list(o=${map.orgId},s='over')}"
-				th:if="${map.status} == 'on'"><span>모집중 공고</span></a>
-			<a href="#" th:href="@{vol_list(o=${map.orgId},s='over')}" th:if="${map.status} == 'on'"><span>완료된
-					공고</span></a>
-			<a href="#" class="selected" th:href="@{vol_list(o=${map.orgId},s='over')}"
-				th:if="${map.status} == 'over'"><span>완료된 공고</span></a>
+		<div class="vol_status_section">
+			<a class="status-button" href="#" th:href="@{vol_list(o=${map.orgId},s='on')}"
+				th:data-s="on">모집중
+					공고</a>
+			<a href="#" class="status-button" th:href="@{vol_list(o=${map.orgId},s='over')}" 
+				th:data-s="over">완료된 공고</a>
 		</div>
-		<ul class="vol_list" th:each="vol:${map.list}">
+<<<<<<< HEAD
+		<section class="vol_list_section">
+			<ul class="vol_list" >
 
-			<li>
-				<div id="modal" class="d-none">
-					<div id="delete">삭제하기</div>
-				</div>
-				<img class="vol_list_img" src="../img/org/org_vol_list_img.png" alt="모집공고이미지" />
-				<div class="vol_list_info">
-					<div class="vol_section">
-						<span class="vol_id" hidden th:data-id="${vol.id}">id</span>
-						<span class="vol_regdate"
-							th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span>
-						<span th:text="${vol.title}" class="vol_title">행복보육원 봉사자 구인합..<br /></span>
-						<div class="vol_date_section">
-							<span>봉사일자 : </span>
-							<span class="vol_date" th:text="${vol.date}">5월 13일(월), 13:00~16:00</span>
-						</div>
+				<li th:each="vol:${map.list}">
+					<div id="modal" class="d-none">
+						<div id="delete">삭제하기</div>
 					</div>
-					<ul class="vol_list_btn_box_org">
-						<li><a class="vol_list_detail_btn" href="#" th:href="@{./vol_post_detail(id=${vol.id})}">상세보기</a></li>
-						<li><a class="vol_list_detail_btn" href="#" th:href="@{./vol_edit(id=${vol.id})}">수정하기</a></li>
-					</ul>
-					<!--<img class="vol_list_edit_btn" src="../img/icon/icon_vol_list_more.png" alt="모집공고_아이콘" />-->
-				</div>
-			</li>
+					<img class="vol_list_img" src="../img/org/org_vol_list_img.png" alt="모집공고이미지" />
+					<div class="vol_list_info">
+						<div class="vol_section">
+							<span class="vol_id" hidden th:data-id="${vol.id}">id</span>
+							<span class="vol_regdate"
+								th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span>
+							<span th:text="${vol.title}" class="vol_title">행복보육원 봉사자 구인합..<br /></span>
+							<div class="vol_date_section">
+								<span>봉사일자 : </span>
+								<span class="vol_date" th:text="${vol.date}">5월 13일(월), 13:00~16:00</span>
+							</div>
+						</div>
+						<ul class="vol_list_btn_box_org">
+							<li><a class="vol_list_detail_btn" href="#"
+									th:href="@{./vol_post_detail(id=${vol.id})}">상세보기</a></li>
+							<li><a class="vol_list_detail_btn" href="#" th:href="@{./vol_edit(id=${vol.id})}">수정하기</a>
+							</li>
+						</ul>
+						<!--<img class="vol_list_edit_btn" src="../img/icon/icon_vol_list_more.png" alt="모집공고_아이콘" />-->
+					</div>
+				</li>
 
-		</ul>
+			</ul>
+		</section>
 	</section>
 </body>
 

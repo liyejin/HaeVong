@@ -22,5 +22,7 @@ public interface UserService {
 
 	// My page
 	User getUserInfoById(int id);
+	User getUserName(String name);
+	
 
 }

@@ -14,6 +14,11 @@
 		select *
 		from org where reg_num=#{regNum}
 	</select>
+	
+	   <select id="findByOrgPhoto">
+	   SELECT profile_photo FROM org WHERE id = ${id}
+   </select>
+   
 	<update id="update">
 		UPDATE haevongdb.org
 		 <set>

@@ -31,6 +31,7 @@ public class MyUserDetailsService implements UserDetailsService {
 			userDetails.setUsername(username);
 			userDetails.setName(org.getName());
 			userDetails.setId(org.getId());
+			userDetails.setName(org.getName());
 			userDetails.setEmail(org.getEmail());
 			userDetails.setPassword(org.getPwd());
 			List<GrantedAuthority> autorities = new ArrayList<>();
