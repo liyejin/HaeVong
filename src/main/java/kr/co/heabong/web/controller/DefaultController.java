@@ -183,18 +183,21 @@ public class DefaultController {
 
 	}
 
+	
 	// 분야별 봉사 검색 기능
 	@GetMapping("orgvol")
 	public String getOrgVolListByCategory(
-			@RequestParam(name = "cid", required = true) int categoryId,
+			@RequestParam(name = "cid", required = true) Integer categoryId,
 			@RequestParam(name = "sk", required = false) String serchKeyword,
 			Model model) {
 
-		List<OrgVol> orgVolList = null;
+		List<OrgVol> orgVolList =null;
 //		카테고리 전체 가져오기
 		List<VolCategory> volCategory = volCategoryService.getCateList(); 
 
-		if (serchKeyword == null)
+		if (serchKeyword == null&categoryId==1)
+			orgVolList = orgVolService.getList();
+		else   if (serchKeyword == null& categoryId !=null )
 			orgVolList = orgVolService.getOrgVolListByCategoryId(categoryId);
 		else if (serchKeyword != null)
 			orgVolList = orgVolService.getOrgVolListBySearch(categoryId, serchKeyword);
