@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="/css/reset.css" />
 	<link rel="stylesheet" href="/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="/css/org/vol_post_edit.css">
-
+	<script src="/js/components/modal-alert.js" defer></script>
 </head>
 
 <body>
@@ -63,6 +63,12 @@
 			<a th:href="@{./vol_post_detail(id=${vol.id})}" class="btn_double_left">취소</a>
 			<input type="submit"class="btn_double_right" value="수정완료"></input>
 		</div>
+		
+		<modal-alert data-title="메시지" data-content="진짜..수정할꺼야?" 
+		>
+
+		</modal-alert>
+	
 	</form>
 </body>
 

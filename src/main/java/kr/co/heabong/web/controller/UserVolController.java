@@ -39,10 +39,11 @@ public class UserVolController {
 			Model model) {
 
 		// My apply vol list : 로그인 후 내 봉사 신청/ 참여했던 봉사
+		// viewApply루 바꾸기
 		List<OrgVol> orgVol = orgVolService.getMyApplyOrgVolList(user.getId());
-		List<UserVol> userVol = userVolService.getMyApplyUserVolList(user.getId());
+		// List<UserVol> userVol = userVolService.getMyApplyUserVolList(user.getId());
 		model.addAttribute("orgVol", orgVol);
-		model.addAttribute("userVol", userVol);
+		// model.addAttribute("userVol", userVol);
 
 		return "user/my_vol_manage";
 	}

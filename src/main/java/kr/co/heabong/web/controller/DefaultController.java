@@ -108,41 +108,38 @@ public class DefaultController {
 
 		return "user_signup";
 	}
-	
+
 	@PostMapping("user_signup")
 	public String setUserSignUp(Model model, User user) {
 
-//		String idNum = user.getIdentityNumber();
-//		String[] idArr  = idNum.split("-");
-//		if(idArr)
-//		
-//		user.setIdentityNumber()
-		
+		// String idNum = user.getIdentityNumber();
+		// String[] idArr = idNum.split("-");
+		// if(idArr)
+		//
+		// user.setIdentityNumber()
+
 		System.out.println(user);
-		user.setIdentityNumber(user.getBirthDate()+user.getGender());
-		if(user.getGender()%2 == 1) 
+		user.setIdentityNumber(user.getBirthDate() + user.getGender());
+		if (user.getGender() % 2 == 1)
 			user.setGender(1);
 		else
 			user.setGender(2);
-		
-		 LocalDateTime currentDateTime = LocalDateTime.now();
-		 int year = currentDateTime.getYear();
-	     int twoDigitYear = year % 100; // 년도의 두 자리수 계산
-	     
-	     String frontTwoDigits = user.getBirthDate().substring(0, 2); // 앞 두 자리만 잘라내기
-	     int result = Integer.parseInt(frontTwoDigits); // int로 변환
-		
-	     
-	     user.setAge(twoDigitYear-result+100);
-	     user.setPwd(config.passwordEncoder().encode(user.getPwd()));
+
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		int year = currentDateTime.getYear();
+		int twoDigitYear = year % 100; // 년도의 두 자리수 계산
+
+		String frontTwoDigits = user.getBirthDate().substring(0, 2); // 앞 두 자리만 잘라내기
+		int result = Integer.parseInt(frontTwoDigits); // int로 변환
+
+		user.setAge(twoDigitYear - result + 100);
+		user.setPwd(config.passwordEncoder().encode(user.getPwd()));
 		System.out.println("changed : " + user);
 		userService.setUser(user);
-		
-		
-		
+
 		return "redirect:/login";
 	}
-	
+
 	// 기관 로그인
 	@GetMapping("org_signin")
 	public String getOrgSignin() {
@@ -185,14 +182,13 @@ public class DefaultController {
 
 		return "user_find_pwd";
 	}
-	
-	
+
 	// 기관 비밀번호 찾기(포스트)
 	@PostMapping("user_find_pwd")
 	public String setUserPwd(String uid, String pwd) {
 
 		System.out.println(uid + " " + pwd);
-		
+
 		return "redirect:/user_signin";
 	}
 
@@ -208,12 +204,10 @@ public class DefaultController {
 		return "category_main";
 	}
 
-	// <My Page> : default, user 페이지 따로 있습니다.
-	// profile section ----------------------------
+	// 비회원 마이페이지
 	@GetMapping("mypage")
 	public String getMypage(Model model) {
-
-		return "mypage";
+		return "user/mypage";
 	}
 
 	@GetMapping("vol_list")
@@ -223,7 +217,7 @@ public class DefaultController {
 		model.addAttribute("u", model);
 
 	}
-	
+
 	// 분야별 봉사 검색 기능
 	@GetMapping("orgvol")
 	public String getOrgVolListByCategory(
@@ -234,9 +228,9 @@ public class DefaultController {
 		// 카테고리 전체 가져오기
 		List<VolCategory> volCategory = volCategoryService.getCateList();
 
-		if (serchKeyword == null&categoryId==1)
+		if (serchKeyword == null & categoryId == 1)
 			orgVolList = orgVolService.getList();
-		else   if (serchKeyword == null& categoryId !=null )
+		else if (serchKeyword == null & categoryId != null)
 			orgVolList = orgVolService.getOrgVolListByCategoryId(categoryId);
 		else if (serchKeyword != null)
 			orgVolList = orgVolService.getOrgVolListBySearch(categoryId, serchKeyword);

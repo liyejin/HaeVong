@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/vol_list.css" />
-    <script src="/js/mypage.js"></script>
+    <script src="/js/my_apply_vol.js"></script>
   </head>
 
   <header class="header">
@@ -41,12 +41,8 @@
             <span th:text="${o_vol.title}" class="vol_title"
               >행복보육원 봉사자 구인합니다.<br
             /></span>
-            <span class="vol_date" th:text="${o_vol.date}"
-              >5월 13일(월), 13:00~16:00</span
-            >
-            <span class="vol_write_date" th:text="${o_vol.regdate}"
-              >2023/04/26</span
-            >
+            <span class="vol_date" th:text="${o_vol.date}">봉사일자</span>
+
             <ul class="vol_list_btn_box">
               <li>
                 <a
