@@ -8,6 +8,19 @@
     <link rel="stylesheet" type="text/css" href="/css/reset.css" />
     <!-- style.css 적용 안합니다. -->
     <link rel="stylesheet" type="text/css" href="/css/signin.css" />
+    <script src="/js/find_pwd.js" defer></script>
+    <style>
+	.red{
+		color : red;
+	}	
+	.blue{
+		color : blue;
+	}
+		
+	</style>
+   
+
+
   </head>
 
   <body>
@@ -28,26 +41,28 @@
             type="text"
             id="uid"
             name="uid"
-            class="org_login_input"
+            class="org_login_input1"
             placeholder="가입시 등록한 이메일을 입력해주세요"
           />
           <input
             type="text"
             name="pwd"
-            id="org_login_id"
+            id="pwd"
             class="org_login_input"
             placeholder="새로운 비밀번호 입력"
           />
           <input
             type="text"
             name="pwd2"
-            id="org_login_id"
+            id="pwd2"
             class="org_login_input"
             placeholder="새로운 비밀번호 입력 재확인"
           />
+          <div id="error"></div>
         </div>
       </div>
       <input type="submit" value="확인" class="org_login_confirm" />
     </form>
+     
   </body>
 </html>

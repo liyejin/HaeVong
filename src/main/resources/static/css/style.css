@@ -3,52 +3,57 @@ body {
   height: 932px;
 }
 
-.header>div {
-    /* padding: 40px; */
-/*    box-shadow: 0 10px 10px -5px rgb(167, 167, 167);*/
-    display: flex;
-    justify-self: center;
-    flex-direction: row;
-    /* position: sticky; */
-    font-size: 24px;
-    font-weight: bold;
-    height: 80px;
-    width: 430px;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /*header1: back, 메뉴명, more이 있는 헤더*/
-  .header1>a:first-child{
-    margin-left: 30px;
-    
-  }
-  .header1>div {
-    padding-right:30px;
-    /* more 숨기려면 */
-    /* visibility:hidden; */
-  }
-
-  .header1 > a > img:last-child{
-    margin-right: 30px;
-  }
-
-  /* header2: 로고있는 헤더 */
-  .header2>img{
-    margin: 0 auto;
-  }
-
-  
-.main {
-  width: 430px;
-  height:792px;
+*::-webkit-scrollbar {
+  display: none;
 }
 
-.member_customer_service_menu_list{
+.header>div {
+  /* padding: 40px; */
+  /*    box-shadow: 0 10px 10px -5px rgb(167, 167, 167);*/
+  display: flex;
+  justify-self: center;
+  flex-direction: row;
+  /* position: sticky; */
+  font-size: 24px;
+  font-weight: bold;
+  height: 80px;
+  width: 430px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*header1: back, 메뉴명, more이 있는 헤더*/
+.header1>a:first-child {
+  margin-left: 30px;
+
+}
+
+.header1>div {
+  padding-right: 30px;
+  /* more 숨기려면 */
+  /* visibility:hidden; */
+}
+
+.header1>a>img:last-child {
+  margin-right: 30px;
+}
+
+/* header2: 로고있는 헤더 */
+.header2>img {
+  margin: 0 auto;
+}
+
+
+.main {
+  width: 430px;
+
+}
+
+.member_customer_service_menu_list {
   position: relative;
 }
 
-.member_customer_service_menu_list > .member_customer_service_menu_item > span{
+.member_customer_service_menu_list>.member_customer_service_menu_item>span {
   text-align: left;
   position: absolute;
   left: 50px;
@@ -75,22 +80,26 @@ body {
   width: 150px;
   background-color: gray;
 }
+
 .btn_double_right {
   text-align: center;
   width: 280px;
   background-color: black;
 }
+
 .btn_single {
   width: 430px;
   background-color: black;
   text-align: center;
 }
-.nav_list{
+
+.nav_list {
   width: 430px;
-  position:fixed;
-  bottom:0;
+  position: fixed;
+  bottom: 0;
 }
-.nav_list > ul{
+
+.nav_list>ul {
   background-color: #F6F6F6;
   display: flex;
   flex-direction: row;
@@ -101,11 +110,10 @@ body {
   /* padding-bottom: 3%; */
 }
 
-.nav_list > ul > li{
+.nav_list>ul>li {
   align-items: center;
 }
 
-.nav_list > ul > li > img{
+.nav_list>ul>li>img {
   width: 100%;
 }
-
