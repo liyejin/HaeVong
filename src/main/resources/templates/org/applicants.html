@@ -8,7 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="/css/org/applicants.css">
 	<link rel="stylesheet" type="text/css" href="/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<script defer src="../js//modal.js"></script>
+	<!--<script defer src="../js/modal.js"></script>-->
+	<script src="/js/org/applicants.js"></script>
+ 
 	<title>신청자 내역</title>
 </head>
 
@@ -22,6 +24,7 @@
 	</header>
 	<section class="main" id="main">
 		<div class="org_vol_list">
+			<div class="org-vol-id" th:data-org-vol-id="${orgVol.id}"></div>
 			<div class="org_district"><span th:text="${orgVol.metropolId}">광주광역시</span> <span
 					th:text="${orgVol.districtId}">북구</span></div>
 			<div class="org_vol_title" th:text="${orgVol.title}">행복보육원 봉사자 구인합니다 장소는 어디냐면요</div>
@@ -45,39 +48,38 @@
 				<td class="name" th:text="${u.name}">dddd</td>
 				<td class="phone" th:text="${u.phoneNumber}">2121</td>
 				<td class="regdate" th:text="${u.date}">2222</td>
-				<td>
-					<!--<div class="org_status">
+				<td class="status-section">
+					<div class="org_status_section">
 						<div class="org_status_approved" th:if="${u.status=='1'}">승인</div>
-						<div class="org_status_waiting" th:if="${u.status=='0'}">대기</div>
+						<div class="org_status" th:if="${u.status=='0'}">대기</div>
 						<div class="org_status_refused" th:if="${u.status=='2'}">거절</div>
-					</div>-->
-					<form action="#">
-						<select name="status" id="s">
-							<option value="0">대기</option>
-							<option value="1">승인</option>
-							<option value="2">거절</option>
-						</select>
-						<input type="submit" value="Submit" />
-					</form>
+					</div>
+
+					<select class="status-select-box" name="status" id="s" th:data-user-id="${u.userId}">
+						<option class="status-select-waiting" value="0" th:selected="${u.status} == 0">대기</option>
+						<option class="status-select-approved" value="1" th:selected="${u.status} == 1">승인</option>
+						<option class="status-select-refused" value="2" th:selected="${u.status} == 2">거절</option>
+					</select>
+
 				</td>
 				</div>
 			</tr>
-        </table>
-    </section>
-    <section class="modal" id="modal">
-        <div>
-            <ul class="modal_list">
-                <li class="modal_list_item1"><img src="/img/icon/close.png" id="close_btn" alt="닫기버튼"></li>
-                <li class="modal_list_item2">수락대기 신청자</li>
-                <li class="modal_list_item2">전체신청자</li>
-            </ul>
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="btn_single">목록</div>
-    </footer>
+		</table>
+	</section>
+	<section class="modal" id="modal">
+		<div>
+			<ul class="modal_list">
+				<li class="modal_list_item1"><img src="/img/icon/close.png" id="close_btn" alt="닫기버튼"></li>
+				<li class="modal_list_item2">수락대기 신청자</li>
+				<li class="modal_list_item2">전체신청자</li>
+			</ul>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="btn_single">목록</div>
+	</footer>
 
-<!--<div class="org_status">
+	<!--<div class="org_status">
         <div class="org_status_approved">승인</div>
     </div> 
     <div class="org_status">
@@ -86,8 +88,8 @@
     <div class="org_status">
         <div class="org_status_refused">거절</div>
     </div>-->
-    
-<!--     <form action="#">
+
+	<!--     <form action="#">
   <select name="status" id="s">
     <option value="0">대기</option>
     <option value="1">승인</option>
@@ -97,4 +99,5 @@
 </form>-->
 
 </body>
+
 </html>

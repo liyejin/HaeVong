@@ -7,7 +7,7 @@
 		UserApplyView
 		</select>	
 		
-		<select id="findById">
+		<select id="findByorgVolId">
 		select * from UserApplyView where org_vol_id=#{orgVolId}
 	</select>
 	</mapper>

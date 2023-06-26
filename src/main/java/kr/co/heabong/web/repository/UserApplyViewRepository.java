@@ -12,6 +12,6 @@ public interface  UserApplyViewRepository{
 	
 	List<UserApplyView> findAll();
 
-	List<UserApplyView> findById(int id);
+	List<UserApplyView> findByorgVolId(int orgVolId);
 
 }

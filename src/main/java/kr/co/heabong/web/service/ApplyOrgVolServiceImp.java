@@ -45,7 +45,7 @@ public class ApplyOrgVolServiceImp implements ApplyOrgVolService {
 	@Override
 	public List<UserApplyView> getApplicantlList(int orgVolId) {
 
-		List<UserApplyView> applyVolList = userApplyViewRepository.findById(orgVolId);
+		List<UserApplyView> applyVolList = userApplyViewRepository.findByorgVolId(orgVolId);
 
 		return applyVolList;
 	}
