@@ -8,12 +8,11 @@ import lombok.Data;
 @Data
 @Builder
 public class UserApplyView {
-		
-		private String name;
-	    private String phoneNumber;
-	    private String status;
-	    private Date date;
-	    private int orgVolId;
-	
+	private String name;
+	private String phoneNumber;
+	private int orgVolId;
+	private int userId;
+	private String status;
+	private Date date;
 
 }

@@ -21,10 +21,10 @@
 	<update id="update">
 		UPDATE haevongdb.apply_org_vol
 		 <set>
-			 <if test="orgVolId">org_vol_id=#{orgVolId},</if>
-			 <if test="userId">user_id =#{userId},</if>
-			 <if test="status">status= #{status},</if>
-			 <if test="date">date=#{date}</if>
+			 <if test="orgVolId!=null">org_vol_id=#{orgVolId},</if>
+			 <if test="userId!=null">user_id =#{userId},</if>
+			 <if test="status!=null">status= #{status},</if>
+			 <if test="date!=null">date=#{date}</if>
 		 </set>
 WHERE org_vol_id =#{orgVolId} AND user_id=#{userId}
 	</update>

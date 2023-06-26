@@ -15,7 +15,7 @@ public class ApplyOrgVol {
 
 	private Integer orgVolId;
 	private Integer userId;
-	private Integer status;
+	private int status;
 	private LocalDateTime date;
 
 }

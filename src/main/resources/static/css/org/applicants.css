@@ -144,6 +144,12 @@ th{
 td{
     text-align: center;
 }
+.status-section{
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+}
 .status1{
     width: 80px;
 }
@@ -176,14 +182,14 @@ td{
     padding-bottom: 12px;
     border-bottom: 2px solid #ccc;
 }
-.org_status>*{
+.org_status{
     width: 56px;
     text-align: center;
     border-radius: 20px;
     font-size: 14px;
 }
 .org_status_approved{
-    background-color: #C2E2FF;
+    background-color: #C2E2FF; 
 }
 .org_status_waiting{
     background-color: #AAAAAA;

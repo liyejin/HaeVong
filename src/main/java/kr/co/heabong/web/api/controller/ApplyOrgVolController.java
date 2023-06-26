@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.heabong.web.service.ApplyOrgVolService;
@@ -13,14 +14,15 @@ import kr.co.heabong.web.service.ApplyOrgVolService;
 public class ApplyOrgVolController {
 	@Autowired
 	ApplyOrgVolService service;
-	
-	
-	@PutMapping("{orgVolId},{userId}")
-	public int update(@PathVariable("orgVolId") int orgVolId,
-						@PathVariable("userId") int userId,
-						int status
-			) {
+
+	@PutMapping
+	public int update(@RequestParam int orgVolId, @RequestParam int userId, @RequestParam int status) {
 		int changeApplicantStatus = service.changeApplicantStatus(orgVolId, userId, status);
-		return changeApplicantStatus;
+		if (changeApplicantStatus == 1) {
+			System.out.println(status);
+			return status;
+		} else {
+			return -1;
+		}
 	}
 }
