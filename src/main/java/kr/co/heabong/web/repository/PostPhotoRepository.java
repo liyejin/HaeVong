@@ -9,7 +9,7 @@ import kr.co.heabong.web.entity.VolCategory;
 
 @Mapper
 public interface PostPhotoRepository {
-	List<PostPhoto> findByMyPostPhoto();
+	List<PostPhoto> findByMyPostPhoto(int uid);
 
 	List<VolCategory> findAll();
 

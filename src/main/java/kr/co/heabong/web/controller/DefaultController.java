@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.security.config.HeabongConfig;
+import kr.co.heabong.web.security.config.MyUserDetails;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.PostPhotoService;
@@ -206,8 +208,24 @@ public class DefaultController {
 
 	// 비회원 마이페이지
 	@GetMapping("mypage")
-	public String getMypage(Model model) {
-		return "user/mypage";
+	public String getMypage(@AuthenticationPrincipal MyUserDetails user,
+			Model model) {
+
+		User userProfile = null;
+		List<PostPhoto> myPostPhoto = null;
+
+		// user name, profile photo
+		if (user != null) {
+			userProfile = userService.getUserInfoById(user.getId());
+			model.addAttribute("user", userProfile);
+		}
+		// My post photo
+		if (user != null) {
+			myPostPhoto = postPhotoService.getMyPostPhoto(user.getId());
+			model.addAttribute("mypic", myPostPhoto);
+		}
+
+		return "mypage";
 	}
 
 	@GetMapping("vol_list")

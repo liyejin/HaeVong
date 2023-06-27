@@ -7,9 +7,11 @@
       select * from post_photo
    </select>
    <select id="findByMyPostPhoto" resultType="kr.co.heabong.web.entity.PostPhoto">
-	   select * from 
-	   post_photo order by 
-	   id desc limit 3 offset 0 ;
+      SELECT *
+      FROM post_photo pp
+      JOIN post p ON pp.post_id = p.id
+      WHERE p.user_id = #{uid} ORDER BY p.id DESC
+      LIMIT 3 OFFSET 0;
    </select>
    
    </mapper>
