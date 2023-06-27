@@ -11,12 +11,6 @@ function volListLoad(url) {
       console.log(list);
 
       volList.innerHTML = "";
-	
-	fetch(url)
-		.then(response => response.json())
-		.then(list => {
-			console.log(list);
-			volList.innerHTML = "";
 
 			for (let vol of list) {
 
