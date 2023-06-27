@@ -115,6 +115,8 @@ public class UserController {
 		return "mypage_user";
 	}
 
+	
+	
 	// 여기서부터 user_vol
 
 	@RequestMapping("vol_list") // org/vol_list // 기관 봉사 리스트
@@ -133,6 +135,9 @@ public class UserController {
 		return "user/vol_list"; // templates/org/vol_list
 	}
 
+	
+	
+	
 	@RequestMapping("vol_wish_list")
 	public String getVolWishList(
 			@RequestParam(name = "u", required = true) int userId,

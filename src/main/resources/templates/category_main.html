@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/vol_category.css" />
     <script src="/js/category_main.js"></script>
-    <title>카테고리</title>
+    <title>카테고리 페이지</title>
   </head>
 
   <body>
@@ -51,10 +51,18 @@
             class="user_category_recommended_item"
             th:each="mcateList:${mainCateList}"
           >
-            <img src="/img/user/user_category_banner_main.png" alt="" />
+          
+          	<!--기관 사진-->
+    <!--        <img src="/img/user/user_category_banner_main.png" alt="" />-->
+			<img th:src = "@{'/img/org/'} + ${mcateList.photo}"/>
+            
+            
             <a href="@{./list(c=${mcateList})}">
               <span th:text="${mcateList.title}">이색봉사 제목</span>
-              <span>이색봉사 설명</span>
+              <br>
+              <!--<span th:text="${mcateList.content}">이색봉사 설명</span>-->
+              <span th:text="${mcateList.content.length() &gt; 10 ? mcateList.content.substring(0, 10) + '...' : mcateList.content}"></span>
+
             </a>
           </li>
         </ul>

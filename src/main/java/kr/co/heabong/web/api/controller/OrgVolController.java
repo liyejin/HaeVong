@@ -19,13 +19,11 @@ public class OrgVolController {
 	@Autowired
 	private OrgVolService service;
 
-//	@GetMapping
-//	public List<OrgVol> getList(){
-//		List<OrgVol> list = service.getList();
-//		return list;
-//	}
-//	
-	@GetMapping
+	/*
+	 * @GetMapping public List<OrgVol> getList(){ List<OrgVol> list =
+	 * service.getList(); return list; }
+	 */
+	@GetMapping("/orgvol")
 	public List<OrgVol> getListByStatus(@RequestParam("o") int orgId,@RequestParam("s") String status){
 		List<OrgVol> list = service.getList(orgId, status);
 		return list;

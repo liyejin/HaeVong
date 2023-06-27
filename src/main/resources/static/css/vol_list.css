@@ -26,6 +26,7 @@
 	padding: 5px;
 	margin-left: 3px;
 	margin-right: 3px;
+	cursor:pointer;
 }
 
 .category>.catelist:hover {
@@ -207,6 +208,7 @@
     right: 0;
     top: 0;
     margin-right: 20px;
+    background-color: #64987F;
 }
 
 .submit[type="text"]:active,

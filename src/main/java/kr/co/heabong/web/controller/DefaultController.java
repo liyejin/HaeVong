@@ -205,6 +205,9 @@ public class DefaultController {
 		// 게시글
 		List<OrgVol> mainCateList = volCategoryService.getMainCategoryList();
 		model.addAttribute("mainCateList", mainCateList);
+		//사진
+		List<String> photoList = orgVolService.getPhotoList(1);
+		model.addAttribute("photoList",photoList);
 		return "category_main";
 	}
 
@@ -231,6 +234,7 @@ public class DefaultController {
 			@RequestParam(name = "sk", required = false) String serchKeyword,
 			Model model) {
 		List<OrgVol> orgVolList = null;
+		
 //		카테고리 전체 가져오기
 		List<VolCategory> volCategory = volCategoryService.getCateList(); 
 
@@ -245,8 +249,10 @@ public class DefaultController {
 		model.addAttribute("cid", categoryId);
 		model.addAttribute("volCategory",volCategory);
 		
-
 		return "org_vol_by_category";
 	}
+	
+	
+	
 
 }

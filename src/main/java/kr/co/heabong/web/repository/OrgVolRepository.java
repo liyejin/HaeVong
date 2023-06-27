@@ -28,10 +28,15 @@ public interface OrgVolRepository {
 
 	List<OrgVol> FindOrgVolListByCategoryId(int categoryId);
 
-	List<OrgVol> FindOrgVolListBySearch(int categoryId, String serchKeyword);
+	List<OrgVol> FindOrgVolListBySearch(Integer categoryId, String serchKeyword);
 
 	int delete(int id);
 
 	List<OrgVol> FindMyApplyOrgVolListById(int userId);
+
+	/* 기관 사진 */
+	List<String> getPhotoList(int orgId);
+
+
 
 }

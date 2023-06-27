@@ -256,6 +256,8 @@ public class OrgController {
 		return "redirect:vol_post_detail?id="+orgVol.getId(); 
 
 	}
+	
+	
 	@PostMapping("vol_edit")
 	public String volEdit(OrgVol orgVol) {
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);

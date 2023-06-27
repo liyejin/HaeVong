@@ -62,7 +62,7 @@ public class OrgVolServiceImp implements OrgVolService {
 	}
 
 	@Override
-	public List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword) {
+	public List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword) {
 		List<OrgVol> list = repository.FindOrgVolListBySearch(categoryId, serchKeyword);
 		return list;
 	}
@@ -93,5 +93,16 @@ public class OrgVolServiceImp implements OrgVolService {
 		int edit = repository.update(orgVol);
 		return edit;
 	}
+	
+
+	/* 기관 사진*/
+	@Override
+	public List<String> getPhotoList(int orgId) {
+	    List<String> photoList = repository.getPhotoList(orgId);
+	    return photoList;
+	}
+
+	
+
 
 }
