@@ -26,29 +26,29 @@
 
   <body>
     <section class="main">
-      <div class="category">
+      <div class="vol_category">
         <a href="#" class="my_apply_vol">신청 내역</a>
         <a href="#" class="my_attend_vol">지난 봉사</a>
       </div>
       <ul class="vol_list">
-        <li th:each="o_vol:${orgVol}">
+        <li th:each="ap:${apVol}">
           <img
             class="vol_list_img"
             src="/img/org/org_vol_list_img.png"
             alt="모집공고이미지"
           />
           <div class="vol_list_info">
-            <span th:text="${o_vol.title}" class="vol_title"
+            <span th:text="${ap.title}" class="vol_title"
               >행복보육원 봉사자 구인합니다.<br
             /></span>
-            <span class="vol_date" th:text="${o_vol.date}">봉사일자</span>
+            <span class="vol_date" th:text="${ap.date}">봉사일자</span>
 
             <ul class="vol_list_btn_box">
               <li>
                 <a
                   class="vol_list_detail_btn"
                   href="#"
-                  th:href="@{./vol(id=${o_vol.id})}"
+                  th:href="@{./vol(id=${ap.id})}"
                   >상세보기</a
                 >
               </li>

@@ -10,7 +10,29 @@
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
-    <script src="/js/user_mypage.js" defer></script>
+    <script src="/js/components/modal-alert.js" defer></script>
+    <script defer>
+      window.addEventListener("load", function () {
+        let mypageCategory = document.querySelector(".mypageCategory");
+        let modalAlert = document.querySelector("modal-alert");
+        let myPostPlusIcon = document.querySelector(".mypage_mypost_title");
+
+        mypageCategory.onclick = function (e) {
+          if (!mypageCategory.classList.contains("isAnonymous")) return;
+
+          e.preventDefault();
+          modalAlert.show(true);
+        };
+
+        myPostPlusIcon.onclick = function (e) {
+          console.log(e.target.classList);
+          if (!myPostPlusIcon.classList.contains("isAnonymous")) return;
+
+          e.preventDefault();
+          modalAlert.show(true);
+        };
+      });
+    </script>
 
     <title>마이페이지</title>
   </head>
@@ -18,11 +40,11 @@
     <header class="header">
       <div class="header1">
         <a href=""
-          ><img src="/img/icon/icon_header_back.png" alt="뒤로가기"
+          ><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"
         /></a>
         <div>마이페이지</div>
         <a href=""
-          ><img src="/img/icon/icon_header_more.png" alt="더보기"
+          ><img src="../../img/icon/icon_header_more.png" alt="더보기"
         /></a>
       </div>
     </header>
@@ -31,14 +53,33 @@
       <section class="mypage_profile">
         <div class="profile_txt">
           <p class="title">가치있는 일상 같이 만들어요!</p>
-          <p><span class="mypage_profile_name">회원</span><span> 님</span></p>
           <p>
-            <span>오늘로 함께한지 </span><span class="d_day_cnt1"> </span
-            ><span>00 일</span>
+            <span sec:authorize="isAnonymous()" class="mypage_profile_name"
+              >회원</span
+            >
+
+            <span
+              sec:authorize="isAuthenticated()"
+              class="mypage_profile_name"
+              th:text="${user.name}"
+              >회원</span
+            ><span> 님</span>
           </p>
         </div>
+
+        <!-- 유저 프로필 사진 ----------------------------------------------------- -->
+
         <div class="profile_pic">
-          <img src="/img/org/org_guide.png" alt="" />
+          <img
+            sec:authorize="isAnonymous()"
+            src="/img/user/nonUserpic.png"
+            alt=""
+          />
+          <img
+            sec:authorize="isAuthenticated()"
+            th:src="@{${user.profilePhoto}}"
+            alt=""
+          />
           <a href="">프로필 수정</a>
         </div>
       </section>
@@ -47,53 +88,115 @@
         <a><img src="/img/org/org_guide.png" alt="" /></a>
       </section>
 
-      <section class="mypageCategory">
+      <!-- 마이페이지 카테고리 ----------------------------------------------------- -->
+
+      <section sec:authorize="isAnonymous()" class="mypageCategory isAnonymous">
         <ul>
           <li>
-            <a th:href="@{user/myapply?uid=1}">
+            <a href="#">
               <div>
                 <span>📝<br /></span>
                 <span>신청관리</span>
               </div>
             </a>
-            <a href="login">
+            <a href="#">
               <div>
                 <span>❤️<br /></span>
                 <span>찜한봉사</span>
               </div>
             </a>
-            <a href="login">
+            <a href="#">
               <div>
                 <span>📣<br /></span>
                 <span>고객지원</span>
               </div>
             </a>
-            <a href="login">
+            <a href="#">
               <div>
                 <span>⚙️<br /></span>
-                <span>정보수정</span>
+                <span>내 정보</span>
               </div>
             </a>
           </li>
         </ul>
       </section>
 
+      <section sec:authorize="isAuthenticated()" class="mypageCategory">
+        <ul>
+          <li>
+            <a href="/user/myapply">
+              <div>
+                <span>📝<br /></span>
+                <span>신청관리</span>
+              </div>
+            </a>
+            <a href="/user/vol_wish_list">
+              <div>
+                <span>❤️<br /></span>
+                <span>찜한봉사</span>
+              </div>
+            </a>
+            <a href="#">
+              <div>
+                <span>📣<br /></span>
+                <span>고객지원</span>
+              </div>
+            </a>
+            <a href="/user/myapply">
+              <div>
+                <span>⚙️<br /></span>
+                <span>내 정보</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 나의 게시글 ----------------------------------------------------- -->
+
       <section class="my_post">
-        <div class="mypage_mypost_title" id="imageContainer">
-          <span>나의 게시글 > </span>
-          <img src="/img/icon/icon_plus.png" />
+        <div class="mypage_mypost_title isAnonymous" id="imageContainer">
+          <span>나의 게시글 </span>
+          <a href="#"><img src="/img/icon/icon_plus.png" /></a>
         </div>
-        <div class="mypage_mypost_img">
+        <div sec:authorize="isAnonymous()" class="mypage_mypost_img">
+          <img src="/img/user/emptyImage.png" alt="게시글1" />
+          <img src="/img/user/emptyImage.png" alt="게시글1" />
+          <img src="/img/user/emptyImage.png" alt="게시글1" />
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="mypage_mypost_img">
           <a th:href="@{${p.url}}" th:each="p:${mypic}"
             ><img src="@{p.url}" th:src="@{${p.url}}" alt="게시글1"
           /></a>
         </div>
       </section>
 
-      <section class="cs">
-        <span>김범수님이 해봉과 함께한지💛 일<br /></span>
-        <span>김범수님이 해봉을 통해 함께한 봉사🤝 회</span>
+      <!-- 해봉과 함께한지 ----------------------------------------------------- -->
+      <section sec:authorize="isAnonymous()" class="cs">
+        <span
+          >해봉과 함께해 주세요 ! 😊<br />
+          <a href="login"> 지금 로그인하기</a></span
+        >
       </section>
+
+      <section sec:authorize="isAuthenticated()" class="cs">
+        <span
+          ><span th:text="${user.name}">회원</span>님이 해봉과 함께한지💛 일<br
+        /></span>
+        <span
+          ><span th:text="${user.name}">회원</span>님이 해봉을 통해 함께한
+          봉사🤝 회</span
+        >
+      </section>
+      <modal-alert
+        class="d-none"
+        data-show="false"
+        data-title="알림"
+        data-content="로그인 후 이용 가능합니다."
+      >
+        <div slot="content"></div>
+      </modal-alert>
     </main>
     <nav class="nav_list" th:replace="~{inc/nav}"></nav>
   </body>

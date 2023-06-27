@@ -22,9 +22,9 @@ class ModalAlertElement extends HTMLElement {
          }
          
          .content-panel{
-            background-color: lightpink;
+            background-color: white;
             min-width: 200px;
-			min-height: 100px;
+			      min-height: 100px;
       
             transform: translateY(-100px);
              border-radius: 10px; 
@@ -59,7 +59,7 @@ class ModalAlertElement extends HTMLElement {
 			  
 		 }`;
 
-    let title = "수정하시겠습니까?";
+    let title = "알림";
     let content = "";
     if (this.hasAttribute("data-title")) title = this.dataset.title;
 
@@ -80,6 +80,16 @@ class ModalAlertElement extends HTMLElement {
 			  	</div>
 			  	`;
 
+    let show = false;
+    if (this.hasAttribute("data-show"));
+    show = JSON.parse(this.getAttribute("data-show"));
+
+    console.log(typeof this.getAttribute("data-show"));
+    console.log(typeof show);
+
+    if (show) this.classList.remove("d-none");
+    else this.classList.add("d-none");
+
     const wrapper = document.createElement("div");
     wrapper.className = "screen";
     wrapper.innerHTML = template;
@@ -96,6 +106,11 @@ class ModalAlertElement extends HTMLElement {
     btnOk.onclick = () => {
       this.remove(); //this가 modal-alert
     };
+  }
+
+  show(status) {
+    if (status) this.classList.remove("d-none");
+    else this.classList.add("d-none");
   }
 }
 

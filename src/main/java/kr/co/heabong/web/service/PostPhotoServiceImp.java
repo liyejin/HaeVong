@@ -9,14 +9,13 @@ import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.repository.PostPhotoRepository;
 
 @Service
-public class PostPhotoServiceImp implements PostPhotoService{
+public class PostPhotoServiceImp implements PostPhotoService {
 	@Autowired
 	PostPhotoRepository postPhotoRepository;
-	
-	
+
 	@Override
-	public List<PostPhoto> getMyPostPhoto() {
-		List<PostPhoto> myPostPhoto = postPhotoRepository.findByMyPostPhoto();
+	public List<PostPhoto> getMyPostPhoto(int uid) {
+		List<PostPhoto> myPostPhoto = postPhotoRepository.findByMyPostPhoto(uid);
 		return myPostPhoto;
 	}
 

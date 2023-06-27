@@ -6,27 +6,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Document</title>
-	<link rel="stylesheet" href="../css/reset.css" />
-	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/vol_list.css" />
+	<link rel="stylesheet" href="/css/reset.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/vol_list.css" />
 </head>
 <!--user vol list 입니다!!-->
 <header class="header">
 	<div class="header1">
 		<a href=""><img src="/img/icon/icon_header_back.png" th:onclick="history.back()" alt="뒤로가기" /></a>
-		<div>내 봉사 현황</div>
+		<div>찜한 봉사</div>
 		<a href=""><img src="/img/icon/icon_header_more.png" alt="더보기" /></a>
 	</div>
 </header>
 
 <body>
 	<section class="main">
-		<div class="vol_category">
-			<a href="#" th:href="@{vol_list(u=${map.userId})}"  th:if="${map.category} == 'wish'"><span>신청 내역</span></a>
-			<a href="#" class="selected" th:href="@{vol_list(u=${map.userId})}" th:if="${map.category} == 'part'"><span>신청 내역</span></a>
-			<a href="#" th:href="@{vol_wish_list(u=${map.userId})}" th:if="${map.category} == 'part'"><span>찜한 봉사</span></a>
-			<a href="#" class="selected" th:href="@{vol_wish_list(u=${map.userId})}" th:if="${map.category} == 'wish'"><span>찜한 봉사</span></a>
-		</div>
+
 		<ul class="vol_list" th:each="vol:${map.list}">
 			<li>
 				<img class="vol_list_img" src="/img/org/org_vol_list_img.png" alt="모집공고이미지" />

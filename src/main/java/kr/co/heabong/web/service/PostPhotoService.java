@@ -5,6 +5,6 @@ import java.util.List;
 import kr.co.heabong.web.entity.PostPhoto;
 
 public interface PostPhotoService {
-	List<PostPhoto> getMyPostPhoto();
+	List<PostPhoto> getMyPostPhoto(int uid);
 
 }

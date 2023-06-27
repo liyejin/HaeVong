@@ -15,7 +15,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		* from applyOrgVolView
         where user_id = #{uid} and date &lt; curdate()
     </select>	
-
-
 		
 	</mapper>

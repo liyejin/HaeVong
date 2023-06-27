@@ -38,16 +38,17 @@ function volListLoad(url) {
 } //volListLoad
 
 window.addEventListener("load", function (e) {
-  let category = document.querySelector(".category");
+  let category = document.querySelector(".vol_category");
+
   category.onclick = function (e) {
     let status = null;
+
     if (e.target.className === "my_apply_vol") {
       status = 0;
-      console.log(status);
+      volListLoad(`/api/apply-org-vols?s=${status}`);
     } else if (e.target.className === "my_attend_vol") {
       status = 1;
-      console.log(status);
+      volListLoad(`/api/apply-org-vols?s=${status}`);
     }
-    volListLoad(`/api/apply-org-vols?s=${status}`);
   };
 }); //addEventListener
