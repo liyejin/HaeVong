@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/vol_list.css" />
 	<script src="/js/org/org_vol.js"></script>
+<!--	<script src="/js/user/vol_category.js"></script>-->
 </head>
 
 <header class="header">
@@ -37,10 +38,11 @@
 				</option>
 				</option>
 			</div>
-			<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get" class="submit_form">
+			<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get" class="submit_form" >
 				<input type="number" hidden placeholder="카테고리" name="cid" th:value="${cid}" />
-				<input type="text" placeholder="찾으시는 봉사를 검색해주세요" name="sk" class="querytext" />
-				<input type="submit" class="submit" name="sk">
+				<input type="text" placeholder="찾으시는 봉사를 검색해주세요" name="sk" class="querytext" th:value="${searchValue}" />
+				<!--제출버튼-->
+				<input type="submit" class="submit" name="sk" value="검색">
 			</form>
 			<!--검색창-->
 

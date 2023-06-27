@@ -25,9 +25,12 @@ public interface OrgVolService {
 
 	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
 
-	List<OrgVol> getOrgVolListBySearch(int categoryId, String serchKeyword);
+	List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword);
 
 	int delete(int id);
 
 	List<OrgVol> getMyApplyOrgVolList(int userId);
+	
+	/* 기관 사진 */
+	List<String> getPhotoList(int orgId);
 }

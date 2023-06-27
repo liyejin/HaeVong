@@ -201,6 +201,9 @@ public class DefaultController {
 		// 게시글
 		List<OrgVol> mainCateList = volCategoryService.getMainCategoryList();
 		model.addAttribute("mainCateList", mainCateList);
+		//사진
+		List<String> photoList = orgVolService.getPhotoList(1);
+		model.addAttribute("photoList",photoList);
 		return "category_main";
 	}
 
@@ -241,5 +244,8 @@ public class DefaultController {
 
 		return "org_vol_by_category";
 	}
+	
+	
+	
 
 }

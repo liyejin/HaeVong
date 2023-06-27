@@ -17,16 +17,17 @@
   width: 0.5em; /* 스크롤바 너비 */
 }
 
-.category > .catelist {
-  background-color: #64987f;
-  width: 100px;
-  color: white;
-  text-align: center;
-  border-radius: 15px;
-  white-space: nowrap;
-  padding: 5px;
-  margin-left: 3px;
-  margin-right: 3px;
+.category>.catelist {
+	background-color: #64987F;
+	width: 100px;
+	color: white;
+	text-align: center;
+	border-radius: 15px;
+	white-space: nowrap;
+	padding: 5px;
+	margin-left: 3px;
+	margin-right: 3px;
+	cursor:pointer;
 }
 
 .category > .catelist:hover {
@@ -299,3 +300,4 @@
   justify-content: center;
   align-items: center;
 }
+

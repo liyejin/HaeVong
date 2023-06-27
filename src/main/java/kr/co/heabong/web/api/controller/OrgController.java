@@ -45,7 +45,9 @@ public class OrgController {
 		else if (serchKeyword == "" && categoryId != null)
 			list = volService.getOrgVolListByCategoryId(categoryId);
 		/* else if (serchKeyword != "") */
-		else {
+		else if (serchKeyword != null && categoryId == 1)
+			list = volService.getOrgVolListBySearch(null , serchKeyword);
+		else{
 			list = volService.getOrgVolListBySearch(categoryId, serchKeyword);
 			list.get(0).getTitle();
 			System.out.println(list.get(0).getTitle());
