@@ -1,6 +1,9 @@
 function volListLoad(url) {
   let volList = document.querySelector(".vol_list");
-
+	let id = document.querySelector('input[name="cid"]');
+	let idvalue = id.value;
+	
+	
   fetch(url)
     //`http://localhost:8080/api/org?c=${id}`
     .then((response) => response.json())
@@ -8,7 +11,7 @@ function volListLoad(url) {
       console.log(list);
 
       volList.innerHTML = "";
-
+	
 	fetch(url)
 		.then(response => response.json())
 		.then(list => {

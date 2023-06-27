@@ -197,14 +197,15 @@
   caret-color: transparent; /* 커서를 투명하게 만듭니다. */
 }
 
-.submit {
-  width: 60px;
-  height: 36px;
-  border-radius: 25px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: 20px;
+.submit{
+	 width: 60px;
+    height: 36px;
+    border-radius: 25px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    background-color: #64987F;
 }
 
 .submit[type="text"]:active,
@@ -300,4 +301,3 @@
   justify-content: center;
   align-items: center;
 }
-

@@ -204,6 +204,9 @@ public class DefaultController {
 		//사진
 		List<String> photoList = orgVolService.getPhotoList(1);
 		model.addAttribute("photoList",photoList);
+		//사진
+		List<String> photoList = orgVolService.getPhotoList(1);
+		model.addAttribute("photoList",photoList);
 		return "category_main";
 	}
 
@@ -244,7 +247,10 @@ public class DefaultController {
 
 		return "org_vol_by_category";
 	}
+		
 	
+	
+
 	
 	
 
