@@ -235,7 +235,7 @@ public class OrgController {
 		return "org/vol_post_detail";
 	}
 
-	@GetMapping("vol_write")
+	@GetMapping("vol_post_write")
 	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
 		List<VolCategory> cateList = volCategoryService.getCateList();
 		model.addAttribute("cateList", cateList);

@@ -91,6 +91,10 @@
   font-weight: bold;
 }
 
+.recruit_post > div > a > img{
+	margin-left: 40px;
+}
+
 /* 고객센터 */
 .recruit > .recruit_box > .org_cs > div {
   background-color: #ffffff;
