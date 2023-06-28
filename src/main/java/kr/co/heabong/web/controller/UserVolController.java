@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.security.config.MyUserDetails;
+import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.UserVolService;
 
@@ -24,14 +26,32 @@ public class UserVolController {
 	private UserVolService userVolService;
 	@Autowired
 	private OrgVolService orgVolService;
+	@Autowired
+	private OrgService OrgService;
 
+	
+	/* 봉사 상세보기 */
 	@GetMapping("/vol")
-	public String getList(Model model) {
-		UserVol userVol = userVolService.getUserVol();
-		model.addAttribute("userVol", userVol);
+	public String getList(@RequestParam("id") int OrgVolId
+													,Model model) {
+		//기관의 게시글 가져오기
+		OrgVol orgVol = orgVolService.getById(OrgVolId);
+		//게시글 쓴 기관 찾기 
+		Org org = OrgService.getById(orgVol.getOrgId());
+		
+		//게시글 작성 시간
+	    String dateString = orgVol.getDate();
+	    int restDate = orgVolService.calculateRestDate(dateString);
+
+		model.addAttribute("orgVol",orgVol);
+		model.addAttribute("org",org);
+	    model.addAttribute("dDay", restDate);
+
 		return "user/vol_recruit";
 	}
 
+	
+	
 	// My page category section ----------------------------
 	@GetMapping("/myapply")
 	public String getMyVolList(

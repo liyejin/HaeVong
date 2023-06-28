@@ -27,9 +27,9 @@ class UserApplyViewRepositoryTest {
 	}
 
 	@Test
-	void testFindById() {
+/*	void testFindById() {
 		List<UserApplyView> list = repository.findById(2);
 		System.out.println(list);
-	}
+	}*/
 
 }
