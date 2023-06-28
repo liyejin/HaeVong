@@ -23,6 +23,7 @@ import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.security.config.HeabongConfig;
 import kr.co.heabong.web.security.config.MyUserDetails;
+import kr.co.heabong.web.service.EmailService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.PostPhotoService;
@@ -47,6 +48,8 @@ public class DefaultController {
 	OrgService orgService;
 	@Autowired
 	HeabongConfig config;
+	@Autowired
+	EmailService emailService;
 	// @Autowired
 	// PostService postService;
 
@@ -55,23 +58,12 @@ public class DefaultController {
 		// model.addAttribute();
 		return "map_apply_modal";
 	}
-
-	// 테스트겸 만든거
-	@GetMapping("/test")
-	public String getTest(Model model) {
-		// model.addAttribute();
-		return "map_apply_modal";
-	}
-
-	// 테스트겸 만든거 (포스트 매핑)
-
-	@ResponseBody
-	@PostMapping("test1")
-	public String getTest21(User user) {
-
-		return "Submitted Data: " + user.toString();
-	}
-
+	// 이메일 테스트
+		@GetMapping("/email")
+		public void getEamil(Model model) {
+			// model.addAttribute();
+			emailService.sendMail();
+		}
 	// 메인
 	@GetMapping("/")
 	public String getIndex(Model model) {

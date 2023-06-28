@@ -33,18 +33,15 @@ WHERE org_vol_id =#{orgVolId} AND user_id=#{userId}
 	</delete>
 	<insert id="save">
 		INSERT INTO haevongdb.apply_org_vol
-(
-`org_vol_id`,
-`user_id`,
-`status`,
-`date`
-)
-VALUES
-(
-#{orgVolId },
-#{userId },
-#{status },
-#{date });
+		(
+			`org_vol_id`,
+			`user_id`
+		)
+		VALUES
+		(
+			#{orgVolId},
+			#{userId},
+		);
 
 	</insert>
 		
