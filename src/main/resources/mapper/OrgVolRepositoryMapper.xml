@@ -38,6 +38,7 @@
 			<if test="orgId != null">org_id = #{orgId},</if>
 			<if test="districtId != null">district_id = #{districtId},</if>
 			<if test="metropolId != null"> metropol_id= #{metropolId},</if>
+			<if test="deadLine != null"> dead_line= #{deadLine},</if>
 			<if test="volCategoryId != null">vol_category_id = #{volCategoryId},</if>
 		</set>
 		WHERE id = #{id} </update>
@@ -49,10 +50,10 @@
 		keyProperty="id">
 		insert into org_vol (title, date, capacity,content,
 		road_address, address, org_id, district_id, metropol_id,
-		vol_category_id)
+		vol_category_id,dead_line)
 		values (#{title}, #{date}, #{capacity},
 		#{content}, #{roadAddress}, #{address}, #{orgId}, #{districtId},
-		#{metropolId}, #{volCategoryId})
+		#{metropolId}, #{volCategoryId}),#{deadLine}
 	</insert>
 
 	<!--카테고리 메인 페이지-->
@@ -92,6 +93,8 @@
 		select photo
 		from org_vol;
 	</select>
+	
+
 
 </mapper>
 	

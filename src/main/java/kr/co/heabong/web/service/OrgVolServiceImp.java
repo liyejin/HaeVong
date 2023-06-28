@@ -1,5 +1,9 @@
 package kr.co.heabong.web.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +105,28 @@ public class OrgVolServiceImp implements OrgVolService {
 	    List<String> photoList = repository.getPhotoList(orgId);
 	    return photoList;
 	}
+	
+	
+	
+//	게시글 작성 시간
+	@Override
+	public int calculateRestDate(String dateString) {
+	    String pattern = "yyyy-MM-dd";
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+	    LocalDate date = LocalDate.parse(dateString, formatter);
+
+	    LocalDateTime currentTime = LocalDateTime.now();
+	    LocalDate nowDate = currentTime.toLocalDate();
+
+	    Period period = Period.between(nowDate, date);
+	    
+	    int restDate = period.getDays() + (period.getMonths() * 30);
+
+	    return restDate;
+	}
+	
+	
+
 
 	
 

@@ -33,4 +33,6 @@ public interface OrgVolService {
 	
 	/* 기관 사진 */
 	List<String> getPhotoList(int orgId);
+	
+	int calculateRestDate(String dateString);
 }

@@ -28,4 +28,5 @@ public class OrgVol {
 	private int metropolId;
 	private int volCategoryId;
 	private String photo;
+	private String deadLine;
 }

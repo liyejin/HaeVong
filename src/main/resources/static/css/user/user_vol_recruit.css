@@ -1,7 +1,9 @@
+
 body {
   width: 430px;
   height: 932px;
 }
+
 .header > div {
   /* padding: 40px; */
   box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
@@ -135,7 +137,7 @@ body {
 .user_vol_recruit_content {
   list-style: none;
   width: 430px;
-  height: 730px;
+/*  height: 730px;*/
   box-shadow: 0 10px 10px -5px rgb(167, 167, 167);
 }
 

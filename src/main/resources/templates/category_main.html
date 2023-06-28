@@ -54,8 +54,8 @@
           
           	<!--기관 사진-->
     <!--        <img src="/img/user/user_category_banner_main.png" alt="" />-->
-			<img th:src = "@{'/img/org/'} + ${mcateList.photo}"/>
-            
+			<img th:src = "@{'/img/org/orgvol/'} + ${mcateList.photo}"/>
+
             
             <a href="@{./list(c=${mcateList})}">
               <span th:text="${mcateList.title}">이색봉사 제목</span>
