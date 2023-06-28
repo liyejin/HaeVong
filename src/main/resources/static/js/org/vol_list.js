@@ -1,3 +1,4 @@
+/*작성자: Kloudy*/
 function volListLoad(url) {
 
 	let volList = document.querySelector(".vol_list");
@@ -7,15 +8,15 @@ function volListLoad(url) {
 		.then(response => response.json())
 		.then(list => {
 			console.log(list);
-console.log(volList.childNodes)
+			console.log(volList.childNodes)
 			volList.innerHTML = "";
-console.log(volList)
+			console.log(volList)
 			for (let vol of list) {
 
 				let itemTemplate =
 					`	<li>
-					<div id="modal" class="d-none">
-					<div id="delete">삭제하기</div>
+					<div id="modal" class="">
+					<div id="delete" class="delete-button">삭제하기</div>
 				</div>
 				<img class="vol_list_img" src="../img/org/org_vol_list_img.png" alt="모집공고이미지" />
 				<div class="vol_list_info">
@@ -42,21 +43,23 @@ console.log(volList)
 		})
 }
 
+
+
 window.addEventListener("load", function(e) {
 
-	let status = document.querySelector(".vol_status_section");
+	let status = document.querySelector(".vol_status_section"); // 모집 중 공고, 종료된 공고 선택
 	status.onclick = function(e) {
 		let el = e.target;
 		let selected = status.querySelector(".status-button-selected")
 		if (!e.target.classList.contains("status-button"))
 			return;
 		e.preventDefault();
-		
+
 		console.log(el);
 		let s = e.target.dataset.s
 		console.log(s);
-		if (el.classList.contains("status-button-selected")){
-		volListLoad(`http://localhost:8080/api/org-vols?o=1&s=${s}`);
+		if (el.classList.contains("status-button-selected")) {
+			volListLoad(`http://localhost:8080/api/org-vols?o=1&s=${s}`);
 			return;
 		}
 		else {
@@ -65,7 +68,14 @@ window.addEventListener("load", function(e) {
 			selected.classList.remove("status-button-selected");
 			console.log(el.classList);
 		}
-	}	
+	}
+	
+	let deleteButton = document.querySelector(".delete-button");	// 삭제하기 버튼 select
+	deleteButton.onclick=function(e){
+		console.log("clicked delete button");
+	}
+	
+	
 });
 
 document.addEventListener('DOMContentLoaded', function() {
