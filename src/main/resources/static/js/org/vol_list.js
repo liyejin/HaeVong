@@ -48,6 +48,7 @@ window.addEventListener("load", function(e) {
 	status.onclick = function(e) {
 		let el = e.target;
 		let selected = status.querySelector(".status-button-selected")
+		let orgId = document.querySelector("#orgId").dataset.orgId
 		if (!e.target.classList.contains("status-button"))
 			return;
 		e.preventDefault();
@@ -56,11 +57,11 @@ window.addEventListener("load", function(e) {
 		let s = e.target.dataset.s
 		console.log(s);
 		if (el.classList.contains("status-button-selected")){
-		volListLoad(`http://localhost:8080/api/org-vols?o=1&s=${s}`);
+		volListLoad(`http://localhost:8080/api/org-vols?o=${orgId}	&s=${s}`);
 			return;
 		}
 		else {
-			volListLoad(`http://localhost:8080/api/org-vols?o=1&s=${s}`);
+			volListLoad(`http://localhost:8080/api/org-vols?o=${orgId}&s=${s}`);
 			el.classList.add("status-button-selected");
 			selected.classList.remove("status-button-selected");
 			console.log(el.classList);

@@ -42,15 +42,10 @@
 			</tr>
 			<tr class="org_apply_list_row" th:each="u,uStat : ${userList}">
 				<td class="num" th:text="${uStat.count}">1</td>
-				<td class="name" th:text="${u.name}">dddd</td>
-				<td class="phone" th:text="${u.phoneNumber}">2121</td>
-				<td class="regdate" th:text="${u.date}">2222</td>
+				<td class="name" th:text="${u.name}">이름</td>
+				<td class="phone" th:text="${u.phoneNumber}">번호</td>
+				<td class="regdate" th:text="${u.date}">신청일</td>
 				<td>
-					<!--<div class="org_status">
-						<div class="org_status_approved" th:if="${u.status=='1'}">승인</div>
-						<div class="org_status_waiting" th:if="${u.status=='0'}">대기</div>
-						<div class="org_status_refused" th:if="${u.status=='2'}">거절</div>
-					</div>-->
 					<form action="#">
 						<select name="status" id="s">
 							<option value="0">대기</option>

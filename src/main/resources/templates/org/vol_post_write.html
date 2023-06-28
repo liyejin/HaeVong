@@ -29,7 +29,7 @@
         <img src="/img/org/vol_img.png" alt="이하늬봉사사진">
     </section>
 
-        <form action="vol_write" class="org_vol_form"  method="post">
+        <form action="vol_post_write" class="org_vol_form"  method="post">
 	<select class="category" name="volCategoryId">
 		<option value="선택안함">카테고리</option>
 		  <option th:each="c : ${cateList}"  th:value="${c.id}" th:text="${c.name}">카테고리</option>

@@ -23,7 +23,7 @@
     <div class="main">
       <section class="org_profile">
         <div class="org_profile_pic">
-          <img th:src="'/img/org/'+${org.profilePhoto}" alt="기관이미지" />
+          <img th:src="@{'/img/org/orgprofile/' + ${org.profilePhoto}}" alt="기관이미지" />
       
           <p class="org_profile_name">
             어서오세요! <br /><span sec:authentication="principal.name">(주)해봉이네</span><span> 님</span>
@@ -41,14 +41,26 @@
           >해봉을 통해 만난 봉사자 <span class="d_day_cnt2">0</span>명💎</span
         >
       </div>
+      
       <section class="recruit">
         <div class="recruit_box">
-          <div class="recruit_post"><div><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고작성</p></div></div>
-          <div class="org_cs"><div><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고관리</p></div></div>
-          <div class="org_cs"><div><img src="/img/icon/org_main_recruit.svg" alt=""><p>고객센터</p></div></div>
-          <div class="org_cs"><div><img src="/img/icon/org_main_edit.svg" alt=""><p>정보수정</p></div></div>
+			
+          <div class="recruit_post">
+			  <div><a th:href="@{/org/vol_post_write(oid=${#authentication.principal.id})}"><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고작성</p></a></div>
+			  </div>
+          <div class="org_cs">
+			  <div><a th:href="@{/org/vol_list(o=${#authentication.principal.id})}"><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고관리</p></a></div>
+			  </div>
+          <div class="org_cs">
+			  <div><a href="#"><img src="/img/icon/org_main_recruit.svg" alt=""><p>고객센터</p></a></div>
+			  </div>
+          <div class="org_cs">
+			  <div><a href="#"><img src="/img/icon/org_main_edit.svg" alt=""><p>정보수정</p></a></div>
+			  </div>
+			  
         </div>
       </section>
+      
       <section class="ing">
         <div class="ing_header">
           <div>진행중 모집 <span> 2</span></div>
@@ -80,7 +92,7 @@
             </div>
             <div class="ing_contents">
               <div class="ing_detail">봉사장소</div>
-              <div class="ing_detail">행복보육원</div>
+              <div class="ing_detail" sec:authentication="principal.name">행복보육원</div>
             </div>
             <div class="ing_contents">
               <div class="ing_detail">마감일자</div>
