@@ -55,7 +55,7 @@ class ModalAlertElement extends HTMLElement {
 			  border: 1px solid white;
 			  border-radius: 100px;
 			  margin-right: 5px;
-			  color: lightpink;
+			  color: black;
 			  
 		 }`;
 
@@ -104,7 +104,8 @@ class ModalAlertElement extends HTMLElement {
 
     let btnOk = wrapper.querySelector(".btn-ok");
     btnOk.onclick = () => {
-      this.remove(); //this가 modal-alert
+      // this.remove(); //this가 modal-alert
+      this.classList.add("d-none");
     };
   }
 

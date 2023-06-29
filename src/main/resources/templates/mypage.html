@@ -15,11 +15,13 @@
       window.addEventListener("load", function () {
         let mypageCategory = document.querySelector(".mypageCategory");
         let modalAlert = document.querySelector("modal-alert");
+
+        console.log(modalAlert);
+
         let myPostPlusIcon = document.querySelector(".mypage_mypost_title");
 
         mypageCategory.onclick = function (e) {
           if (!mypageCategory.classList.contains("isAnonymous")) return;
-
           e.preventDefault();
           modalAlert.show(true);
         };
@@ -31,6 +33,10 @@
           e.preventDefault();
           modalAlert.show(true);
         };
+
+        // btnOk.onclick = function (e) {
+        //   modalAlert.show(false);
+        // };
       });
     </script>
 
@@ -69,20 +75,16 @@
 
         <!-- 유저 프로필 사진 ----------------------------------------------------- -->
 
-        <div class="profile_pic">
-          <img
-            sec:authorize="isAnonymous()"
-            src="/img/user/nonUserpic.png"
-            alt=""
-          />
-          <img
-            sec:authorize="isAuthenticated()"
-            th:src="@{${user.profilePhoto}}"
-            alt=""
-          />
-          <a href="">프로필 수정</a>
+        <div sec:authorize="isAnonymous()" class="profile_pic">
+          <img src="/img/user/nonUserpic.png" />
         </div>
       </section>
+
+      <div sec:authorize="isAuthenticated()" class="profile_pic">
+        <img th:src="@{${user.profilePhoto}}"   />
+      <a href="#">프로필 수정</a>
+     </div>
+    </section>
 
       <section class="mypage_guide">
         <a><img src="/img/org/org_guide.png" alt="" /></a>
