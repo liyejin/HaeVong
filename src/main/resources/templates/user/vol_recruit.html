@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	 xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
 	<meta charset="UTF-8" />
@@ -9,21 +11,22 @@
 	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="/css/user/user_vol_recruit.css" />
-	 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-      integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
-      crossorigin="anonymous"></script>
-   <script type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cdd769767a8d37978024eb6efb6073d8&libraries=services"></script>
+	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+		integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cdd769767a8d37978024eb6efb6073d8&libraries=services"></script>
+	<script src="/js/user/org_vol_apply.js"></script>
 </head>
 
 <script th:inline="javascript">
-         //  변수에 데이터를 할당
-         var ovData = /*[[${orgVol}]]*/ null;
-         
-         var oData = /*[[${org}]]*/ null;
-         console.log("html : " + ovData);
-         console.log("html : " +oData);
-      </script>
+	//  변수에 데이터를 할당
+	var ovData = /*[[${orgVol}]]*/ null;
+
+	var oData = /*[[${org}]]*/ null;
+	console.log("html : " + ovData);
+	console.log("html : " + oData);
+</script>
 
 <body>
 	<main class="main">
@@ -47,6 +50,8 @@
 						<li th:text="${orgVol.title}">행복보육원 봉사자 구인합니다.</li>
 						<li th:text="${org.name}">(주)행복보육원</li>
 						<span th:text="${dDay}">1 </span>시간전
+						<button class="applybtn">신청</button>
+						<button class="canclebtn">신청취소</button>
 					</div>
 				</ul>
 			</section>
@@ -110,12 +115,15 @@
 			<li><a href="#">고객센터 문의하기</a></li>
 			<li><a href="#">봉사 참여 시 유의사항</a></li>
 		</ul>
-		<!---------------------------고객센터-------------------------------------->
 
-		 <nav class="nav_list" th:replace="~{inc/nav}"></nav>
+		<!---------------------------고객센터-------------------------------------->
+		<nav class="nav_list" th:replace="~{inc/nav}"></nav>
 		<!--------------------------------네비바---------------------------->
 	</main>
-	 <script src="/js/map.js"></script>
+	<input type="hidden" th:value="${#authentication.principal.id}"  class="userId"/>
+	<input type="hidden" th:value="${orgVol.id}" class="orgVolId"/>
+	
+	<script src="/js/map.js"></script>
 </body>
 
 </html>

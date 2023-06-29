@@ -14,8 +14,13 @@
 		<select id="findByUserId">
 		select * from apply_org_vol where user_id=#{userId}
 	</select>
+	
 	<select id = "get" resultType="kr.co.heabong.web.entity.ApplyOrgVol">
 		select * from apply_org_vol where org_vol_id=#{orgVolId} and user_id=#{userId}
+	</select>
+	
+	<select id="lastOne" resultType="kr.co.heabong.web.entity.ApplyOrgVol">
+		select * from apply_org_vol order by date desc limit 1
 	</select>
 	
 	<update id="update">
@@ -40,9 +45,9 @@ WHERE org_vol_id =#{orgVolId} AND user_id=#{userId}
 		VALUES
 		(
 			#{orgVolId},
-			#{userId},
+			#{userId}
 		);
-
 	</insert>
+
 		
 	</mapper>

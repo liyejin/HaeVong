@@ -25,5 +25,9 @@ public interface ApplyOrgVolRepository {
 
 	int delete(ApplyOrgVol  applyOrgVol);
 	
+	//최신껄 가져오는 함수
+	ApplyOrgVol lastOne();
+	
+	
 
 }
