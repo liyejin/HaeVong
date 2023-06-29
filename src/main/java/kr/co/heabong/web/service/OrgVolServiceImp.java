@@ -124,6 +124,12 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	    return restDate;
 	}
+
+	@Override
+	public int ingOrgVol(int orgId) {
+		int ingCount = repository.findIngOrgVol(orgId);
+		return ingCount;
+	}
 	
 	
 

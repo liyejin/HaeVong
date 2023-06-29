@@ -15,8 +15,8 @@
     <header class="header">
       <div class="header1">
        <img class="title" src="/img/icon/icon_header_title.png" alt="헤더">
-        <a href="/logout" 
-          ><img src="/img/icon/icon_header_more.png" alt="로그아웃"
+        <a href ="/logout"  
+          ><img class="logout" src="/img/icon/logout_.svg" alt="로그아웃"
         /></a>
       </div>
     </header>
@@ -63,8 +63,7 @@
       
       <section class="ing">
         <div class="ing_header">
-          <div>진행중 모집 <span> 2</span></div>
-          <img src="/img/icon/icon_plus.png" alt="더보기" />
+          <div>진행중 모집 <span th:text="${ingCount}"> </span></div>
         </div>
         <div class="ing_footer">
           <div class="ing_container">

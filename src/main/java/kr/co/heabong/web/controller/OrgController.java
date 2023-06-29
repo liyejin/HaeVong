@@ -68,7 +68,9 @@ public class OrgController {
 	public String getMain(Model model,@AuthenticationPrincipal MyUserDetails user) {
 	
 	Org org = orgService.getById(user.getId());
+	int ingCount = volService.ingOrgVol(user.getId());
 	model.addAttribute("org",org);
+	model.addAttribute("ingCount",ingCount);
 
 		return "org/main";
 	}
@@ -119,18 +121,6 @@ public class OrgController {
 	public String getPwd_chang_insert(Model model) {
 
 		return "org/pwd_chang_insert";
-	}
-
-	@RequestMapping("recruit_detail")
-	public String getRecruit_detail(Model model) {
-
-		return "org/recruit_detail";
-	}
-
-	@RequestMapping("recruit_on_list")
-	public String getRecruit_on_list(Model model) {
-
-		return "org/recruit_on_list";
 	}
 
 	@RequestMapping("vol/applicants")

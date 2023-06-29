@@ -18,7 +18,17 @@
 .header {
   height: 80px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+}
+.header1{
+	align-items: center;
+	gap: 30%;
+}
+.header1> .title{
+	margin-left: 35%;
+}
+.header1>a>.logout{
+	width: 75%;
 }
 /* 기관메인 프로필*/
 .org_profile {
