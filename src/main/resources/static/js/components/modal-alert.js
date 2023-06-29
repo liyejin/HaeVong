@@ -51,13 +51,21 @@ class ModalAlertElement extends HTMLElement {
 			 justify-content: center;
 		 }
 		 
-		 .content-command>button{
+		 .content-command>button {
 			  border: 1px solid white;
 			  border-radius: 100px;
+        box-shadow : 1px 1px 1px grey ;
 			  margin-right: 5px;
 			  color: black;
-			  
-		 }`;
+		 }
+
+     .content-command>button:active {
+      margin-left: 5px;
+      margin-top : 5px;
+      box-shadow : none;
+   }
+     
+     `;
 
     let title = "알림";
     let content = "";
@@ -104,6 +112,11 @@ class ModalAlertElement extends HTMLElement {
 
     let btnOk = wrapper.querySelector(".btn-ok");
     btnOk.onclick = () => {
+      window.location.href = "user_signin?p=0";
+    };
+
+    let btnCancel = wrapper.querySelector(".btn-cancel");
+    btnCancel.onclick = () => {
       // this.remove(); //this가 modal-alert
       this.classList.add("d-none");
     };
