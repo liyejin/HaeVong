@@ -17,6 +17,8 @@ public interface OrgVolRepository {
 	List<OrgVol> findByOrgIdAndStatus(int orgId, String status);
 	
 	List<OrgVol> findByOrgId(int orgId, String status);
+	
+	int findIngOrgVol(int orgId);
 
 	List<OrgVol> findByAddress(String address);
 

@@ -26,6 +26,9 @@
 	<select id="findById" resultType="kr.co.heabong.web.entity.OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
+	<select id="findIngOrgVol" >
+		SELECT COUNT(*) AS ing FROM haevongdb.org_vol WHERE date > CURRENT_DATE AND org_id =  #{orgId};
+	</select>
 	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> UPDATE
 		haevongdb.org_vol <set>
 			<if test="title != null">title = #{title},</if>

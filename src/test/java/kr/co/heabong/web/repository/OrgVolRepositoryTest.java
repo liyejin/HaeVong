@@ -31,6 +31,14 @@ class OrgVolRepositoryTest {
 		System.out.println(list);
 	}
 
+@Test
+void testFindIngOrgVol() {
+	
+	int count = repository.findIngOrgVol(2);
+	System.out.println(count);
+	
+}
+
 	// @Test
 	void testSave() {
 		OrgVol orgVol = OrgVol.builder().title("test").date("2023-06-22").capacity(12).content("content")
