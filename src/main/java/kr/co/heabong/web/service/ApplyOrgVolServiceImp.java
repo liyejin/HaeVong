@@ -58,4 +58,29 @@ public class ApplyOrgVolServiceImp implements ApplyOrgVolService {
 		return update;
 	}
 
+	//입력 성공 실패 여부 판단후,컨트롤러 전달
+	@Override
+	public ApplyOrgVol add(ApplyOrgVol applyOrgVol) {
+		
+		int result = repository.save(applyOrgVol);
+		//승인일때
+		if(result == 1) {
+			//새로 넣은 결과
+			ApplyOrgVol newOne = repository.lastOne();
+			return newOne;
+		}
+			
+		return null;
+	}
+
+	@Override
+	public int delete(ApplyOrgVol applyOrgVol) {
+		
+		int result = repository.delete(applyOrgVol);
+		
+		return result;
+	}
+	
+	
+
 }

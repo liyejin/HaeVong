@@ -277,5 +277,8 @@ public class OrgController {
 
 		return "org/vol_post_detail";
 	}
+	
+	
+	
 
 }

@@ -17,5 +17,10 @@ public interface ApplyOrgVolService {
 	List<UserApplyView> getApplicantlList(int orgVolId);
 	
 	int changeApplicantStatus(int orgVolId, int userId, int status);
+	
+	//한명 신청할때마다 이 한줄이 삽입
+	ApplyOrgVol add(ApplyOrgVol applyOrgVol);
+	
+	int delete(ApplyOrgVol applyOrgVol);
 
 }
