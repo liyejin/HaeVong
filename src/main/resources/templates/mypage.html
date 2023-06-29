@@ -154,18 +154,26 @@
 
       <!-- 나의 게시글 ----------------------------------------------------- -->
 
-      <section class="my_post">
+      <section sec:authorize="isAnonymous()" class="my_post">
         <div class="mypage_mypost_title isAnonymous" id="imageContainer">
           <span>나의 게시글 </span>
           <a href="#"><img src="/img/icon/icon_plus.png" /></a>
         </div>
-        <div sec:authorize="isAnonymous()" class="mypage_mypost_img">
+        <div class="mypage_mypost_img">
           <img src="/img/user/emptyImage.png" alt="게시글1" />
           <img src="/img/user/emptyImage.png" alt="게시글1" />
           <img src="/img/user/emptyImage.png" alt="게시글1" />
         </div>
 
-        <div sec:authorize="isAuthenticated()" class="mypage_mypost_img">
+        <!--  -->
+      </section>
+
+      <section sec:authorize="isAuthenticated()" class="my_post">
+        <div class="mypage_mypost_title" id="imageContainer">
+          <span>나의 게시글 </span>
+          <a href="#"><img src="/img/icon/icon_plus.png" /></a>
+        </div>
+        <div class="mypage_mypost_img">
           <a th:href="@{${p.url}}" th:each="p:${mypic}"
             ><img src="@{p.url}" th:src="@{${p.url}}" alt="게시글1"
           /></a>
@@ -176,7 +184,7 @@
       <section sec:authorize="isAnonymous()" class="cs">
         <span
           >해봉과 함께해 주세요 ! 😊<br />
-          <a href="login"> 지금 로그인하기</a></span
+          <a href="user_signin?p=0"> 지금 로그인하기</a></span
         >
       </section>
 

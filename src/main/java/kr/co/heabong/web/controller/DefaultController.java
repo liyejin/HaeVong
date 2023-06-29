@@ -203,13 +203,12 @@ public class DefaultController {
 		// 게시글
 		List<OrgVol> mainCateList = volCategoryService.getMainCategoryList();
 		model.addAttribute("mainCateList", mainCateList);
-		//사진
+		// 사진
 		List<String> photoList = orgVolService.getPhotoList(1);
-		model.addAttribute("photoList",photoList);
+		model.addAttribute("photoList", photoList);
 		return "category_main";
 	}
 
-	// 비회원 마이페이지
 	@GetMapping("mypage")
 	public String getMypage(@AuthenticationPrincipal MyUserDetails user,
 			Model model) {
@@ -262,11 +261,5 @@ public class DefaultController {
 
 		return "org_vol_by_category";
 	}
-		
-	
-	
-
-	
-	
 
 }

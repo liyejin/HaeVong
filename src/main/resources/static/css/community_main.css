@@ -1,3 +1,4 @@
+/* 카테고리 바 (홈, 참여해봉, 봉사후기, 일상/정보) */
 .community_categorybar {
   display: flex;
   flex-direction: row;
@@ -5,6 +6,21 @@
   margin-left: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.community_categorybar > li > a {
+  display: flex; /* Flex 컨테이너로 설정합니다. */
+  flex-direction: column;
+  align-items: center; /* 수직 가운데 정렬합니다. */
+  justify-content: center; /* 수평 가운데 정렬합니다. */
+}
+
+.cate-list-bar {
+  display: flex; /* Flex 컨테이너로 설정합니다. */
+
+  width: 20px;
+  height: 4px;
+  background-color: black;
 }
 
 .community_categorybar li {
@@ -23,8 +39,14 @@
   height: auto;
 }
 
+/* 참여해봉 */
+.section_planning_vol {
+  display: flex;
+  flex-direction: column;
+}
+
 /* 커뮤니티 섹션 제목 */
-.community_section {
+.community_section_title {
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -39,12 +61,12 @@
   margin-bottom: 40px;
 }
 
-.community_section_title {
+.community_section_title_name {
   font-size: 20px;
   font-weight: bold;
 }
 
-.community_section_title_explane {
+.community_section_title_name_explane {
   font-size: 16px;
 }
 
@@ -106,8 +128,8 @@
 .section_community_post_img {
   position: relative;
   display: flex;
-  height: 380px;
-  width: 380px;
+  height: 360px;
+  width: 360px;
   border-radius: 16px;
   background-image: url(../img/user/community/community_main_post.png);
   margin-bottom: 20px;

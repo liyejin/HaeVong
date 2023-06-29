@@ -14,22 +14,16 @@ import kr.co.heabong.web.entity.UserApplyView;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class UserApplyViewRepositoryTest {
-	
-	 @Autowired 
-	 private UserApplyViewRepository repository;
+
+	@Autowired
+	private UserApplyViewRepository repository;
 
 	@Test
 	void testFindAll() {
-		
+
 		List<UserApplyView> list = repository.findAll();
 		System.out.println(list);
-	
-	}
 
-	@Test
-	void testFindById() {
-		List<UserApplyView> list = repository.findById(2);
-		System.out.println(list);
 	}
 
 }

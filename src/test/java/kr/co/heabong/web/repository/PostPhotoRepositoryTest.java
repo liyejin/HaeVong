@@ -11,22 +11,17 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.VolCategory;
+
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class PostPhotoRepositoryTest {
 	@Autowired
 	private PostPhotoRepository postPhotoRepository;
-	
+
 	@Test
 	void testFindAll() {
 		List<VolCategory> list = postPhotoRepository.findAll();
 		System.out.println(list);
 	}
-	
-	//@Test
-	void testFindByMyPostPhoto() {
-		List<PostPhoto> myPostUrl = postPhotoRepository.findByMyPostPhoto();
-		System.out.println(myPostUrl);
-	}
-	
+
 }

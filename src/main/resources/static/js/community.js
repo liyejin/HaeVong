@@ -1,1 +1,0 @@
-var commCtegory = document.getElementById();
