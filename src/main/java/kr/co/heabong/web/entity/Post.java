@@ -5,8 +5,8 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-import groovy.transform.builder.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Post {
 	private int id; 
 	private String title; 
-	private Date regdate; 
+	private LocalDateTime regdate; 
 	private int userId; 
 	private int postCategoryId; 
 	private String content;

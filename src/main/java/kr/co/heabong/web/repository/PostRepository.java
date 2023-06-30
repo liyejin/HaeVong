@@ -20,4 +20,8 @@ public interface PostRepository {
 
 	int delete(int id);
 
+	Post findbyId(int id);
+	
+	Post getLastOne();
+
 }

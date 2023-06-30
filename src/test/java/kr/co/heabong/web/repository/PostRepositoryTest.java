@@ -39,15 +39,14 @@ class PostRepositoryTest {
 	// @Test
 	void testSave() {
 		Date date = new Date();
-		Post post = new Post(15, "test", date, 1, 1, "test");
+		Post post = Post.builder().build();
 		int result = repository.save(post);
 		System.out.println(result);
 	}
 
 	// @Test
 	void testUpdate() {
-		Date date = new Date();
-		Post post = new Post(14, "test", date, 4, 1, "test");
+		Post post = Post.builder().build();
 		int result = repository.update(post);
 		System.out.println(result);
 
