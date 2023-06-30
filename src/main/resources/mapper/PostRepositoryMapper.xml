@@ -1,0 +1,38 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.PostRepository">
+	<select id="findAll" resultType="kr.co.heabong.web.entity.Post">
+		select * from post
+	</select>
+	<select id="findByUserId" resultType="kr.co.heabong.web.entity.Post">
+		select * from post where user_id = #{userId}
+	</select>
+	<select id="findByCategoryId" resultType="kr.co.heabong.web.entity.Post">
+		select * from post where user_id = #{categoryId}
+	</select>
+	<select id="findbyId" resultType="kr.co.heabong.web.entity.Post">
+		select * from post where id = #{id}
+	</select>
+	<select id="getLastOne" resultType="kr.co.heabong.web.entity.Post">
+		select * from post order by regdate desc limit 1
+	</select>
+	<insert id="save" parameterType="kr.co.heabong.web.entity.Post"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		insert into post (title, regdate, user_id,post_category_id,content)
+		values (#{title}, #{regdate}, #{userId},
+		#{postCategoryId},#{content})
+	</insert>
+	<update id="update" parameterType="kr.co.heabong.web.entity.Post"> UPDATE
+		haevongdb.post <set>
+			<if test="title != null">title = #{title},</if>
+			<if test="regdate != null">regdate = #{regdate},</if>
+			<if test="postCategoryId != null"> post_category_id =
+		#{postCategoryId},</if>
+			<if test="content != null">content = #{content}</if>
+		</set>
+		WHERE id = #{id} </update>
+	<delete id="delete">
+		delete from post where id=#{id}
+	</delete>
+
+</mapper>

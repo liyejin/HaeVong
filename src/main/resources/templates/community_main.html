@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>community_home</title>
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="stylesheet" href="../static/css/community_main.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/community_main.css" />
+    <script defer src="/js/community.js"></script>
+    <script defer src="/js/components/community-top-haevong.js"></script>
   </head>
   <body>
     <!-- 헤더 ------------------------------------------------------------->
     <header class="header">
       <div class="header1">
         <a href=""
-          ><img src="../static/img/icon/icon_header_back.png" alt="뒤로가기"
+          ><img src="/img/icon/icon_header_back.png" alt="뒤로가기"
         /></a>
         <div>커뮤니티</div>
         <div>
-          <img src="../static/img/icon/icon_header_more.png" alt="더보기" />
+          <img src="/img/icon/icon_header_more.png" alt="더보기" />
         </div>
       </div>
     </header>
@@ -69,35 +71,28 @@
               <li>
                 <a href="#"
                   ><img
-                    src="../static/img/user/community/community_planninvol.png"
-                    alt="TOP참여해봉1"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img
-                    src="../static/img/user/community/community_planninvol.png"
+                    src="/img/user/community/community_planninvol.png"
                     alt="TOP참여해봉2"
                 /></a>
               </li>
               <li>
                 <a href="#"
                   ><img
-                    src="../static/img/user/community/community_planninvol.png"
+                    src="/img/user/community/community_planninvol.png"
                     alt="TOP참여해봉3"
                 /></a>
               </li>
               <li>
                 <a href="#"
                   ><img
-                    src="../static/img/user/community/community_planninvol.png"
+                    src="/img/user/community/community_planninvol.png"
                     alt="TOP참여해봉4"
                 /></a>
               </li>
               <li>
                 <a href="#"
                   ><img
-                    src="../static/img/user/community/community_planninvol.png"
+                    src="/img/user/community/community_planninvol.png"
                     alt="TOP참여해봉5"
                 /></a>
               </li>
@@ -118,7 +113,7 @@
               <li>
                 <a href="#"
                   ><img
-                    src="../static/img/user/community/community_info.png"
+                    src="/img/user/community/community_info.png"
                     alt="공지사항1"
                 /></a>
                 <a href="#">
@@ -132,6 +127,7 @@
               </li>
               </ul>
           </section>
+
 
           
           <!-- 공지사항 -->
@@ -187,7 +183,7 @@
 
                   <a class="community_post_detail_btn" href="#"
                     ><img
-                      src="../static/img/icon/icon_more_3dot_white.svg"
+                      src="/img/icon/icon_more_3dot_white.svg"
                       alt="더보기아이콘"
                     />
                   </a>
@@ -208,13 +204,13 @@
                     <div class="community_main_post_like_comment">
                       <div>
                         <img
-                          src="../static/img/icon/icon_community_home_like.svg"
+                          src="/img/icon/icon_community_home_like.svg"
                           alt="좋아요아이콘"
                         /><span>17</span>
                       </div>
                       <div>
                         <img
-                          src="../static/img/icon/icon_community_home_comment.svg"
+                          src="/img/icon/icon_community_home_comment.svg"
                           alt="댓글아이콘"
                         /><span>8</span>
                       </div>
@@ -222,15 +218,13 @@
                   </a>
                 </div>
               </li>
-
-                
             </ul>
 
         </section>
           <!---------------------------------------------------------------------->
         </ul>
+        <community-home></community-home>
       </section>
     </main>
-    <script src="../static/js/community.js" defer="defer"></script>
   </body>
 </html>

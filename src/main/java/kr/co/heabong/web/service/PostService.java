@@ -7,35 +7,36 @@ import org.springframework.stereotype.Service;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.entity.Location;
 import kr.co.heabong.web.entity.Post;
+import kr.co.heabong.web.entity.PostCategory;
 import kr.co.heabong.web.entity.User;
-@Service
+
 public interface PostService {
 
-	// 하나의 구인글 정보 가져오기
-	Post get(Post post);
+	// 하나의 커뮤니티글 정보 가져오기
+	Post get(int id);
 
-	// 구인글 작성하기
-	void write(Post post);
+	// 커뮤니티글 작성하기
+	Post write(Post post);
 
-	// 구인글 삭제하기
-	void delete(Post post);
+	// 커뮤니티글 삭제하기
+	int delete(int id);
 
-	// 구인글 수정하기
+	// 커뮤니티글 수정하기
 	Post update(Post Post);
 
-	// 봉사 구인글 리스트 가져오기
+	// 봉사 커뮤니티글 리스트 가져오기
 	List<Post> getList();
 
-	// 카테고리 별로 구인글 리스트 가져오기
-	List<Post> getListByCategory(VolCategory category);
+	// 카테고리 별로 커뮤니티글 리스트 가져오기
+	List<Post> getListByCategory(PostCategory category);
 
-	// 좋아요 한 구인글 리스트 가져오기
-	List<Post> wishPost();
+	// 좋아요 한 커뮤니티글 리스트 가져오기
+	List<Post> likePost(int userId);
 
-	// 검색어 기준으로 구인글 리스트 가져오기
+	// 검색어 기준으로 커뮤니티글 리스트 가져오기
 	List<Post> getListBySearch(String search);
 
-	// 위치 기준으로 구인글 리스트 가져오기
+	// 위치 기준으로 커뮤니티글 리스트 가져오기
 	List<Post> getListByLocation(Location location);
 
 

@@ -1,3 +1,4 @@
+/*작성자 : Kloudy*/
 window.addEventListener("load", function(e) {
 	let boxes = document.querySelectorAll(".status-select-box");
 	let orgVolId = document.querySelector(".org-vol-id").dataset.orgVolId;

@@ -72,6 +72,7 @@ public class OrgController {
 	model.addAttribute("org",org);
 	model.addAttribute("ingCount",ingCount);
 
+
 		return "org/main";
 	}
 
@@ -146,9 +147,8 @@ public class OrgController {
 		return "org/signup";
 	}
 
-	@RequestMapping("vol_edit")
-	public String getVol_edit(@RequestParam(name="id", required=true) int volId,
-			Model model) {
+	@GetMapping("vol_edit")
+	public String getVol_edit(@RequestParam(name = "id", required = true) int volId, Model model) {
 		OrgVol orgVol = volService.getById(volId);
 		int volCategoryId = orgVol.getVolCategoryId();
 		VolCategory volCategory = volCategoryService.getById(volCategoryId);
@@ -156,7 +156,7 @@ public class OrgController {
 		List<VolCategory> cateList = volCategoryService.getCateList();
 		model.addAttribute("cateList", cateList);
 		model.addAttribute("vol", orgVol);
-		model.addAttribute("volCategory",volCategory);
+		model.addAttribute("volCategory", volCategory);
 		
 
 		return "org/vol_post_edit";
@@ -170,13 +170,9 @@ public class OrgController {
 
 	@RequestMapping("vol_list") // org/vol_list // 기관 봉사 리스트
 	public String getVol_list(@RequestParam(name = "s", required = false) String status,
-			@RequestParam(name = "o", required = true) int orgId, Model model) {
+			@AuthenticationPrincipal MyUserDetails user, Model model) {
+		int orgId = user.getId();
 		List<OrgVol> list = volService.getList(orgId, status);
-		// for (OrgVol orgVol : list) {
-		// DateTimeFormatter dateTimeFormatter =
-		// DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		// orgVol.getRegdate().format(dateTimeFormatter);
-		// }
 		if (list.size() == 0)
 			return "org/vol_list_empty";
 		Map<String, Object> map = new HashMap<>();
@@ -237,28 +233,26 @@ public class OrgController {
 	public String postMethod(OrgVol orgVol) {
 
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
-		int districtId= districtService.getById(orgVol.getRoadAddress().split(" ")[1],metropolId);
+		int districtId = districtService.getById(orgVol.getRoadAddress().split(" ")[1], metropolId);
 		orgVol.setMetropolId(metropolId);
 		orgVol.setDistrictId(districtId);
-		   int save = volService.save(orgVol);
-		   System.out.println(save);
-		   
-		return "redirect:vol_post_detail?id="+orgVol.getId(); 
+		int save = volService.save(orgVol);
+		System.out.println(save);
+
+		return "redirect:vol_post_detail?id=" + orgVol.getId();
 
 	}
-	
-	
 	@PostMapping("vol_edit")
 	public String volEdit(OrgVol orgVol) {
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
-		int districtId= districtService.getById(orgVol.getRoadAddress().split(" ")[1],metropolId);
+		int districtId = districtService.getById(orgVol.getRoadAddress().split(" ")[1], metropolId);
 		orgVol.setMetropolId(metropolId);
 		orgVol.setDistrictId(districtId);
-		System.out.println(orgVol.getId());   
-		   int edit = volService.edit(orgVol);
-		   System.out.println(edit);
-		System.out.println(orgVol.getId());   
-		return "redirect:vol_post_detail?id="+orgVol.getId(); 
+		System.out.println(orgVol.getId());
+		int edit = volService.edit(orgVol);
+		System.out.println(edit);
+		System.out.println(orgVol.getId());
+		return "redirect:vol_post_detail?id=" + orgVol.getId();
 	}
 
 	@RequestMapping("vol_post_detail")

@@ -23,7 +23,11 @@ class UserApplyViewRepositoryTest {
 
 		List<UserApplyView> list = repository.findAll();
 		System.out.println(list);
-
+	}
+	@Test
+	void testFindById() {
+		List<UserApplyView> list = repository.findByorgVolId(2);
+		System.out.println(list);
 	}
 
 }
