@@ -24,7 +24,7 @@
 	text-align: center;
 	border-radius: 15px;
 	white-space: nowrap;
-	padding: 5px;
+	padding: 6px;
 	margin-left: 3px;
 	margin-right: 3px;
 	cursor:pointer;
@@ -32,6 +32,8 @@
 
 .category > .catelist:hover {
   font-weight: bold;
+  background-color: white;
+  color: #64987F;
 }
 
 .vol_category {
@@ -83,8 +85,9 @@
   width: 410px;
   height: 174px;
 
-  background: #f6f7f8;
-  border-radius: 30px;
+/*  background: rgb(227, 236, 232);*/
+  border-bottom: 3px solid #64987F;
+  border-radius: 15px;
 
   position: relative;
 }
@@ -142,6 +145,12 @@
   width: inherit;
 }
 
+/*북마크*/
+
+
+
+
+
 /* 상세보기 버튼 */
 .vol_list_detail_btn {
   display: flex;
@@ -173,13 +182,12 @@
 
 .submit_form {
   position: relative;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding:30px;
+  margin-top: 20px;
 }
 
 .querytext {
   display: flex;
-  margin-left: 20px;
   width: 320px;
   height: 36px;
   border-radius: 25px;
@@ -187,6 +195,7 @@
   border: 0.5px solid gainsboro;
   position: absolute;
   top: 0;
+  left: 10px;
 }
 
 .querytext::placeholder {
@@ -198,14 +207,21 @@
 }
 
 .submit{
-	 width: 60px;
+	width: 60px;
     height: 36px;
     border-radius: 25px;
     position: absolute;
     right: 0;
     top: 0;
-    margin-right: 20px;
-    background-color: #64987F;
+    background-color: white;
+    border: 0;
+    margin-right: 23px;
+     color: #64987F;
+}
+
+.submit:hover{
+	background-color: #64987F;
+	color: white;
 }
 
 .submit[type="text"]:active,
@@ -321,3 +337,19 @@
   padding: 5px 10px;
   margin: 5px 10px; /* 요소 사이에 간격을 주기 위해 마진 추가 */
 }
+
+
+
+/*북마크*/
+.bookmark{
+	background-image: url('/img/icon/icon_bookmark.svg');
+	background-size: cover;
+	height: 35px;
+	width: 28px;
+	border: 0;
+}
+
+.bookmark.active {
+    background-image: url("/img/icon/boomark-fill.svg");
+}
+

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>내 봉사 현황</title>
+	<title>봉사 신청하기</title>
 	<link rel="stylesheet" href="../css/reset.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/vol_list.css" />
 	<script src="/js/org/org_vol.js"></script>
+	<script src="/js/user/bookmark.js" defer></script>
 <!--	<script src="/js/user/vol_category.js"></script>-->
 </head>
 
 <header class="header">
 	<div class="header1">
 		<a href="/"><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
-		<div>내 봉사 현황</div>
+		<div>봉사 신청하기</div>
 		<div>
 			<img src="/img/icon/icon_header_more.png" alt="더보기" />
 		</div>
@@ -47,22 +49,43 @@
 			<!--검색창-->
 
 			<ul class="vol_list">
-				<li th:each="vol:${orgVolList}">
-					<img class="vol_list_img" src="/img/org/org_vol_list_img.png" alt="모집공고이미지" />
+				<li th:each="vol:${orgVolList}" class="org_vol_list">
+					<img class="vol_list_img" th:src="@{'/img/org/org_vol/' + ${vol.photo}}" alt="모집공고이미지" />
 					<div class="vol_list_info">
 						<span th:text="${vol.title}" class="vol_title">행복보육원 봉사자 구인합<br /></span>
 						<span class="vol_date" th:text="${vol.date}">5월 13일(월), 13:00~16:00</span>
-						<span class="vol_write_date" th:text="${vol.regdate}">2023/04/26</span>
+						<span class="vol_write_date" th:text="${vol.regdate}">2023/04/26</span><br>
+						
+						
+						<!--북마크 버튼-->
+						<a href="">
+						<button  
+						type="button" 
+						sec:authorize="isAuthenticated()"  
+						   th:data-user-id="${#authentication.principal.id}"
+                                th:data-orgVol-id="${vol.id}"
+                                class="bookmark" 
+                                th:classappend="${vol.wish}?'active' : ' '"
+						 />
+						 </a>
+						  <a href="/login" sec:authorize="isAnonymous()">
+                                <button
+                                    type="button"
+                                    class="bookmark">
+                                </button>
+                            </a>
+                            <!--북마크 버튼-->
+
+				
 						<ul class="vol_list_btn_box">
 							<li><a class="vol_list_detail_btn" href="#" th:href="@{/user/vol(id=${vol.id})}">상세보기</a></li>
-							<!-- <li><a class="vol_list_detail_btn" href="#" th:href="@{./vol(id=${vol.id})}">수정하기</a></li> -->
 						</ul>
 					</div>
 		</div>
-		<!--<img class="vol_list_edit_btn" src="/img/icon/icon_vol_list_more.png" alt="모집공고_아이콘" />-->
-
 		</li>
 		</ul>
+		
+		
 	</section>
 </body>
 

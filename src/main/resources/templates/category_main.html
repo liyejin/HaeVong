@@ -45,7 +45,7 @@
           <span>이런 봉사, 해본 적 있어?</span>
           <a href="#"><img src="/img/icon/icon_plus.png" alt="" /></a>
         </div>
-        <!--  -->
+
         <ul class="user_category_recommended_list">
           <li
             class="user_category_recommended_item"
@@ -54,14 +54,14 @@
           
           	<!--기관 사진-->
     <!--        <img src="/img/user/user_category_banner_main.png" alt="" />-->
-			<img th:src = "@{'/img/org/orgvol/'} + ${mcateList.photo}"/>
-
+			<img th:src = "@{'/img/org/org_vol/'} + ${mcateList.photo}"/>
             
             <a href="@{./list(c=${mcateList})}">
-              <span th:text="${mcateList.title}">이색봉사 제목</span>
+			   <!--이색봉사 제목-->
+              <span th:text="${mcateList.title.length() &gt; 10 ? mcateList.title.substring(0, 10) + '...' : mcateList.title}" class="title"></span>
               <br>
-              <!--<span th:text="${mcateList.content}">이색봉사 설명</span>-->
-              <span th:text="${mcateList.content.length() &gt; 10 ? mcateList.content.substring(0, 10) + '...' : mcateList.content}"></span>
+        		<!--이색봉사 설명-->
+              <span th:text="${mcateList.content.length() &gt; 10 ? mcateList.content.substring(0, 10) + '...' : mcateList.content}" class="content"></span>
 
             </a>
           </li>

@@ -20,6 +20,7 @@ import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
+import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.security.config.HeabongConfig;
 import kr.co.heabong.web.security.config.MyUserDetails;
@@ -185,6 +186,8 @@ public class DefaultController {
 
 		return "redirect:/user_signin";
 	}
+	
+	
 
 	// 카테고리 목록 페이지
 	@GetMapping("category_main")
@@ -200,6 +203,8 @@ public class DefaultController {
 		model.addAttribute("photoList",photoList);
 		return "category_main";
 	}
+	
+	
 
 	// 비회원 마이페이지
 	@GetMapping("mypage")
@@ -223,6 +228,8 @@ public class DefaultController {
 		return "mypage";
 	}
 
+	
+	
 	@GetMapping("vol_list")
 	public void getUserVolList(
 			@RequestParam(name = "id", required = false) int id,
@@ -230,23 +237,30 @@ public class DefaultController {
 		model.addAttribute("u", model);
 
 	}
+	
+	
 
 	// 분야별 봉사 검색 기능
 	@GetMapping("orgvol")
 	public String getOrgVolListByCategory(
 			@RequestParam(name = "cid", required = true) Integer categoryId,
 			@RequestParam(name = "sk", required = false) String serchKeyword,
+			@AuthenticationPrincipal MyUserDetails user,
 			Model model) {
-		List<OrgVol> orgVolList = null;
+		
+		Integer userId= null; 
+		if(user!=null)
+			userId=user.getId();
 		// 카테고리 전체 가져오기
 		List<VolCategory> volCategory = volCategoryService.getCateList();
-
+		List<UserWishView> orgVolList = null;
+		
 		if (serchKeyword == null & categoryId == 1)
-			orgVolList = orgVolService.getList();
+			orgVolList = orgVolService.getView(userId);
 		else if (serchKeyword == null & categoryId != null)
-			orgVolList = orgVolService.getOrgVolListByCategoryId(categoryId);
+			orgVolList = orgVolService.getViewOrgVolListByCategoryId(userId, categoryId);
 		else if (serchKeyword != null)
-			orgVolList = orgVolService.getOrgVolListBySearch(categoryId, serchKeyword);
+			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, serchKeyword);
 
 		model.addAttribute("orgVolList", orgVolList);
 		model.addAttribute("cid", categoryId);

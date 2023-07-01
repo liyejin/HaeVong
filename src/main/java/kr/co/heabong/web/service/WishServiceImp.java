@@ -14,7 +14,6 @@ import kr.co.heabong.web.repository.UserRepository;
 import kr.co.heabong.web.repository.WishRepository;
 
 @Service
-
 public class WishServiceImp implements WishService {
 	@Autowired
 	private WishRepository repository;
@@ -31,11 +30,12 @@ public class WishServiceImp implements WishService {
 	}
 
 	@Override
-	public void wish(int userId, int orgVolId) {
-		Wish wish = Wish.builder().userId(userId).orgVolId(orgVolId).build();
-		int save = repository.save(wish);
-		if (save == 1)
-			System.out.println("wish 성공");
+	public int apend(Wish wish) {
+//		Wish wish = Wish.builder().userId(userId).orgVolId(orgVolId).build();
+//		int save = repository.save(wish);
+//		if (save == 1)
+//			System.out.println("wish 성공");
+		return repository.save(wish);
 	}
 
 	@Override
@@ -69,6 +69,18 @@ public class WishServiceImp implements WishService {
 			orgVolList.add(orgVol);
 		}
 		return orgVolList;
+	}
+
+	@Override
+	public void wish(int userId, int orgVolId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int delete(Wish wish) {
+		
+		return repository.delete(wish);
 	}
 
 }
