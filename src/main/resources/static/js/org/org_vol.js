@@ -1,8 +1,13 @@
+	 let userId = null;
+   if (document.querySelector("user-id") != null)
+      userId = document.querySelector("user-id").value;
+      
+      // user_id가 계속 null
+      
 function volListLoad(url) {
   	let volList = document.querySelector(".vol_list");
 	let id = document.querySelector('input[name="cid"]');
 	let idvalue = id.value;
-	
 	
   fetch(url)
     //`http://localhost:8080/api/org?c=${id}`
@@ -21,6 +26,14 @@ function volListLoad(url) {
 						<span class="vol_title">${vol.title} <br /></span>
 						<span class="vol_date">${vol.date}, 13:00~16:00</span>
 						<span class="vol_write_date">${vol.regdate}</span>
+							<a href="/login">
+                  <button  
+                  type="button" 
+                           data-orgVol-id="${vol.id}"
+                     data-user-id="${userId}"
+                           class="bookmark" ${vol.bookmark ? 'active' : ' '}" >
+                          </button >
+                   </a >	
 						<ul class="vol_list_btn_box">
 							<li><a class="vol_list_detail_btn"  href="/user/vol?id=${vol.id}">상세보기</a></li>
 						</ul>
@@ -32,11 +45,6 @@ function volListLoad(url) {
 			};
 		})
 }
-
-
-
-
-
 
 window.addEventListener("load", function(e) {
 
@@ -91,6 +99,5 @@ window.addEventListener("load", function(e) {
     volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
 });
 
-	
 }
 );

@@ -50,8 +50,8 @@ public class BookmarkController {
 	
 	@PostMapping
 	public int append(
-			@RequestParam("ui") int userId,
-			@RequestParam("oi") int orgVolId
+			@RequestParam("oi") int orgVolId,
+			@RequestParam("ui") int userId
 			) {
 		Wish wish = Wish
 							.builder()

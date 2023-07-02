@@ -58,7 +58,6 @@
 						
 						
 						<!--북마크 버튼-->
-						<a href="">
 						<button  
 						type="button" 
 						sec:authorize="isAuthenticated()"  
@@ -67,7 +66,6 @@
                                 class="bookmark" 
                                 th:classappend="${vol.wish}?'active' : ' '"
 						 />
-						 </a>
 						  <a href="/login" sec:authorize="isAnonymous()">
                                 <button
                                     type="button"
