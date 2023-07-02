@@ -40,7 +40,7 @@
 					<img class="vol_list_img" src="../img/org/org_vol_list_img.png" alt="모집공고이미지" />
 					<div class="vol_list_info">
 						<div class="vol_section">
-							<span class="vol_id" hidden th:data-id="${vol.id}">id</span>
+							<span class="vol_id"  hidden th:data-id="${vol.id}">id</span>
 							<span class="vol_regdate"
 								th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span>
 							<span th:text="${vol.title}" class="vol_title">행복보육원 봉사자 구인합..<br /></span>
@@ -56,6 +56,8 @@
 							</li>
 						</ul>
 						<!--<img class="vol_list_edit_btn" src="../img/icon/icon_vol_list_more.png" alt="모집공고_아이콘" />-->
+						
+						
 					</div>
 				</li>
 
