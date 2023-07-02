@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.UserWishView;
 
 @Mapper
 public interface OrgVolRepository {
@@ -39,6 +40,11 @@ public interface OrgVolRepository {
 	/* 기관 사진 */
 	List<String> getPhotoList(int orgId);
 
-
+	//북마크
+	List<UserWishView> findViewAll(Integer userId,Integer volCategoryId,String title);
+	
+	List<UserWishView> FindViewByCategoryId(Integer volCategoryId);
+	List<UserWishView> FindViewBySearch(Integer volCategoryId,String title);
+	
 
 }

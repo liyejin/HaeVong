@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.UserWishView;
+import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.service.OrgVolService;
 
 // 나중에 RestController로 바꿀때 
@@ -30,9 +32,11 @@ public class OrgVolController {
 	public List<OrgVol> getListByStatus(@RequestParam("o") int orgId, @RequestParam("s") String status) {
 		List<OrgVol> list = service.getList(orgId, status);
 		return list;
-
 	}
+	
 
+	
+	
 	@DeleteMapping
 	public int delete(Integer id) {
 		return service.delete(id);

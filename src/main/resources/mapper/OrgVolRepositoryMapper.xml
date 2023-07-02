@@ -11,7 +11,7 @@
 		current_date()+1 </if>
 	</select>
 	<select id="findByOffsetAndSize"
-		resultType="kr.co.heabong.web.entity.OrgVol">
+		resultType="OrgVol">
 		select * from
 		org_vol
 		limit #{offset}, #{size}
@@ -23,12 +23,35 @@
 		where address like '%${address}%'
 	</select>
 
-	<select id="findById" resultType="kr.co.heabong.web.entity.OrgVol">
+	<select id="findById" resultType="OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
-	<select id="findIngOrgVol" >
-		SELECT COUNT(*) AS ing FROM haevongdb.org_vol WHERE date > CURRENT_DATE AND org_id =  #{orgId};
+
+
+	<!--북마크-->
+	<select id="findViewAll" resultType="UserWishView"> 
+		SELECT uv.* from(SELECT id,title,regdate,date,org_id,vol_category_id,photo,
+		<if test="userId == null">
+		0 AS `wish`
+		</if>
+   <if test="userId != null">
+		(select count(org_vol_id) from wish where user_id =#{userId}
+		and org_vol_id = id) AS `wish`
+			</if>
+			from (org_vol o
+        LEFT JOIN wish w ON (id = w.org_vol_id))
+    GROUP BY id,title,regdate,date,org_id,vol_category_id, photo)uv
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="volCategoryId != null">
+				vol_category_id=#{volCategoryId}
+			</if>
+			<if test="title != null">
+				OR title like '%${title}%'
+			</if>
+		</trim>
 	</select>
+
+
 	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> UPDATE
 		haevongdb.org_vol <set>
 			<if test="title != null">title = #{title},</if>
@@ -70,12 +93,8 @@
 
 			<if test="categoryId != null">
 				vol_category_id = ${categoryId}
-			</if> 
-			AND 
-			(title LIKE '%${serchKeyword}%' 
-		OR 
-		content 
-		LIKE '%${serchKeyword}%'); </trim>
+			</if> AND (title LIKE
+		'%${serchKeyword}%' OR content LIKE '%${serchKeyword}%'); </trim>
 
 
 	</select>
@@ -96,7 +115,6 @@
 		select photo
 		from org_vol;
 	</select>
-	
 
 
 </mapper>

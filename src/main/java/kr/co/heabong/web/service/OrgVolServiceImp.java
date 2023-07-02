@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.repository.OrgVolRepository;
 
 @Service
@@ -130,6 +131,43 @@ public class OrgVolServiceImp implements OrgVolService {
 		int ingCount = repository.findIngOrgVol(orgId);
 		return ingCount;
 	}
+
+	@Override
+	public List<UserWishView> getView(Integer userId) {
+		// TODO Auto-generated method stub
+		return repository.findViewAll(userId, null, null);
+	}
+
+	@Override
+	public List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer categoryId) {
+		// TODO Auto-generated method stub
+		return repository.findViewAll(userId, categoryId, null);
+	}
+
+	@Override
+	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String serchKeyword) {
+		// TODO Auto-generated method stub
+		return repository.findViewAll(categoryId, categoryId, serchKeyword);
+	}
+
+	//전체목록 가져오기
+//	@Override
+//	public List<UserWishView> getView(Integer userId) {
+//		// TODO Auto-generated method stub
+//		return repository.findViewAll(userId);
+//	}
+//
+//	@Override
+//	public List<UserWishView> getViewOrgVolListByCategoryId(int categoryId) {
+//		// TODO Auto-generated method stub
+//		return repository.FindViewByCategoryId(categoryId);
+//	}
+//
+//	@Override
+//	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String serchKeyword) {
+//		// TODO Auto-generated method stub
+//		return repository.FindViewBySearch(categoryId, serchKeyword);
+//	}
 	
 	
 

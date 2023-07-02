@@ -1,5 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.heabong.web.repository.WishRepository">
+	
 	<select id="findByUserId" resultType="kr.co.heabong.web.entity.Wish">
 		select * from wish where user_id=#{userId}
 	</select>
@@ -7,9 +8,11 @@
 	<select id="findByOrgVolId" resultType="kr.co.heabong.web.entity.Wish">
 		select * from wish where org_vol_id=#{orgVolId}
 	</select>
+	
 	<select id="count">
 		select count(*) from wish where org_vol_id=#{orgVolId}
 	</select>
+	
 	<select id="findByUserIdAndOrgVolId"
 		resultType="kr.co.heabong.web.entity.Wish">
 		select * from wish where user_id = #{userId} and org_vol_id =

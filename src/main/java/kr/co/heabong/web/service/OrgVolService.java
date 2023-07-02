@@ -5,16 +5,25 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.UserWishView;
 
 public interface OrgVolService {
-	List<OrgVol> getList();
+	//전체보기처럼 다 가져오는애
+	List<UserWishView> getView(Integer userId);
+	//카테고리 가져오는애
+	List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer volCategoryId);
+	//검색까지 하는애
+	List<UserWishView> getViewOrgVolListBySearch(Integer userId, String title);
 
+	List<OrgVol> getList();
 	List<OrgVol> getList(String address);
 
 	List<OrgVol> getList(int orgId, String status);
 	
 	int ingOrgVol (int orgId);
 
+	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
+	List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword);
 	OrgVol getById(int id);
 
 	List<OrgVol> getListByAddress(String address);
@@ -25,9 +34,6 @@ public interface OrgVolService {
 
 	int edit(OrgVol orgVol);
 
-	List<OrgVol> getOrgVolListByCategoryId(int categoryId);
-
-	List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword);
 
 	int delete(int id);
 
@@ -37,4 +43,5 @@ public interface OrgVolService {
 	List<String> getPhotoList(int orgId);
 	
 	int calculateRestDate(String dateString);
+	
 }

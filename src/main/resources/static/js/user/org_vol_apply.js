@@ -7,11 +7,8 @@ async function applyAdd(url,json) {
 			"Content-Type": "application/json"
 		},
 		body: json
-
 	});
-
 	console.log(response);
-
 }
 
 
