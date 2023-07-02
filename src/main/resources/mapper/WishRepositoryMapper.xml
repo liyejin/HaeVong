@@ -24,8 +24,8 @@
 		keyProperty="id">
 		insert into wish (user_id, org_vol_id)
 		values (#{userId}, #{orgVolId})
-
 	</insert>
+	
 	<delete id="delete" parameterType="kr.co.heabong.web.entity.Wish">
 		delete from wish where user_id=#{userId} and org_vol_id = #{orgVolId}
 	</delete>

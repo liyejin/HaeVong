@@ -3,6 +3,7 @@
 	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
 		select * from org_vol
 	</select>
+	
 	<select id="findByOrgIdAndStatus"
 		resultType="kr.co.heabong.web.entity.OrgVol"> select * from org_vol
 		where org_id = #{orgId} <if test="status == 'over'"> and date &lt;
@@ -10,6 +11,7 @@
 		<if test="status == 'on'"> and date &gt;
 		current_date()+1 </if>
 	</select>
+	
 	<select id="findByOffsetAndSize"
 		resultType="OrgVol">
 		select * from
@@ -95,8 +97,6 @@
 				vol_category_id = ${categoryId}
 			</if> AND (title LIKE
 		'%${serchKeyword}%' OR content LIKE '%${serchKeyword}%'); </trim>
-
-
 	</select>
 
 
