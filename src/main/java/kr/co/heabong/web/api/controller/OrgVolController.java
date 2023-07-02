@@ -34,8 +34,6 @@ public class OrgVolController {
 		return list;
 	}
 	
-
-	
 	
 	@DeleteMapping
 	public int delete(Integer id) {
