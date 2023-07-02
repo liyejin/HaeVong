@@ -34,7 +34,6 @@ function volListLoad(url) {
 						<li><a class="vol_list_detail_btn" href="./vol_post_detail?id=${vol.id}">상세보기</a></li>
 						<li><a class="vol_list_detail_btn"href="./vol_post_edit?id=${vol.id}">수정하기</a></li>
 					</ul>
-					<!--<img class="vol_list_edit_btn" src="../img/icon/icon_vol_list_more.png" alt="모집공고_아이콘" />-->
 				</div>
 			</li>`
 				volList.insertAdjacentHTML("beforeend", itemTemplate);
