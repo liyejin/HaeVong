@@ -17,7 +17,6 @@ public interface OrgVolService {
 
 	List<OrgVol> getList();
 	List<OrgVol> getList(String address);
-
 	List<OrgVol> getList(int orgId, String status);
 	
 	int ingOrgVol (int orgId);
