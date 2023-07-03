@@ -14,6 +14,8 @@ public interface OrgVolService {
 	List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer volCategoryId);
 	//검색까지 하는애
 	List<UserWishView> getViewOrgVolListBySearch(Integer userId, String title);
+	
+	UserWishView getViewById(Integer id);
 
 	List<OrgVol> getList();
 	List<OrgVol> getList(String address);

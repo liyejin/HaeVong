@@ -11,7 +11,7 @@ function volListLoad(url) {
 			volList.innerHTML = "";
 			
 			let userId = null;
-			if (document.querySelector("#input-member-id") != null)
+			if (document.querySelector("#input-member-id") )
 				userId = document.querySelector("#input-member-id").value;
 
 			for (let vol of list) {
@@ -43,7 +43,7 @@ function volListLoad(url) {
 		})
 }
 
-/*window.addEventListener("load", function(e) {*/
+window.addEventListener("load", function(e) {
 
 let category = document.querySelector(".category");
 let submit = document.querySelector(".submit");
@@ -57,8 +57,9 @@ const searchParams = new URLSearchParams(url.search);
 let cid = searchParams.get('cid');
 
 category.onclick = function(e) {
+	console.log("카테고리클릭");
 	cid = e.target.value;
-	/*console.log(cid);*/
+
 	let word = "";
 
 	/*클릭 이벤트가 발생한 요소의 value 속성을 가져와,해당 값을 사용하여 서버로 http 요청을 보내는 역할*/
@@ -69,10 +70,8 @@ category.onclick = function(e) {
 document.querySelector('.submit_form').addEventListener('submit', function(e) {
 	e.preventDefault(); // 폼 제출 기본 동작 막기
 
-	var searchInput = document.querySelector('input[name="sk"]');
-	var searchValue = searchInput.value;
-
-	// id 값을 가져오는 방식에 따라서 적절한 방법으로 id 값을 할당해주세요.
+	let searchInput = document.querySelector('input[name="sk"]');
+	let searchValue = searchInput.value;
 
 
 	// 검색어 값을 확인하기 위해 콘솔에 출력
@@ -82,5 +81,5 @@ document.querySelector('.submit_form').addEventListener('submit', function(e) {
 	volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
 });
 
-/*}*/
-/*);*/
+}
+);

@@ -150,6 +150,12 @@ public class OrgVolServiceImp implements OrgVolService {
 		return repository.findViewAll(categoryId, categoryId, serchKeyword);
 	}
 
+	@Override
+	public UserWishView getViewById(Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findViewById(id);
+	}
+
 	//전체목록 가져오기
 //	@Override
 //	public List<UserWishView> getView(Integer userId) {

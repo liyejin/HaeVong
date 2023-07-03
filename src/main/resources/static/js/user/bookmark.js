@@ -55,7 +55,9 @@ volList.onclick = function(e) {
    orgVolId = el.getAttribute("data-orgvol-id");
    console.log(orgVolId);
    console.log(userId);
-   e.preventDefault();
+   
+   if(userId != null)
+   	e.preventDefault();
 
    // Like 삭제
    if (el.classList.contains("active")) {
