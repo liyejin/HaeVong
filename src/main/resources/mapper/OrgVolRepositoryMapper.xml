@@ -28,6 +28,10 @@
 	<select id="findById" resultType="OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
+	
+	<select id="findViewById" resultType="UserWishView">
+		select * from user_wish_view where id=#{id}
+	</select>
 
 
 	<!--북마크-->

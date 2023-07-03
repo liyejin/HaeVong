@@ -208,3 +208,19 @@ body {
   justify-content: center;
 }
 /* ----------------------신청 마감일표시 박스--------------------------- */
+
+
+
+/*북마크*/
+.bookmark{
+	background-image: url('/img/icon/icon_bookmark.svg');
+	background-size: cover;
+	height: 35px;
+	width: 28px;
+	border: 0;
+}
+
+.bookmark.active {
+    background-image: url("/img/icon/boomark-fill.svg");
+}
+
