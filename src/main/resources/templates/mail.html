@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+    <meta name="format-detection" content="telephone=no"/>
+    <title>Email Verification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main" style="display: flex;
+			flex-direction: column;
+			width: 100%;
+			  height: 30rem; /* 전체 화면 높이로 설정 */
+			  background-color: #3d3d3d; /* 기본 배경색은 검은색으로 설정 */
+			  justify-content: center;
+			  align-items: center;
+  			background: linear-gradient(to top, white 0%, white 50%, #aaaaaa 50%, #aaaaaa 100%);">
+        <div class="email_box" style="display: flex;
+			flex-direction: column;
+			height: 15rem;
+			background-color: white;
+			padding: 3%;">
+            <div class="title_box">
+                <img class="logo" src=""/>
+                <h1 style="font-family: 'Noto Sans KR', sans-serif;">세상을 이끄는 우리들의</h1>
+                <h2 style="font-family: 'Noto Sans KR', sans-serif;">행복나눔 플랫폼</h2>
+            </div>
+            <div class="certification_box" >
+                <p style="font-family: 'Noto Sans KR', sans-serif;">가입을 계속하시려면 회원가입의 인증페이지에서 다음의 인증번호를 입력해주세요.</p>
+                <div class="verified_code_box" style="width: 90%;
+			height: 70%;
+			display: flex;
+			position: relative;
+			background-color: #aaaaaa;
+			padding: 1em;
+			align-items: center;
+			gap: 20px;
+		">
+                    <span style="">인증번호 :</span>
+                    <ul style="width: 60%;
+			height: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 3%;
+			font-size: 200%;
+			list-style: none;
+		  padding: 0;
+		  margin: 0;
+">
+            <input th:value="${code1}" readonly style="width: 30px;
+            font-weight: bold;
+			height :  30px;
+			border: 2px solid #666;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Noto Sans KR', sans-serif;"></input>
+			<input th:value="${code2}" readonly style="width: 30px;
+			font-weight: bold;
+			height :  30px;
+			border: 2px solid #666;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Noto Sans KR', sans-serif;"></input>
+			<input th:value="${code3}" readonly style="width: 30px;
+			font-weight: bold;
+			height :  30px;
+			border: 2px solid #666;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Noto Sans KR', sans-serif;"></input>
+			<input th:value="${code4}" readonly style="width: 30px;
+			font-weight: bold;
+			height :  30px;
+			border: 2px solid #666;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Noto Sans KR', sans-serif;"></input>
+			<input th:value="${code5}" readonly style="width: 30px;
+			font-weight: bold;
+			height :  30px;
+			border: 2px solid #666;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Noto Sans KR', sans-serif;"></input>
+			<input th:value="${code6}" readonly style="width: 30px;
+			font-weight: bold;
+			height :  30px;
+			border: 2px solid #666;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 20px;
+			font-family: 'Noto Sans KR', sans-serif;"></input>
+			
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>   
+</body>
+</html>

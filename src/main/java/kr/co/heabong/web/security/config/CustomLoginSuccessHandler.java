@@ -34,10 +34,6 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
 
-		/**
-		 * prevPage가 존재하는 경우 = 사용자가 직접 /auth/login 경로로 로그인 요청 기존 Session의 prevPage
-		 * attribute 제거
-		 */
 		String prevPage = (String) request.getSession().getAttribute("prevPage");
 		if (prevPage != null) {
 			request.getSession().removeAttribute("prevPage");
@@ -45,34 +41,35 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
 		// 기본 URI
 		String uri = "/";
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-		/**
-		 * savedRequest 존재하는 경우 = 인증 권한이 없는 페이지 접근 Security Filter가 인터셉트하여 savedRequest에
-		 * 세션 저장
-		 */
-		if (savedRequest != null) {
-			uri = savedRequest.getRedirectUrl();
-		} else if (prevPage != null && !prevPage.equals("")) {
-			// 회원가입 - 로그인으로 넘어온 경우 "/"로 redirect
-			if (prevPage.contains("/user_signup")) {
-				uri = "/";
-			} else if (prevPage.contains("/login")) {
-				Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		for (GrantedAuthority authority : authorities) {
+			System.out.println("0 : " + authority.getAuthority());
+			if (savedRequest != null) {
 
-				for (GrantedAuthority authority : authorities) {
-					if ("ROLE_USER".equals(authority.getAuthority())) {
-						response.sendRedirect("/");
-						return;
-					} else if ("ROLE_ORG".equals(authority.getAuthority())) {
-						response.sendRedirect("/org/main");
-						return;
-					}
+				uri = savedRequest.getRedirectUrl();
+
+			} else if (prevPage != null && !prevPage.equals("")) {
+				// 회원가입 - 로그인으로 넘어온 경우 "/"로 redirect
+				// if (prevPage.contains("/login") || prevPage.contains("/user_signup")) {
+
+				System.out.println("1 : " + authority.getAuthority());
+				if ("ROLE_USER".equals(authority.getAuthority())) {
+					System.out.println("2 : " + authority.getAuthority());
+					response.sendRedirect("/");
+					return;
+				} else if ("ROLE_ORG".equals(authority.getAuthority())) {
+					System.out.println("2 : " + authority.getAuthority());
+					response.sendRedirect("/org/main");
+					return;
 				}
-			} else {
-				uri = prevPage;
+				// }
+				else {
+					uri = prevPage;
+				}
 			}
-		}
 
+		}
 		redirectStrategy.sendRedirect(request, response, uri);
 
 	}
