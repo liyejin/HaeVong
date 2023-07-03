@@ -47,6 +47,6 @@ public interface OrgVolRepository {
 	List<UserWishView> FindViewBySearch(Integer volCategoryId,String title);
 	
 	
-	UserWishView   findViewById(Integer id);
+	UserWishView findViewById(Integer id);
 
 }
