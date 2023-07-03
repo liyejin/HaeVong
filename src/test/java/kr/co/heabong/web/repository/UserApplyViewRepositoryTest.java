@@ -20,7 +20,6 @@ class UserApplyViewRepositoryTest {
 
 	@Test
 	void testFindAll() {
-
 		List<UserApplyView> list = repository.findAll();
 		System.out.println(list);
 	}

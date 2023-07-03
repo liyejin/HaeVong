@@ -21,7 +21,7 @@ public interface OrgVolRepository {
 	
 	int findIngOrgVol(int orgId);
 
-	List<OrgVol> findByAddress(String address);
+	List<OrgVol> findByAddress(String roadAddress);
 
 	int save(OrgVol orgVol);
 

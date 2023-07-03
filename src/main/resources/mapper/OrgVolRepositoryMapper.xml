@@ -22,7 +22,7 @@
 	<select id="findByAddress">
 		select * from
 		org_vol
-		where address like '%${address}%'
+		where road_address like '%${roadAddress}%'
 	</select>
 
 	<select id="findById" resultType="OrgVol">
