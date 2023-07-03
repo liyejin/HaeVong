@@ -1,5 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.heabong.web.repository.OrgVolRepository">
+	
 	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
 		select * from org_vol
 	</select>
@@ -27,6 +28,11 @@
 
 	<select id="findById" resultType="OrgVol">
 		select * from org_vol where id=#{id}
+	</select>
+	
+		<select id="findIngOrgVol">
+		 select COUNT(*) from org_vol
+		where org_id = #{orgId} 
 	</select>
 
 
