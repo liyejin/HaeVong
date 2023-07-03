@@ -17,6 +17,15 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cdd769767a8d37978024eb6efb6073d8&libraries=services"></script>
+		<script defer>
+			let cateListMet = document.querySelector(".category_list_metropol");
+			cateListMet.onclick=  function(e){
+				e.preventDefault();
+				
+				console.log(e.target.innerText);
+			}
+			
+		</script>
 </head>
 
 <body>
@@ -50,14 +59,16 @@
 				</form>
 			</div>
 
-		
+			<div class="org_vol_box d-none" >
+				
+			</div>
 
 			<section class="map_category_box" id="map_category_box">
 				<div class="map_category_box_title" id="map_category_box_title" type="button"></div>
 				<div class="select_category_tab">
 					<div class="select_category left" >
 						<h1 class="left">지역선택</h1>
-						<span class="left">서울특별시 </span>>
+						<span class="left">서울특별시</span>>
 					</div>
 					<div class="select_category right" >
 						<h1 class="right">내 주변 봉사</h1>		
@@ -67,10 +78,14 @@
 					    </select>
 					</div>
 				</div>
-				<ul class="category_list">
-						<li th:each="m:${mtp}" th:text="${m.name}" th:class="${m.name}" onclick="filter(this)">서울특별시</li>			
-						
-				</ul>
+				<div class="category_list">
+					<ul class="category_list_metropol">
+							<li th:each="m:${mtp}" th:text="${m.name}" th:data-id="${m.id}" th:class="${m.name}" onclick="filter(this)">서울특별시</li>	
+					</ul>
+					<ul class="category_list_district">
+										
+					</ul>
+				</div>
 				
 				<ul class="org_vol_list">
 					<!--<li class="org_vol" th:each="org_vol:${org_volList}" th:text="${org_vol.name}" th:class="${org_vol.name}" onclick="filter(this)">-->

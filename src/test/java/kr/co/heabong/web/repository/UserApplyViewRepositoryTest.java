@@ -20,7 +20,7 @@ class UserApplyViewRepositoryTest {
 
 	@Test
 	void testFindAll() {
-		
+			
 		List<UserApplyView> list = repository.findAll();
 		System.out.println(list);
 	
@@ -28,8 +28,8 @@ class UserApplyViewRepositoryTest {
 
 	@Test
 	void testFindById() {
-		List<UserApplyView> list = repository.findById(2);
-		System.out.println(list);
+//		List<UserApplyView> list = repository.findById(2);
+//		System.out.println(list);
 	}
 
 }

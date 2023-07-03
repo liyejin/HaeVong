@@ -81,8 +81,14 @@ public class DefaultController {
 
 	// 개인 로그인
 	@GetMapping("user_signin")
-	public String getSignIn() {
-
+	public String getSignIn(HttpServletRequest request,
+	        Model model) {
+		
+		 String uri = request.getHeader("Referer");
+		    if (uri != null && !uri.contains("/user_signin")) {
+		        request.getSession().setAttribute("prevPage", uri);
+		    }
+		    
 		return "user_signin";
 	}
 

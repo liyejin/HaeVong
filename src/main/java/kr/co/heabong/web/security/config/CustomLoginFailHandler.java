@@ -19,11 +19,10 @@ public class CustomLoginFailHandler implements AuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         // 실패 메시지 가져오기
         String errorMessage = getErrorMessage(exception);
-        System.out.println("param is "+request.getParameter("p"));
         // 실패 메시지를 로그에 기록하거나 추가적인 실패 처리 로직 수행
 
         // 실패 메시지를 클라이언트에게 전달
-        response.sendRedirect("/user_signin?error&p=" + request.getParameter("p"));
+        response.sendRedirect("/user_signin?error");
     }
 
     private String getErrorMessage(AuthenticationException exception) {

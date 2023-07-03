@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.heabong.web.entity.District;
 import kr.co.heabong.web.entity.Metropol;
 import kr.co.heabong.web.entity.MetropolView;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.service.DistrictService;
 import kr.co.heabong.web.service.MetroService;
 import kr.co.heabong.web.service.MetropolViewService;
 import kr.co.heabong.web.service.OrgService;
@@ -35,7 +37,8 @@ public class MapController {
 	private VolCategoryService volCategoryService;
 	@Autowired
 	private MetropolViewService metropolViewService;
-	
+	@Autowired
+	private DistrictService districtService;
 	
 	//맵 가져오기
 	@GetMapping("/main")
@@ -46,9 +49,11 @@ public class MapController {
 
 		List<OrgVol> orgVolList = null;
 		List<Metropol> mtpList = metroService.getList();
+		List<District> distList = districtService.getList();
 		List<VolCategory> volCategoryList = volCategoryService.getList();
 		
-		if(metropol!=null)
+		
+		if(district!=null)
 			orgVolList  = orgVolService.getList();
 		else
 			orgVolList  = orgVolService.getList(metropol);
@@ -57,7 +62,9 @@ public class MapController {
 		
 		model.addAttribute("ol", orgVolList);
 		model.addAttribute("mtp", mtpList);
+		model.addAttribute("dist", distList);
 		model.addAttribute("mtpvList",mtpvList);
+
 		model.addAttribute("volCategory", volCategoryList);
 		return "map_main";
 	}

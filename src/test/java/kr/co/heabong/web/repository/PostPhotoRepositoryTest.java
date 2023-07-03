@@ -25,8 +25,10 @@ class PostPhotoRepositoryTest {
 	
 	//@Test
 	void testFindByMyPostPhoto() {
-		List<PostPhoto> myPostUrl = postPhotoRepository.findByMyPostPhoto();
-		System.out.println(myPostUrl);
+		/*
+		 * List<PostPhoto> myPostUrl = postPhotoRepository.findByMyPostPhoto();
+		 * System.out.println(myPostUrl);
+		 */
 	}
 	
 }

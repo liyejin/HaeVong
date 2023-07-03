@@ -18,7 +18,7 @@ public interface OrgVolRepository {
 	
 	List<OrgVol> findByOrgId(int orgId, String status);
 
-	List<OrgVol> findByAddress(String address);
+	List<OrgVol> findByAddress(String roadAddress);
 
 	int save(OrgVol orgVol);
 

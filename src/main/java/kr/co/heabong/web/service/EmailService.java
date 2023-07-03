@@ -1,5 +1,6 @@
 package kr.co.heabong.web.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,6 +13,7 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import kr.co.heabong.web.entity.Email;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +31,7 @@ public class EmailService {
 	@Autowired
     private final UserService userService;
 
-    public String sendMail(Email email, String type) {
+    public String sendMail(Email email, String type) throws UnsupportedEncodingException {
         String authNum = createCode();
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -37,6 +39,7 @@ public class EmailService {
         
         try {
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
+            mimeMessageHelper.setFrom(new InternetAddress("haevong.com","해봉","UTF-8"));
             mimeMessageHelper.setTo(email.getTo()); // 메일 수신자
             mimeMessageHelper.setSubject(email.getSubject()); // 메일 제목
             mimeMessageHelper.setText(setContext(authNum, type), true); // 메일 본문 내용, HTML 여부
@@ -92,7 +95,7 @@ public class EmailService {
         
         // ������ ����
         simpleMessage.setTo((String[]) toUserList.toArray(new String[toUserSize]));
-        
+       // simpleMessage.setFrom("해봉");
         // ���� ����
         simpleMessage.setSubject("Subject Sample");
         
