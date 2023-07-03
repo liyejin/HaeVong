@@ -39,7 +39,7 @@
           </div>
           
           <div>
-           <input
+           <input 
               type="text"
               placeholder="아이디로 사용하실 문자열을 입력해주세요"
               name="uid"
@@ -48,8 +48,9 @@
             <hr />
           </div>         
           <div>
-           <input type="text" placeholder="이메일을 입력해 주세요" 
+           <input th:text type="text" placeholder="이메일을 입력해 주세요" 
             	name="email"
+              th:value="${user.email}"
             	required
             />
             <hr />
@@ -60,6 +61,7 @@
 			  <div class="identity_box">
            <input class="front"
               type="text"
+              
               name="birthDate"
               maxlength="6"
               oninput="next(event,'.gender')"
@@ -91,7 +93,7 @@
 			  numericInput.forEach(n => n.addEventListener('input', function(event) {
 			    var input = event.target;
 			    var inputValue = input.value;
-			    var numericValue = inputValue.replace(/\D/g, '');
+			    var numericValue = inputValue.replace();
 			
 			    input.value = numericValue;
 			  })
@@ -163,12 +165,6 @@
 		  			<img src="img/icon/icon_file.svg" width="30px" height="30px" alt="파일 선택" style="cursor: pointer;"/>
 				</label>
 		 </div>
-		
-			<div>
-			          <input id="emailInput" type="email" placeholder="이메일 입력"/>
-			          <hr />
-			</div>
- 
 
 
 
