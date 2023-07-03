@@ -10,9 +10,9 @@
 	<link rel="stylesheet" href="../css/reset.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/vol_list.css" />
-	<script src="/js/org/org_vol.js"></script>
+	<script src="/js/org/org_vol.js" defer></script>
 	<script src="/js/user/bookmark.js" defer></script>
-<!--	<script src="/js/user/vol_category.js"></script>-->
+
 </head>
 
 <header class="header">
@@ -82,9 +82,8 @@
 		</div>
 		</li>
 		</ul>
-		
-		
 	</section>
+	<input id="input-member-id" type="hidden" th:value="${#authentication.principal.id}">
 </body>
 
 </html>
