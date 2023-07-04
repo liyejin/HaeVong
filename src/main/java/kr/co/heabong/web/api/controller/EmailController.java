@@ -19,8 +19,8 @@ import kr.co.heabong.web.service.EmailService;
 import lombok.RequiredArgsConstructor;
 
 
-@RequestMapping("/send-mail")
-@RestController
+@RequestMapping("api/email")
+@RestController("apiEmailController")
 @RequiredArgsConstructor
 public class EmailController {
 
@@ -31,7 +31,7 @@ public class EmailController {
 	
 	@GetMapping
 	public String send(@RequestParam(name = "email", required = false) String email) throws UnsupportedEncodingException, MessagingException {
-		String a = emailService.sendVerificationEmail("rlaqjatn3663@naver.com");
+		String a = emailService.sendVerificationEmail(email);
 		System.out.println("Auth code : " + a);
 		return a;
 	}

@@ -44,6 +44,8 @@ public class UserVolController {
 		//게시글 쓴 기관 찾기 
 		Org org = OrgService.getById(orgVol.getOrgId());
 		
+		int countBookmarkUser = orgVolService.getBooKmarkUser(OrgVolId);
+		
 		UserWishView userWishView = orgVolService.getViewById(OrgVolId);
 		
 		//게시글 작성 시간
@@ -54,6 +56,7 @@ public class UserVolController {
 		model.addAttribute("org",org);
 	    model.addAttribute("dDay", restDate);
 	    model.addAttribute("userWishView", userWishView);
+	    model.addAttribute("countBookmarkUser", countBookmarkUser);
 
 		return "user/vol_recruit";
 	}

@@ -49,6 +49,17 @@ public class UserServiceImp implements UserService {
 		return true;
 	}
 
+	// kakao login
+	@Override
+	public boolean isValid(String uid) {
+		User user = repository.findByUid(uid);
+
+		if (user == null)
+			return false;
+
+		return true;
+	}
+
 	@Override
 	public User getByUid(String uid) {
 		User user = repository.findByUid(uid);
@@ -61,14 +72,12 @@ public class UserServiceImp implements UserService {
 		User user = repository.findUserInfoById(id);
 		return user;
 	}
+
 	@Override
 	public User getUserName(String name) {
 		// TODO Auto-generated method stub
 		User user = repository.findByUid(name);
 		return user;
 	}
-
-
-	
 
 }

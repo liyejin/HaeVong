@@ -147,7 +147,7 @@ public class OrgVolServiceImp implements OrgVolService {
 	@Override
 	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String serchKeyword) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(categoryId, categoryId, serchKeyword);
+		return repository.findViewAll(null, categoryId, serchKeyword);
 	}
 
 	@Override
@@ -156,29 +156,11 @@ public class OrgVolServiceImp implements OrgVolService {
 		return repository.findViewById(id);
 	}
 
-	//전체목록 가져오기
-//	@Override
-//	public List<UserWishView> getView(Integer userId) {
-//		// TODO Auto-generated method stub
-//		return repository.findViewAll(userId);
-//	}
-//
-//	@Override
-//	public List<UserWishView> getViewOrgVolListByCategoryId(int categoryId) {
-//		// TODO Auto-generated method stub
-//		return repository.FindViewByCategoryId(categoryId);
-//	}
-//
-//	@Override
-//	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String serchKeyword) {
-//		// TODO Auto-generated method stub
-//		return repository.FindViewBySearch(categoryId, serchKeyword);
-//	}
-	
-	
-
-
-	
+	@Override
+	public int getBooKmarkUser(int OrgVolId) {
+		// TODO Auto-generated method stub
+		return repository.countBookmarkUser(OrgVolId);
+	}
 
 
 }

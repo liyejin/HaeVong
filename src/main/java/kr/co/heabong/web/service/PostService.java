@@ -8,6 +8,7 @@ import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.entity.Location;
 import kr.co.heabong.web.entity.Post;
 import kr.co.heabong.web.entity.PostCategory;
+import kr.co.heabong.web.entity.PostCommentLikeView;
 import kr.co.heabong.web.entity.User;
 
 public interface PostService {
@@ -38,6 +39,9 @@ public interface PostService {
 
 	// 위치 기준으로 커뮤니티글 리스트 가져오기
 	List<Post> getListByLocation(Location location);
+	
+	// postId로 PostCommentView 가져오기
+	PostCommentLikeView getPostCommentLikeViewByPostId(int postId);
 
 
 }
