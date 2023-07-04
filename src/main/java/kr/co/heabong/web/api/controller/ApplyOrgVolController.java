@@ -17,6 +17,7 @@ import kr.co.heabong.web.service.ApplyOrgVolService;
 @RestController("apiApplyOrgVolController")
 @RequestMapping("api/apply-org-vols")
 public class ApplyOrgVolController {
+	
 	@Autowired
 	ApplyOrgVolService service;
 

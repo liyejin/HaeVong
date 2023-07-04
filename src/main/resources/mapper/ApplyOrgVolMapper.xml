@@ -33,9 +33,11 @@
 		 </set>
 WHERE org_vol_id =#{orgVolId} AND user_id=#{userId}
 	</update>
+	
 		<delete id="delete">
 		delete from apply_org_vol where org_vol_id=#{orgVolId} AND user_id=#{userId}
 	</delete>
+	
 	<insert id="save">
 		INSERT INTO haevongdb.apply_org_vol
 		(

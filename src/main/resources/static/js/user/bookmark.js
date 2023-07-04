@@ -12,6 +12,7 @@ function orgVolListLoad(url) {
 
 			//채우기
 			for (let vol of volList) {
+
 				let itemTemplate =
 					`
 						<ul class="vol_list">

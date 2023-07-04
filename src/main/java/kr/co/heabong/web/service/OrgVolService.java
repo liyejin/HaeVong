@@ -16,6 +16,8 @@ public interface OrgVolService {
 	List<UserWishView> getViewOrgVolListBySearch(Integer userId, String title);
 	
 	UserWishView getViewById(Integer id);
+	
+	int getBooKmarkUser(int OrgVolId);
 
 	List<OrgVol> getList();
 	List<OrgVol> getList(String address);
