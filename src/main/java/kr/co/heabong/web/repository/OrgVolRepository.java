@@ -43,10 +43,7 @@ public interface OrgVolRepository {
 	//북마크
 	List<UserWishView> findViewAll(Integer userId,Integer volCategoryId,String title);
 	List<UserWishView> FindViewByCategoryId(Integer volCategoryId);
-	List<UserWishView> FindViewBySearch(Integer volCategoryId,String title);
-	UserWishView findViewById(Integer id);
-	
-	
+	List<UserWishView> FindViewBySearch(Integer volCategoryId,String title);	
 	UserWishView findViewById(Integer id);
 
 }
