@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.heabong.web.entity.Post;
+import kr.co.heabong.web.service.CommentService;
 import kr.co.heabong.web.service.PostService;
 
 @RestController("apiPostController")
@@ -24,6 +25,8 @@ public class PostController {
 
 	@Autowired
 	private PostService service;
+	@Autowired
+	private CommentService commentService;
 
 	@GetMapping
 	public List<Post> list() {

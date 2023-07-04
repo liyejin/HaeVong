@@ -253,11 +253,4 @@ public class DefaultController {
 
 		return "org_vol_by_category";
 	}
-	
-	@GetMapping("community")
-	public String community() {
-		
-		return "community_main";
-	}
-
 }
