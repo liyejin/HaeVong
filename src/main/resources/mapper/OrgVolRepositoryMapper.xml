@@ -12,6 +12,10 @@
 		current_date()+1 </if>
 	</select>
 	
+	<select id="findViewById" resultType="UserWishView">
+		select * from user_wish_view where id=#{id}
+	</select>
+	
 	<select id="findByOffsetAndSize"
 		resultType="OrgVol">
 		select * from
