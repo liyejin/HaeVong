@@ -1,17 +1,40 @@
-document.addEventListener("DOMContentLoaded", function() {
-  var emailInput = document.getElementById("emailInput");
-  var submitButton = document.getElementById("submitButton");
+window.addEventListener("load", function(e){
+	let sendButton = document.getElementById("send_email");
+	let timer = document.querySelector(".timer");
+	
+	let code = null;
+	
+	sendButton.onclick = function(e){
+	e.preventDefault();
+	
+	//이메일 인증
 
-  submitButton.addEventListener("click", function() {
-    var email = emailInput.value;
-    sendEmailVerification(email);
-  });
 
-  function sendEmailVerification(email) {
-    // 이메일 주소를 서버로 전송하는 로직 구현
-    // 서버에서 이메일 인증을 처리하는 API 호출 등
+	let to=email.value;
+	let email = document.getElementById("email_input");
 
-    // 예시: 콘솔에 이메일 주소 출력
-    console.log("이메일 주소:", email);
-  }
-});
+		
+	fetch(`/api/email?email=${to}`)
+	.then(result =>{
+		result.json();
+	})
+	.then(c =>{
+		console.log("c = " +  c);
+	})
+
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+})

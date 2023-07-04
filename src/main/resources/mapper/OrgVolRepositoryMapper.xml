@@ -4,7 +4,6 @@
 	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
 		select * from org_vol
 	</select>
-	
 	<select id="findByOrgIdAndStatus"
 		resultType="kr.co.heabong.web.entity.OrgVol"> select * from org_vol
 		where org_id = #{orgId} <if test="status == 'over'"> and date &lt;
@@ -33,10 +32,14 @@
 	<select id="findById" resultType="OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
-	
+		
 		<select id="findIngOrgVol">
 		 select COUNT(*) from org_vol
 		where org_id = #{orgId} 
+	</select>
+
+	<select id="findViewById" resultType="UserWishView">
+		select * from user_wish_view where id=#{id}
 	</select>
 
 

@@ -66,7 +66,7 @@
                                 class="bookmark" 
                                 th:classappend="${vol.wish}?'active' : ' '"
 						 />
-						  <a href="/login" sec:authorize="isAnonymous()">
+						  <a th:href="@{/user/vol(id=${vol.id})}" sec:authorize="isAnonymous()">
                                 <button
                                     type="button"
                                     class="bookmark">
@@ -83,7 +83,8 @@
 		</li>
 		</ul>
 	</section>
-	<input id="input-member-id" type="hidden" th:value="${#authentication.principal.id}">
+<input id="input-member-id" type="hidden"th:value="${#authentication.principal.id}" th:if="${#authorization.expression('isAuthenticated()')}">
+
 </body>
 
 </html>

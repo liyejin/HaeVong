@@ -1,6 +1,7 @@
 package kr.co.heabong.web.controller;
 
 import java.util.List;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.Org;
@@ -60,11 +62,11 @@ public class DefaultController {
 		return "map_apply_modal";
 	}
 	// 이메일 테스트
-		@GetMapping("/email")
-		public void getEamil(Model model) {
-			// model.addAttribute();
-			emailService.sendMail();
-		}
+	@GetMapping("/email")
+	public void getEamil(Model model) throws UnsupportedEncodingException, MessagingException {
+		// model.addAttribute();
+		emailService.sendVerificationEmail("rlaqjatn3663@naver.com");
+	}
 	// 메인
 	@GetMapping("/")
 	public String getIndex(Model model) {

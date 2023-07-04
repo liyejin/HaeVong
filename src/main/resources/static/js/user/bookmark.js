@@ -27,7 +27,7 @@ function orgVolListLoad(url) {
 						type="button" 
                            data-orgVol-id="${vol.id}"
 						   data-user-id="${userId}"
-                           class="bookmark" ${vol.bookmark ? 'active' : ' '}" >
+                           class="bookmark" ${vol.wish ? 'active' : ' '}" >
                           </button >
                    </a >
 
@@ -55,7 +55,9 @@ volList.onclick = function(e) {
    orgVolId = el.getAttribute("data-orgvol-id");
    console.log(orgVolId);
    console.log(userId);
-   e.preventDefault();
+   
+   if(userId != null)
+   	e.preventDefault();
 
    // Like 삭제
    if (el.classList.contains("active")) {
