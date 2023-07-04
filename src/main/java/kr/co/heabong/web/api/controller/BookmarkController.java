@@ -29,14 +29,13 @@ public class BookmarkController {
 	OrgVolService orgvol;
 	
 	@GetMapping
-	public List<UserWishView> orgVolList(@RequestParam(name = "cid", required = true) Integer categoryId,
-			@RequestParam(name = "sk", required = false) String serchKeyword,@AuthenticationPrincipal MyUserDetails user){
+	public List<UserWishView> orgVolList(@RequestParam(name = "c", required = true) Integer categoryId,
+			@RequestParam(name = "s", required = false) String serchKeyword,@AuthenticationPrincipal MyUserDetails user){
 		
-		Integer userId = null;
-		if(userId != null)
-			userId = user.getId();
-		
+		Integer userId = user.getId();
+		System.out.println(user.getId());
 		List<UserWishView> orgVolList = new ArrayList<>();
+		
 		if(categoryId != null)
 			orgVolList = orgvol.getViewOrgVolListByCategoryId(userId, categoryId);
 		else if(serchKeyword != null )

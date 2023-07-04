@@ -39,6 +39,7 @@ public class OrgController {
 	@GetMapping
 	public List<OrgVol> list(@RequestParam(name = "s", required = false) String serchKeyword,
 			@RequestParam(name = "c", required = true) Integer categoryId) {
+		
 		List<OrgVol> list = new ArrayList<>();
 		if (serchKeyword == "" && categoryId == 1)
 			list = volService.getList();

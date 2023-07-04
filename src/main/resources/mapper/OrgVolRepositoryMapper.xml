@@ -12,10 +12,6 @@
 		current_date()+1 </if>
 	</select>
 	
-	<select id="findViewById" resultType="UserWishView">
-		select * from user_wish_view where id=#{id}
-	</select>
-	
 	<select id="findByOffsetAndSize"
 		resultType="OrgVol">
 		select * from
@@ -44,6 +40,9 @@
 
 
 	<!--북마크-->
+	<select id = "countBookmarkUser">
+		SELECT COUNT(*) AS count FROM wish WHERE org_vol_id =#{id} 
+	</select>
 	<select id="findViewAll" resultType="UserWishView"> 
 		SELECT uv.* from(SELECT id,title,regdate,date,org_id,vol_category_id,photo,
 		<if test="userId == null">
@@ -65,6 +64,7 @@
 			</if>
 		</trim>
 	</select>
+	
 
 
 	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> UPDATE

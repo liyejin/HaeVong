@@ -17,7 +17,7 @@
 
 <header class="header">
 	<div class="header1">
-		<a href="/"><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
+		<a href="/category_main"><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
 		<div>봉사 신청하기</div>
 		<div>
 			<img src="/img/icon/icon_header_more.png" alt="더보기" />
@@ -52,9 +52,9 @@
 				<li th:each="vol:${orgVolList}" class="org_vol_list">
 					<img class="vol_list_img" th:src="@{'/img/org/org_vol/' + ${vol.photo}}" alt="모집공고이미지" />
 					<div class="vol_list_info">
-						<span th:text="${vol.title}" class="vol_title">행복보육원 봉사자 구인합<br /></span>
-						<span class="vol_date" th:text="${vol.date}">5월 13일(월), 13:00~16:00</span>
-						<span class="vol_write_date" th:text="${vol.regdate}">2023/04/26</span><br>
+<span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 15 ? vol.title : (vol.title.substring(0, 15) + '...')}">행복보육원 봉사자 구인합</span>
+                  <span class="vol_date" th:utext="${vol.date+'<br/>'}">5월 13일(월)</span>
+                  <span class="vol_write_date" th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span><br>
 						
 						
 						<!--북마크 버튼-->
@@ -84,7 +84,6 @@
 		</ul>
 	</section>
 <input id="input-member-id" type="hidden"th:value="${#authentication.principal.id}" th:if="${#authorization.expression('isAuthenticated()')}">
-
 </body>
 
 </html>
