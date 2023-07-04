@@ -26,7 +26,7 @@ function volListLoad(url) {
 							<a href="/login">
 				                  <button  
 				                  type="button" 
-				                           data-orgVol-id="${vol.id}"
+				                           data-orgVol-id="${orgVol.id}"
 				                     data-user-id="${userId}"
 				                           class="bookmark" ${vol.wish ? 'active' : ' '}" >
 				                          </button >
