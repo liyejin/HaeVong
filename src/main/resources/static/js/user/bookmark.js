@@ -27,7 +27,7 @@ function orgVolListLoad(url) {
 						type="button" 
                            data-orgVol-id="${vol.id}"
 						   data-user-id="${userId}"
-                           class="bookmark" ${vol.wish ? 'active' : ' '}" >
+                           class="bookmark ${vol.wish ? 'active' : ' '}" >
                           </button >
                    </a >
 
