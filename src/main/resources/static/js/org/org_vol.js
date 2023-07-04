@@ -64,11 +64,11 @@ const searchParams = new URLSearchParams(url.search);
 // 특정 매개변수의 값을 가져옵니다.	
 let cid = searchParams.get('cid');
 
-category.onclick = function(e) {
-	console.log("카테고리클릭");
-	cid = e.target.value;
+	category.onclick = function(e) {
+		console.log("카테고리클릭");
+		cid = e.target.value;
 
-	let word = "";
+		let word = "";
 
 	/*클릭 이벤트가 발생한 요소의 value 속성을 가져와,해당 값을 사용하여 서버로 http 요청을 보내는 역할*/
 	if(userId!=null)
@@ -78,15 +78,15 @@ category.onclick = function(e) {
 }
 
 
-document.querySelector('.submit_form').addEventListener('submit', function(e) {
-	e.preventDefault(); // 폼 제출 기본 동작 막기
+	document.querySelector('.submit_form').addEventListener('submit', function(e) {
+		e.preventDefault(); // 폼 제출 기본 동작 막기
 
-	let searchInput = document.querySelector('input[name="sk"]');
-	let searchValue = searchInput.value;
+		let searchInput = document.querySelector('input[name="sk"]');
+		let searchValue = searchInput.value;
 
 
-	// 검색어 값을 확인하기 위해 콘솔에 출력
-	console.log('사용자가 검색한 내용:', searchValue);
+		// 검색어 값을 확인하기 위해 콘솔에 출력
+		console.log('사용자가 검색한 내용:', searchValue);
 
 	// 검색 결과를 로드하는 함수 호출
 if(userId!=null)
