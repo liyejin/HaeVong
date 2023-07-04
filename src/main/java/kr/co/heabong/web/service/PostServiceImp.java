@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import kr.co.heabong.web.entity.Location;
 import kr.co.heabong.web.entity.Post;
 import kr.co.heabong.web.entity.PostCategory;
+import kr.co.heabong.web.entity.PostCommentLikeView;
 import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.repository.PostCommentLikeViewRepository;
 import kr.co.heabong.web.repository.PostRepository;
 
 @Service
@@ -16,6 +18,8 @@ public class PostServiceImp implements PostService{
 
 	@Autowired
 	private PostRepository repository;
+	@Autowired
+	private PostCommentLikeViewRepository postCommentLikeViewRepository;
 	
 	@Override
 	public List<Post> getList() {
@@ -74,6 +78,13 @@ public class PostServiceImp implements PostService{
 	public List<Post> getListByLocation(Location location) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public PostCommentLikeView getPostCommentLikeViewByPostId(int postId) {
+		PostCommentLikeView postCommentLikeView = postCommentLikeViewRepository.findByPostId(postId);
+		return postCommentLikeView;
+		
 	}
 
 

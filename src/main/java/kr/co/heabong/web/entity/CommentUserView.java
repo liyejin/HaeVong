@@ -1,7 +1,6 @@
 package kr.co.heabong.web.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,11 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Comment {
+public class CommentUserView {
 	private int id;
 	private LocalDateTime date;
 	private String content;
 	private int userId;
 	private int postId;
 	private int parentId;
+	private String nickname;
+	private int daysAgo;
 }

@@ -3,11 +3,13 @@ package kr.co.heabong.web.controller;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter.HeaderValue;
 import org.springframework.stereotype.Controller;
@@ -78,7 +80,6 @@ public class DefaultController {
 	@GetMapping("/email")
 	public void getEamil(Model model) {
 		// model.addAttribute();
-		emailService.sendMail();
 	}
 
 	// 메인
@@ -380,11 +381,4 @@ public class DefaultController {
 
 		return "org_vol_by_category";
 	}
-
-	@GetMapping("community")
-	public String community() {
-
-		return "community_main";
-	}
-
 }
