@@ -26,9 +26,9 @@ function volListLoad(url) {
 							<a href="/login">
 				                  <button  
 				                  type="button" 
-				                           data-orgVol-id="${vol.id}"
+				                           data-orgVol-id="${orgVol.id}"
 				                     data-user-id="${userId}"
-				                           class="bookmark" ${vol.bookmark ? 'active' : ' '}" >
+				                           class="bookmark" ${userWishView.bookmark ? 'active' : ' '}" >
 				                          </button >
                    				</a >	
 						<ul class="vol_list_btn_box">

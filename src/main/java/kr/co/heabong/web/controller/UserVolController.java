@@ -14,6 +14,7 @@ import kr.co.heabong.web.entity.ApplyOrgVolView;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserVol;
+import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.security.config.MyUserDetails;
 import kr.co.heabong.web.service.ApplyOrgVolViewService;
 import kr.co.heabong.web.service.OrgService;
@@ -43,6 +44,8 @@ public class UserVolController {
 		//게시글 쓴 기관 찾기 
 		Org org = OrgService.getById(orgVol.getOrgId());
 		
+		UserWishView userWishView = orgVolService.getViewById(OrgVolId);
+		
 		//게시글 작성 시간
 	    String dateString = orgVol.getDate();
 	    int restDate = orgVolService.calculateRestDate(dateString);
@@ -50,6 +53,7 @@ public class UserVolController {
 		model.addAttribute("orgVol",orgVol);
 		model.addAttribute("org",org);
 	    model.addAttribute("dDay", restDate);
+	    model.addAttribute("userWishView", userWishView);
 
 		return "user/vol_recruit";
 	}
