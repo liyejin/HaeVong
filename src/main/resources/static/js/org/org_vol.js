@@ -9,9 +9,9 @@ function volListLoad(url) {
 		.then(list => {
 
 			volList.innerHTML = "";
-			
+
 			let userId = null;
-			if (document.querySelector("#input-member-id") )
+			if (document.querySelector("#input-member-id"))
 				userId = document.querySelector("#input-member-id").value;
 
 			for (let vol of list) {
@@ -44,42 +44,41 @@ function volListLoad(url) {
 }
 
 window.addEventListener("load", function(e) {
+	/*	let categories = document.querySelector(".catelist");*/
+	let category = document.querySelector(".category");
+	let submit = document.querySelector(".submit");
 
-let category = document.querySelector(".category");
-let submit = document.querySelector(".submit");
+	const url = new URL(window.location.href);
+	// URL의 쿼리 문자열을 가져옵니다.
+	const searchParams = new URLSearchParams(url.search);
 
-const url = new URL(window.location.href);
+	// 특정 매개변수의 값을 가져옵니다.
+	let cid = searchParams.get('cid');
 
-// URL의 쿼리 문자열을 가져옵니다.
-const searchParams = new URLSearchParams(url.search);
+	category.onclick = function(e) {
+		console.log("카테고리클릭");
+		cid = e.target.value;
 
-// 특정 매개변수의 값을 가져옵니다.
-let cid = searchParams.get('cid');
+		let word = "";
 
-category.onclick = function(e) {
-	console.log("카테고리클릭");
-	cid = e.target.value;
-
-	let word = "";
-
-	/*클릭 이벤트가 발생한 요소의 value 속성을 가져와,해당 값을 사용하여 서버로 http 요청을 보내는 역할*/
-	volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}`);
-}
-
-
-document.querySelector('.submit_form').addEventListener('submit', function(e) {
-	e.preventDefault(); // 폼 제출 기본 동작 막기
-
-	let searchInput = document.querySelector('input[name="sk"]');
-	let searchValue = searchInput.value;
+		/*클릭 이벤트가 발생한 요소의 value 속성을 가져와,해당 값을 사용하여 서버로 http 요청을 보내는 역할*/
+		volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}`);
+	}
 
 
-	// 검색어 값을 확인하기 위해 콘솔에 출력
-	console.log('사용자가 검색한 내용:', searchValue);
+	document.querySelector('.submit_form').addEventListener('submit', function(e) {
+		e.preventDefault(); // 폼 제출 기본 동작 막기
 
-	// 검색 결과를 로드하는 함수 호출
-	volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
-});
+		let searchInput = document.querySelector('input[name="sk"]');
+		let searchValue = searchInput.value;
+
+
+		// 검색어 값을 확인하기 위해 콘솔에 출력
+		console.log('사용자가 검색한 내용:', searchValue);
+
+		// 검색 결과를 로드하는 함수 호출
+		volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
+	});
 
 }
 );

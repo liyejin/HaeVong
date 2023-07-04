@@ -27,7 +27,7 @@ function orgVolListLoad(url) {
 						type="button" 
                            data-orgVol-id="${vol.id}"
 						   data-user-id="${userId}"
-                           class="bookmark" ${vol.wish ? 'active' : ' '}" >
+                           class="bookmark ${vol.wish ? 'active' : ' '}" >
                           </button >
                    </a >
 
@@ -98,5 +98,20 @@ volList.onclick = function(e) {
          });
    }
    
-
 }
+
+
+
+/*document.addEventListener('DOMContentLoaded', function() {
+  var myButton = document.querySelector('.catelist');
+  
+  myButton.addEventListener('click', function() {
+    myButton.classList.add('active');
+  });
+  
+  document.addEventListener('click', function(event) {
+    if (!myButton.contains(event.target)) {
+      myButton.classList.remove('active');
+    }
+  });
+});*/

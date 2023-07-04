@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="../css/vol_list.css" />
 	<script src="/js/org/org_vol.js" defer></script>
 	<script src="/js/user/bookmark.js" defer></script>
-
 </head>
 
 <header class="header">
@@ -36,7 +35,7 @@
 
 		<div class="search_bar">
 			<div class="category" name="volCategoryId">
-				<option class="catelist" th:each="c : ${volCategory}" th:value="${c.id}" th:text="${c.name}">카테고리
+					<option class="catelist" th:each="c : ${volCategory}" th:value="${c.id}" th:text="${c.name}">카테고리
 				</option>
 				</option>
 			</div>
@@ -52,7 +51,7 @@
 				<li th:each="vol:${orgVolList}" class="org_vol_list">
 					<img class="vol_list_img" th:src="@{'/img/org/org_vol/' + ${vol.photo}}" alt="모집공고이미지" />
 					<div class="vol_list_info">
-						<span th:text="${vol.title}" class="vol_title">행복보육원 봉사자 구인합<br /></span>
+						<span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 10 ? vol.title : (vol.title.substring(0, 10) + '...')}">행복보육원 봉사자 구인합</span>
 						<span class="vol_date" th:text="${vol.date}">5월 13일(월), 13:00~16:00</span>
 						<span class="vol_write_date" th:text="${vol.regdate}">2023/04/26</span><br>
 						
