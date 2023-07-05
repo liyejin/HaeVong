@@ -23,6 +23,8 @@ public interface UserRepository {
 
 	User findByUserName(int id);
 
+	User findByUserEmail(String email);
+
 	List<User> findByMyPost();
 
 	User findByUserPhoto(int id);
