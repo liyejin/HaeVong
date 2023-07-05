@@ -51,8 +51,8 @@ public class UserServiceImp implements UserService {
 
 	// kakao login
 	@Override
-	public boolean isValid(String uid) {
-		User user = repository.findByUid(uid);
+	public boolean isValid(String email) {
+		User user = repository.findByUserEmail(email);
 
 		if (user == null)
 			return false;

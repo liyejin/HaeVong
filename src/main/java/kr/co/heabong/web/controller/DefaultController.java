@@ -3,19 +3,14 @@ package kr.co.heabong.web.controller;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter.HeaderValue;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +25,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import kr.co.heabong.web.entity.KakaoProfile;
-import kr.co.heabong.web.entity.OAuthToken;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.PostPhoto;
@@ -76,12 +69,6 @@ public class DefaultController {
 		return "map_apply_modal";
 	}
 
-	// 이메일 테스트
-	@GetMapping("/email")
-	public void getEamil(Model model) {
-		// model.addAttribute();
-	}
-
 	// 메인
 	@GetMapping("/")
 	public String getIndex(Model model) {
@@ -108,105 +95,6 @@ public class DefaultController {
 		}
 
 		return "user_signin";
-	}
-
-	// 카카오 로그인
-	@GetMapping("/auth/kakao/callback")
-	public String kakaoCallback(String code, Model model) {
-		// 라이브러리
-		RestTemplate rt = new RestTemplate();
-
-		// Http Object 생성
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
-		// HttpBodoy Object 생성
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-		params.add("grant_type", "authorization_code");
-		params.add("client_id", "fb963abaf801111b161895b5e289780c");
-		params.add("redirect_uri", "http://localhost:8080/auth/kakao/callback");
-		params.add("code", code);
-
-		// HttpHeaders, HttpBodoy를 하나의 Object에 담기
-		HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
-
-		// Http 요청 : POST 방식
-		ResponseEntity<String> response = rt.exchange(
-				"https://kauth.kakao.com/oauth/token",
-				HttpMethod.POST,
-				kakaoTokenRequest,
-				String.class);
-
-		ObjectMapper objectMapper = new ObjectMapper();
-		OAuthToken oauthToken = null;
-		try {
-			oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-			oauthToken = new OAuthToken();
-		}
-
-		System.out.println("카카오 엑세스 토큰:" + oauthToken.getAccess_token());
-
-		// 라이브러리
-		RestTemplate rt2 = new RestTemplate();
-
-		// Http Object 생성
-		HttpHeaders headers2 = new HttpHeaders();
-		headers2.add("Authorization", "Bearer " + oauthToken.getAccess_token());
-		headers2.add("Content-type",
-				"application/x-www-form-urlencoded;charset=utf-8");
-
-		// HttpHeaders, HttpBodoy를 하나의 Object에 담기
-		HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest2 = new HttpEntity<>(headers2);
-
-		// Http 요청 : POST 방식
-		ResponseEntity<String> response2 = rt2.exchange(
-				"https://kapi.kakao.com/v2/user/me",
-				HttpMethod.POST,
-				kakaoProfileRequest2,
-				String.class);
-		// 카카오 프로필 정보 ----------------------------------------
-		ObjectMapper objectMapper2 = new ObjectMapper();
-		KakaoProfile kakaoProfile = null;
-		try {
-			kakaoProfile = objectMapper2.readValue(response2.getBody(),
-					KakaoProfile.class);
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-			oauthToken = new OAuthToken();
-		}
-		System.out.println("카카오 아이디" + kakaoProfile.getId());
-		System.out.println("카카오 이메일" + kakaoProfile.getKakao_account().getEmail());
-
-		System.out.println("해봉 유저네임" + kakaoProfile.getKakao_account().getEmail() +
-				"_" + kakaoProfile.getId());
-		System.out.println("해봉 이메일" + kakaoProfile.getKakao_account().getEmail());
-		UUID garbagePassword = UUID.randomUUID();
-		System.out.println("해봉 패스워드" + garbagePassword);
-
-		User user = User.builder()
-				.name(kakaoProfile.getKakao_account().getEmail() + "_" +
-						kakaoProfile.getId())
-				.pwd(garbagePassword.toString())
-				.email(kakaoProfile.getKakao_account().getEmail())
-				.build();
-
-		// 가입/비가입 회원 체크
-		Boolean originUser = userService.isValid(kakaoProfile.getId());
-
-		if (originUser == false) {
-			model.addAttribute("user", user);
-
-			return "user_signup";
-		} else {
-			// 이미 가입된 회원이므로 로그인 처리 등을 수행합니다.
-			return "redirect:/";
-		}
 	}
 
 	@PostMapping("user_signin")
@@ -254,7 +142,7 @@ public class DefaultController {
 		System.out.println("changed : " + user);
 		userService.setUser(user);
 
-		return "redirect:/login";
+		return "redirect:/";
 	}
 
 	// 기관 로그인

@@ -8,26 +8,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
-public class  MyUserDetails implements UserDetails {
+public class MyUserDetails implements UserDetails {
 
-	
 	private int id;
 	private String name;
 	private String email;
 	private String password;
-	
-	private String username; // userID, 고정일수밖에없다.
-	private List <GrantedAuthority> authorities;
-	
-	
-	public void setName(String name) {
-	      this.name = name;
-	   }
 
-	   public String getName() {
-	      return name;
-	   }
-	
+	private String username; // userID, 고정일수밖에없다.
+	private List<GrantedAuthority> authorities;
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -43,7 +41,6 @@ public class  MyUserDetails implements UserDetails {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 
 	public String getEmail() {
 		return email;
@@ -53,15 +50,13 @@ public class  MyUserDetails implements UserDetails {
 		this.email = email;
 	}
 
-	
-	//인증, 권한 정보
+	// 인증, 권한 정보
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return authorities;
 	}
-	
-	
+
 	public void setAuthorities(List<GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
