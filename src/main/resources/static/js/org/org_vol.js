@@ -93,8 +93,8 @@ document.querySelector('.submit_form').addEventListener('submit', function(e) {
 	console.log('사용자가 검색한 내용:', searchValue);
 
 	// 검색 결과를 로드하는 함수 호출
-if(userId!=null){c
-	volListLoad(`http://localhost:8080/api/wish?=${cid}&s=${searchValue}`);
+if(userId!=null){
+	volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${searchValue}`);
 	}
 else
 	volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
