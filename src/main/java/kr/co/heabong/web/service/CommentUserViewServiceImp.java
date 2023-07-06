@@ -23,5 +23,16 @@ public class CommentUserViewServiceImp implements CommentUserViewService {
 		List<CommentUserView> list = repository.findByParentId(parentId);
 		return list;
 	}
+	@Override
+	public CommentUserView getLastOne() {
+		CommentUserView lastOne = repository.findLastOne();
+		return lastOne;
+	}
+	@Override
+	public List<Integer> getReplyCounts(int postId, int parentId) {
+		List<Integer> replyCounts = repository.replyCounts(postId, parentId);
+		return replyCounts;
+	}
+	
 
 }

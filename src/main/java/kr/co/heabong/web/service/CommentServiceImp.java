@@ -31,9 +31,13 @@ public class CommentServiceImp implements CommentService {
 	}
 
 	@Override
-	public Comment save(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
+	public Comment addComment(Comment comment) {
+		int result = repository.save(comment);
+		Comment lastComment=null;
+		if(result ==1) {
+			lastComment = repository.getLastComment();
+		}
+		return lastComment;
 	}
 
 	@Override
@@ -41,5 +45,6 @@ public class CommentServiceImp implements CommentService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }

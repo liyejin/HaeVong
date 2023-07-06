@@ -19,5 +19,7 @@ public class CommentUserView {
 	private int postId;
 	private int parentId;
 	private String nickname;
+	private String profilePhoto;
 	private int daysAgo;
+	private int childCount;
 }

@@ -8,6 +8,6 @@ public interface CommentService {
 	List<Comment> getListByPostId(int postId);
 	List<Comment> getListByParentId(int parentId);
 	Comment update(Comment comment);
-	Comment save(Comment comment);
+	Comment addComment(Comment comment);
 	int delete(Comment comment);
 }
