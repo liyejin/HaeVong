@@ -1,7 +1,6 @@
 package kr.co.heabong.web.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,5 +17,5 @@ public class Comment {
 	private String content;
 	private int userId;
 	private int postId;
-	private int parentId;
+	private Integer parentId;
 }

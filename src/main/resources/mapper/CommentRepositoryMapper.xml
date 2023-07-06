@@ -6,7 +6,12 @@
 	<select id="findByParentId" resultType="kr.co.heabong.web.entity.Comment">
 		select * from comment where parent_id = #{parentId}
 	</select>
-	<update id="update"> UPDATE haevongdb.comment<set>
+	<select id="getLastComment" resultType="kr.co.heabong.web.entity.Comment">
+		select * from comment order by date desc limit 1
+	</select>
+
+	<update id="update">
+		UPDATE haevongdb.comment<set>
 			<if test="title!=null">title=#{title},</if>
 			<if test="content!=null">content =#{content}</if>
 		</set>
@@ -17,15 +22,17 @@
 	<insert id="save">
 		INSERT INTO haevongdb.comment
 		(
-			`user_id`,
-			`post_id`,
-			`parent_id`
+		`content`,
+		`user_id`,
+		`post_id`,
+		`parent_id`
 		)
 		VALUES
 		(
-			#{userId},
-			#{postId},
-			#{parent_id}
+		#{content},
+		#{userId},
+		#{postId},
+		#{parentId}
 		);
 	</insert>
 

@@ -72,7 +72,7 @@
     	height: 7px;
     	background-color: rgba(1, 1, 1, 0.2);
     }
-	.comment-input {
+	.comment-input-box {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;

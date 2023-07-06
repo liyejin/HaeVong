@@ -14,5 +14,6 @@ public interface CommentRepository {
 	int update(Comment comment);
 	int save(Comment comment);
 	int delete(int id);
+	Comment getLastComment();
 	
 }

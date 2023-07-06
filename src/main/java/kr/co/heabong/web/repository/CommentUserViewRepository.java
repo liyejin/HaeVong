@@ -10,6 +10,7 @@ import kr.co.heabong.web.entity.CommentUserView;
 public interface CommentUserViewRepository {
 	List<CommentUserView> findByPostId(int postId);
 	List<CommentUserView> findByParentId(int parentId);
-	int replyCount(int id);
+	CommentUserView findLastOne();
+	List<Integer> replyCounts(int postId, int parentId);
 
 }
