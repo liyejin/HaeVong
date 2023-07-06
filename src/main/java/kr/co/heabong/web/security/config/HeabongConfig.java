@@ -30,18 +30,18 @@ public class HeabongConfig {
 	private CustomLoginSuccessHandler customLoginSuccessHandler;
 	@Autowired
 	private CustomLoginFailHandler customLoginFailHandler;
-//	private PasswordEncoder passwordEncoder;
+	// private PasswordEncoder passwordEncoder;
 
 	// 필터를 사용하려면?필요한 설정
 	// 1. 사용자 정보 설정
 	// 2. 접근 가능한 도메인 설정
 
 	// 객체 생성 방법
-//	@Bean
-//	public Menu menu() {
-//		return new Menu();
-//	}
-//	
+	// @Bean
+	// public Menu menu() {
+	// return new Menu();
+	// }
+	//
 	// 권한을 위한 필터객체
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -49,10 +49,9 @@ public class HeabongConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/user/**").hasAnyRole("USER")
 						.requestMatchers("/org/**").hasAnyRole("ORG")
-						.anyRequest().permitAll()
-						)
+						.anyRequest().permitAll())
 				.formLogin(form -> form
-						.loginPage("/user_signin")		
+						.loginPage("/user_signin")
 						.successHandler(customLoginSuccessHandler)
 						.failureHandler(customLoginFailHandler))
 				.logout(logout -> logout.logoutUrl("/logout")
@@ -92,14 +91,14 @@ public class HeabongConfig {
 		System.out.println(dataSource);
 
 		manager.setUsersByUsernameQuery("select reg_num username, pwd password, 1 enabled from org where reg_num=?");// username,
-																														// password,
-																														// enabled(컬럼명
-																														// 반드시
-																														// 일치시켜줄것)
+		// password,
+		// enabled(컬럼명
+		// 반드시
+		// 일치시켜줄것)
 
 		manager.setAuthoritiesByUsernameQuery(
 				"select o.reg_num username, r.name authority from role r join org o on o.role_id=r.id where o.reg_num=?");// username,
-																															// authority
+		// authority
 		System.out.println("기관 필터");
 
 		return manager;
@@ -111,18 +110,22 @@ public class HeabongConfig {
 		JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
 		System.out.println(dataSource);
 
-//		manager.setUsersByUsernameQuery("select reg_num username, pwd password, 1 enabled from org where reg_num=?");//username, password, enabled(컬럼명 반드시 일치시켜줄것)
-//		
-//		manager.setAuthoritiesByUsernameQuery("select o.reg_num username, r.name authority from role r join org o on o.role_id=r.id where o.reg_num=?");//username, authority
+		// manager.setUsersByUsernameQuery("select reg_num username, pwd password, 1
+		// enabled from org where reg_num=?");//username, password, enabled(컬럼명 반드시
+		// 일치시켜줄것)
+		//
+		// manager.setAuthoritiesByUsernameQuery("select o.reg_num username, r.name
+		// authority from role r join org o on o.role_id=r.id where
+		// o.reg_num=?");//username, authority
 		manager.setUsersByUsernameQuery("select uid username, pwd password, 1 enabled from user where uid=?");// username,
-																												// password,
-																												// enabled(컬럼명
-																												// 반드시
-																												// 일치시켜줄것)
+		// password,
+		// enabled(컬럼명
+		// 반드시
+		// 일치시켜줄것)
 
 		manager.setAuthoritiesByUsernameQuery(
 				"select u.uid username, r.name authority from role r join user u on u.role_id=r.id where u.uid=?");// username,
-																													// authority
+		// authority
 
 		System.out.println("유저 필터");
 		return manager;

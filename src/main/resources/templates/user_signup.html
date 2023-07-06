@@ -22,7 +22,7 @@
   </head>
   <body>
     <section class="main">
-      <form action="user_signup" method="post">
+      <form action="/user_signup" method="post">
         <div><img src="/img/user/signup.png" alt="회원가입 상단 페이지" /></div>
 
         <div class="input">
@@ -48,9 +48,9 @@
             <hr />
           </div>         
           <div>
-           <input th:text type="text" placeholder="이메일을 입력해 주세요" 
+           <input type="text" placeholder="이메일을 입력해 주세요" 
             	name="email"
-              th:value="${user.email}"
+            
             	required
             />
             <hr />

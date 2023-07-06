@@ -21,7 +21,7 @@ public interface UserService {
 	boolean isValid(String uid, String pwd);
 
 	// kakao login
-	boolean isValid(String uid);
+	boolean isValid(String email);
 
 	// My page
 	User getUserInfoById(int id);
