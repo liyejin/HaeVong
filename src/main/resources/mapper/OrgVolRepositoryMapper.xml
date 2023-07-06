@@ -33,7 +33,8 @@
 		 select COUNT(*) from org_vol
 		where org_id = #{orgId} 
 	</select>
-
+	
+<!--보류-->
 	<select id="findViewById" resultType="UserWishView">
 		select * from user_wish_view where id=#{id}
 	</select>
@@ -43,6 +44,7 @@
 	<select id = "countBookmarkUser">
 		SELECT COUNT(*) AS count FROM wish WHERE org_vol_id =#{id} 
 	</select>
+	
 	<select id="findViewAll" resultType="UserWishView"> 
 		SELECT uv.* from(SELECT id,title,regdate,date,org_id,vol_category_id,photo,
 		<if test="userId == null">
@@ -60,7 +62,10 @@
 				vol_category_id=#{volCategoryId}
 			</if>
 			<if test="title != null">
-				OR title like '%${title}%'
+				AND title like '%${title}%'
+			</if>
+			<if test="orgVolId != null">
+				AND id= #{orgVolId}
 			</if>
 		</trim>
 	</select>

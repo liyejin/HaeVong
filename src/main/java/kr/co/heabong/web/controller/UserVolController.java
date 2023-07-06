@@ -15,11 +15,13 @@ import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.entity.UserWishView;
+import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.security.config.MyUserDetails;
 import kr.co.heabong.web.service.ApplyOrgVolViewService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.UserVolService;
+import kr.co.heabong.web.service.VolCategoryService;
 
 @Controller
 @RequestMapping("/user")
@@ -33,12 +35,15 @@ public class UserVolController {
 	private ApplyOrgVolViewService orgVolViewService;
 	@Autowired
 	private OrgService OrgService;
+	@Autowired
+	private VolCategoryService cateService;
+	
 
 	
 	/* 봉사 상세보기 */
 	@GetMapping("/vol")
 	public String getList(@RequestParam("id") int OrgVolId
-													,Model model) {
+													,@AuthenticationPrincipal MyUserDetails user,Model model) {
 		//기관의 게시글 가져오기
 		OrgVol orgVol = orgVolService.getById(OrgVolId);
 		//게시글 쓴 기관 찾기 
@@ -46,18 +51,26 @@ public class UserVolController {
 		
 		int countBookmarkUser = orgVolService.getBooKmarkUser(OrgVolId);
 		
-		UserWishView userWishView = orgVolService.getViewById(OrgVolId);
+		List<UserWishView> userWishView = orgVolService.getViewOrgVolByOrgVolId(user.getId(), OrgVolId);
+		
+		VolCategory VolCategory = cateService.getById(OrgVolId);
+		
 		
 		//게시글 작성 시간
 	    String dateString = orgVol.getDate();
+	    String deadLine =   orgVol.getDeadLine();
+	  
 	    int restDate = orgVolService.calculateRestDate(dateString);
+	    int diff = orgVolService.calculateDeadLineDate(dateString, deadLine);
 
 		model.addAttribute("orgVol",orgVol);
 		model.addAttribute("org",org);
 	    model.addAttribute("dDay", restDate);
-	    model.addAttribute("userWishView", userWishView);
+	    model.addAttribute("diff", diff);
+	    model.addAttribute("userWishView", userWishView.get(0));
 	    model.addAttribute("countBookmarkUser", countBookmarkUser);
-
+	    model.addAttribute("volCategory",VolCategory);
+	    
 		return "user/vol_recruit";
 	}
 	
