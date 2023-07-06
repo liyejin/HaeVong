@@ -44,12 +44,7 @@ public class VolCategoryServiceImp implements VolCategoryService{
 		VolCategory orgVolCategory = repository.findById(id);
 		return orgVolCategory;
 	}
-	
-//	@Override
-//	public int getCateId() {
-//		int cateId = repository.f	
-//		return id;
-//	}
+
 	
 
 

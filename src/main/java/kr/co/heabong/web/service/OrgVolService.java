@@ -8,8 +8,12 @@ import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserWishView;
 
 public interface OrgVolService {
+	//
+	List<UserWishView> getView(Integer userId,Integer volCategoryId,String searchKeyword);
 	//전체보기처럼 다 가져오는애
 	List<UserWishView> getView(Integer userId);
+	//전체보기 _ 좋아요유무
+	List<UserWishView> getViewOrgVolByOrgVolId(Integer userId,Integer orgVolId);
 	//카테고리 가져오는애
 	List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer volCategoryId);
 	//검색까지 하는애
@@ -46,5 +50,6 @@ public interface OrgVolService {
 	List<String> getPhotoList(int orgId);
 	
 	int calculateRestDate(String dateString);
+	int calculateDeadLineDate(String dateString,String deadLine);
 	
 }

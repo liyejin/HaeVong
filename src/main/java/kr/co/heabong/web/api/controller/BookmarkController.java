@@ -27,51 +27,42 @@ public class BookmarkController {
 	WishService service;
 	@Autowired
 	OrgVolService orgvol;
-	
+
 	@GetMapping
 	public List<UserWishView> orgVolList(@RequestParam(name = "c", required = true) Integer categoryId,
-			@RequestParam(name = "s", required = false) String serchKeyword,@AuthenticationPrincipal MyUserDetails user){
-		
+			@RequestParam(name = "s", required = false) String serchKeyword,
+			@AuthenticationPrincipal MyUserDetails user) {
+
 		Integer userId = user.getId();
 		System.out.println(user.getId());
 		List<UserWishView> orgVolList = new ArrayList<>();
-		
-		if(categoryId != null)
-			orgVolList = orgvol.getViewOrgVolListByCategoryId(userId, categoryId);
-		else if(serchKeyword != null )
-			orgVolList = orgvol.getViewOrgVolListBySearch(userId, serchKeyword);
-		else
-			orgVolList = orgvol.getView(userId);
-		
+
+		if (categoryId == 1 && serchKeyword != "") {
+		    orgVolList = orgvol.getView(userId, null, serchKeyword);
+		    System.out.println("조건2");
+		} else if (categoryId == 1) {
+		    orgVolList = orgvol.getView(userId, null, serchKeyword);
+		    System.out.println("조건5");
+		} else if (categoryId != null && serchKeyword == "") {
+		    orgVolList = orgvol.getViewOrgVolListByCategoryId(userId, categoryId);
+		    System.out.println("조건1");
+		} else {
+		    orgVolList = orgvol.getView(userId, categoryId, serchKeyword);
+		    System.out.println("조건3" + orgVolList);
+		}
 		return orgVolList;
 	}
-	
-	
+
 	@PostMapping
-	public int append(
-			@RequestParam("oi") int orgVolId,
-			@RequestParam("ui") int userId
-			) {
-		Wish wish = Wish
-							.builder()
-							.userId(userId)
-							.orgVolId(orgVolId)
-							.build();
+	public int append(@RequestParam("oi") int orgVolId, @RequestParam("ui") int userId) {
+		Wish wish = Wish.builder().userId(userId).orgVolId(orgVolId).build();
 		return service.apend(wish);
 	}
-	
-	
+
 	@DeleteMapping("{orgVolId}/user/{userId}")
-	public int delete(
-			@PathVariable("orgVolId") int orgVolId,
-			@PathVariable("userId") int userId
-			) {
-		Wish wish = Wish
-				.builder()
-				.userId(userId)
-				.orgVolId(orgVolId)
-				.build();
+	public int delete(@PathVariable("orgVolId") int orgVolId, @PathVariable("userId") int userId) {
+		Wish wish = Wish.builder().userId(userId).orgVolId(orgVolId).build();
 		return service.delete(wish);
 	}
-	
+
 }

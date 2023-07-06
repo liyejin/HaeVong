@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.UserWishView;
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -80,11 +81,13 @@ void testFindIngOrgVol() {
 		List<OrgVol> list = repository.FindOrgVolListByCategoryId(1);
 	}
 
-	//@Test
+	@Test
 	void testOrgVolListBySearch() {
 		List<OrgVol> list = repository.FindOrgVolListBySearch(1, "네이버");
 		System.out.println(list);
 	}
+	
+	
 
 	//@Test
 	void testFindOrgVolListByCategoryId(int categoryId) {

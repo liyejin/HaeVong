@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,7 +126,23 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	    return restDate;
 	}
+	
+	@Override
+	public int calculateDeadLineDate(String dateString,String deadLine) {
+		
+		String pattern = "yyyy-MM-dd";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		LocalDate date = LocalDate.parse(dateString, formatter);
+		LocalDate deadLineDate = LocalDate.parse(deadLine, formatter);
+		
+// 날짜 차이 구해주는 메서드
+		long daysDiff = ChronoUnit.DAYS.between(date, deadLineDate);
 
+		int diff = (int) daysDiff;
+
+
+		return diff;
+	}
 	@Override
 	public int ingOrgVol(int orgId) {
 		int ingCount = repository.findIngOrgVol(orgId);
@@ -135,21 +152,31 @@ public class OrgVolServiceImp implements OrgVolService {
 	@Override
 	public List<UserWishView> getView(Integer userId) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(userId, null, null);
+		return repository.findViewAll(userId, null, null,null);
 	}
 
+	@Override
+	public List<UserWishView> getView(Integer userId, Integer volCategoryId, String searchKeyword) {
+		// TODO Auto-generated method stub
+		return repository.findViewAll(userId, volCategoryId, searchKeyword,null);
+	}
 	@Override
 	public List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer categoryId) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(userId, categoryId, null);
+		return repository.findViewAll(userId, categoryId, null,null);
 	}
 
 	@Override
-	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String serchKeyword) {
+	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String searchKeyword) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(null, categoryId, serchKeyword);
+		return repository.findViewAll(null, categoryId, searchKeyword,null);
 	}
 
+	@Override
+	public List<UserWishView> getViewOrgVolByOrgVolId(Integer userId,Integer orgVolId) {
+		
+		return repository.findViewAll(userId, null, null, orgVolId);
+	}
 	@Override
 	public UserWishView getViewById(Integer id) {
 		// TODO Auto-generated method stub
@@ -161,6 +188,10 @@ public class OrgVolServiceImp implements OrgVolService {
 		// TODO Auto-generated method stub
 		return repository.countBookmarkUser(OrgVolId);
 	}
+
+
+
+
 
 
 }

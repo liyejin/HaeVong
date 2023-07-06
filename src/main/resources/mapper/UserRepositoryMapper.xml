@@ -12,8 +12,12 @@
    <select id="findByUserPhoto">
 	   SELECT profile_photo FROM user WHERE id = ${id}
    </select>
+   <select id="findByUserEmail">
+	    select * from user where email = #{email}
+   </select>
+
    <select id="findByUid" resultType="User">
-	   select * from user where uid=#{uid};
+	   select * from user where uid=#{uid}
    </select>
    <update id="update">
       UPDATE haevongdb.user

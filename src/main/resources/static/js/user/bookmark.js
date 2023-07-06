@@ -1,51 +1,7 @@
+// 북마크가 추가되고 삭제되는 역할만 한다.
 let volList = document.querySelector(".vol_list");
-function orgVolListLoad(url) {
-   let userId = null;
-   if (document.querySelector("user-id") != null)
-      userId = document.querySelector("user-id").value;
 
-   fetch(url)
-      .then(reponse => reponse.json())
-      .then(orgVolList => {
-			//비우기
-			volList.innerHTML = "";
-
-			//채우기
-			for (let vol of volList) {
-
-				let itemTemplate =
-					`
-						<ul class="vol_list">
-				<li class="org_vol_list">
-					<img class="vol_list_img" src="/img/org/org_vol/ ${vol.photo}}" alt="모집공고이미지" />
-					<div class="vol_list_info">
-						<span class="vol_title">${vol.title}<br></span>
-						<span class="vol_date" >${vol.date}</span>
-						<span class="vol_write_date">${vol.regdate}</span><br>
-						
-						<a href="/login">
-						<button  
-						type="button" 
-                           data-orgVol-id="${vol.id}"
-						   data-user-id="${userId}"
-                           class="bookmark ${vol.wish ? 'active' : ' '}" >
-                          </button >
-                   </a >
-
-               <ul class="vol_list_btn_box">
-                  <li><a class="vol_list_detail_btn" href="/user/vol?id=${vol.id}">상세보기</a></li>
-               </ul>
-               </div >
-      </div >
-      </li >
-      </ul >
-               `;
-            orgVolList.insertAdjacentHTML("beforeend", itemTemplate);
-         }
-      });
-}
-
-
+if(volList)
 volList.onclick = function(e) {
    let el = e.target;
 
@@ -57,8 +13,16 @@ volList.onclick = function(e) {
    console.log(orgVolId);
    console.log(userId);
    
-   if(userId != null)
-   	e.preventDefault();
+   
+//userId가 null일 경우 , 불 켜지는걸 막고   el = 북마크 on off
+//el.preventDefault(); 
+
+  if(userId != null){
+   	e.preventDefault();  // e는 페이지 이동 = a태그의 클릭이벤트 
+   	}
+
+   	
+   	
 
    // Like 삭제
    if (el.classList.contains("active")) {
