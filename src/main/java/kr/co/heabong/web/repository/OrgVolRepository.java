@@ -41,7 +41,7 @@ public interface OrgVolRepository {
 	List<String> getPhotoList(int orgId);
 
 	//북마크
-	List<UserWishView> findViewAll(Integer userId,Integer volCategoryId,String title);
+	List<UserWishView> findViewAll(Integer userId,Integer volCategoryId,String title,Integer orgVolId);
 	List<UserWishView> FindViewByCategoryId(Integer volCategoryId);
 	List<UserWishView> FindViewBySearch(Integer volCategoryId,String title);
 	UserWishView findViewById(Integer id);

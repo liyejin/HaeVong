@@ -357,7 +357,7 @@ public class DefaultController {
 	@GetMapping("orgvol")
 	public String getOrgVolListByCategory(
 			@RequestParam(name = "cid", required = true) Integer categoryId,
-			@RequestParam(name = "sk", required = false) String serchKeyword,
+			@RequestParam(name = "sk", required = false) String searchKeyword,
 			@AuthenticationPrincipal MyUserDetails user,
 			Model model) {
 
@@ -368,12 +368,18 @@ public class DefaultController {
 		List<VolCategory> volCategory = volCategoryService.getCateList();
 		List<UserWishView> orgVolList = null;
 
-		if (serchKeyword == null & categoryId == 1)
+		if (searchKeyword == null & categoryId == 1) {
 			orgVolList = orgVolService.getView(userId);
-		else if (serchKeyword == null & categoryId != null)
+		System.out.println("디폴트조건1");
+		}
+		else if (searchKeyword == null & categoryId != null) {
 			orgVolList = orgVolService.getViewOrgVolListByCategoryId(userId, categoryId);
-		else if (serchKeyword != null)
-			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, serchKeyword);
+			System.out.println("디폴트조건2");
+		}
+		else if (searchKeyword != null) {
+			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, searchKeyword);
+		System.out.println("디폴트조건3");
+		}
 
 		model.addAttribute("orgVolList", orgVolList);
 		model.addAttribute("cid", categoryId);

@@ -20,7 +20,6 @@
 		<a href="/category_main"><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
 		<div>봉사 신청하기</div>
 		<div>
-			<img src="/img/icon/icon_header_more.png" alt="더보기" />
 		</div>
 	</div>
 </header>
@@ -66,10 +65,10 @@
                                 class="bookmark" 
                                 th:classappend="${vol.wish}?'active' : ' '"
 						 />
-						  <a th:href="@{/user/vol(id=${vol.id})}" sec:authorize="isAnonymous()">
+				 <a th:href="@{/user/vol(id=${vol.id})}" sec:authorize="isAnonymous()">
                                 <button
                                     type="button"
-                                    class="bookmark">
+                                    class="bookmark" th:classappend="${#authorization.expression('isAnonymous()')} ? 'd-none'">
                                 </button>
                             </a>
                             <!--북마크 버튼-->
