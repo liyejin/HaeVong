@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
     <script src="/js/components/modal-alert.js" defer></script>
+      <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+        <script src="/js/user/calender.js" defer></script>
     <script defer>
       window.addEventListener("load", function () {
         let mypageCategory = document.querySelector(".mypageCategory");
@@ -36,7 +38,6 @@
        
       });
     </script>
-
     <title>마이페이지</title>
   </head>
   <body>
@@ -135,7 +136,7 @@
                 <span>찜한봉사</span>
               </div>
             </a>
-            <a href="#">
+            <a  href="/user/calender">
               <div>
                 <span>📣<br /></span>
                 <span>달력</span>
