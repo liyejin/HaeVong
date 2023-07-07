@@ -53,7 +53,7 @@ public class UserVolController {
 		
 		List<UserWishView> userWishView = orgVolService.getViewOrgVolByOrgVolId(user.getId(), OrgVolId);
 		
-		VolCategory VolCategory = cateService.getById(OrgVolId);
+		VolCategory VolCategory = cateService.getById(orgVol.getVolCategoryId());
 		
 		
 		//게시글 작성 시간
@@ -86,5 +86,11 @@ public class UserVolController {
 		model.addAttribute("apVol", list);
 
 		return "user/my_vol_manage";
+	}
+	@GetMapping("/calender")
+	public String getMyCalender() {
+		
+		
+		return "user/calender";
 	}
 }
