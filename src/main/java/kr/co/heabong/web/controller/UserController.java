@@ -155,5 +155,11 @@ public class UserController {
 		model.addAttribute("map", map);
 		return "user/vol_list";
 	}
+	
+
+	
+	
+	
+	
 
 }
