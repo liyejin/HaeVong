@@ -1,73 +1,75 @@
 
 async function applyAdd(url,json) {
-	//신청이 됐을때 userid랑 orgid가 넘어와야함
-	let response = await fetch(url, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: json
-	});
-	console.log(response);
+   //신청이 됐을때 userid랑 orgid가 넘어와야함
+   let response = await fetch(url, {
+      method: "POST",
+      headers: {
+         "Content-Type": "application/json"
+      },
+      body: json
+   });
+   console.log(response);
 }
 
 
 async function applyDelete(url,json) {
-	let response = await fetch(url, {
-		method: "DELETE",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: json
-	});
+   let response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+         "Content-Type": "application/json"
+      },
+      body: json
+   });
 }
 
 
 window.addEventListener("load", function(e) {
-	let userId = document.querySelector(".userId").value;
-	let orgVolId = document.querySelector(".orgVolId").value;
+   let userId = document.querySelector(".userId").value;
+   let orgVolId = document.querySelector(".orgVolId").value;
    console.log(orgVolId);
    console.log(userId);
 
-	let jsonData = {
-		//키 값 (객체생성)
-		"userId": userId,
-		"orgVolId": orgVolId
-	}
-	
-	let json = JSON.stringify(jsonData);
-	let applyBtn = document.querySelector(".applybtn");
-	let cancleBtn = document.querySelector(".canclebtn");
-	let bookmark = document.querySelector(".bookmark");
+   let jsonData = {
+      //키 값 (객체생성)
+      "userId": userId,
+      "orgVolId": orgVolId
+   }
+   
+   let json = JSON.stringify(jsonData);
+   let applyBtn = document.querySelector(".applybtn");
+   let cancleBtn = document.querySelector(".canclebtn");
+   let bookmark = document.querySelector(".bookmark");
 
-	applyBtn.onclick = function(e) {
-		console.log("끄릭");
-		applyAdd(`http://localhost:8080/api/apply-org-vols`,json);
-	}
+   applyBtn.onclick = function(e) {
+      console.log("끄릭");
+      applyAdd(`http://localhost:8080/api/apply-org-vols`,json);
+   }
 
-	cancleBtn.onclick = function(e) {
-		console.log("취소끄릭");
-		applyDelete(`http://localhost:8080/api/apply-org-vols`,json);
-	}
-	
-	/*북마크 버튼*/
-	bookmark.onclick = function(e) {
-	console.log("클릭클릭");
-	
-	   let el = e.target;
+   cancleBtn.onclick = function(e) {
+      console.log("취소끄릭");
+      applyDelete(`http://localhost:8080/api/apply-org-vols`,json);
+   }
+   
+   
+   
+   /*북마크 버튼*/
+   bookmark.onclick = function(e) {
+   console.log("클릭클릭");
+   
+      let el = e.target;
 
    if (!el.classList.contains("bookmark"))
       return;
 
       console.log(orgVolId);
-  		 console.log(userId);
+         console.log(userId);
    
    if(userId != null)
-   	e.preventDefault();
+      e.preventDefault();
 
    // Like 삭제
    if (el.classList.contains("active")) {
-	   	   console.log("delete요청");
+            console.log("delete요청");
       //let data = {orgVolId,userId};
       //let jsonData = JSON.stringify(data);
       fetch(`/api/wish/${orgVolId}/user/${userId}`, {
@@ -85,7 +87,7 @@ window.addEventListener("load", function(e) {
    
    // bookmark 추가
    else {
-	   console.log("post요청");
+      console.log("post요청");
       let data = `oi=${orgVolId}&ui=${userId}`
       fetch("/api/wish", {
          method: 'POST',
@@ -103,7 +105,7 @@ window.addEventListener("load", function(e) {
             }
          });
    }
-	
+   
 }
-	
+   
 }); //window

@@ -8,8 +8,8 @@ function volListLoad(url) {
 		.then(response => response.json())
 		.then(list => {
 			volList.innerHTML = "";
-		
-			
+
+
 			for (let vol of list) {
 					
 				 let title = vol.title.length <= 15 ? vol.title : `${vol.title.substring(0, 15)}...`;
