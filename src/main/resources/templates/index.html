@@ -9,8 +9,8 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/index.css" type="text/css" />
-
-   
+	<link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+	<script src="/js/index.js"></script>
   </head>
   <body>
     <main class="main">
@@ -180,7 +180,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
       </section>
 
       <!-- 카드뉴스 -->
-      <section class="index_section">
+ <section class="index_section">
         <div class="index_section_title">
           <span>새로운 해봉이를<br />위한 해봉 뉴우-스</span>
         </div>
@@ -219,6 +219,9 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
           </li>
         </ul>
       </section>
+
+     
+     
 
       <!-- 봉사후기 -->
       <section class="index_section">
@@ -275,7 +278,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
         </div>
       </section>
 
-      <!-- 봉사 후기 -->
+
       <section class="index_section_sponsor">
         <div class="index_sponsor">
           <div class="index_section_title sponsor_title">
@@ -286,7 +289,13 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
           </div>
 
           <div class="index_sponsor_box">
-            <!-- <img src="/img/user/index_add_img.png" alt="마르코로호이미지"> -->
+            
+            <div class="add_section">
+				<input type="radio" name="slide" id="silde01" checked>
+				<input type="radio" name="slide" id="silde02">
+				<input type="radio" name="slide" id="silde03">
+			</div>
+			
             <div class="index_sponsor_img">
               <span class="index_sponsor_title">마르코로호</span>
               <div class="index_sponsor_content">
