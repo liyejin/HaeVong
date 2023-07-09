@@ -80,4 +80,15 @@ public class UserServiceImp implements UserService {
 		return user;
 	}
 
+	@Override
+	public User get(int id) {
+		return repository.findById(id);
+	}
+
+	@Override
+	public User update(User user) {
+		repository.update(user);
+		return repository.findById(user.getId());
+	}
+
 }

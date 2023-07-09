@@ -11,17 +11,22 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
     <script src="/js/components/modal-alert.js" defer></script>
-      <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-        <script src="/js/user/calender.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="/js/user/calender.js" defer></script>
     <script defer>
       window.addEventListener("load", function () {
         let mypageCategory = document.querySelector(".mypageCategory");
+
         let modalAlert = document.querySelector("modal-alert");
-
-        console.log(modalAlert);
-
+        let modalPanel = document.querySelector("modal-panel");
+        let profileImgInput = document.querySelector("#profile-img-input");
+        let nicknameInput = document.getElementById("#profile-nickname-input");
         let myPostPlusIcon = document.querySelector(".mypage_mypost_title");
+        let profileEditBtn = document.querySelector("#profile-edit-btn");
 
+        let profileImg = document.querySelector(".profile-img");
+
+        // 비회원 상태 시 로그인 후 이용 모달
         mypageCategory.onclick = function (e) {
           if (!mypageCategory.classList.contains("isAnonymous")) return;
           e.preventDefault();
@@ -34,6 +39,20 @@
 
           e.preventDefault();
           modalAlert.show(true);
+        };
+
+        // 회원 로그인 시 프로필 수정 모달
+        profileEditBtn.onclick = function (e) {
+          modalPanel.show(true);
+        };
+
+        profileImgInput.oninput = function (e) {
+          let file = e.target.files[0];
+          let reader = new FileReader();
+          reader.onload = function (event) {
+            profileImg.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
         };
       });
     </script>
@@ -53,9 +72,17 @@
     </header>
 
     <main class="main">
+      <!-- 유저 프로필 ----------------------------------------------------- -->
       <section class="mypage_profile">
+        <div sec:authorize="isAnonymous()" class="profile_pic">
+          <img src="/img/user/nonUserpic.png" />
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="profile_pic">
+          <img th:src="${user.profilePhoto}" />
+        </div>
+
         <div class="profile_txt">
-          <p class="title">가치있는 일상 같이 만들어요!</p>
           <p>
             <span sec:authorize="isAnonymous()" class="mypage_profile_name"
               >회원</span
@@ -64,24 +91,17 @@
             <span
               sec:authorize="isAuthenticated()"
               class="mypage_profile_name"
-              th:text="${user.name}"
+              th:text="${user.nickname}"
               >회원</span
             ><span> 님</span>
           </p>
-        </div>
-
-        <!-- 유저 프로필 사진 ----------------------------------------------------- -->
-
-        <div sec:authorize="isAnonymous()" class="profile_pic">
-          <img src="/img/user/nonUserpic.png" />
+          <button
+            sec:authorize="isAuthenticated()"
+            id="profile-edit-btn"
+          ></button>
+          <p class="title">가치있는 일상 같이 만들어요!</p>
         </div>
       </section>
-
-      <div sec:authorize="isAuthenticated()" class="profile_pic">
-        <img th:src="@{${user.profilePhoto}}"   />
-      <a href="#">프로필 수정</a>
-     </div>
-    </section>
 
       <section class="mypage_guide">
         <a><img src="/img/org/org_guide.png" alt="" /></a>
@@ -135,7 +155,7 @@
                 <span>찜한봉사</span>
               </div>
             </a>
-            <a  href="/user/calender">
+            <a href="/user/calender">
               <div>
                 <span>📣<br /></span>
                 <span>달력</span>
@@ -173,13 +193,13 @@
           <a href="#"><img src="/img/icon/icon_plus.png" /></a>
         </div>
         <div class="mypage_mypost_img">
-          <a th:href="@{${p.url}}" th:each="p:${mypic}"
-            ><img src="@{p.url}" th:src="@{${p.url}}" alt="게시글1"
+          <a th:href="${p.id}" th:each="p:${mypic}"
+            ><img src="" th:src="${p.url}" alt="게시글1"
           /></a>
         </div>
       </section>
 
-      <!-- 해봉과 함께한지 ----------------------------------------------------- -->
+      <!-- 해봉과 함께한지 -----------ss------------------------------------------ -->
       <section sec:authorize="isAnonymous()" class="cs">
         <span
           >해봉과 함께해 주세요 ! 😊<br />
@@ -204,6 +224,42 @@
       >
         <div slot="content"></div>
       </modal-alert>
+
+      <modal-panel
+        class="d-none"
+        data-title="프로필 수정"
+        data-show="false"
+        data-submmit="적용"
+      >
+        <section class="profile-edit-section" slot="content">
+          <form class="profile-edit-form">
+            <img
+              th:if="${user}"
+              th:src="${user.profilePhoto}"
+              class="profile-img"
+              src="/img/user/nonUserpic.png"
+              alt=""
+            />
+            <div class="img-input-div">
+              <label
+                for="profile-img-input"
+                class="icon icon-plus img-drop-zone"
+              ></label>
+              <input type="file" alt="사진 변경" id="profile-img-input" />
+            </div>
+
+            <div class="nickname-input-div">
+              <input
+                type="text"
+                alt="닉네임 변경"
+                id="profile-nickname-input"
+                th:value="${user.nickname}"
+              />
+              <span>한글/영문/숫자 포함 10자 이내</span>
+            </div>
+          </form>
+        </section>
+      </modal-panel>
     </main>
     <nav class="nav_list" th:replace="~{inc/nav}"></nav>
   </body>
