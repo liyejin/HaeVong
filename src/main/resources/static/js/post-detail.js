@@ -4,7 +4,22 @@ window.addEventListener("load", function(e) {
 	let submitBtn = document.querySelector(".comment-submit");
 	// TODO comment-outer 에 afterbegin으로 html추가하기
 	let commentOuter = document.querySelector(".comment-outer");
+	let replyOpenBtns = document.querySelectorAll(".reply-open-button");
+	console.log(replyOpenBtns);
+	let comments = document.querySelectorAll(".comment");
+	console.log(comments);
 
+	for (let replyOpenBtn of replyOpenBtns) {
+		console.log(replyOpenBtn);
+		replyOpenBtn.onclick = async (e) => {
+			e.preventDefault();
+			console.log("답글 보기");
+			console.log(e.target);
+			let id = e.target.dataset.commentId;
+			console.log(id);
+			await loadReply(id, commentOuter);
+		};
+	}
 
 
 	submitBtn.onclick = (e) => {
@@ -29,12 +44,11 @@ window.addEventListener("load", function(e) {
 					},
 					body: json
 				})
-				newOne=await response.json();
+				newOne = await response.json();
 			}
-			if(newOne)
-			{
+			if (newOne) {
 				console.log(newOne);
-				let commentTemplate=
+				let commentTemplate =
 					`
 						<div class="comment-content">
 							<div class="comment-writer">
@@ -53,8 +67,8 @@ window.addEventListener("load", function(e) {
 							</div>
 						</div>
 					`;
-				let todayCommentTemplate=
-				`
+				let todayCommentTemplate =
+					`
 						<div class="comment-content">
 							<div class="comment-writer">
 								<img src="/img/user/community/${newOne.profilePhoto}유저 프로필 사진.png" alt="프로필이미지&nbsp;&nbsp;">
@@ -72,14 +86,39 @@ window.addEventListener("load", function(e) {
 							</div>
 						</div>
 					`	;
-				if(newOne.daysAgo!==0)
-					commentOuter.insertAdjacentHTML("afterbegin",commentTemplate);
-				else 
-					commentOuter.insertAdjacentHTML("afterbegin",todayCommentTemplate);
-					
+				if (newOne.daysAgo !== 0)
+					commentOuter.insertAdjacentHTML("afterbegin", commentTemplate);
+				else
+					commentOuter.insertAdjacentHTML("afterbegin", todayCommentTemplate);
+
 			};
 		})();
 	}
 
-
 });
+
+async function loadReply(id, outer) {
+	response = await fetch(`http://localhost:8080/api/comments/${id}/replies`);
+	list = await response.json();
+	
+	for (let reply of list) {
+		let template = `
+				<div class="reply-outer">
+					<div class="reply">
+						<div class="comment-writer">
+							<img src="/img/user/community/${reply.profilePhoto}" alt="프로필이미지">
+							<span class="comment-name">${reply.nickname}</span>
+						</div>
+						<div class="comment-body">
+							${reply.content}
+						</div>
+						<div class="comment-info">
+							<span class="comment-days">${reply.daysAgo}일 전</span>
+						</div>
+					</div>
+					<img src="/img/icon/icon_header_more.png" alt="더보기아이콘">
+				</div>
+					`
+		outer.insertAdjacentHTML("beforeend", template);
+	}
+}

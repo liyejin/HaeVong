@@ -9,5 +9,5 @@ public interface CommentService {
 	List<Comment> getListByParentId(int parentId);
 	Comment update(Comment comment);
 	Comment addComment(Comment comment);
-	int delete(Comment comment);
+	int delete(int id);
 }

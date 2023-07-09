@@ -26,8 +26,11 @@ public class CommentServiceImp implements CommentService {
 
 	@Override
 	public Comment update(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
+		int result = repository.update(comment);
+		Comment lastEdited = null;
+		if( result == 1)
+			lastEdited = repository.getLastEdited();
+		return lastEdited;
 	}
 
 	@Override
@@ -41,9 +44,9 @@ public class CommentServiceImp implements CommentService {
 	}
 
 	@Override
-	public int delete(Comment comment) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(int id) {
+		int result = repository.delete(id);
+		return result;
 	}
 
 
