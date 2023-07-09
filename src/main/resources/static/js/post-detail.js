@@ -3,13 +3,20 @@ window.addEventListener("load", function(e) {
 	let commentInput = document.querySelector(".comment-input");
 	let submitBtn = document.querySelector(".comment-submit");
 	// TODO comment-outer 에 afterbegin으로 html추가하기
-	let commentOuter = document.querySelector(".comment-outer");
+	let commentOuters = document.querySelectorAll(".comment-outer");
+	let replySections = document.querySelectorAll(".reply-section");
+	let replyOuters = document.querySelectorAll(".reply-outer");
+	console.log(replyOuters);
 	let replyOpenBtns = document.querySelectorAll(".reply-open-button");
 	console.log(replyOpenBtns);
 	let comments = document.querySelectorAll(".comment");
 	console.log(comments);
 
-	for (let replyOpenBtn of replyOpenBtns) {
+	for (let i in replyOpenBtns) {
+		let commentOuter = commentOuters[i];
+		let replyOpenBtn = replyOpenBtns[i];
+		let replyOuter = replyOuters[i];
+		let replySection = replySections[i];
 		console.log(replyOpenBtn);
 		replyOpenBtn.onclick = async (e) => {
 			e.preventDefault();
@@ -17,7 +24,13 @@ window.addEventListener("load", function(e) {
 			console.log(e.target);
 			let id = e.target.dataset.commentId;
 			console.log(id);
-			await loadReply(id, commentOuter);
+			//if (isOpen) {
+				 // removeReply 호출
+			//	isOpen = false; // 상태 변경
+			//} else {
+				let replyList = await loadReply(id, replySection); // loadReply 호출
+			//	isOpen = true; // 상태 변경
+			//}
 		};
 	}
 
@@ -100,7 +113,7 @@ window.addEventListener("load", function(e) {
 async function loadReply(id, outer) {
 	response = await fetch(`http://localhost:8080/api/comments/${id}/replies`);
 	list = await response.json();
-	
+
 	for (let reply of list) {
 		let template = `
 				<div class="reply-outer">
@@ -120,5 +133,14 @@ async function loadReply(id, outer) {
 				</div>
 					`
 		outer.insertAdjacentHTML("beforeend", template);
+	}
+}
+async function removeReply(target,commentOuter) {
+	// 해당 답글을 감싸는 부모 요소를 찾습니다.
+	let replyContainer = target.parentNode.parentNode;
+
+	// 부모 요소가 commentOuter인지 확인하고, commentOuter에서 해당 요소를 제거합니다.
+	if (replyContainer.parentNode === commentOuter) {
+		commentOuter.removeChild(replyContainer);
 	}
 }
