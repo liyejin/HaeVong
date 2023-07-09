@@ -47,4 +47,6 @@ public interface OrgVolRepository {
 	UserWishView findViewById(Integer id);
 	int countBookmarkUser(int orgVolId);
 
+	List<UserWishView> findViewBySearch(String searchKeyword);
+
 }

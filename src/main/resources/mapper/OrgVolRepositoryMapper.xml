@@ -34,11 +34,6 @@
 		where org_id = #{orgId} 
 	</select>
 	
-<!--보류-->
-	<select id="findViewById" resultType="UserWishView">
-		select * from user_wish_view where id=#{id}
-	</select>
-
 
 	<!--북마크-->
 	<select id = "countBookmarkUser">
