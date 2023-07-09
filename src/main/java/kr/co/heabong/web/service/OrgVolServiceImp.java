@@ -148,6 +148,20 @@ public class OrgVolServiceImp implements OrgVolService {
 		int ingCount = repository.findIngOrgVol(orgId);
 		return ingCount;
 	}
+//  로그인이 된상태에서 메인에서 검색 
+	@Override
+	public List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword) {
+
+		return repository.findViewAll(userId,null,searchKeyword,null);
+	}
+
+// 비로그인 상태에서 메인에서 검색 
+
+	@Override
+	public List<UserWishView> getVolListBySearchNotLogin(String searchKeyword) {
+
+		return repository.findViewAll(null,null,searchKeyword,null);
+	}
 
 	@Override
 	public List<UserWishView> getView(Integer userId) {
@@ -188,10 +202,8 @@ public class OrgVolServiceImp implements OrgVolService {
 		// TODO Auto-generated method stub
 		return repository.countBookmarkUser(OrgVolId);
 	}
-
-
-
-
+	
+	
 
 
 }

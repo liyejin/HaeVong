@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.user">
+<html lang="en" xmlns:th="http://www.thymeleaf.user"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -48,12 +49,19 @@
           <a href="#" class="user_index_search_icon">
             <img src="../img/icon/icon_search.png" alt="돋보기 아이콘" />
           </a>
-
+      <!-- 메인 봉사 검색창  -->
+      <form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get" class="submit_form" >
           <input
             type="text"
             class="user_index_search_input"
             placeholder="            봉사, 지금 바로 검색해봉 !"
-          />
+             name="sk" th:value="${searchValue}"
+          />	
+          <input name="cid" value="1" hidden>
+          <input sec:authorize="isAuthenticated()"  th:value ="${#authentication.principal.id}" hidden>
+				<!--제출버튼-->
+				<input type="submit" class="submit" value="검색">
+			</form>
         </div>
       </div>
 

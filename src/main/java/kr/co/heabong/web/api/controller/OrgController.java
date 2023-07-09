@@ -36,14 +36,13 @@ public class OrgController {
 		
 	}
 	
-	@GetMapping //문제점?  view 를 안받음 
+	@GetMapping
 	public List<OrgVol> list(@RequestParam(name = "s", required = false) String serchKeyword,
 			@RequestParam(name = "c", required = true) Integer categoryId) {
 		
 		List<OrgVol> list = new ArrayList<>();
 		if (serchKeyword == "" && categoryId == 1) {
 		    list = volService.getList();
-		    System.out.println("orgAPI" + list);
 		} else if (serchKeyword == "" && categoryId != null) {
 		    list = volService.getOrgVolListByCategoryId(categoryId);
 		} else if (serchKeyword != null && categoryId == 1) {

@@ -250,6 +250,7 @@ public class DefaultController {
 			Model model) {
 
 		Integer userId = null;
+		
 		if (user != null)
 			userId = user.getId();
 		// 카테고리 전체 가져오기
@@ -264,9 +265,13 @@ public class DefaultController {
 			orgVolList = orgVolService.getViewOrgVolListByCategoryId(userId, categoryId);
 			System.out.println("디폴트조건2");
 		}
-		else if (searchKeyword != null) {
+		else if (searchKeyword != null && categoryId !=1) { 
 			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, searchKeyword);
 		System.out.println("디폴트조건3");
+		}
+		else if (searchKeyword != null&categoryId == 1) { 
+			orgVolList = orgVolService.getVolListBySearch(userId,searchKeyword);
+			System.out.println("디폴트조건4");
 		}
 
 		model.addAttribute("orgVolList", orgVolList);

@@ -51,5 +51,7 @@ public interface OrgVolService {
 	
 	int calculateRestDate(String dateString);
 	int calculateDeadLineDate(String dateString,String deadLine);
+	List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword);
+	List<UserWishView> getVolListBySearchNotLogin(String searchKeyword);
 	
 }
