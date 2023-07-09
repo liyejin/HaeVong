@@ -465,8 +465,6 @@ border-top-right-radius: 22px;
 .index_sponsor_img {
     width: 370px;
     height: 272px;
-    background-image: url("../img/user/index_add_img.png");
-    background-size: cover;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: flex;

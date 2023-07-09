@@ -1,0 +1,6 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.CommentUserViewRepository">
+	<select id="findAll">
+		 select * from calender where user_id = #{userId}
+	</select>
+</mapper>

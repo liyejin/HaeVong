@@ -99,6 +99,12 @@ public class UserController {
 
 		return "edit_pwdchange_insert";
 	}
+	
+	@GetMapping("my_calender")
+	public String schedule(Model model) {
+
+		return "/user/calender";
+	}
 
 	// // <My Page> : default, user 페이지 따로 있습니다.
 	// @GetMapping("mypage")
