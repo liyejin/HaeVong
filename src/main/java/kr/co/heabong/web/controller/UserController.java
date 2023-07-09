@@ -100,25 +100,6 @@ public class UserController {
 		return "edit_pwdchange_insert";
 	}
 
-	// // <My Page> : default, user 페이지 따로 있습니다.
-	// @GetMapping("mypage")
-	// public String getMypage(
-	// @AuthenticationPrincipal MyUserDetails user,
-	// Model model) {
-
-	// // user name, profile photo
-	// User userProfile = userService.getUserInfoById(user.getId());
-	// model.addAttribute("user", userProfile);
-
-	// // My post photo
-	// List<PostPhoto> myPostPhoto = postPhotoService.getMyPostPhoto();
-	// model.addAttribute("mypic", myPostPhoto);
-
-	// return "user/mypage";
-	// }
-
-	
-	
 	// 여기서부터 user_vol
 
 	@RequestMapping("vol_list") // org/vol_list // 기관 봉사 리스트
@@ -137,9 +118,6 @@ public class UserController {
 		return "user/vol_list"; // templates/org/vol_list
 	}
 
-	
-	
-	
 	@RequestMapping("vol_wish_list")
 	public String getVolWishList(
 			@AuthenticationPrincipal MyUserDetails user,

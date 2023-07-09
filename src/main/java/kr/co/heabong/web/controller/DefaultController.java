@@ -222,14 +222,16 @@ public class DefaultController {
 		// user name, profile photo
 		if (user != null) {
 			userProfile = userService.getUserInfoById(user.getId());
-			model.addAttribute("user", userProfile);
+			System.out.println(userProfile.getProfilePhoto());
+			System.out.println();
 		}
 		// My post photo
 		if (user != null) {
 			myPostPhoto = postPhotoService.getMyPostPhoto(user.getId());
-			model.addAttribute("mypic", myPostPhoto);
 		}
 
+		model.addAttribute("mypic", myPostPhoto);
+		model.addAttribute("user", userProfile);
 		return "mypage";
 	}
 
