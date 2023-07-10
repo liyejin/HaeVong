@@ -3,34 +3,39 @@ window.addEventListener("load", function(e) {
 	let commentInput = document.querySelector(".comment-input");
 	let submitBtn = document.querySelector(".comment-submit");
 	// TODO comment-outer 에 afterbegin으로 html추가하기
-	let commentOuters = document.querySelectorAll(".comment-outer");
+	let commentOuter = document.querySelector(".comment-outer");
 	let replySections = document.querySelectorAll(".reply-section");
 	let replyOuters = document.querySelectorAll(".reply-outer");
 	console.log(replyOuters);
 	let replyOpenBtns = document.querySelectorAll(".reply-open-button");
+	let replyCountTexts = document.querySelectorAll(".comment-replies");
 	console.log(replyOpenBtns);
 	let comments = document.querySelectorAll(".comment");
 	console.log(comments);
 
-	for (let i in replyOpenBtns) {
-		let commentOuter = commentOuters[i];
+	for (let i = 0 ; i<replyOpenBtns.length; i++) {
+		let isOpen = false;
+		//let commentOuter = commentOuters[i];
 		let replyOpenBtn = replyOpenBtns[i];
 		let replyOuter = replyOuters[i];
 		let replySection = replySections[i];
-		console.log(replyOpenBtn);
+		let childCountText = replyCountTexts[i].innerText;
+		console.log(childCountText);
+		console.log("childCountText : " + childCountText)
 		replyOpenBtn.onclick = async (e) => {
 			e.preventDefault();
 			console.log("답글 보기");
 			console.log(e.target);
 			let id = e.target.dataset.commentId;
 			console.log(id);
-			//if (isOpen) {
+			if (isOpen) {
 				 // removeReply 호출
-			//	isOpen = false; // 상태 변경
-			//} else {
-				let replyList = await loadReply(id, replySection); // loadReply 호출
-			//	isOpen = true; // 상태 변경
-			//}
+				 await removeReply(e,childCountText,replySection);
+				isOpen = false; // 상태 변경
+			} else {
+				let replyList = await loadReply(e,id, replySection); // loadReply 호출
+				isOpen = true; // 상태 변경
+			}
 		};
 	}
 
@@ -94,7 +99,7 @@ window.addEventListener("load", function(e) {
 	
 							<div class="comment-info">
 								<span class="comment-days" >오늘</span>
-								<span class="comment-replies"> 답글 1개 ·</span>
+								<span class="comment-replies"> 답글 0개 ·</span>
 								<span class="comment-reply"> 답글 달기</span>
 							</div>
 						</div>
@@ -110,7 +115,7 @@ window.addEventListener("load", function(e) {
 
 });
 
-async function loadReply(id, outer) {
+async function loadReply(e,id, outer) {
 	response = await fetch(`http://localhost:8080/api/comments/${id}/replies`);
 	list = await response.json();
 
@@ -133,14 +138,12 @@ async function loadReply(id, outer) {
 				</div>
 					`
 		outer.insertAdjacentHTML("beforeend", template);
+	e.target.innerText="댓글 접기";
 	}
 }
-async function removeReply(target,commentOuter) {
+async function removeReply(e,childCountText,outer) {
 	// 해당 답글을 감싸는 부모 요소를 찾습니다.
-	let replyContainer = target.parentNode.parentNode;
-
-	// 부모 요소가 commentOuter인지 확인하고, commentOuter에서 해당 요소를 제거합니다.
-	if (replyContainer.parentNode === commentOuter) {
-		commentOuter.removeChild(replyContainer);
-	}
+	outer.innerHTML="";
+	e.target.innerText=childCountText;
 }
+
