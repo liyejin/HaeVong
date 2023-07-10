@@ -31,15 +31,17 @@ function volListLoad(url) {
 				          <button type="button" data-orgVol-id="${vol.id}" data-user-id="${userId}" class="bookmark ${bookmarkButtonClass}"></button>
                    				</a >	
 						<ul class="vol_list_btn_box">
-							<li><a class="vol_list_detail_btn"  href="/user/vol?id=${vol.id}">상세보기</a></li>
+							<li><a class="vol_list_detail_btn"  href="/user/vol?id=${
+                vol.id
+              }">상세보기</a></li>
 						</ul>
 					</div>
 				</div>
 				<img class="vol_list_edit_btn" src="/img/icon/icon_vol_list_more.png" alt="모집공고_아이콘" />
-			</li>`
-				volList.insertAdjacentHTML("beforeend", itemTemplate);
-			};
-		})
+			</li>`;
+        volList.insertAdjacentHTML("beforeend", itemTemplate);
+      }
+    });
 }
 function formatDate(dateString) {
    const date = new Date(dateString);
@@ -51,21 +53,21 @@ function formatDate(dateString) {
 
 let userId = null;
 
-window.addEventListener("load", function(e) {
+window.addEventListener("load", function (e) {
+  let category = document.querySelector(".category");
+  let submit = document.querySelector(".submit");
 
-let category = document.querySelector(".category");
-let submit = document.querySelector(".submit");
+
 			
 if (document.querySelector("#input-member-id") )
 		userId = document.querySelector("#input-member-id").value;
 
-const url = new URL(window.location.href);
+  // URL의 쿼리 문자열을 가져옵니다.
+  const searchParams = new URLSearchParams(url.search);
 
-// URL의 쿼리 문자열을 가져옵니다.
-const searchParams = new URLSearchParams(url.search);
+  // 특정 매개변수의 값을 가져옵니다.
+  let cid = searchParams.get("cid");
 
-// 특정 매개변수의 값을 가져옵니다.	
-let cid = searchParams.get('cid');
 
 	category.onclick = function(e) {
 		console.log("카테고리클릭");
@@ -81,6 +83,8 @@ let cid = searchParams.get('cid');
 	volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}`);
 }
 
+      let searchInput = document.querySelector('input[name="sk"]');
+      let searchValue = searchInput.value;
 
 	document.querySelector('.submit_form').addEventListener('submit', function(e) {
 		e.preventDefault(); // 폼 제출 기본 동작 막기
@@ -99,6 +103,3 @@ if(userId!=null){
 else
 	volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
 });
-
-}
-);

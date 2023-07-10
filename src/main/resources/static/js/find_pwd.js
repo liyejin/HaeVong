@@ -9,12 +9,9 @@ console.log('s')
   	let password1 = document.getElementById("pwd");
     let password2 = document.getElementById("pwd2");
     var error = document.getElementById("error");
-    console.log('s')
-    console.log('s')
     console.log(password1.tagName);
   	console.log(password2.tagName);
   	password2.addEventListener("input", (e)=>{
-		  console.log('s')
 	    if(password1.value != e.target.value){
 			error.innerText = "일치하지 않음"
 	    	error.classList.remove("blue");

@@ -42,8 +42,10 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 		// 기본 URI
 		String uri = "/";
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
+			
 		for (GrantedAuthority authority : authorities) {
+			System.out.println(authorities);
+			
 			System.out.println("0 : " + authority.getAuthority());
 			if (savedRequest != null) {
 

@@ -9,6 +9,11 @@
    <select id="findByUserName">
 	   select * from user where id = ${id}
    </select>
+   
+   <select id="findByEmail">
+	   select * from user where email = #{email}
+   </select>
+   
    <select id="findByUserPhoto">
 	   SELECT profile_photo FROM user WHERE id = ${id}
    </select>
@@ -41,18 +46,31 @@
    <delete id="delete">
  delete from user where name = #{name}
    </delete>
-   <insert id="save" parameterType="kr.co.heabong.web.entity.User">
-   INSERT INTO user(uid,name,email,pwd,phone_number,gender, 
+<insert id="save" parameterType="kr.co.heabong.web.entity.User">
+   INSERT INTO user(
+   <if test="uid != null">uid,</if>
+   name,
+    email,
+   <if test="pwd != null"> pwd, </if>
+  <if test="phoneNumber != null"> phone_number, </if>
+  <if test="gender != null"> gender, </if>
  <if test="age != null">age,</if>
-   birth_date, 
-   <if test="profilePhoto != null">profile_photo,</if>
-   nickname, role_id)
-		VALUES(#{uid},#{name},#{email},#{pwd},#{phoneNumber},#{gender},
+   <if test="birthDate != null">birth_date, </if>
+   <if test="profilePhoto != null">profile_photo, </if>
+  <if test="nickname != null"> nickname,</if>
+    role_id)
+		VALUES(
+		<if test="uid != null">#{uid},</if>
+		#{name}, 
+	#{email},
+		<if test="pwd != null">#{pwd},</if>
+		<if test="phoneNumber != null">#{phoneNumber},</if>
+		<if test="gender != null">#{gender},</if>
 		<if test="age != null">#{age},</if>
-		 #{birthDate}, 
-		<if test="profilePhoto != null">#{profilePhoto},
-</if>
-		 #{nickname},1);
+		 <if test="birthDate != null">#{birthDate}, </if>
+		 <if test="profilePhoto != null">#{profilePhoto},</if>
+		 <if test="nickname != null">#{nickname},</if>
+		 1);
 </insert>
    
 
