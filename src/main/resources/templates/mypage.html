@@ -1,305 +1,264 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/mypage.css" />
-    <script src="/js/components/modal-alert.js" defer></script>
-    <script src="/js/components/modal-panel.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script src="/js/user/calender.js" defer></script>
-    <script defer>
-      window.addEventListener("load", function () {
-        let mypageCategory = document.querySelector(".mypageCategory");
+<html lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-        let modalAlert = document.querySelector("modal-alert");
-        let modalPanel = document.querySelector("modal-panel");
-        let profileImgInput = document.querySelector("#profile-img-input");
-        let nicknameInput = document.getElementById("#profile-nickname-input");
-        let myPostPlusIcon = document.querySelector(".mypage_mypost_title");
-        let profileEditBtn = document.querySelector("#profile-edit-btn");
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/css/reset.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/mypage.css" />
+	<script src="/js/components/modal-alert.js" defer></script>
+	<script src="/js/components/modal-panel.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+	<script src="/js/user/calender.js" defer></script>
+	<script defer>
+		window.addEventListener("load", function () {
+			let mypageCategory = document.querySelector(".mypageCategory");
 
-        let profileImg = document.querySelector(".profile-img");
+			let modalAlert = document.querySelector("modal-alert");
+			let modalPanel = document.querySelector("modal-panel");
+			let profileImgInput = document.querySelector("#profile-img-input");
+			let nicknameInput = document.getElementById("#profile-nickname-input");
+			let myPostPlusIcon = document.querySelector(".mypage_mypost_title");
+			let profileEditBtn = document.querySelector("#profile-edit-btn");
 
-        // 비회원 상태 시 로그인 후 이용 모달
-        mypageCategory.onclick = function (e) {
-          if (!mypageCategory.classList.contains("isAnonymous")) return;
-          e.preventDefault();
-          modalAlert.show(true);
-        };
+			let profileImg = document.querySelector(".profile-img");
 
-        myPostPlusIcon.onclick = function (e) {
-          console.log(e.target.classList);
-          if (!myPostPlusIcon.classList.contains("isAnonymous")) return;
+			// 비회원 상태 시 로그인 후 이용 모달
+			mypageCategory.onclick = function (e) {
+				if (!mypageCategory.classList.contains("isAnonymous")) return;
+				e.preventDefault();
+				modalAlert.show(true);
+			};
 
-          e.preventDefault();
-          modalAlert.show(true);
-        };
+			myPostPlusIcon.onclick = function (e) {
+				console.log(e.target.classList);
+				if (!myPostPlusIcon.classList.contains("isAnonymous")) return;
 
-        // 회원 로그인 시 프로필 수정 모달
-        profileEditBtn.onclick = function (e) {
-          modalPanel.show(true);
-        };
+				e.preventDefault();
+				modalAlert.show(true);
+			};
 
-        profileImgInput.oninput = function (e) {
-          let file = e.target.files[0];
-          let reader = new FileReader();
-          reader.onload = function (event) {
-            profileImg.src = event.target.result;
-          };
-          reader.readAsDataURL(file);
-        };
+			// 회원 로그인 시 프로필 수정 모달
+			profileEditBtn.onclick = function (e) {
+				modalPanel.show(true);
+			};
 
-        let btnCancel = document.querySelector(".btn-cancel");
-        btnCancel.onclick = function (e) {
-          modalPanel.show(false);
-        };
+			profileImgInput.oninput = function (e) {
+				let file = e.target.files[0];
+				let reader = new FileReader();
+				reader.onload = function (event) {
+					profileImg.src = event.target.result;
+				};
+				reader.readAsDataURL(file);
+			};
 
-        let btnSubmmit = document.querySelector(".btn-submmit");
-        btnSubmmit.onclick = () => {
-          // 프로필 사진 변경
-          let profileImgInput = document.querySelector("#profile-img-input");
+			let btnCancel = document.querySelector(".btn-cancel");
+			btnCancel.onclick = function (e) {
+				modalPanel.show(false);
+			};
 
-          let file = profileImgInput.files[0];
+			let btnSubmmit = document.querySelector(".btn-submmit");
+			btnSubmmit.onclick = () => {
+				// 프로필 사진 변경
+				let profileImgInput = document.querySelector("#profile-img-input");
 
-          let formData = new FormData();
+				let file = profileImgInput.files[0];
 
-          formData.append("file", file);
+				let formData = new FormData();
 
-          fetch(`/api/file/user/4/image`, {
-            method: "PUT",
-            body: formData,
-          }).then(() => {
-            location.reload(); // 페이지 새로고침
-          });
+				formData.append("file", file);
 
-          // 닉네임 변경
-          let nicknameInput = document.querySelector("#profile-nickname-input");
+				fetch(`/api/file/user/4/image`, {
+					method: "PUT",
+					body: formData,
+				}).then(() => {
+					location.reload(); // 페이지 새로고침
+				});
 
-          nicknameInput.onchange = function (e) {
-            let newNickname = e.target.value;
-            console.log("새로운 닉네임:", newNickname);
-          };
+				// 닉네임 변경
+				let nicknameInput = document.querySelector("#profile-nickname-input");
 
-          this.classList.add("d-none");
-        };
-      });
-    </script>
-    <title>마이페이지</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header1">
-        <a href=""
-          ><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"
-        /></a>
-        <div>마이페이지</div>
-        <a href=""
-          ><img src="../../img/icon/icon_header_more.png" alt="더보기"
-        /></a>
-      </div>
-    </header>
+				nicknameInput.onchange = function (e) {
+					let newNickname = e.target.value;
+					console.log("새로운 닉네임:", newNickname);
+				};
 
-    <main class="main">
-      <!-- 유저 프로필 ----------------------------------------------------- -->
-      <section class="mypage_profile">
-        <div sec:authorize="isAnonymous()" class="profile_pic">
-          <img src="/img/user/nonUserpic.png" />
-        </div>
+				this.classList.add("d-none");
+			};
+		});
+	</script>
+	<title>마이페이지</title>
+</head>
 
-        <div sec:authorize="isAuthenticated()" class="profile_pic">
-          <img th:src="${user.profilePhoto}" />
-        </div>
+<body>
+	<header class="header">
+		<div class="header1">
+			<a href="/category_main">
+				<img src="/img/icon/icon_header_back.png" alt="뒤로가기" />
+				</a>
+			<div>마이페이지</div>
+			<div>
+			</div>
+		</div>
+	</header>
+	
+	<main class="main">
+		<!-- 유저 프로필 ----------------------------------------------------- -->
+		<section class="mypage_profile">
+			<div sec:authorize="isAnonymous()" class="profile_pic">
+				<img src="/img/user/nonUserpic.png" />
+			</div>
 
-        <div class="profile_txt">
-          <p>
-            <span sec:authorize="isAnonymous()" class="mypage_profile_name"
-              >회원</span
-            >
+			<div sec:authorize="isAuthenticated()" class="profile_pic">
+				<img th:src="${user.profilePhoto}" />
+			</div>
 
-            <span
-              sec:authorize="isAuthenticated()"
-              class="mypage_profile_name"
-              th:text="${user.nickname}"
-              >회원</span
-            ><span> 님</span>
-          </p>
-          <button
-            sec:authorize="isAuthenticated()"
-            id="profile-edit-btn"
-          ></button>
-          <p class="title">가치있는 일상 같이 만들어요!</p>
-        </div>
-      </section>
+			<div class="profile_txt">
+				<p>
+					<span sec:authorize="isAnonymous()" class="mypage_profile_name">회원</span>
 
-      <section class="mypage_guide">
-        <a><img src="/img/org/org_guide.png" alt="" /></a>
-      </section>
+					<span sec:authorize="isAuthenticated()" class="mypage_profile_name"
+						th:text="${user.nickname}">회원</span><span> 님</span>
+				</p>
+				<button sec:authorize="isAuthenticated()" id="profile-edit-btn"></button>
+				<p class="title">가치있는 일상 같이 만들어요!</p>
+			</div>
+		</section>
 
-      <!-- 마이페이지 카테고리 ----------------------------------------------------- -->
+		<section class="mypage_guide">
+			<a><img src="/img/org/org_guide.png" alt="" /></a>
+		</section>
 
-      <section sec:authorize="isAnonymous()" class="mypageCategory isAnonymous">
-        <ul>
-          <li>
-            <a href="#">
-              <div>
-                <span>📝<br /></span>
-                <span>신청관리</span>
-              </div>
-            </a>
-            <a href="#">
-              <div>
-                <span>❤️<br /></span>
-                <span>찜한봉사</span>
-              </div>
-            </a>
-            <a href="#">
-              <div>
-                <span>📣<br /></span>
-                <span>달력</span>
-              </div>
-            </a>
-            <a href="#">
-              <div>
-                <span>⚙️<br /></span>
-                <span>내 정보</span>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </section>
+		<!-- 마이페이지 카테고리 ----------------------------------------------------- -->
 
-      <section sec:authorize="isAuthenticated()" class="mypageCategory">
-        <ul>
-          <li>
-            <a href="/user/myapply">
-              <div>
-                <span>📝<br /></span>
-                <span>신청관리</span>
-              </div>
-            </a>
-            <a href="/user/vol_wish_list">
-              <div>
-                <span>❤️<br /></span>
-                <span>찜한봉사</span>
-              </div>
-            </a>
-            <a href="/user/calender">
-              <div>
-                <span>📣<br /></span>
-                <span>달력</span>
-              </div>
-            </a>
-            <a href="/user/myapply">
-              <div>
-                <span>⚙️<br /></span>
-                <span>내 정보</span>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </section>
+		<section sec:authorize="isAnonymous()" class="mypageCategory isAnonymous">
+			<ul>
+				<li>
+					<a href="#">
+						<div>
+							<span>📝<br /></span>
+							<span>신청관리</span>
+						</div>
+					</a>
+					<a href="#">
+						<div>
+							<span>❤️<br /></span>
+							<span>찜한봉사</span>
+						</div>
+					</a>
+					<a href="#">
+						<div>
+							<span>📣<br /></span>
+							<span>달력</span>
+						</div>
+					</a>
+					<a href="#">
+						<div>
+							<span>⚙️<br /></span>
+							<span>내 정보</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</section>
 
-      <!-- 나의 게시글 ----------------------------------------------------- -->
+		<section sec:authorize="isAuthenticated()" class="mypageCategory">
+			<ul>
+				<li>
+					<a href="/user/myapply">
+						<div>
+							<span>📝<br /></span>
+							<span>신청관리</span>
+						</div>
+					</a>
+					<a href="/user/vol_wish_list">
+						<div>
+							<span>❤️<br /></span>
+							<span>찜한봉사</span>
+						</div>
+					</a>
+					<a href="/user/calender">
+						<div>
+							<span>📣<br /></span>
+							<span>달력</span>
+						</div>
+					</a>
+					<a href="/user/myapply">
+						<div>
+							<span>⚙️<br /></span>
+							<span>내 정보</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</section>
 
-      <section sec:authorize="isAnonymous()" class="my_post">
-        <div class="mypage_mypost_title isAnonymous" id="imageContainer">
-          <span>나의 게시글 </span>
-          <a href="#"><img src="/img/icon/icon_plus.png" /></a>
-        </div>
-        <div class="mypage_mypost_img">
-          <img src="/img/user/emptyImage.png" alt="게시글1" />
-          <img src="/img/user/emptyImage.png" alt="게시글1" />
-          <img src="/img/user/emptyImage.png" alt="게시글1" />
-        </div>
+		<!-- 나의 게시글 ----------------------------------------------------- -->
 
-        <!--  -->
-      </section>
+		<section sec:authorize="isAnonymous()" class="my_post">
+			<div class="mypage_mypost_title isAnonymous" id="imageContainer">
+				<span>나의 게시글 </span>
+				<a href="#"><img src="/img/icon/icon_plus.png" /></a>
+			</div>
+			<div class="mypage_mypost_img">
+				<img src="/img/user/emptyImage.png" alt="게시글1" />
+				<img src="/img/user/emptyImage.png" alt="게시글1" />
+				<img src="/img/user/emptyImage.png" alt="게시글1" />
+			</div>
 
-      <section sec:authorize="isAuthenticated()" class="my_post">
-        <div class="mypage_mypost_title" id="imageContainer">
-          <span>나의 게시글 </span>
-          <a href="#"><img src="/img/icon/icon_plus.png" /></a>
-        </div>
-        <div class="mypage_mypost_img">
-          <a th:href="${p.id}" th:each="p:${mypic}"
-            ><img src="" th:src="${p.url}" alt="게시글1"
-          /></a>
-        </div>
-      </section>
+			<!--  -->
+		</section>
 
-      <!-- 해봉과 함께한지 -----------ss------------------------------------------ -->
-      <section sec:authorize="isAnonymous()" class="cs">
-        <span
-          >해봉과 함께해 주세요 ! 😊<br />
-          <a href="/user_signin"> 지금 로그인하기</a></span
-        >
-      </section>
+		<section sec:authorize="isAuthenticated()" class="my_post">
+			<div class="mypage_mypost_title" id="imageContainer">
+				<span>나의 게시글 </span>
+				<a href="#"><img src="/img/icon/icon_plus.png" /></a>
+			</div>
+			<div class="mypage_mypost_img">
+				<a th:href="${p.id}" th:each="p:${mypic}"><img src="" th:src="${p.url}" alt="게시글1" /></a>
+			</div>
+		</section>
 
-      <section sec:authorize="isAuthenticated()" class="cs">
-        <span
-          ><span th:text="${user.name}">회원</span>님이 해봉과 함께한지💛 일<br
-        /></span>
-        <span
-          ><span th:text="${user.name}">회원</span>님이 해봉을 통해 함께한
-          봉사🤝 회</span
-        >
-      </section>
-      <modal-alert
-        class="d-none"
-        data-show="false"
-        data-title="알림"
-        data-content="로그인 후 이용해 주세요"
-      >
-        <div slot="content"></div>
-      </modal-alert>
+		<!-- 해봉과 함께한지 -----------ss------------------------------------------ -->
+		<section sec:authorize="isAnonymous()" class="cs">
+			<span>해봉과 함께해 주세요 ! 😊<br />
+				<a href="/user_signin"> 지금 로그인하기</a></span>
+		</section>
 
-      <modal-panel
-        class="d-none"
-        data-title="프로필 수정"
-        data-show="false"
-        data-submmit="적용"
-      >
-        <section class="profile-edit-section" slot="content">
-          <form class="profile-edit-form">
-            <img
-              th:if="${user}"
-              th:src="${user.profilePhoto}"
-              class="profile-img"
-              src="/img/user/nonUserpic.png"
-              alt=""
-            />
-            <div class="img-input-div">
-              <label
-                for="profile-img-input"
-                class="icon icon-plus img-drop-zone"
-              ></label>
-              <input type="file" alt="사진 변경" id="profile-img-input" />
-            </div>
+		<section sec:authorize="isAuthenticated()" class="cs">
+			<span><span th:text="${user.name}">회원</span>님이 해봉과 함께한지💛 일<br /></span>
+			<span><span th:text="${user.name}">회원</span>님이 해봉을 통해 함께한
+				봉사🤝 회</span>
+		</section>
+		<modal-alert class="d-none" data-show="false" data-title="알림" data-content="로그인 후 이용해 주세요">
+			<div slot="content"></div>
+		</modal-alert>
 
-            <div sec:authorize="isAuthenticated()" class="nickname-input-div">
-              <input
-                type="text"
-                alt="닉네임 변경"
-                id="profile-nickname-input"
-                th:value="${user.nickname}"
-              />
-              <span>한글/영문/숫자 포함 10자 이내</span>
-            </div>
-          </form>
-          <div class="content-command">
-            <button class="btn-cancel">취소</button>
-            <button type="submit" class="btn-submmit">적용</button>
-          </div>
-        </section>
-      </modal-panel>
-    </main>
-    <nav class="nav_list" th:replace="~{inc/nav}"></nav>
-  </body>
+		<modal-panel class="d-none" data-title="프로필 수정" data-show="false" data-submmit="적용">
+			<section class="profile-edit-section" slot="content">
+				<form class="profile-edit-form">
+					<img th:if="${user}" th:src="${user.profilePhoto}" class="profile-img"
+						src="/img/user/nonUserpic.png" alt="" />
+					<div class="img-input-div">
+						<label for="profile-img-input" class="icon icon-plus img-drop-zone"></label>
+						<input type="file" alt="사진 변경" id="profile-img-input" />
+					</div>
+
+					<div sec:authorize="isAuthenticated()" class="nickname-input-div">
+						<input type="text" alt="닉네임 변경" id="profile-nickname-input" th:value="${user.nickname}" />
+						<span>한글/영문/숫자 포함 10자 이내</span>
+					</div>
+				</form>
+				<div class="content-command">
+					<button class="btn-cancel">취소</button>
+					<button type="submit" class="btn-submmit">적용</button>
+				</div>
+			</section>
+		</modal-panel>
+	</main>
+	<nav class="nav_list" th:replace="~{inc/nav}"></nav>
+</body>
+
 </html>
