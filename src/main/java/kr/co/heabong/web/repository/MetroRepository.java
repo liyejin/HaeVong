@@ -11,5 +11,6 @@ public interface MetroRepository {
 
 	List<Metropol> findAll();
 	int findByName(String name); // 메트로 아이디
+	String findNameById(int id);
 	
 }

@@ -45,12 +45,12 @@
 		<!-- 상단 사진 컨테이너 -->
 		<div class="user_index_search">
 			<div class="user_index_search_box">
-					<img src="../img/icon/icon_search.png" alt="돋보기 아이콘" class="user_index_search_icon" />
+				<img src="../img/icon/icon_search.png" alt="돋보기 아이콘" class="user_index_search_icon" />
 				<!-- 메인 봉사 검색창  -->
 				<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get" class="submit_form">
 					<input type="text" class="user_index_search_input" placeholder="            봉사, 지금 바로 검색해봉 !"
 						name="sk" th:value="${searchValue}" />
-						<!--백단-->
+					<!--백단-->
 					<input name="cid" value="1" hidden>
 					<input sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" hidden>
 					<!--제출버튼-->
@@ -58,7 +58,7 @@
 				</form>
 			</div>
 		</div>
-		
+
 
 		<!-- 여기,해봉에서만 만날 수 있는 봉사 -->
 		<section class="index_section">
@@ -66,13 +66,13 @@
 				<span>여기,<br />해봉에서만 만날 수 있는 봉사</span>
 			</div>
 			<div class="index_section_list">
-				<a href="/category_main?v=1" class="index_section_item">
+				<a href="/orgvol?&cid=11" class="index_section_item">
 					<div>
 						<img src="../img/user/index_category_list_1.svg" alt="봉사 이미지" class="index_section_item_img" />
 					</div>
 				</a>
 
-				<a href="/category_main?v=1" class="index_section_item">
+				<a href="/orgvol?&cid=7" class="index_section_item">
 					<div>
 						<img src="../img/user/index_category_list_2.svg" alt="봉사 이미지" class="index_section_item_img" />
 					</div>
@@ -84,13 +84,13 @@
 					</div>
 				</a>
 
-				<a href="/category_main?v=1" class="index_section_item">
+				<a href="/orgvol?&cid=5" class="index_section_item">
 					<div>
 						<img src="../img/user/index_category_list_4.svg" alt="봉사 이미지" class="index_section_item_img" />
 					</div>
 				</a>
 
-				<a href="/category_main?v=1" class="index_section_item">
+				<a href="/orgvol?&cid=6" class="index_section_item">
 					<div>
 						<img src="../img/user/index_category_list_5.svg" alt="봉사 이미지" class="index_section_item_img" />
 					</div>
@@ -100,44 +100,28 @@
 
 		<!-- 지금바로봉사신청-->
 		<section class="index_section_2">
-			<div class="index_section_title_2"><span>지금 바로 봉사신청</span></div>
+			<div class="index_section_title_2"><span>Hot Summer🔥🔥 <br>여름에만 할 수 있는 봉사</span></div>
 			<div class="index_section_list_2">
-				<a href="user/vol_list?u=1" class="index_section_item_2">
+				<a href="user/vol_list?u=1" class="index_section_item_2" th:each="summer : ${summerList}">
 					<div>
-						<img src="../img/user/banner_list_3.png" alt="봉사 이미지" class="index_section_item_img_2" />
+						<img th:src="@{'/img/org/org_vol/' + ${summer.photo}}" alt="봉사 이미지"
+							class="index_section_item_img_2" />
 					</div>
 					<div>
-						<span class="index_section_item_location_2">인천 서구<br /></span><span
-							class="index_section_item_title_2">미리네 유기견 보호센터</span>
-					</div>
-				</a>
-
-				<a href="#" class="index_section_item_2">
-					<div>
-						<img src="../img/user/banner_list_2.png" alt="봉사 이미지" class="index_section_item_img_2" />
-					</div>
-					<div>
-						<span class="index_section_item_location_2">마포구 백범로<br /></span><span
-							class="index_section_item_title_2">새싹 보육원 일손돕기</span>
-					</div>
-				</a>
-
-				<a href="#" class="index_section_item_2">
-					<div>
-						<img src="../img/user/banner_list_1.png" alt="봉사 이미지" class="index_section_item_img_2" />
-					</div>
-					<div>
-						<span class="index_section_item_location_2">서울시 영등포구<br /></span><span
-							class="index_section_item_title_2">도연 요양원 활동봉사</span>
+						<span class="index_section_item_location_2" th:text="${summer.address}"></span>
+						<span class="index_section_item_title_2"
+							th:text="${#strings.length(summer.title) &lt;= 10 ? summer.title : (summer.title.substring(0, 10) + '...')}">
+							미리네 유기견 보호센터
+						</span>
 					</div>
 				</a>
 			</div>
+			</div>
 		</section>
-
 		<!-- 카드뉴스 -->
 		<section class="index_section">
 			<div class="index_section_title">
-				<span>새로운 해봉이를<br />위한 해봉 뉴우-스</span>
+				<span>새로운 해봉이를<br />위한 해봉 뉴우-스📰</span>
 			</div>
 
 			<ul class="card_news">
@@ -147,10 +131,10 @@
 						<div class="index_news_text">
 							<span class="index_news_text_category">이색봉사</span>
 							<br />
-							<span class="index_news_text_title">너 이런 봉사 해봉?</span>
+							<span class="index_news_text_title">집 수리 봉사</span>
 							<br />
-							<span class="index_news_text_context">해봉과 함께하는, 해봉에서만 만날수 있는 이색 봉사 구경하러
-								와!</span>
+							<span class="index_news_text_context">재미와 보람을 다 잡고 싶은 여러분을 위해 희망의 러브하우스의 집수리 봉사
+							</span>
 						</div>
 					</div>
 				</li>
@@ -234,28 +218,32 @@
 								<div>
 									<label for="slide04" class="left"></label>
 									<label for="slide02" class="right"></label>
-									<a href="https://marcoroho.com" target="_blank"><img src="/img/user/index_add_img_11.png"></a>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_11.png"></a>
 								</div>
 							</li>
 							<li class="slideitem">
 								<div>
 									<label for="slide01" class="left"></label>
 									<label for="slide03" class="right"></label>
-									<a href="https://marcoroho.com" target="_blank"><img src="/img/user/index_add_img_12.png"></a>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_12.png"></a>
 								</div>
 							</li>
 							<li class="slideitem">
 								<div>
 									<label for="slide02" class="left"></label>
 									<label for="slide04" class="right"></label>
-									<a href="https://marcoroho.com" target="_blank"><img src="/img/user/index_add_img_13.png"></a>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_13.png"></a>
 								</div>
 							</li>
 							<li class="slideitem">
 								<div>
 									<label for="slide03" class="left"></label>
 									<label for="slide01" class="right"></label>
-									<a href="https://marcoroho.com" target="_blank"><img src="/img/user/index_add_img_14.png"></a>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_14.png"></a>
 								</div>
 							</li>
 						</ul>

@@ -33,6 +33,12 @@ public class DistrictServiceImp implements DistrictService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public String name(int districtId, int metropolId) {
+
+		return repository.findNameById(districtId,metropolId);
+	}
 	 
 	
 }

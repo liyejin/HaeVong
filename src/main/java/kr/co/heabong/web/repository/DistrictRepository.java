@@ -11,5 +11,6 @@ import kr.co.heabong.web.entity.District;
 public interface DistrictRepository {
 	public List<District> findAll();
 	int findByName(String name,int metropolId);//district ID 찾기
+	String findNameById(int districtId,int metropolId);
 	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.OrgVolAddressView;
 import kr.co.heabong.web.entity.UserWishView;
 
 public interface OrgVolService {
@@ -53,5 +54,6 @@ public interface OrgVolService {
 	int calculateDeadLineDate(String dateString,String deadLine);
 	List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword);
 	List<UserWishView> getVolListBySearchNotLogin(String searchKeyword);
+	List<OrgVolAddressView> getListByRandom();
 	
 }
