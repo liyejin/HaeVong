@@ -31,4 +31,6 @@ public interface UserRepository {
 
 	// My page
 	User findUserInfoById(int id);
+	
+	User findByEmail(String email);
 }

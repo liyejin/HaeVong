@@ -1,21 +1,39 @@
 package kr.co.heabong.web.controller;
 
-import java.util.List;
-import java.io.UnsupportedEncodingException;
+
+
+import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ResolvableType;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.web.oauth2.client.OAuth2ClientSecurityMarker;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
-import jakarta.mail.MessagingException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.Org;
@@ -24,6 +42,7 @@ import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.entity.VolCategory;
+import kr.co.heabong.web.security.config.CustomOAuth2UserService;
 import kr.co.heabong.web.security.config.HeabongConfig;
 import kr.co.heabong.web.security.config.MyUserDetails;
 import kr.co.heabong.web.service.EmailService;
@@ -61,12 +80,73 @@ public class DefaultController {
 		// model.addAttribute();
 		return "map_apply_modal";
 	}
-	// 이메일 테스트
-	@GetMapping("/email")
-	public void getEamil(Model model) throws UnsupportedEncodingException, MessagingException {
-		// model.addAttribute();
-		emailService.sendVerificationEmail("rlaqjatn3663@naver.com");
+
+	
+	@ResponseBody
+	@GetMapping("/kakao")
+	public String getK(String code) throws JsonMappingException, JsonProcessingException {
+
+		System.out.println("code : " + code);
+
+		String REQUEST_URL = "https://kauth.kakao.com/oauth/token";
+		RestTemplate restTemplate = new RestTemplate();
+
+		// Set Header
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		headers.add("Accept", "application/json");
+
+		// Set parameter
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "authorization_code");
+		params.add("client_id", "9134e21d6cafc9fba3e3ded952ba43a2");
+		params.add("redirect_uri", "http://localhost:8080/kakao");
+		params.add("code", code);
+		// Set http entity
+		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+
+		ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(REQUEST_URL, request, String.class);
+
+		
+		String responseBody = stringResponseEntity.getBody();
+		System.out.println("Response Body: " + responseBody);
+		
+		
+		
+		ObjectMapper objectMapper = new ObjectMapper();		
+		JsonNode responseJson = objectMapper.readTree(responseBody);
+		String accessToken = responseJson.get("access_token").asText();
+
+		System.out.println("Access Token: " + accessToken);
+
+	
+		HttpHeaders headers1 = new HttpHeaders();
+		headers1.add("Authorization", "Bearer " + accessToken);
+		headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+
+		HttpEntity<String> requestEntity1 = new HttpEntity<>(headers1);
+
+		// 요청 보내기
+		ResponseEntity<String> responseEntity1 = restTemplate.exchange("https://kapi.kakao.com/v2/user/me",
+				HttpMethod.GET, requestEntity1, String.class);
+
+		String responseBody1 = responseEntity1.getBody();
+
+	    ObjectMapper objectMapper1 = new ObjectMapper();
+	    JsonNode responseJson1 = objectMapper1.readTree(responseBody1);
+
+	    String id = responseJson1.get("id").asText();
+	    String email = responseJson1.get("kakao_account").get("email").asText();
+	    
+	
+		System.out.println(id);
+		System.out.println(email);
+		
+		
+		
+		return responseBody1;
 	}
+
 	// 메인
 	@GetMapping("/")
 	public String getIndex(Model model) {
@@ -84,14 +164,13 @@ public class DefaultController {
 
 	// 개인 로그인
 	@GetMapping("user_signin")
-	public String getSignIn(HttpServletRequest request,
-	        Model model) {
-		
-		 String uri = request.getHeader("Referer");
-		    if (uri != null && !uri.contains("/user_signin")) {
-		        request.getSession().setAttribute("prevPage", uri);
-		    }
-		    
+	public String getSignIn(HttpServletRequest request, Model model) {
+
+		String uri = request.getHeader("Referer");
+		if (uri != null && !uri.contains("/user_signin")) {
+			request.getSession().setAttribute("prevPage", uri);
+		}
+
 		return "user_signin";
 	}
 
@@ -99,6 +178,8 @@ public class DefaultController {
 	public String setSignIn(String uid, String pwd) {
 		System.out.println(uid);
 		System.out.println(pwd);
+
+		System.out.println();
 
 		if (!userService.isValid(uid, pwd))
 			return "redirect:/user_signin?error";
@@ -194,8 +275,6 @@ public class DefaultController {
 
 		return "redirect:/user_signin";
 	}
-	
-	
 
 	// 카테고리 목록 페이지
 	@GetMapping("category_main")
@@ -211,13 +290,17 @@ public class DefaultController {
 		model.addAttribute("photoList", photoList);
 		return "category_main";
 	}
-	
-	
 
 	@GetMapping("mypage")
 	public String getMypage(@AuthenticationPrincipal MyUserDetails user,
+			@AuthenticationPrincipal OAuth2User oauth2User,
 			Model model) {
 
+		System.out.println(oauth2User);
+		System.out.println("ooooooooooooooooooooooooooooooooooooo");
+		
+		System.out.println(oauth2User.getAttributes());
+		System.out.println(oauth2User.getName());
 		User userProfile = null;
 		List<PostPhoto> myPostPhoto = null;
 
@@ -225,43 +308,44 @@ public class DefaultController {
 		if (user != null) {
 			userProfile = userService.getUserInfoById(user.getId());
 			model.addAttribute("user", userProfile);
-		}
+		}else if(oauth2User != null) {
+			
+			userProfile = userService.getUserName(oauth2User.getName());			
+			model.addAttribute("user", userProfile);
+			
+			System.out.println(userProfile.getName());	
+			}
+		
+		
 		// My post photo
 		if (user != null) {
 			myPostPhoto = postPhotoService.getMyPostPhoto(user.getId());
 			model.addAttribute("mypic", myPostPhoto);
 		}
+		
 
 		return "mypage";
 	}
 
-	
-	
 	@GetMapping("vol_list")
-	public void getUserVolList(
-			@RequestParam(name = "id", required = false) int id,
-			Model model) {
+	public void getUserVolList(@RequestParam(name = "id", required = false) int id, Model model) {
 		model.addAttribute("u", model);
 
 	}
-	
-	
 
 	// 분야별 봉사 검색 기능
 	@GetMapping("orgvol")
-	public String getOrgVolListByCategory(
-			@RequestParam(name = "cid", required = true) Integer categoryId,
+	public String getOrgVolListByCategory(@RequestParam(name = "cid", required = true) Integer categoryId,
 			@RequestParam(name = "sk", required = false) String serchKeyword,
-			@AuthenticationPrincipal MyUserDetails user,
-			Model model) {
-		
-		Integer userId= null; 
-		if(user!=null)
-			userId=user.getId();
+			@AuthenticationPrincipal MyUserDetails user, Model model) {
+
+		Integer userId = null;
+		if (user != null)
+			userId = user.getId();
 		// 카테고리 전체 가져오기
 		List<VolCategory> volCategory = volCategoryService.getCateList();
 		List<UserWishView> orgVolList = null;
-		
+
 		if (serchKeyword == null & categoryId == 1)
 			orgVolList = orgVolService.getView(userId);
 		else if (serchKeyword == null & categoryId != null)
@@ -275,10 +359,10 @@ public class DefaultController {
 
 		return "org_vol_by_category";
 	}
-	
+
 	@GetMapping("community")
 	public String community() {
-		
+
 		return "community_main";
 	}
 
