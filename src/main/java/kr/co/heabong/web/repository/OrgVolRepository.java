@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.OrgVolAddressView;
 import kr.co.heabong.web.entity.UserWishView;
 
 @Mapper
@@ -48,5 +49,6 @@ public interface OrgVolRepository {
 	int countBookmarkUser(int orgVolId);
 
 	List<UserWishView> findViewBySearch(String searchKeyword);
+	List<OrgVolAddressView> findOrgVolRand();
 
 }

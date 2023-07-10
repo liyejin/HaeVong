@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.OrgVolAddressView;
 import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.repository.OrgVolRepository;
 
@@ -20,6 +22,7 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	@Autowired
 	private OrgVolRepository repository;
+	
 
 	@Override
 	public List<OrgVol> getList() {
@@ -143,11 +146,15 @@ public class OrgVolServiceImp implements OrgVolService {
 
 		return diff;
 	}
+	
 	@Override
 	public int ingOrgVol(int orgId) {
 		int ingCount = repository.findIngOrgVol(orgId);
 		return ingCount;
 	}
+	
+
+		
 //  로그인이 된상태에서 메인에서 검색 
 	@Override
 	public List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword) {
@@ -202,7 +209,12 @@ public class OrgVolServiceImp implements OrgVolService {
 		// TODO Auto-generated method stub
 		return repository.countBookmarkUser(OrgVolId);
 	}
+
+	@Override
+	public List<OrgVolAddressView> getListByRandom() {
 	
+		return repository.findOrgVolRand();
+	}
 	
 
 

@@ -50,6 +50,7 @@ function formatDate(dateString) {
 }
 
 let userId = null;
+
 window.addEventListener("load", function(e) {
 
 let category = document.querySelector(".category");

@@ -9,4 +9,7 @@
       <select id="findByName" resultType="int">
     select id from district where name like '%${name}%' and metropol_id = ${metropolId}
    </select>
+    <select id="findNameById" resultType="String">
+    select name from district where id=${districtId} and metropol_id = ${metropolId}
+   </select>
    </mapper>

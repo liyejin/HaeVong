@@ -1,39 +1,34 @@
 package kr.co.heabong.web.controller;
 
-import java.util.List;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
+import kr.co.heabong.web.entity.OrgVolAddressView;
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.security.config.HeabongConfig;
 import kr.co.heabong.web.security.config.MyUserDetails;
+import kr.co.heabong.web.service.DistrictService;
 import kr.co.heabong.web.service.EmailService;
+import kr.co.heabong.web.service.MetroService;
 import kr.co.heabong.web.service.OrgService;
 import kr.co.heabong.web.service.OrgVolService;
 import kr.co.heabong.web.service.PostPhotoService;
@@ -46,6 +41,10 @@ import kr.co.heabong.web.service.VolCategoryService;
 public class DefaultController {
 	@Autowired
 	VolCategoryService volCategoryService;
+	@Autowired
+	DistrictService districtService;
+	@Autowired
+	MetroService metroService;  
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -73,7 +72,12 @@ public class DefaultController {
 	@GetMapping("/")
 	public String getIndex(Model model) {
 		List<OrgVol> list = orgVolService.getList();
+		
+		List<OrgVolAddressView>summerList = orgVolService.getListByRandom();
+
 		model.addAttribute("orgVOl", list);
+		model.addAttribute("summerList", summerList);
+
 		return "index";
 	}
 

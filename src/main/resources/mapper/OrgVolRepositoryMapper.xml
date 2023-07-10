@@ -28,6 +28,10 @@
 	<select id="findById" resultType="OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
+	
+	<select id="findOrgVolRand" resultType="OrgVolAddressView">
+		SELECT * FROM org_vol_address_view order by RAND() LIMIT 3 
+	</select>
 		
 		<select id="findIngOrgVol">
 		 select COUNT(*) from org_vol

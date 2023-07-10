@@ -9,4 +9,7 @@
       <select id="findByName" resultType="int">
     select id from metropol where name like '%${name}%'
    </select>
+         <select id="findNameById" resultType="String">
+    select name from metropol where id = ${id}
+   </select>
    </mapper>

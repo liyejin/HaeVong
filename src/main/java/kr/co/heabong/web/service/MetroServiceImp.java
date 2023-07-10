@@ -20,12 +20,16 @@ public class MetroServiceImp implements MetroService {
 		return list;
 	}
 
-
-
 	@Override
 	public int getById(String name) {
 	int MetropolId = repository.findByName(name);
 		return MetropolId;
+	}
+
+	@Override
+	public String getNameById(int id) {
+
+		return repository.findNameById(id);
 	}
 
 

@@ -8,6 +8,8 @@ public interface DistrictService {
 	public List<District> getList();
 
 	public int getById(String string);
+	
+	String name (int districtId,int metropolId);
 
 	int getById(String name, int metropolId);
 }

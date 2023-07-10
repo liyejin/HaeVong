@@ -8,5 +8,6 @@ public interface MetroService {
 
 	List<Metropol> getList();
 	int getById(String name);
+	String getNameById(int id);
 	
 }
