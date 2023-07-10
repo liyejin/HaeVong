@@ -15,5 +15,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		* from applyOrgVolView
         where user_id = #{uid} and date &lt; curdate()
     </select>	
+
+	<select id="countMyAttendOrgVolList" resultType="kr.co.heabong.web.entity.ApplyOrgVolView"> 
+		SELECT COUNT(*) AS count
+		FROM applyOrgVolView
+		WHERE user_id = #{uid} AND date &lt; CURDATE();
+	
+    </select>	
+
 		
 	</mapper>

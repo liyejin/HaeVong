@@ -49,7 +49,8 @@ public class UserController {
             @PathVariable int id) {
 
         // User user = service.get(id);
-        // user.setNickname(id);
+        // String nickname = new String();
+        // user.setNickname(nickname);
         // service.update(user);
     }
 

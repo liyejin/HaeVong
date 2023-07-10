@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
     <script src="/js/components/modal-alert.js" defer></script>
+    <script src="/js/components/modal-panel.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="/js/user/calender.js" defer></script>
     <script defer>
@@ -53,6 +54,40 @@
             profileImg.src = event.target.result;
           };
           reader.readAsDataURL(file);
+        };
+
+        let btnCancel = document.querySelector(".btn-cancel");
+        btnCancel.onclick = function (e) {
+          modalPanel.show(false);
+        };
+
+        let btnSubmmit = document.querySelector(".btn-submmit");
+        btnSubmmit.onclick = () => {
+          // 프로필 사진 변경
+          let profileImgInput = document.querySelector("#profile-img-input");
+
+          let file = profileImgInput.files[0];
+
+          let formData = new FormData();
+
+          formData.append("file", file);
+
+          fetch(`/api/file/user/4/image`, {
+            method: "PUT",
+            body: formData,
+          }).then(() => {
+            location.reload(); // 페이지 새로고침
+          });
+
+          // 닉네임 변경
+          let nicknameInput = document.querySelector("#profile-nickname-input");
+
+          nicknameInput.onchange = function (e) {
+            let newNickname = e.target.value;
+            console.log("새로운 닉네임:", newNickname);
+          };
+
+          this.classList.add("d-none");
         };
       });
     </script>
@@ -248,7 +283,7 @@
               <input type="file" alt="사진 변경" id="profile-img-input" />
             </div>
 
-            <div class="nickname-input-div">
+            <div sec:authorize="isAuthenticated()" class="nickname-input-div">
               <input
                 type="text"
                 alt="닉네임 변경"
@@ -258,6 +293,10 @@
               <span>한글/영문/숫자 포함 10자 이내</span>
             </div>
           </form>
+          <div class="content-command">
+            <button class="btn-cancel">취소</button>
+            <button type="submit" class="btn-submmit">적용</button>
+          </div>
         </section>
       </modal-panel>
     </main>

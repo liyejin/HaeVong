@@ -49,33 +49,6 @@ class ModalPanelElement extends HTMLElement {
       border-bottom: 1px solid #c5c5c5;
      }
 
-		 .content-command{
-			 display: flex;
-			 justify-content: center;
-       padding : 14px;
-       border-top: 1px solid #c5c5c5;
-
-      }
-		 
-		 .content-command>button {
-			  border: 1px solid white;
-			  border-radius: 100px;
-        box-shadow : 1px 1px 1px grey ;
-			  margin-right: 5px;
-			  color: black;
-		 }
-
-     .content-command>button:active {
-      margin-left: 5px;
-      margin-top : 5px;
-      box-shadow : none;
-   }
-
-    .profile-img{
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
      
      `;
 
@@ -90,26 +63,16 @@ class ModalPanelElement extends HTMLElement {
 
     let template = `
 			<div class="content-panel">
-		            <div class="content-title">${title}</div>
-			        <div class="content-view">
-                        ${content}	
-						<slot name ="content"></slot>
-					</div>
-					<div class="content-command">
-
-          <button class="btn-cancel">취소</button>
-					<button onclick="tmp()" class="btn-submmit" type="submit">${submmitValue}</button>
-					</div>
-			  	</div>
-			  	`;
+		      <div class="content-title">${title}</div>
+			        <div class="content-view"> ${content}	
+						  <slot name ="content"></slot>
+				    	</div>
+      </div>
+			`;
 
     let show = false;
     if (this.hasAttribute("data-show"));
     show = JSON.parse(this.getAttribute("data-show"));
-
-    console.log(typeof this.getAttribute("data-show"));
-    console.log(typeof show);
-
     if (show) this.classList.remove("d-none");
     else this.classList.add("d-none");
 
@@ -124,41 +87,6 @@ class ModalPanelElement extends HTMLElement {
 
     shadow.appendChild(styleEl);
     shadow.appendChild(wrapper);
-
-    let btnCancel = wrapper.querySelector(".btn-cancel");
-    btnCancel.onclick = () => {
-      // this.remove(); //this가 modal-alert
-      this.classList.add("d-none");
-    };
-
-    let btnSubmmit = wrapper.querySelector(".btn-submmit");
-    btnSubmmit.onclick = () => {
-      // 프로필 사진 변경
-      let profileImgInput = document.querySelector("#profile-img-input");
-
-      let file = profileImgInput.files[0];
-
-      let formData = new FormData();
-
-      formData.append("file", file);
-
-      fetch(`/api/file/user/4/image`, {
-        method: "PUT",
-        body: formData,
-      }).then(() => {
-        location.reload(); // 페이지 새로고침
-      });
-
-      // 닉네임 변경
-      // let nicknameInput = document.querySelector("#profile-nickname-input");
-
-      // nicknameInput.onchange = function (e) {
-      //   let newNickname = e.target.value;
-      //   console.log("새로운 닉네임:", newNickname);
-      // };
-
-      // this.classList.add("d-none");
-    };
   }
 
   show(status) {

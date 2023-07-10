@@ -15,4 +15,7 @@ public interface ApplyOrgVolViewRepository {
     // 참여했던 봉사 (모집 글 내에 봉사일자가 오늘 날짜보다 지난날 일때)
     public List<ApplyOrgVolView> findMyAttendOrgVolList(int uid);
 
+    // 현재까지 유저가 참여한 봉사 횟수
+    public List<ApplyOrgVolView> countMyAttendOrgVolList(int uid);
+
 }
