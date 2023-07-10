@@ -19,6 +19,6 @@ public class Post {
 	private String title; 
 	private LocalDateTime regdate; 
 	private int userId; 
-	private int postCategoryId; 
+	private Integer postCategoryId; 
 	private String content;
 }

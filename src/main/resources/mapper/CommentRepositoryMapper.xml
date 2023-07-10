@@ -9,10 +9,13 @@
 	<select id="getLastComment" resultType="kr.co.heabong.web.entity.Comment">
 		select * from comment order by date desc limit 1
 	</select>
+	<select id="getLastEdited" resultType="kr.co.heabong.web.entity.Comment">
+		select * from comment order by edit_date desc limit 1
+	</select>
 
 	<update id="update">
 		UPDATE haevongdb.comment<set>
-			<if test="title!=null">title=#{title},</if>
+			
 			<if test="content!=null">content =#{content}</if>
 		</set>
 		WHERE id =#{id}</update>

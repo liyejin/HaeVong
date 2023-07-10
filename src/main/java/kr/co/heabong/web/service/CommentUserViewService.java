@@ -8,5 +8,6 @@ public interface CommentUserViewService {
 	List<CommentUserView> getListByPostId(int postId);
 	List<CommentUserView> getReplyListByParentId(int parentId);
 	CommentUserView getLastOne();
+	CommentUserView getLastEdited();
 	List<Integer> getReplyCounts(int postId,int parentId);
 }

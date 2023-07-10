@@ -11,6 +11,7 @@ public interface CommentUserViewRepository {
 	List<CommentUserView> findByPostId(int postId);
 	List<CommentUserView> findByParentId(int parentId);
 	CommentUserView findLastOne();
+	CommentUserView findLastEdited();
 	List<Integer> replyCounts(int postId, int parentId);
 
 }

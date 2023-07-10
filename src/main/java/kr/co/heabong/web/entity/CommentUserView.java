@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 public class CommentUserView {
 	private int id;
 	private LocalDateTime date;
+	private LocalDateTime editDate;
+	int isUpdated;
 	private String content;
 	private int userId;
 	private int postId;

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" 
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
-	>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
 	<meta charset="UTF-8">
@@ -35,7 +33,8 @@
 					<img src="/img/user/community/유저 프로필 사진.png" th:src="${post.userProfilePhoto}" alt="프로필이미지">
 					<div class="writer-detail">
 						<div class="writer-detail-name" th:text="${post.userNickname}">문래동불주먹</div>
-						<div class="writer-detail-regdate" th:text="${#temporals.format(post.postDate, 'yyyy-MM-dd HH:mm')}">2023-05-25</div>
+						<div class="writer-detail-regdate"
+							th:text="${#temporals.format(post.postDate, 'yyyy-MM-dd HH:mm')}">2023-05-25</div>
 					</div>
 				</div>
 				<div class="more-btn"><img src="/img/icon/icon_header_more.png" alt="더보기아이콘"></div>
@@ -48,10 +47,10 @@
 				</div>
 				<div class="content-title-section">
 					<div class="content-title" th:text="${post.postTitle}">
-					미리네 댕댕이 보호소 봉사 후기
+						미리네 댕댕이 보호소 봉사 후기
 					</div>
 					<div class="category" th:text="${post.postCategoryName}"></div>
-				</div>	
+				</div>
 				<div class="content-text" th:text="${post.postContent}">오늘은 관악구에 있는 미리네 댕댕이 보호소로 봉사
 					를 갔다! 센터도 너무 깨끗하게 관리가 잘 되어있오늘은 관악구에 있는 미리네 댕댕이 보호소로 봉사
 					를 갔다! 센터도 너무 깨끗하게 관리가 잘 되어있오늘은 관악구에 있는 미리네 댕댕이 보호소로 봉사
@@ -73,54 +72,49 @@
 		<div class="separator"></div>
 		<!--------------------->
 		<section class="comment-section">
-			<div class="comment-input-box" >
+			<div class="comment-input-box">
 				<!--<div sec:authorize="isAuthenticated()" type="hidden"
 							th:data-user-id="${#authentication.principal.id}" </div>-->
-				<textarea sec:authorize="isAnonymous()" class="comment-input" name="comment" placeholder="댓글을 입력해주세요" readonly></textarea>
-				<textarea sec:authorize="isAuthenticated()" class="comment-input" name="comment" placeholder="댓글을 입력해주세요"></textarea>
+				<textarea sec:authorize="isAnonymous()" class="comment-input" name="comment" placeholder="댓글을 입력해주세요"
+					readonly></textarea>
+				<textarea sec:authorize="isAuthenticated()" class="comment-input" name="comment"
+					placeholder="댓글을 입력해주세요"></textarea>
 				<div class="comment-submit" sec:authorize="isAuthenticated()"
-							th:data-user-id="${#authentication.principal.id}" 
-							th:data-post-id="${post.postId}">댓글쓰기</div>
+					th:data-user-id="${#authentication.principal.id}" th:data-post-id="${post.postId}">댓글쓰기</div>
+				<div class="comment-submit" sec:authorize="isAnonymous()"
+					>댓글쓰기</div>
 			</div>
 			<div class="comment-number">
 				<span>댓글&nbsp;&nbsp;</span>
 				<span th:text="${commentList.size}">0</span>
 			</div>
-			<div class="comment-outer">
-				<section class="comment" th:each="comment:${commentList}">
+			<div class="comment-outer" th:each="comment:${commentList}">
+				<section class="comment" >
 					<div class="comment-content">
 						<div class="comment-writer">
 							<img src="/img/user/community/유저 프로필 사진.png" alt="프로필이미지&nbsp;&nbsp;">
 							<span class="comment-name" th:text="${comment.nickname}">이름&nbsp;&nbsp;</span>
-							<span class="comment-mycomment">내 댓글</span>
+							<span class="comment-mycomment" sec:authorize="isAuthenticated()"
+								th:if="${comment.userId} == ${#authentication.principal.id}">내 댓글</span>
 						</div>
 						<div class="comment-body" th:text="${comment.content}">
 							댓글입니다. 댓글이에요. 댓글이요~~
 						</div>
 
 						<div class="comment-info">
-							<span class="comment-days" th:if="${comment.daysAgo}!=0" th:text="|${comment.daysAgo}일 전|">3일 전 ·</span>
+							<span class="comment-days" th:if="${comment.daysAgo}!=0"
+								th:text="|${comment.daysAgo}일 전|">3일 전 ·</span>
 							<span class="comment-days" th:if="${comment.daysAgo}==0" th:text="오늘">3일 전 ·</span>
-							<a href="#"><span class="comment-replies" th:text="|답글 ${comment.childCount}개|"> 답글 1개 ·</span></a>
+							<a href="#" class="reply-open-button"><span class="comment-replies"
+									th:text="|답글 ${comment.childCount}개|" th:data-comment-id="${comment.id}"> 답글 1개
+									·</span></a>
 							<span class="comment-reply"> 답글 달기</span>
 						</div>
 					</div>
 					<img src="/img/icon/icon_header_more.png" alt="더보기아이콘">
 				</section>
-				<div class="reply-outer">
-					<div class="reply">
-						<div class="comment-writer">
-							<img src="/img/user/community/유저 프로필 사진.png" alt="프로필이미지">
-							<span class="comment-name">이름</span>
-						</div>
-						<div class="comment-body">
-							답글입니다.
-						</div>
-						<div class="comment-info">
-							<span class="comment-days">3일 전 </span>
-						</div>
-					</div>
-					<img src="/img/icon/icon_header_more.png" alt="더보기아이콘">
+				<div class="reply-section">
+					
 				</div>
 			</div>
 
