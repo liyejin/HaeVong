@@ -35,7 +35,6 @@
         };
 
         myPostPlusIcon.onclick = function (e) {
-          console.log(e.target.classList);
           if (!myPostPlusIcon.classList.contains("isAnonymous")) return;
 
           e.preventDefault();
@@ -106,13 +105,24 @@
                   ".mypage_profile_name"
                 );
                 userNicknameTag.textContent = user.nickname;
-                console.log(user);
                 setTimeout(() => {
                   modalPanel.show(false);
                 }, 250);
               });
           }
         };
+
+        // ------------------------ 가입일 / 봉사횟수 카운트 -----
+        // 가입일로부터 경과한 일수 계산
+        let signupDateString = document.querySelector(".get-signup-date").value;
+        let signupDate = new Date(signupDateString);
+        let currentDate = new Date();
+        let timeDiff = Math.abs(currentDate.getTime() - signupDate.getTime());
+        let daysCount = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        // HTML에서 일 수 업데이트
+        let daysCountElement = document.getElementById("daysCount");
+        daysCountElement.textContent = daysCount;
       });
     </script>
     <title>마이페이지</title>
@@ -137,6 +147,12 @@
           class="get-id"
           type="hidden"
           th:value="${user.id}"
+        />
+        <input
+          sec:authorize="isAuthenticated()"
+          class="get-signup-date"
+          type="hidden"
+          th:value="${user.signupDate}"
         />
         <div sec:authorize="isAnonymous()" class="profile_pic">
           <img src="/img/user/nonUserpic.png" />
@@ -277,11 +293,12 @@
 
       <section sec:authorize="isAuthenticated()" class="cs">
         <span
-          ><span th:text="${user.name}">회원</span>님이 해봉과 함께한지💛 일<br
+          ><span th:text="${user.name}">회원</span>님이 해봉과 함께한지💛
+          <span id="daysCount"></span>일<br
         /></span>
         <span
           ><span th:text="${user.name}">회원</span>님이 해봉을 통해 함께한
-          봉사🤝 회</span
+          봉사🤝 <span th:text="${countAV}"></span>회</span
         >
       </section>
       <modal-alert

@@ -36,6 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import kr.co.heabong.web.entity.ApplyOrgVolView;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.OrgVolAddressView;
@@ -46,6 +47,7 @@ import kr.co.heabong.web.entity.VolCategory;
 import kr.co.heabong.web.security.config.CustomOAuth2UserService;
 import kr.co.heabong.web.security.config.HeabongConfig;
 import kr.co.heabong.web.security.config.MyUserDetails;
+import kr.co.heabong.web.service.ApplyOrgVolViewService;
 import kr.co.heabong.web.service.DistrictService;
 import kr.co.heabong.web.service.EmailService;
 import kr.co.heabong.web.service.MetroService;
@@ -64,7 +66,7 @@ public class DefaultController {
 	@Autowired
 	DistrictService districtService;
 	@Autowired
-	MetroService metroService;  
+	MetroService metroService;
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -79,8 +81,8 @@ public class DefaultController {
 	HeabongConfig config;
 	@Autowired
 	EmailService emailService;
-	// @Autowired
-	// PostService postService;
+	@Autowired
+	ApplyOrgVolViewService applyOrgVolViewService;;
 
 	@GetMapping("/modal")
 	public String getM(Model model) {
@@ -88,7 +90,6 @@ public class DefaultController {
 		return "map_apply_modal";
 	}
 
-	
 	@ResponseBody
 	@GetMapping("/kakao")
 	public String getK(String code) throws JsonMappingException, JsonProcessingException {
@@ -114,19 +115,15 @@ public class DefaultController {
 
 		ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(REQUEST_URL, request, String.class);
 
-		
 		String responseBody = stringResponseEntity.getBody();
 		System.out.println("Response Body: " + responseBody);
-		
-		
-		
-		ObjectMapper objectMapper = new ObjectMapper();		
+
+		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode responseJson = objectMapper.readTree(responseBody);
 		String accessToken = responseJson.get("access_token").asText();
 
 		System.out.println("Access Token: " + accessToken);
 
-	
 		HttpHeaders headers1 = new HttpHeaders();
 		headers1.add("Authorization", "Bearer " + accessToken);
 		headers1.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
@@ -139,18 +136,15 @@ public class DefaultController {
 
 		String responseBody1 = responseEntity1.getBody();
 
-	    ObjectMapper objectMapper1 = new ObjectMapper();
-	    JsonNode responseJson1 = objectMapper1.readTree(responseBody1);
+		ObjectMapper objectMapper1 = new ObjectMapper();
+		JsonNode responseJson1 = objectMapper1.readTree(responseBody1);
 
-	    String id = responseJson1.get("id").asText();
-	    String email = responseJson1.get("kakao_account").get("email").asText();
-	    
-	
+		String id = responseJson1.get("id").asText();
+		String email = responseJson1.get("kakao_account").get("email").asText();
+
 		System.out.println(id);
 		System.out.println(email);
-		
-		
-		
+
 		return responseBody1;
 	}
 
@@ -158,8 +152,8 @@ public class DefaultController {
 	@GetMapping("/")
 	public String getIndex(Model model) {
 		List<OrgVol> list = orgVolService.getList();
-		
-		List<OrgVolAddressView>summerList = orgVolService.getListByRandom();
+
+		List<OrgVolAddressView> summerList = orgVolService.getListByRandom();
 
 		model.addAttribute("orgVOl", list);
 		model.addAttribute("summerList", summerList);
@@ -303,28 +297,30 @@ public class DefaultController {
 		return "category_main";
 	}
 
+	// My Page
 	@GetMapping("mypage")
 	public String getMypage(@AuthenticationPrincipal MyUserDetails user,
 			Model model) {
 
-	
-		User userProfile = null;
+		User userInfo = null;
+		Integer countApplyVol = applyOrgVolViewService.getCountMyAttendList(user.getId());
+		// countApplyVol = countApplyVol != null ? countApplyVol : 0;
+		System.out.println(countApplyVol);
 		List<PostPhoto> myPostPhoto = null;
 
-		// user name, profile photo
+		// user name, profile photo, signdate info
 		if (user != null) {
-			userProfile = userService.getUserInfoById(user.getId());
-			System.out.println(userProfile.getProfilePhoto());
-			System.out.println();
+			userInfo = userService.getUserInfoById(user.getId());
+
 		}
 		// My post photo
 		if (user != null) {
 			myPostPhoto = postPhotoService.getMyPostPhoto(user.getId());
 		}
-		
-
 		model.addAttribute("mypic", myPostPhoto);
-		model.addAttribute("user", userProfile);
+		model.addAttribute("user", userInfo);
+		model.addAttribute("countAV", countApplyVol);
+
 		return "mypage";
 	}
 
@@ -343,7 +339,7 @@ public class DefaultController {
 			Model model) {
 
 		Integer userId = null;
-		
+
 		if (user != null)
 			userId = user.getId();
 		// 카테고리 전체 가져오기
@@ -352,18 +348,15 @@ public class DefaultController {
 
 		if (searchKeyword == null & categoryId == 1) {
 			orgVolList = orgVolService.getView(userId);
-		System.out.println("디폴트조건1");
-		}
-		else if (searchKeyword == null & categoryId != null) {
+			System.out.println("디폴트조건1");
+		} else if (searchKeyword == null & categoryId != null) {
 			orgVolList = orgVolService.getViewOrgVolListByCategoryId(userId, categoryId);
 			System.out.println("디폴트조건2");
-		}
-		else if (searchKeyword != null && categoryId !=1) { 
+		} else if (searchKeyword != null && categoryId != 1) {
 			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, searchKeyword);
-		System.out.println("디폴트조건3");
-		}
-		else if (searchKeyword != null&categoryId == 1) { 
-			orgVolList = orgVolService.getVolListBySearch(userId,searchKeyword);
+			System.out.println("디폴트조건3");
+		} else if (searchKeyword != null & categoryId == 1) {
+			orgVolList = orgVolService.getVolListBySearch(userId, searchKeyword);
 			System.out.println("디폴트조건4");
 		}
 

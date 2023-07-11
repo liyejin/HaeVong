@@ -12,4 +12,7 @@ public interface ApplyOrgVolViewService {
     // 참여내역(지난내역)
     List<ApplyOrgVolView> getAttendVolList(int uid);
 
+    // 봉사 횟수
+    Integer getCountMyAttendList(int uid);
+
 }

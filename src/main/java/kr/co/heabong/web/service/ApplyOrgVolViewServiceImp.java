@@ -24,4 +24,10 @@ public class ApplyOrgVolViewServiceImp implements ApplyOrgVolViewService {
         return repository.findMyAttendOrgVolList(uid);
     }
 
+    @Override
+    public Integer getCountMyAttendList(int uid) {
+
+        return repository.countMyAttendOrgVolList(uid);
+    }
+
 }

@@ -16,6 +16,6 @@ public interface ApplyOrgVolViewRepository {
     public List<ApplyOrgVolView> findMyAttendOrgVolList(int uid);
 
     // 현재까지 유저가 참여한 봉사 횟수
-    public List<ApplyOrgVolView> countMyAttendOrgVolList(int uid);
+    public Integer countMyAttendOrgVolList(int uid);
 
 }
