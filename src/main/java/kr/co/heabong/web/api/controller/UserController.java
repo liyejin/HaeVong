@@ -44,14 +44,14 @@ public class UserController {
 
     }
 
-    @PutMapping("user/{id}/nickname")
-    public void NicknameEdit(@RequestParam("nickname") String nickname,
+    @PutMapping("{id}/nickname")
+    public User NicknameEdit(@RequestParam("userNickname") String nickname,
             @PathVariable int id) {
 
-        // User user = service.get(id);
-        // String nickname = new String();
-        // user.setNickname(nickname);
-        // service.update(user);
+        User user = service.get(id);
+        user.setNickname(nickname);
+        service.update(user);
+        return user;
     }
 
 }
