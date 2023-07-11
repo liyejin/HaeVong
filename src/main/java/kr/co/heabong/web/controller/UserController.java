@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.heabong.web.entity.ApplyOrgVolView;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.PostPhoto;
 import kr.co.heabong.web.entity.User;
 import kr.co.heabong.web.entity.UserVol;
 import kr.co.heabong.web.security.config.MyUserDetails;
+import kr.co.heabong.web.service.ApplyOrgVolViewService;
 import kr.co.heabong.web.service.PostPhotoService;
 import kr.co.heabong.web.service.UserService;
 import kr.co.heabong.web.service.UserVolService;
@@ -51,6 +53,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private PostPhotoService postPhotoService;
+	@Autowired
+	private ApplyOrgVolViewService orgVolViewService;
 
 	@GetMapping("customer_service")
 	public String getCustomer_service(Model model) {
@@ -99,7 +103,7 @@ public class UserController {
 
 		return "edit_pwdchange_insert";
 	}
-	
+
 	@GetMapping("my_calender")
 	public String schedule(Model model) {
 
@@ -139,11 +143,18 @@ public class UserController {
 		model.addAttribute("map", map);
 		return "user/vol_list";
 	}
-	
 
-	
-	
-	
-	
+	// My page category section ----------------------------
+	@GetMapping("/myapply")
+	public String getMyVolList(
+			@AuthenticationPrincipal MyUserDetails user,
+			Model model) {
+
+		// My apply vol list : 로그인 후 내 봉사 신청/ 참여했던 봉사
+		List<ApplyOrgVolView> list = orgVolViewService.getApplyVolList(user.getId());
+		model.addAttribute("apVol", list);
+
+		return "user/my_vol_manage";
+	}
 
 }

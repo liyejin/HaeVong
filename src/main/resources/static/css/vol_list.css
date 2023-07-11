@@ -5,355 +5,350 @@
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
 
 .category {
-	display: flex;
-	flex-direction: row;
-	overflow: auto;
-	overflow-x: auto;
-	margin-top: 20px;
-	margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  overflow-x: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .category::-webkit-scrollbar {
-	width: 0.5em;
-	/* 스크롤바 너비 */
+  width: 0.5em;
+  /* 스크롤바 너비 */
 }
 
-.category>.catelist {
-	background-color: #64987F;
-	width: 100px;
-	color: white;
-	text-align: center;
-	border-radius: 15px;
-	white-space: nowrap;
-	padding: 6px;
-	margin-left: 3px;
-	margin-right: 3px;
-	cursor: pointer;
+.category > .catelist {
+  background-color: #64987f;
+  width: 100px;
+  color: white;
+  text-align: center;
+  border-radius: 15px;
+  white-space: nowrap;
+  padding: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
+  cursor: pointer;
 }
 
-.category>.catelist:hover {
-	font-weight: bold;
-	background-color: white;
-	color: #64987F;
+.category > .catelist:hover {
+  font-weight: bold;
+  background-color: white;
+  color: #64987f;
 }
 
 .vol_category {
-	margin: 20px;
-	display: flex;
-	position: relative;
-	justify-content: center;
-	gap: 12px;
+  margin: 20px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  gap: 12px;
 }
 
-.vol_category>a {
-	/* font style */
-	font-size: 14px;
-	font-weight: bold;
+.vol_category > a {
+  /* font style */
+  font-size: 14px;
+  font-weight: bold;
 
-	/* font location */
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  /* font location */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	/* box layout */
-	background-color: #f2f2f2;
-	border-radius: 100px;
-	width: 120px;
-	height: 30px;
+  /* box layout */
+  background-color: #f2f2f2;
+  border-radius: 100px;
+  width: 120px;
+  height: 30px;
 }
 
-.vol_category>a.selected {
-	background-color: #64987f;
+.vol_category > a.selected {
+  background-color: #64987f;
 }
 
 /* <공고관리 게시글들>------------------------------------------------- */
 
 .vol_list {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.org_vol_list{
-	position: relative;
+.org_vol_list {
+  position: relative;
 }
 
-.vol_list>li {
-	/* Auto layout */
+.vol_list > li {
+  /* Auto layout */
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 
-	width: 410px;
-	height: 174px;
+  width: 410px;
+  height: 174px;
 
-	/*  background: rgb(227, 236, 232);*/
-	border-bottom: 3px solid #64987F;
-	border-radius: 15px;
+  /*  background: rgb(227, 236, 232);*/
+  border-bottom: 3px solid #64987f;
+  border-radius: 15px;
 
-	position: relative;
+  position: relative;
 }
 
 .vol_list_img {
-	width: 130px;
-	height: 130px;
-	border-radius: 10px;
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
 }
 
 .vol_list_info {
-	/* display: flex;
+  /* display: flex;
   flex-direction: column; */
-	width: 220px;
-	height: 116px;
-	margin-left: 10px;
-	position: relative;
+  width: 220px;
+  height: 116px;
+  margin-left: 10px;
+  position: relative;
 
-	/* Inside auto layout */
+  /* Inside auto layout */
 
-	flex: none;
-	order: 1;
-	flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 
 .vol_title {
-	font-size: 16px;
-	font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .vol_date {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .vol_write_date {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 .vol_list_btn_box {
-	position: absolute;
-	display: flex;
-	flex-direction: row;
-	justify-content: end;
-	bottom: 0;
-	width: inherit;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  bottom: 0;
+  width: inherit;
 }
 
 .vol_list_btn_box_org {
-	/*  position: absolute;*/
-	margin-top: 36px;
-	width: inherit;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	bottom: 0;
-	width: inherit;
+  /*  position: absolute;*/
+  margin-top: 36px;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  bottom: 0;
+  width: inherit;
 }
-
-
 
 /* 상세보기 버튼 */
 .vol_list_detail_btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #ececec;
-	background-color: #64987f;
-	border-radius: 100px;
-	width: 82px;
-	height: 28px;
-	position: absolute;
-	left: 130px;
-	bottom: 0;
-	font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ececec;
+  background-color: #64987f;
+  border-radius: 100px;
+  width: 82px;
+  height: 28px;
+  position: absolute;
+  left: 130px;
+  bottom: 0;
+  font-size: 14px;
 }
 
 /* 더보기 버튼 */
 .vol_list_edit_btn {
-	width: 3px;
-	height: 16px;
-	position: absolute;
-	top: 30px;
-	right: 30px;
+  width: 3px;
+  height: 16px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
 }
-
 
 /*검색창*/
 .submit_form {
-	position: relative;
-	padding: 30px;
-	margin-top: 20px;
+  position: relative;
+  padding: 30px;
+  margin-top: 20px;
 }
 
 .querytext {
-	display: flex;
-	width: 320px;
-	height: 36px;
-	border-radius: 25px;
-	background-color: #ffffff;
-	border: 0.5px solid gainsboro;
-	position: absolute;
-	top: 0;
-	left: 10px;
+  display: flex;
+  width: 320px;
+  height: 36px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  border: 0.5px solid gainsboro;
+  position: absolute;
+  top: 0;
+  left: 10px;
 }
 
 .querytext::placeholder {
-	text-align: center;
-	/* 가운데 정렬 */
+  text-align: center;
+  /* 가운데 정렬 */
 }
 
 .querytext[type="text"] {
-	caret-color: transparent;
-	/* 커서를 투명하게 만듭니다. */
+  caret-color: transparent;
+  /* 커서를 투명하게 만듭니다. */
 }
 
 .submit {
-	width: 60px;
-	height: 36px;
-	border-radius: 25px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	background-color: white;
-	border: 0;
-	margin-right: 23px;
-	color: #64987F;
+  width: 60px;
+  height: 36px;
+  border-radius: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: white;
+  border: 0;
+  margin-right: 23px;
+  color: #64987f;
 }
 
 .submit:hover {
-	background-color: #64987F;
-	color: white;
+  background-color: #64987f;
+  color: white;
 }
 
 .submit[type="text"]:active,
 .submit[type="submit"]:active,
 .submit[type="button"]:active {
-	transform: translateY(2px);
-	/* 아래로 2픽셀 이동 */
+  transform: translateY(2px);
+  /* 아래로 2픽셀 이동 */
 }
 
 /* <봉사기관 정보변경>------------------------------------------------- */
 
 .info_img {
-	margin: 20px;
-	width: 400px;
-	height: 230px;
-	background-image: url(../../img/user/profile.png);
-	background-repeat: no-repeat;
+  margin: 20px;
+  width: 400px;
+  height: 230px;
+  background-image: url(../../img/user/profile.png);
+  background-repeat: no-repeat;
 
-	position: relative;
-	/* display: flex;
+  position: relative;
+  /* display: flex;
   justify-content: end;
    */
 }
 
 .info_edit_btn {
-	position: absolute;
-	bottom: 21px;
-	right: 23px;
+  position: absolute;
+  bottom: 21px;
+  right: 23px;
 }
 
 .info_edit {
-	list-style-type: none;
+  list-style-type: none;
 
-	/* 테두리 스타일 */
-	border: 1px solid #c1c1c1;
-	border-radius: 10px;
-	height: 40px;
-	width: 370px;
+  /* 테두리 스타일 */
+  border: 1px solid #c1c1c1;
+  border-radius: 10px;
+  height: 40px;
+  width: 370px;
 
-	/* 텍스트 스타일 */
-	align-items: center;
-	display: flex;
-	color: #aaaaaa;
-	text-align: center;
-	font-size: 16px;
-	padding-left: 20px;
+  /* 텍스트 스타일 */
+  align-items: center;
+  display: flex;
+  color: #aaaaaa;
+  text-align: center;
+  font-size: 16px;
+  padding-left: 20px;
 
-	/* 기본 스타일 */
-	margin-bottom: 10px;
+  /* 기본 스타일 */
+  margin-bottom: 10px;
 }
 
 /* 기관명,대표자명 수정불가 -> 회색 */
 .info_edit_fix {
-	color: #aaaaaa;
+  color: #aaaaaa;
 }
 
 /* 수정 입력폼 */
-.info_edit>li>input {
-	border: none;
-	font-size: 18px;
-	padding-top: 3px;
-	padding-left: 30px;
+.info_edit > li > input {
+  border: none;
+  font-size: 18px;
+  padding-top: 3px;
+  padding-left: 30px;
 }
 
 /* 기업회원 탈퇴 */
 
 .membership_withdrawal {
-	margin-left: 10px;
-	font-size: 16px;
-	text-decoration-line: underline;
+  margin-left: 10px;
+  font-size: 16px;
+  text-decoration-line: underline;
 
-	color: #444343;
+  color: #444343;
 }
 
 /* <나 의 봉사 일기 : 내 게시글>------------------------------------------------- */
 
-.my_post_list>li {
-	display: flex;
-	margin-bottom: 40px;
+.my_post_list > li {
+  display: flex;
+  margin-bottom: 40px;
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_empty_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 .vol_empty {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-	width: 430px;
-	height: 792px;
+  width: 430px;
+  height: 792px;
 }
 
 .vol_empty img {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*  user/my_vol_manage.html (유저 내 봉사 관리페이지)  */
 
 .category {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* 신청내역/지난봉사 아이콘 */
-.category>a {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	color: #ececec;
-	background-color: #64987f;
-	border-radius: 100px;
-	padding: 5px 10px;
-	margin: 5px 10px;
-	/* 요소 사이에 간격을 주기 위해 마진 추가 */
+.vol_category > div {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #ececec;
+  background-color: #64987f;
+  border-radius: 100px;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  /* 요소 사이에 간격을 주기 위해 마진 추가 */
 }
-
-
 
 /*북마크*/
 .bookmark {
-	background-image: url('/img/icon/icon_bookmark.svg');
-	background-size: cover;
-	height: 31px;
-	width: 25px;
-	border: 0;
+  background-image: url("/img/icon/icon_bookmark.svg");
+  background-size: cover;
+  height: 31px;
+  width: 25px;
+  border: 0;
 }
 
 .bookmark.active {
-	background-image: url("/img/icon/boomark-fill.svg");
+  background-image: url("/img/icon/boomark-fill.svg");
 }

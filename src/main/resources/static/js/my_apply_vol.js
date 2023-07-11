@@ -3,15 +3,13 @@ function volListLoad(url) {
   fetch(url)
     .then((response) => response.json())
     .then((list) => {
-      console.log(list);
-
       volList.innerHTML = "";
 
       for (let vol of list) {
         let itemTemplate = `<li>
             <img
               class="vol_list_img"
-              src="/img/org/org_vol_list_img.png"
+              src="/img/org/org_vol/${vol.photo}"
               alt="모집공고이미지"
             />
             <div class="vol_list_info">
@@ -20,7 +18,9 @@ function volListLoad(url) {
     
               <ul class="vol_list_btn_box">
                 <li>
-                <a class="vol_list_detail_btn" href="user/vol">상세보기</a>
+                <button onclick="location.href='vol?id=${vol.id}'" class="vol_list_detail_btn">
+                <span>상세보기</span>
+              </button>
                 </li>
               </ul>
             </div>
@@ -39,6 +39,7 @@ function volListLoad(url) {
 
 window.addEventListener("load", function (e) {
   let category = document.querySelector(".vol_category");
+  let volDetailBtn = document.querySelector(".vol_list_detail_btn");
 
   category.onclick = function (e) {
     let status = null;
