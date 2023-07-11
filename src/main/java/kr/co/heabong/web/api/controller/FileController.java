@@ -32,15 +32,19 @@ public class FileController {
     private String uploadPath;
 
     @PutMapping("user/{id}/image")
-    public void profileImgEdit(
+    public String profileImgEdit(
             @RequestParam("file") MultipartFile file,
             @PathVariable int id) throws IOException {
+
         String fileName = file.getOriginalFilename();
+
+        System.out.println(fileName);
 
         // 상대 경로를 ~
         Resource resource = resourceLoader.getResource(uploadPath); // uploadPath : yml파일에 설정해줌
 
         File pathFile = resource.getFile();
+        System.out.println(pathFile);
 
         if (!pathFile.exists()) {
             // Directory 만들어주는 method
@@ -56,15 +60,16 @@ public class FileController {
 
         // 파일 저장
         file.transferTo(new File(realPath));
+        System.out.println("저장 경로: " + realPath);
 
         // 파일 경로
         String fullPath = uploadPath + fileName;
         // }
-        System.out.println(fullPath);
+
         User user = service.get(id);
         user.setProfilePhoto(fullPath);
         service.update(user);
-
+        return fullPath;
     }
 
 }

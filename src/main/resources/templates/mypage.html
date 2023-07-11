@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/css/mypage.css" />
     <script src="/js/components/modal-alert.js" defer></script>
     <script src="/js/components/modal-panel.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script src="/js/user/calender.js" defer></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="/js/user/calender.js" defer></script> -->
     <script defer>
       window.addEventListener("load", function () {
         let mypageCategory = document.querySelector(".mypageCategory");
@@ -24,7 +24,7 @@
         let nicknameInput = document.getElementById("#profile-nickname-input");
         let myPostPlusIcon = document.querySelector(".mypage_mypost_title");
         let profileEditBtn = document.querySelector("#profile-edit-btn");
-
+        let getId = document.querySelector(".get-id");
         let profileImg = document.querySelector(".profile-img");
 
         // 비회원 상태 시 로그인 후 이용 모달
@@ -67,54 +67,86 @@
           let profileImgInput = document.querySelector("#profile-img-input");
 
           let file = profileImgInput.files[0];
+          if (file) {
+            let formData = new FormData();
 
-          let formData = new FormData();
+            formData.append("file", file);
 
-          formData.append("file", file);
-
-          fetch(`/api/file/user/4/image`, {
-            method: "PUT",
-            body: formData,
-          }).then(() => {
-            location.reload(); // 페이지 새로고침
-          });
+            fetch(`/api/file/user/${getId.value}/image`, {
+              method: "PUT",
+              body: formData,
+            })
+              .then((response) => response.text())
+              .then((url) => {
+                let imgTag = document.querySelector(
+                  ".user-profile-image-log-in"
+                );
+                imgTag.src = url;
+              });
+          }
 
           // 닉네임 변경
-          let nicknameInput = document.querySelector("#profile-nickname-input");
+          let inputNickname = document.querySelector(
+            "#profile-nickname-input"
+          ).value;
+          let userNickname = document.querySelector(".mypage_profile_name")
+            .dataset.nickname;
 
-          nicknameInput.onchange = function (e) {
-            let newNickname = e.target.value;
-            console.log("새로운 닉네임:", newNickname);
-          };
+          let formData = new FormData();
+          formData.append("userNickname", inputNickname);
 
-          this.classList.add("d-none");
+          if (inputNickname != userNickname) {
+            fetch(`/api/user/${getId.value}/nickname`, {
+              method: "PUT",
+              body: formData,
+            })
+              .then((response) => response.json())
+              .then((user) => {
+                let userNicknameTag = document.querySelector(
+                  ".mypage_profile_name"
+                );
+                userNicknameTag.textContent = user.nickname;
+                console.log(user);
+                setTimeout(() => {
+                  modalPanel.show(false);
+                }, 250);
+              });
+          }
         };
       });
     </script>
     <title>마이페이지</title>
   </head>
+
   <body>
     <header class="header">
       <div class="header1">
-        <a href=""
-          ><img src="../../img/icon/icon_header_back.png" alt="뒤로가기"
-        /></a>
+        <a href="/category_main">
+          <img src="/img/icon/icon_header_back.png" alt="뒤로가기" />
+        </a>
         <div>마이페이지</div>
-        <a href=""
-          ><img src="../../img/icon/icon_header_more.png" alt="더보기"
-        /></a>
+        <div></div>
       </div>
     </header>
 
     <main class="main">
       <!-- 유저 프로필 ----------------------------------------------------- -->
       <section class="mypage_profile">
+        <input
+          sec:authorize="isAuthenticated()"
+          class="get-id"
+          type="hidden"
+          th:value="${user.id}"
+        />
         <div sec:authorize="isAnonymous()" class="profile_pic">
           <img src="/img/user/nonUserpic.png" />
         </div>
 
         <div sec:authorize="isAuthenticated()" class="profile_pic">
-          <img th:src="${user.profilePhoto}" />
+          <img
+            th:src="${user.profilePhoto}"
+            class="user-profile-image-log-in"
+          />
         </div>
 
         <div class="profile_txt">
@@ -126,6 +158,7 @@
             <span
               sec:authorize="isAuthenticated()"
               class="mypage_profile_name"
+              th:data-nickname="${user.nickname}"
               th:text="${user.nickname}"
               >회원</span
             ><span> 님</span>
