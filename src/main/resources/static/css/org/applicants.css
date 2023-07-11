@@ -1,0 +1,201 @@
+.main {
+  background-color: #f3f7fa;
+}
+.org_vol_list {
+  margin-top: 10px;
+  width: 430px;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfdfd;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.org_vol_list > .org_district {
+  margin-top: 30px;
+}
+.org_vol_list > div {
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.org_vol_list > .org_vol_title {
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px; /* 텍스트를 표시할 최대 너비 */
+}
+.org_vol_list > .org_vol_list_info{
+    /* Auto layout */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    gap: 10px;
+  
+    width: 100%;
+    height: 174px;
+  
+    background: #f6f7f8;
+  
+    position: relative;
+  }
+  
+.org_vol_list_info {
+    /* display: flex;
+    flex-direction: column; */
+    width: 220px;
+    height: 116px;
+    position: relative;
+    /* Inside auto layout */
+    /* flex: none; */
+    /* order: 1; */
+    /* flex-grow: 0; */
+    margin: 0;
+  }
+
+  .org_vol_list_info > span{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .org_vol_list_detail_btn{
+    position: absolute;
+    margin-bottom: 10px;
+  }
+  
+.org_vol_title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .org_vol_date {
+    font-size: 14px;
+  }
+  
+  .org_vol_write_date {
+    font-size: 14px;
+  }
+  
+  /* 상세보기 버튼 */
+  .org_vol_list_detail_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffed8f;
+    border-radius: 100px;
+  
+    width: 82px;
+    height: 28px;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+  
+    font-size: 14px;
+  }
+  
+.org_apply_list_table{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.org_apply_list_row{
+    width: 390px;
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ccc;
+}
+.num_h{
+    font-size: 16px;
+    width: 40px;
+}
+.num{
+    font-size: 14px;
+    width: 40px;
+}
+.name_h{
+    width: 50px;
+}
+.name{
+    width: 50px;
+    font-size: 14px;
+}
+.phone{
+    font-size: 14px;
+    width:120px;
+}
+.phone_h{
+    width:120px;
+}
+.regdate{
+    font-size: 14px;
+    width:100px;
+}
+.regdate_h{
+    width:100px;
+}
+.status_h{
+    width: 56px;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}
+.status-section{
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+}
+.status1{
+    width: 80px;
+}
+.modal{
+    width: 288px;
+    height:756px;
+    background-color: white;
+    position: static;
+    flex-direction: column;
+    align-self: flex-end;
+    display: none;
+    position: absolute;
+    left:142px;
+    top: 0;
+}
+.modal_list{
+    display: flex;
+    flex-direction: column;
+}
+.modal_list_item1{
+    margin: 24px;
+    margin-bottom: 36px;
+    align-self: flex-end;
+    
+}
+.modal_list_item2{
+    font-size: 16px;
+    margin-left:20px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ccc;
+}
+.org_status{
+    width: 56px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 14px;
+}
+.org_status_approved{
+    background-color: #C2E2FF; 
+}
+.org_status_waiting{
+    background-color: #AAAAAA;
+}
+.org_status_refused{
+    background-color: #C66B6B;
+    color: white;
+
+}

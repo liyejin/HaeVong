@@ -1,0 +1,148 @@
+    .post-section {
+    	display: flex;
+    	flex-direction: column;
+    	padding: 48px 20px 20px 20px;
+
+
+    }
+
+    .writer-section {
+    	padding: 0 12px 20px 12px;
+    	display: flex;
+    	flex-direction: row;
+    	align-items: center;
+    	justify-content: space-between;
+
+    }
+
+    .writer-info {
+    	display: flex;
+    	flex-direction: row;
+    	gap: 20px;
+    	align-items: center;
+    }
+
+    .writer-detail {
+    	display: flex;
+    	flex-direction: column;
+    }
+    .writer-detail-regdate{
+		color: darkgrey;
+		font-size: 14px;
+	}
+
+    /* content */
+    .content-section-img {
+    	display: flex;
+    	justify-content: center;
+    }
+
+    .content-section-img>img {
+    	justify-self: center;
+    }
+
+    .content-title-section {
+    	display: flex;
+    	flex-direction: row;
+    	align-items: center;
+    	justify-content: space-between;
+    	padding-top: 24px;
+    	font-size: 24px;
+    }
+	.content-title{
+		padding-left: 20px;
+	}
+	
+	.category{
+		font-size:16px;
+		padding-right: 20px;
+		color: darkgrey;
+	}	
+    .content-text {
+    	padding: 24px 12px 24px 24px;
+    	text-justify: distribute-all-lines;
+    }
+
+	.like-section {
+		padding-left: 20px ;
+	}
+    .separator {
+    	height: 7px;
+    	background-color: rgba(1, 1, 1, 0.2);
+    }
+	.comment-input-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		text-align: center;
+	}
+	.comment-submit{
+		background-color: bisque;
+		border-radius: 12px;
+		width:80px;
+	}
+    /* comment */
+   /* form{
+		display: flex;
+		flex-direction: column;
+	}*/
+    textarea{
+		width: 100%;
+		align-content: center;
+		resize: none;
+	}
+	input{
+		
+		justify-self: end;
+	}
+    .comment-section {
+		padding: 20px;
+    	display: flex;
+    	flex-direction: column;
+    	gap: 24px;
+
+    }
+
+    .comment-number {
+    	display: flex;
+    	flex-direction: row;
+    }
+	.comment-outer{
+		padding-left: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+    .comment {
+    	display: flex;
+    	flex-direction: row;
+    	justify-content: flex-end;
+    }
+
+    .comment-writer {
+    	display: flex;
+    	flex-direction: row;
+    }
+
+    .comment-content {
+		width: 360px;
+    	display: flex;
+    	flex-direction: column;
+    }
+
+    .comment>img {
+    	height: 20px;
+    }
+    .reply-outer{
+		width:inherit;
+		padding-left: 24px;
+		padding-bottom: 12px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 24px;
+	}
+	.reply-outer>img{
+		height:20px;
+	}
+	

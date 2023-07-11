@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유저 신청 봉사 현황</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/vol_list.css" />
+    <script src="/js/my_apply_vol.js"></script>
+  </head>
+
+  <header class="header">
+    <div class="header1">
+      <a href="#"
+        ><img
+          src="/img/icon/icon_header_back.png"
+          th:onclick="history.back()"
+          alt="뒤로가기"
+      /></a>
+      <div>내 봉사 현황</div>
+      <a href=""><img src="/img/icon/icon_header_more.png" alt="더보기" /></a>
+    </div>
+  </header>
+
+  <body>
+    <section class="main">
+      <div class="vol_category">
+        <div class="my_apply_vol">신청 내역</div>
+        <div class="my_attend_vol">지난 봉사</div>
+      </div>
+      <ul class="vol_list">
+        <li th:each="ap:${apVol}">
+          <img
+            class="vol_list_img"
+            th:src="@{/img/org/org_vol/{photo}(photo=${ap.photo})}"
+            alt="모집공고이미지"
+          />
+          <div class="vol_list_info">
+            <span th:text="${ap.title}" class="vol_title"
+              >행복보육원 봉사자 구인합니다.<br />
+              <!--아이콘 안나오네!!-->
+              <img src="/img/icon/icon_bookmark.svg"
+            /></span>
+            <span class="vol_date" th:text="${ap.date}">봉사일자</span>
+
+            <ul class="vol_list_btn_box">
+              <li>
+                <button
+                  th:onclick="|location.href='vol?id=${ap.id}'|"
+                  class="vol_list_detail_btn"
+                >
+                  <span>상세보기</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>

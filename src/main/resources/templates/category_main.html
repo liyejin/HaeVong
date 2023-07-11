@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/css/reset.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/vol_category.css" />
+	<title>카테고리 페이지</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="header2">
+			<img src="/img/icon/icon_header_title.png" alt="로고" />
+		</div>
+	</header>
+	<main class="main">
+		<div class="user_category_banner_main"></div>
+		<!-- 상단 배너 -->
+		<div class="user_category_box">
+			<ul class="user_category_list">
+				<li class="user_category_list_item" th:each="cateList:${cateList}">
+					<a th:href="@{/orgvol?(cid=${cateList.id})}">
+						<!--참여해봉?(cid=${참여해봉의.id}) / cid=키 cateList.id=값-->
+						<!--로컬호스트8080/orgvol?cid=1-->
+
+						<!--카테고리 아이콘 이미지-->
+						<div class="user_category_list_item_icon">
+							<img th:src="@{/img/icon/} + ${cateList.icon}" />
+						</div>
+						<span th:text="${cateList.name}"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<a href="https://marcoroho.com" target="_blank"><div class="user_category_banner_sub_1"></div></a>
+		<a href="https://marcoroho.com" target="_blank"><div class="user_category_banner_sub_2"></div></a>
+		<!-- 카테고리 아이콘 박스 -->
+
+		<div class="user_category_recommended">
+			<div class="user_category_recommended_title">
+				<span>이런 봉사, 해본 적 있어?</span>
+				<a href="#"><img src="/img/icon/icon_plus.png" alt="" /></a>
+			</div>
+
+			<ul class="user_category_recommended_list">
+				<li class="user_category_recommended_item" th:each="mcateList:${mainCateList}">
+
+					<!--기관 사진-->
+					<!--        <img src="/img/user/user_category_banner_main.png" alt="" />-->
+					<img th:src="@{'/img/org/org_vol/'} + ${mcateList.photo}" />
+
+					<a href="@{./list(c=${mcateList})}">
+						<!--이색봉사 제목-->
+						<span
+							th:text="${mcateList.title.length() &gt; 10 ? mcateList.title.substring(0, 10) + '...' : mcateList.title}"
+							class="title"></span>
+						<br>
+						<!--이색봉사 설명-->
+						<span
+							th:text="${mcateList.content.length() &gt; 10 ? mcateList.content.substring(0, 10) + '...' : mcateList.content}"
+							class="content"></span>
+
+					</a>
+				</li>
+			</ul>
+		</div>
+	</main>
+
+	<nav class="nav_list" th:replace="~{inc/nav}"></nav>
+</body>
+
+</html>

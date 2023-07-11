@@ -1,0 +1,139 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.OrgVolRepository">
+	
+	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
+		select * from org_vol
+	</select>
+	<select id="findByOrgIdAndStatus"
+		resultType="kr.co.heabong.web.entity.OrgVol"> select * from org_vol
+		where org_id = #{orgId} <if test="status == 'over'"> and date &lt;
+		current_date()+1 </if>
+		<if test="status == 'on'"> and date &gt;
+		current_date()+1 </if>
+	</select>
+	
+	<select id="findByOffsetAndSize"
+		resultType="OrgVol">
+		select * from
+		org_vol
+		limit #{offset}, #{size}
+	</select>
+
+	<select id="findByAddress">
+		select * from
+		org_vol
+		where road_address like '%${roadAddress}%'
+	</select>
+
+	<select id="findById" resultType="OrgVol">
+		select * from org_vol where id=#{id}
+	</select>
+	
+	<select id="findOrgVolRand" resultType="OrgVolAddressView">
+		SELECT * FROM org_vol_address_view order by RAND() LIMIT 3 
+	</select>
+		
+		<select id="findIngOrgVol">
+		 select COUNT(*) from org_vol
+		where org_id = #{orgId} 
+	</select>
+	
+
+	<!--북마크-->
+	<select id = "countBookmarkUser">
+		SELECT COUNT(*) AS count FROM wish WHERE org_vol_id =#{id} 
+	</select>
+	
+	<select id="findViewAll" resultType="UserWishView"> 
+		SELECT uv.* from(SELECT id,title,regdate,date,org_id,vol_category_id,photo,
+		<if test="userId == null">
+		0 AS `wish`
+		</if>
+   <if test="userId != null">
+		(select count(org_vol_id) from wish where user_id =#{userId}
+		and org_vol_id = id) AS `wish`
+			</if>
+			from (org_vol o
+        LEFT JOIN wish w ON (id = w.org_vol_id))
+    GROUP BY id,title,regdate,date,org_id,vol_category_id, photo)uv
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="volCategoryId != null">
+				vol_category_id=#{volCategoryId}
+			</if>
+			<if test="title != null">
+				AND title like '%${title}%'
+			</if>
+			<if test="orgVolId != null">
+				AND id= #{orgVolId}
+			</if>
+		</trim>
+	</select>
+	
+
+
+	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> UPDATE
+		haevongdb.org_vol <set>
+			<if test="title != null">title = #{title},</if>
+			<if test="regdate != null">regdate = #{regdate},</if>
+			<if test="date != null">date = #{date},</if>
+			<if test="capacity != null">capacity = #{capacity},</if>
+			<if test="content != null">content = #{content},</if>
+			<if test="roadAddress != null">road_address = #{roadAddress},</if>
+			<if test="address != null">address = #{address},</if>
+			<if test="orgId != null">org_id = #{orgId},</if>
+			<if test="districtId != null">district_id = #{districtId},</if>
+			<if test="metropolId != null"> metropol_id= #{metropolId},</if>
+			<if test="deadLine != null"> dead_line= #{deadLine},</if>
+			<if test="volCategoryId != null">vol_category_id = #{volCategoryId},</if>
+		</set>
+		WHERE id = #{id} </update>
+	<delete id="delete">
+		delete from org_vol where id=${id}
+	</delete>
+	<insert id="save" parameterType="kr.co.heabong.web.entity.OrgVol"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		insert into org_vol (title, date, capacity,content,
+		road_address, address, org_id, district_id, metropol_id,
+		vol_category_id,dead_line)
+		values (#{title}, #{date}, #{capacity},
+		#{content}, #{roadAddress}, #{address}, #{orgId}, #{districtId},
+		#{metropolId}, #{volCategoryId}),#{deadLine}
+	</insert>
+
+	<!--카테고리 메인 페이지-->
+	<select id="FindOrgVolListByCategoryId">
+		select * from org_vol where vol_category_id = #{categoryId}
+	</select>
+
+	<!--카테고리 페이지 검색창-->
+	<select id="FindOrgVolListBySearch"> SELECT * FROM org_vol <trim
+			prefix="where" prefixOverrides="AND|OR">
+
+			<if test="categoryId != null">
+				vol_category_id = ${categoryId}
+			</if> AND (title LIKE
+		'%${serchKeyword}%' OR content LIKE '%${serchKeyword}%'); </trim>
+	</select>
+
+
+	<!-- 마이페이지 -->
+	<select id="FindMyApplyOrgVolListById">
+
+		select *
+		from apply_org_vol join org_vol
+		on apply_org_vol.org_vol_id = org_vol.id where apply_org_vol.user_id =
+		${userId} ;
+	</select>
+
+
+	<!--	기관 사진-->
+	<select id="getPhotoList">
+		select photo
+		from org_vol;
+	</select>
+
+
+</mapper>
+	
+

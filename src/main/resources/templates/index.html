@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.user"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>해봉 메인페이지</title>
+	<link rel="stylesheet" href="/css/reset.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/index.css" type="text/css" />
+	<link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+	<script src="/js/index.js"></script>
+</head>
+
+<body>
+	<main class="main">
+		<section class="user_index_section">
+			<div class="user_index_top_img_box">
+				<a href="#"><img src="../img/icon/icon_header_title.png" alt="로고 아이콘"
+						class="user_index_top_img_box_logo" /></a>
+
+				<!-- <a href="#" class="user_index_top_img_box_search_icon"
+            ><img src="../img/icon/icon_search.png" alt="돋보기 아이콘"
+          /></a>-->
+				<div class="user_index_top_img_box_introduction">
+					<div class="user_index_top_img_box_introduction_title">
+						<span>반가워, 나는 해봉이야. <br />너, 이런봉사 해봉?</span>
+					</div>
+					<div class="user_index_top_img_box_introduction_content">
+						<p>
+							봉사를 일상으로 만들고 싶은 해봉이들의 이야기 <br />
+							함께 귀 기울여 주세요 !
+						</p>
+					</div>
+				</div>
+				<div class="user_index_top_img_box_slide">
+					<div class="user_index_top_img_box_slide_bar"></div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- 상단 사진 컨테이너 -->
+		<div class="user_index_search">
+			<div class="user_index_search_box">
+				<img src="../img/icon/icon_search.png" alt="돋보기 아이콘" class="user_index_search_icon" />
+				<!-- 메인 봉사 검색창  -->
+				<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get" class="submit_form">
+					<input type="text" class="user_index_search_input" placeholder="            봉사, 지금 바로 검색해봉 !"
+						name="sk" th:value="${searchValue}" />
+					<!--백단-->
+					<input name="cid" value="1" hidden>
+					<input sec:authorize="isAuthenticated()" th:value="${#authentication.principal.id}" hidden>
+					<!--제출버튼-->
+					<input type="submit" class="submit" value="검색">
+				</form>
+			</div>
+		</div>
+
+
+		<!-- 여기,해봉에서만 만날 수 있는 봉사 -->
+		<section class="index_section">
+			<div class="index_section_title">
+				<span>여기,<br />해봉에서만 만날 수 있는 봉사</span>
+			</div>
+			<div class="index_section_list">
+				<a href="/orgvol?&cid=11" class="index_section_item">
+					<div>
+						<img src="../img/user/index_category_list_1.svg" alt="봉사 이미지" class="index_section_item_img" />
+					</div>
+				</a>
+
+				<a href="/orgvol?&cid=7" class="index_section_item">
+					<div>
+						<img src="../img/user/index_category_list_2.svg" alt="봉사 이미지" class="index_section_item_img" />
+					</div>
+				</a>
+
+				<a href="/category_main?v=1" class="index_section_item">
+					<div>
+						<img src="../img/user/index_category_list_3.svg" alt="봉사 이미지" class="index_section_item_img" />
+					</div>
+				</a>
+
+				<a href="/orgvol?&cid=5" class="index_section_item">
+					<div>
+						<img src="../img/user/index_category_list_4.svg" alt="봉사 이미지" class="index_section_item_img" />
+					</div>
+				</a>
+
+				<a href="/orgvol?&cid=6" class="index_section_item">
+					<div>
+						<img src="../img/user/index_category_list_5.svg" alt="봉사 이미지" class="index_section_item_img" />
+					</div>
+				</a>
+			</div>
+		</section>
+
+		<!-- 지금바로봉사신청-->
+		<section class="index_section_2">
+			<div class="index_section_title_2"><span>계절</span></div>
+			<div class="index_section_list_2">
+				<a href="user/vol_list?u=1" class="index_section_item_2" th:each="summer : ${summerList}">
+					<div>
+						<img th:src="@{'/img/org/org_vol/' + ${summer.photo}}" alt="봉사 이미지"
+							class="index_section_item_img_2" />
+					</div>
+					<div>
+						<span class="index_section_item_location_2" th:text="${summer.address}"></span>
+						<span class="index_section_item_title_2"
+							th:text="${#strings.length(summer.title) &lt;= 10 ? summer.title : (summer.title.substring(0, 10) + '...')}">
+							미리네 유기견 보호센터
+						</span>
+					</div>
+				</a>
+			</div>
+			</div>
+		</section>
+		<!-- 카드뉴스 -->
+		<section class="index_section">
+			<div class="index_section_title">
+				<span>새로운 해봉이를<br />위한 해봉 뉴우-스📰</span>
+			</div>
+
+			<ul class="card_news">
+				<li class="card_news_1">
+					<div class="index_news_box">
+						<div class="index_news_img"></div>
+						<div class="index_news_text">
+							<span class="index_news_text_category">이색봉사</span>
+							<br />
+							<span class="index_news_text_title">집 수리 봉사</span>
+							<br />
+							<span class="index_news_text_context">재미와 보람을 다 잡고 싶은 여러분을 위해 희망의 러브하우스의 집수리 봉사
+							</span>
+						</div>
+					</div>
+				</li>
+
+				<li class="card_news_2">
+					<div class="index_news_box">
+						<div class="index_news_img"></div>
+						<div class="index_news_text">
+							<span class="index_news_text_category">이색봉사</span>
+							<br />
+							<span class="index_news_text_title">너 이런 봉사 해봉?</span>
+							<br />
+							<span class="index_news_text_context">해봉과 함께하는, 해봉에서만 만날수 있는 이색 봉사 구경하러
+								와!</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+
+
+
+
+		<!-- 봉사후기 -->
+		<section class="index_section">
+			<div class="index_section_title">
+				<span>해봉이들의 <br />봉사후기 구경하기</span>
+			</div>
+
+			<div class="index_review_list">
+				<div class="index_review_item">
+					<img class="index_review_img" src="../img/user/index_review_list_1.svg" />
+					<div class="index_review_info">
+						<span class="index_review_info_title">매주 사랑스러운 댕댕이들을 보..</span><br />
+						<p class="index_review_info_context">
+							강아지를 너무 사랑하지만 1인 가구의 비애로 인해 항상 바라만
+							봤어야 했는데, 해봉을 통해 유기견 봉사를 통해서 매주
+						</p>
+					</div>
+				</div>
+				<div class="index_review_item">
+					<img class="index_review_img" src="../img/user/index_review_list_2.svg" />
+					<div class="index_review_info">
+						<span class="index_review_info_title">너무 재밌었던 마라톤 봉사 후기!</span><br />
+						<p class="index_review_info_context">
+							오늘은 친구들과 다같이 마라톤 봉사를 했다! 생애 처음하는
+							봉사였는데 너무너무 행복하고 즐거웠다.일정 거리를 달리
+						</p>
+					</div>
+				</div>
+				<div class="index_review_item">
+					<img class="index_review_img" src="../img/user/index_review_list_3.svg" />
+					<div class="index_review_info">
+						<span class="index_review_info_title">도시락 배달 봉사 다녀왔어요.</span>
+						<p class="index_review_info_context">
+							저번주 주말, 금천구에서 열린 사랑의 도시락 배달 봉사에
+							다녀왔습니다. 날씨도 화창하고 진행 봉사 요원분들도 정말 친절하
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!--마르코로호 광고-->
+		<section class="index_section_sponsor">
+			<div class="index_sponsor">
+				<div class="index_section_title sponsor_title">
+					<span>해봉과 세상을 위해<br />
+						함께하는 기업 ❤️</span>
+				</div>
+
+				<div class="index_sponsor_box">
+					<div class="slidebox">
+						<input type="radio" name="slide" id="slide01" checked>
+						<input type="radio" name="slide" id="slide02">
+						<input type="radio" name="slide" id="slide03">
+
+						<ul class="slidelist">
+							<li class="slideitem">
+								<div>
+									<label for="slide04" class="left"></label>
+									<label for="slide02" class="right"></label>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_11.png"></a>
+								</div>
+							</li>
+							<li class="slideitem">
+								<div>
+									<label for="slide01" class="left"></label>
+									<label for="slide03" class="right"></label>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_12.png"></a>
+								</div>
+							</li>
+							<li class="slideitem">
+								<div>
+									<label for="slide02" class="left"></label>
+									<label for="slide04" class="right"></label>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_13.png"></a>
+								</div>
+							</li>
+							<li class="slideitem">
+								<div>
+									<label for="slide03" class="left"></label>
+									<label for="slide01" class="right"></label>
+									<a href="https://marcoroho.com" target="_blank"><img
+											src="/img/user/index_add_img_14.png"></a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<!-- 해봉이들 사진-->
+		<section class="index_section_photo">
+			<div class="index_photo">
+				<div class="index_section_title photo_title">
+					<span>해봉이들의<br />
+						Best Photo📸</span>
+				</div>
+
+				<div class="index_photo_box">
+					<div class="index_photo_list">
+						<img src="../img/user/index_best_photo_list_1.png" alt="랜덤사진" /><img
+							src="../img/user/index_best_photo_list_2.png" alt="랜덤사진" /><img
+							src="../img/user/index_best_photo_list_3.png" alt="랜덤사진" />
+					</div>
+					<div class="index_photo_list">
+						<img src="../img/user/index_best_photo_list_4.png" alt="랜덤사진" /><img
+							src="../img/user/index_best_photo_list_5.png" alt="랜덤사진" /><img
+							src="../img/user/index_best_photo_list_6.png" alt="랜덤사진" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 랜덤 사진 -->
+	</main>
+
+	<nav class="nav_list" th:replace="~{inc/nav}"></nav>
+
+</body>
+
+</html>

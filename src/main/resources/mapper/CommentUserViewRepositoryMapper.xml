@@ -1,0 +1,24 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.heabong.web.repository.CommentUserViewRepository">
+	<select id="findByPostId"
+		resultType="kr.co.heabong.web.entity.CommentUserView">
+		select * from comment_user_view where post_id = #{postId} and parent_id
+		is null
+	</select>
+	<select id="findByParentId"
+		resultType="kr.co.heabong.web.entity.CommentUserView">
+		select * from comment_user_view where parent_id = #{parentId}
+	</select>
+	<select id="findLastOne"
+		resultType="kr.co.heabong.web.entity.CommentUserView">
+		select * from comment_user_view order by date desc limit 1;
+	</select>
+	<select id="findLastEdited"
+		resultType="kr.co.heabong.web.entity.CommentUserView">
+		select * from comment_user_view order by edit_date desc limit 1;
+	</select>
+	<select id="replyCount" resultType="java.lang.Integer">
+		select count(parent_id) count from comment_user_view where
+		post_id=#{postId} and parent_id=#{parenId}
+	</select>
+</mapper>

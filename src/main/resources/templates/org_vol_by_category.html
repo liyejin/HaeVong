@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>봉사 신청하기</title>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/vol_list.css" />
+	<script src="/js/org/org_vol.js" defer></script>
+	<script src="/js/user/bookmark.js" defer></script>
+</head>
+
+<header class="header">
+	<div class="header1">
+		<a href="/category_main"><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
+		<div>봉사 신청하기</div>
+		<div>
+		</div>
+	</div>
+</header>
+
+<body>
+	<section class="main">
+		<!--<div class="vol_category">-->
+		<!--<a href="#" th:href="@{vol_list(u=${map.userId})}"  th:if="${map.category} == 'wish'"><span>신청 내역</span></a>
+			<a href="#" class="selected" th:href="@{vol_list(u=${map.userId})}" th:if="${map.category} == 'part'"><span>신청 내역</span></a>
+			<a href="#" th:href="@{vol_wish_list(u=${map.userId})}" th:if="${map.category} == 'part'"><span>찜한 봉사</span></a>
+			<a href="#" class="selected" th:href="@{vol_wish_list(u=${map.userId})}" th:if="${map.category} == 'wish'"><span>찜한 봉사</span></a>-->
+		<!--</div>-->
+
+		<div class="search_bar">
+			<div class="category" name="volCategoryId">
+					<option class="catelist" th:each="c : ${volCategory}" th:value="${c.id}" th:text="${c.name}">카테고리
+				</option>
+				</option>
+			</div>
+			<form action="/orgvol" th:attr="action=@{/orgvol(cid=${cid})}" method="get" class="submit_form" >
+				<input type="number" hidden placeholder="카테고리" name="cid" th:value="${cid}" />
+				<input type="text" placeholder="찾으시는 봉사를 검색해주세요" name="sk" class="querytext" th:value="${searchValue}" />
+				<!--제출버튼-->
+				<input type="submit" class="submit" name="sk" value="검색">
+			</form>
+			<!--검색창-->
+
+			<ul class="vol_list">
+				<li th:each="vol:${orgVolList}" class="org_vol_list">
+					<img class="vol_list_img" th:src="@{'/img/org/org_vol/' + ${vol.photo}}" alt="모집공고이미지" />
+					<div class="vol_list_info">
+<span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 15 ? vol.title : (vol.title.substring(0, 15) + '...')}">행복보육원 봉사자 구인합</span>
+                  <span class="vol_date" th:utext="${vol.date+'<br/>'}">5월 13일(월)</span>
+                  <span class="vol_write_date" th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span><br>
+						
+						
+						<!--북마크 버튼-->
+						<button  
+						type="button" 
+						sec:authorize="isAuthenticated()"  
+						   th:data-user-id="${#authentication.principal.id}"
+                                th:data-orgVol-id="${vol.id}"
+                                class="bookmark" 
+                                th:classappend="${vol.wish}?'active' : ' '"
+						 />
+				 <a th:href="@{/user/vol(id=${vol.id})}" sec:authorize="isAnonymous()">
+                                <button
+                                    type="button"
+                                    class="bookmark" th:classappend="${#authorization.expression('isAnonymous()')} ? 'd-none'">
+                                </button>
+                            </a>
+                            <!--북마크 버튼-->
+
+				
+						<ul class="vol_list_btn_box">
+							<li><a class="vol_list_detail_btn" href="#" th:href="@{/user/vol(id=${vol.id})}">상세보기</a></li>
+						</ul>
+					</div>
+		</div>
+		</li>
+		</ul>
+	</section>
+<input id="input-member-id" type="hidden"th:value="${#authentication.principal.id}" th:if="${#authorization.expression('isAuthenticated()')}">
+</body>
+
+</html>

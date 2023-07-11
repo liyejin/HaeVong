@@ -1,0 +1,62 @@
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="kr.co.heabong.web.repository.UserVolRepository">
+	  <select id="findAll" resultType="kr.co.heabong.web.entity.UserVol">
+      select * from user_vol
+   </select>
+   <select id="findByUserIdAndStatus" resultType="kr.co.heabong.web.entity.UserVol">
+		select * from user_vol 
+		where user_id = #{userId}
+		<if test="status == 'over'"> and date &lt; current_date()+1 </if>
+		<if test="status == 'on'"> and date &gt; current_date()+1 </if>
+	</select>
+   <select id="findByOffsetAndSize"
+		resultType="kr.co.heabong.web.entity.UserVol">
+		select * from
+		user_vol
+		limit #{offset}, #{size}
+	</select>
+	<select id="findById" resultType="kr.co.heabong.web.entity.UserVol">
+	select * from user_vol where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="kr.co.heabong.web.entity.UserVol">
+      UPDATE haevongdb.user_vol
+    <set>
+         <if test="id != null">id =  #{id},</if>
+         <if test="title != null">title = #{title},</if>
+         <if test="regDate != null">reg_date = #{regDate},</if>
+         <if test="date != null">date = #{date},</if>
+         <if test="capacity != null">capacity = #{capacity},</if>
+         <if test="place != null">place = #{place},</if>
+         <if test="roadAddress != null">road_address = #{roadAddress},</if>
+         <if test="address != null">address = #{address},</if>
+         <if test="userId != null">user_id = #{userId},</if>
+         <if test="districtId != null">district_id = #{districtId},</if>
+         <if test="metropolId != null">metropol_id = #{metropolId},</if>
+         <if test="volCategoryId != null">vol_category_id= #{volCategoryId},</if>
+         <if test="content != null">content= #{content},</if>
+      </set>
+      WHERE id = #{id}
+	</update>
+	   <delete id="delete">
+	   delete from user_vol where id = #{userVol.id}
+   </delete>
+	<insert id="save" parameterType="kr.co.heabong.web.entity.UserVol" useGeneratedKeys="true"
+    keyProperty="id">
+	INSERT INTO user_vol (title, date, capacity, place, road_address,
+	    address, user_id, district_id, metropol_id, vol_category_id, content)
+	VALUES (#{title}, #{date}, #{capacity}, #{place}, #{roadAddress},
+	    #{address}, #{userId}, #{districtId}, #{metropolId}, #{volCategoryId}, #{content})
+	</insert>
+	<!-- My page category section -->
+	<select id="FindMyApplyUserVolListById">
+	select *
+	from apply_user_vol join user_vol 
+	on apply_user_vol.user_vol_id = user_vol.id where apply_user_vol.user_id = #{userId} ; 
+
+	</select>
+
+	</mapper>

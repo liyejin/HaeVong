@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>user_vol_recruit</title>
+	<link rel="stylesheet" href="/css/reset.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/org/vol_post_edit.css">
+	<script src="/js/components/modal-alert.js" defer></script>
+</head>
+
+<body>
+
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<header class="header">
+		<div class="header1">
+			<a href=""><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
+			<div>수정하기</div>
+			<a href=""><img src="/img/icon/icon_header_more.png" alt="더보기" /></a>
+		</div>
+	</header>
+
+	<section class="user_vol_recruit_title">
+		<img src="/img/org/vol_img.png" alt="이하늬봉사사진">
+	</section>
+
+	<form action="vol_edit" class="org_vol_form" method="post">
+		<select class="category" name="volCategoryId">
+			<option value="선택안함" th:value="${volCategory.id}" th:text="${volCategory.name}">카테고리</option>
+			<option th:each="c : ${cateList}" th:text="${c.name}" th:value="${c.id}">카테고리</option>
+		</select>
+		
+		<input type="number" class="id" id="id" name="id" th:value="${vol.id}" hidden>
+		<input type="number" class="org_id" id="org_id" name="orgId" th:value="${vol.orgId}" hidden>
+		<!--<input type="text" class="title" id="org_name" name="orgName" th:value = "${orgName}" readonly>-->
+		<input type="text" class="title" id="title" placeholder="글 제목" name="title" th:value="${vol.title}">
+		<input type="text" class="number" placeholder="모집 인원" name="capacity" th:value="${vol.capacity}">
+		<input type="text" class="location" placeholder="봉사 장소" onclick="daumMap(this)" name="roadAddress"
+			th:value="${vol.roadAddress}" readonly>
+		<input type="text" class="address" placeholder="상세주소" name="address" th:value="${vol.address}" >
+		<script>
+			function daumMap(inputField) {
+				new daum.Postcode({
+					oncomplete: function (data) {
+						var roadAddress = data.roadAddress;
+						inputField.value = roadAddress;
+					}
+				}).open();
+			}
+		</script>
+		<!--        <input type="text" class="due_date" placeholder="마감일"  name = "date"> 봉사일자 -3일 때리기 -->
+		<input type="date" class="date" placeholder="봉사 일자" name="date" th:value="${vol.date}">
+
+		<textarea placeholder="
+        봉사 모집 요강
+        봉사 모집글에 관한 글을 작성해주세요.
+        타인에 대한 무분별한 비방이나 욕설은 
+        경고없이 삭제될 수 있습니다." class="org_vol_post_content_input" style="resize: none;" name="content"
+			th:text="${vol.content}" autofocus></textarea>
+		<div class="footer">
+			<a th:href="@{./vol_post_detail(id=${vol.id})}" class="btn_double_left">취소</a>
+			<input type="submit"class="btn_double_right" value="수정완료"></input>
+		</div>
+		
+		<modal-alert data-title="메시지" data-content="진짜..수정할꺼야?" 
+		>
+
+		</modal-alert>
+	
+	</form>
+</body>
+
+</html>

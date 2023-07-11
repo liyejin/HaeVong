@@ -1,0 +1,269 @@
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ <org_vol_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+body {
+	background-color: #ECECEC;
+}
+
+/* 카테고리(모집중/모집완료) --------------------------------------------- */
+.vol_status_section {
+	margin: 20px;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	gap: 12px;
+}
+
+.vol_status_section>a {
+	/* font style */
+	font-size: 14px;
+	font-weight: bold;
+
+	/* font location */
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	/* box layout */
+	background-color: #ffffff;
+	border-radius: 100px;
+	width: 120px;
+	height: 30px;
+}
+
+.vol_status_section>a.selected {
+	background-color: #64987F;
+}
+
+.vol_status_section>a.status-button{
+	background-color: #ffffff;
+}
+.vol_status_section>a.status-button-selected{
+	background-color: #64987F;
+}
+/* <공고관리 게시글들>------------------------------------------------- */
+
+.vol_list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.vol_list>li {
+	/* Auto layout */
+	background-color: #ffffff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 20px;
+
+	width: 410px;
+	height: 174px;
+
+	/*background: #ECECEC;*/
+	border-radius: 30px;
+
+	position: relative;
+}
+
+.vol_list_img {
+	margin-left: 20px;
+	width: 130px;
+	height: 130px;
+	border-radius: 10px;
+	align-self: center;
+}
+
+.vol_list_info{
+	display: flex;
+	flex-direction: column;
+	width: 220px;
+	height: 116px;
+	margin-left: 10px;
+	margin-right: 20px;
+	position: relative;
+	
+	justify-content: center;
+	/* Inside auto layout */
+
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+}
+
+.vol_section {
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.vol_regdate {
+	margin-right:10px;
+	color: #A7A7A7;
+	font-size: 12px;
+	text-align: right;
+}
+
+.vol_title {
+	align-self: flex-start;
+	height: 50px;
+	margin-left: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	width: inherit;
+	text-align: justify;
+}
+
+.vol_date_section {
+	width: inherit;
+	margin-left: 20px;
+}
+
+.vol_date {
+	font-size: 14px;
+}
+
+.vol_write_date {
+	font-size: 14px;
+}
+
+.vol_list_btn_box {
+	/*	position: absolute;*/
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	bottom: 0;
+	width: inherit;
+}
+
+.vol_list_btn_box_org {
+	/*	position: absolute;*/
+	margin-top: 16px;
+	margin-bottom: 12px;
+	width: inherit;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	bottom: 0;
+	width: inherit;
+}
+
+/* 상세보기 버튼 */
+.vol_list_detail_btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ececec;
+	background-color: #64987F;
+	border-radius: 100px;
+
+	width: 82px;
+	height: 28px;
+	/* position: absolute; */
+	right: 20px;
+	bottom: 0;
+
+	font-size: 14px;
+}
+
+/* 더보기 버튼 */
+.vol_list_edit_btn {
+	width: 3px;
+	height: 16px;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ <> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/* <봉사기관 정보변경>------------------------------------------------- */
+
+.info_img {
+	margin: 20px;
+	width: 400px;
+	height: 230px;
+	background-image: url(../../img/user/profile.png);
+	background-repeat: no-repeat;
+
+	position: relative;
+	/* display: flex;
+  justify-content: end;
+   */
+}
+
+.info_edit_btn {
+	position: absolute;
+	bottom: 21px;
+	right: 23px;
+}
+
+.info_edit {
+	list-style-type: none;
+
+	/* 테두리 스타일 */
+	border: 1px solid #c1c1c1;
+	border-radius: 10px;
+	height: 40px;
+	width: 370px;
+
+	/* 텍스트 스타일 */
+	align-items: center;
+	display: flex;
+	color: #aaaaaa;
+	text-align: center;
+	font-size: 16px;
+	padding-left: 20px;
+
+	/* 기본 스타일 */
+	margin-bottom: 10px;
+}
+
+/* 기관명,대표자명 수정불가 -> 회색 */
+.info_edit_fix {
+	color: #aaaaaa;
+}
+
+/* 수정 입력폼 */
+.info_edit>li>input {
+	border: none;
+	font-size: 18px;
+	padding-top: 3px;
+	padding-left: 30px;
+}
+
+/* 기업회원 탈퇴 */
+
+.membership_withdrawal {
+	margin-left: 10px;
+	font-size: 16px;
+	text-decoration-line: underline;
+
+	color: #444343;
+}
+
+/* <나 의 봉사 일기 : 내 게시글>------------------------------------------------- */
+
+.my_post_list>li {
+	display: flex;
+	margin-bottom: 40px;
+}
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ <vol_empty_list> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.vol_empty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 430px;
+	height: 792px;
+}
+
+.vol_empty img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

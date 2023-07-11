@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:th="http://www.thymeleaf.org" 
+      >
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>user_map_main</title>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/css/map_main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/application_modal.css">
+	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+		integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cdd769767a8d37978024eb6efb6073d8&libraries=services"></script>
+		<script defer>
+			let cateListMet = document.querySelector(".category_list_metropol");
+			cateListMet.onclick=  function(e){
+				e.preventDefault();
+				
+				console.log(e.target.innerText);
+			}
+			
+		</script>
+</head>
+
+<body>
+	<main class="main">
+		<header class="header">
+			<div class="header1">
+				<a href="/"><img src="/img/icon/icon_header_back.png" alt="뒤로가기" /></a>
+				<div>해봉여지도</div>
+				<div>
+					<img src="/img/icon/icon_header_more.png" alt="더보기" />
+				</div>
+			</div>
+		</header>
+
+		<script th:inline="javascript">
+			//  변수에 데이터를 할당
+			let oData = /*[[${ol}]]*/ null;
+			let dData = /*[[${dl}]]*/ null;
+		</script>
+
+		
+
+		<!--지도-->
+		<div id="map" class="map_main" style="width: 430px; height: 782px; border: 0.4px soild #BBBBBB;" >
+
+			<!--검색창/포스트 매핑 구현 예정-->
+			<div class="map_bar">
+				<form action="main" method="get">
+					<img src="/img/icon/icon_header_map.png" alt="지도아이콘" />
+					<input type="text" placeholder="찾으시는 봉사를 검색해주세요" name="search"/>
+				</form>
+			</div>
+
+			<div class="org_vol_box d-none" >
+				
+			</div>
+
+			<section class="map_category_box" id="map_category_box">
+				<div class="map_category_box_title" id="map_category_box_title" type="button"></div>
+				<div class="select_category_tab">
+					<div class="select_category left" >
+						<h1 class="left">지역선택</h1>
+						<span class="left">서울특별시</span>>
+					</div>
+					<div class="select_category right" >
+						<h1 class="right">내 주변 봉사</h1>		
+							<select disabled class="right">
+								<option>카테고리</option>
+							<option value="#" th:each="vol:${volCategory}" th:value="${vol.id}" th:text="${vol.name}">카테고리</option>			
+					    </select>
+					</div>
+				</div>
+				<div class="category_list">
+					<ul class="category_list_metropol">
+							<li th:each="m:${mtp}" th:text="${m.name}" th:data-id="${m.id}" th:class="${m.name}" onclick="filter(this)">서울특별시</li>	
+					</ul>
+					<ul class="category_list_district">
+										
+					</ul>
+				</div>
+				
+				<ul class="org_vol_list">
+					<!--<li class="org_vol" th:each="org_vol:${org_volList}" th:text="${org_vol.name}" th:class="${org_vol.name}" onclick="filter(this)">-->
+					<li class="org_vol"th:each="m:${mtp}">
+						<img src="/img/org/org_main_profile.png"/>
+						<div class="org_vol_text_container">
+							<div class="org_vol_text_box">
+								<span class="org_vol_name" th:text="${m.name}">사랑의 연탄봉사</span>
+								<span class="org_vol_address">마포구 백범로</span>
+								<span class="org_vol_location">현재 위치로부터 300m</span>
+								<div class="org_vol_capacity">
+									모집인원
+								<span class="org_vol_capacity_now">3</span>
+								/
+								<span class="org_vol_capacity_max">10</span>
+								</div>
+							</div>
+							<button class="org_vol_btn" type="button">신청</div>
+						</div>
+
+					</li>
+					
+					
+				</ul>
+			</section>
+	
+
+		<script src="/js/map.js"></script>
+
+
+		<nav class="nav_list" th:replace="~{inc/nav}">
+		</nav>
+
+	</main>
+</body>
+
+</html>

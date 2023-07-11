@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>봉사 상세 페이지</title>
+   <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/user/user_vol_recruit.css" />
+   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+      integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
+      crossorigin="anonymous"></script>
+   <script type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cdd769767a8d37978024eb6efb6073d8&libraries=services"></script>
+   <script src="/js/user/org_vol_apply.js"  defer></script>
+      <script src="/js/user/bookmark.js"defer ></script>
+      <script src="/js/org/org_vol.js"defer ></script>
+      <script src="/js/components/apply_modal.js"defer ></script>
+</head>
+
+<script th:inline="javascript">
+   //  변수에 데이터를 할당
+   var ovData = /*[[${orgVol}]]*/ null;
+
+   var oData = /*[[${org}]]*/ null;
+   console.log("html : " + ovData);
+   console.log("html : " + oData);
+</script>
+
+<body>
+   <main class="main">
+      <header class="header">
+         <div class="header1">
+            <a th:href="@{/orgvol(cid=1)}"><img src="../../img/icon/icon_header_back.png" alt="뒤로가기" /></a>
+            <div>상세보기</div>
+            <a href=""><img src="/img/icon/icon_header_more.png" alt="더보기" /></a>
+         </div>
+      </header>
+
+      <section class="user_vol_recruit_title">
+         <img th:src="@{'/img/org/org_vol/'+${orgVol.photo}}" alt="이하늬봉사사진" />
+         <section class="user_vol_recruit_title_box">
+            <ul>
+               <div>
+                  <li th:text="${volCategory.name}">(주)행복보육원</li>
+                  <li th:text="${orgVol.roadAddress}">
+                     서울 마포구<img src="/img/icon/icon_heart.png" alt="하트아이콘" />
+                  </li>
+                  <li th:text="${orgVol.title}">행복보육원 봉사자 구인합니다.</li>
+                  <li th:text="${org.name}">(주)행복보육원</li>
+                  <span th:text="${dDay}">1 </span>시간전
+                  
+                  <!--봉사 신청 버튼-->
+                    <button class="applybtn">신청</button>
+                  	<button class="canclebtn" style="display: none;">신청취소</button>
+
+                  <!-- 북마크 버튼-->
+                  <button    type="button" 
+                  sec:authorize="isAuthenticated()"  
+                     th:data-user-id="${#authentication.principal.id}"
+                                th:data-orgVol-id="${orgVol.id}"
+                                class="bookmark" 
+                                th:classappend="${userWishView.wish}?'active' : ' '" >
+                  </button>
+                  <!-- 북마크 버튼-->
+               </div>
+            </ul>
+         </section>
+      </section>
+
+      <section class="user_vol_recruit_info">
+         <div class="user_vol_recruit_box1">
+            <ul class="ul_1">
+               <li>모집인원</li>
+               <li th:text="${orgVol.capacity}"></li>
+               명
+            </ul>
+            <ul class="ul_2">
+               <li>봉사장소</li>
+               <li >행복보육원</li>
+            </ul>
+            <ul class="ul_3">
+               <li>마감일</li>
+               <li th:text="${orgVol.deadLine}">23.05.17</li>
+            </ul>
+            <ul class="ul_4">
+               <li>봉사일자</li>
+               <li style="color: #224bb5" th:text="${orgVol.date}">23.05.26</li>
+            </ul>
+         </div>
+         <div class="user_vol_recruit_box2">
+            <ul class="ul_5">
+               <li>마감일</li>
+               <li style="color: #ff0c0c" th:text="D-+${diff}+일">D-7</li>
+            </ul>
+            <ul class="ul_6">
+               <li>찜한사람</li>
+               <li th:text="${countBookmarkUser}">12</li>
+            </ul>
+         </div>
+      </section>
+      <!--------------------------신청 마감일표시 박스----------------------------------->
+
+      <ul class="user_vol_recruit_content">
+         <li class="title">봉사 모집 요강</li>
+         <li class="line_text" th:text="${orgVol.content}">
+            전주시 완산구에서 골목 벽화 그리기 봉사자<br />
+            모집합니다!<br />
+            <br />
+            미대생 이시면 좋지만, 그림을 좋아하시고 봉사를 사랑하시는 분이라면<br />
+            누구나 가능합니다^^<br />
+            <br />
+            해봉 어플을 통해 신청해주시면 확정 인원에<br />
+            한해, 따로 연락 드리겠습니다!
+         </li>
+         <li class="title">봉사 장소</li>
+         <!--지도-->
+         <li class="map_container">
+            <div class="map" id="map" style="width: 360px; height: 300px"></div>
+            <div class="map_location">
+               <img src="/img/icon/icon_map_nav.svg" /><span th:text="${orgVol.roadAddress}"></span>
+            </div>
+         </li>
+      </ul>
+      <!----------------------------봉사 모집 요강------------------------------>
+
+      <ul class="user_vol_post_notice_box">
+         <li><a href="#">고객센터 문의하기</a></li>
+         <li><a href="#">봉사 참여 시 유의사항</a></li>
+      </ul>
+
+      <!---------------------------고객센터-------------------------------------->
+      <nav class="nav_list" th:replace="~{inc/nav}"></nav>
+      <!--------------------------------네비바---------------------------->
+      <modal-alert
+        class="d-none"
+        data-show="false"
+        data-title="알림"
+        data-content="신청 되었습니다."
+      >
+        <div slot="content"></div>
+      </modal-alert>
+   </main>
+   <input type="hidden" th:value="${#authentication.principal.id}" class="userId" />
+   <input type="hidden" th:value="${orgVol.id}" class="orgVolId" />
+
+   <script src="/js/map.js"></script>
+</body>
+
+</html>
