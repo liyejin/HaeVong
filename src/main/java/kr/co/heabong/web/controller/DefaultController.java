@@ -303,20 +303,17 @@ public class DefaultController {
 			Model model) {
 
 		User userInfo = null;
-		Integer countApplyVol = applyOrgVolViewService.getCountMyAttendList(user.getId());
-		// countApplyVol = countApplyVol != null ? countApplyVol : 0;
+		Integer countApplyVol =   nul
+
 		System.out.println(countApplyVol);
 		List<PostPhoto> myPostPhoto = null;
 
-		// user name, profile photo, signdate info
 		if (user != null) {
 			userInfo = userService.getUserInfoById(user.getId());
-
-		}
-		// My post photo
-		if (user != null) {
+			countApplyVol = applyOrgVolViewService.getCountMyAttendList(user.getId());
 			myPostPhoto = postPhotoService.getMyPostPhoto(user.getId());
 		}
+
 		model.addAttribute("mypic", myPostPhoto);
 		model.addAttribute("user", userInfo);
 		model.addAttribute("countAV", countApplyVol);
