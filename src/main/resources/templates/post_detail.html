@@ -81,43 +81,46 @@
 					placeholder="댓글을 입력해주세요"></textarea>
 				<div class="comment-submit" sec:authorize="isAuthenticated()"
 					th:data-user-id="${#authentication.principal.id}" th:data-post-id="${post.postId}">댓글쓰기</div>
-				<div class="comment-submit" sec:authorize="isAnonymous()"
-					>댓글쓰기</div>
+				<div class="comment-submit" sec:authorize="isAnonymous()">댓글쓰기</div>
 			</div>
 			<div class="comment-number">
 				<span>댓글&nbsp;&nbsp;</span>
 				<span th:text="${commentList.size}">0</span>
 			</div>
-			<div class="comment-outer" th:each="comment:${commentList}">
-				<section class="comment" >
-					<div class="comment-content">
-						<div class="comment-writer">
-							<img src="/img/user/community/유저 프로필 사진.png" alt="프로필이미지&nbsp;&nbsp;">
-							<span class="comment-name" th:text="${comment.nickname}">이름&nbsp;&nbsp;</span>
-							<span class="comment-mycomment" sec:authorize="isAuthenticated()"
-								th:if="${comment.userId} == ${#authentication.principal.id}">내 댓글</span>
+			<div class="comment-outer">
+				<div class="comment-wrapper" th:each="comment:${commentList}">
+					<section class="comment" th:data-comment-id="${comment.id}">
+						<div class="comment-content">
+							<div class="comment-writer">
+								<img src="/img/user/community/유저 프로필 사진.png" alt="프로필이미지&nbsp;&nbsp;">
+								<span class="comment-name" th:text="|${comment.nickname}&nbsp;&nbsp;|">이름&nbsp;&nbsp;</span>
+								<span class="comment-mycomment" sec:authorize="isAuthenticated()"
+									th:if="${comment.userId} == ${#authentication.principal.id}">내 댓글</span>
+							</div>
+							<div class="comment-body" th:text="${comment.content}">
+								댓글입니다. 댓글이에요. 댓글이요~~
+							</div>
+	
+							<div class="comment-info">
+								<span class="comment-days" th:if="${comment.daysAgo}!=0"
+									th:text="|${comment.daysAgo}일 전 ·|">3일 전 ·</span>
+								<span class="comment-days" th:if="${comment.daysAgo}==0" th:text="|오늘 ·|">3일 전 ·</span>
+								<a href="#" class="reply-open-button"><span class="comment-replies"
+										th:text="|답글 ${comment.childCount}개 ·|" th:data-comment-id="${comment.id}"> 답글 1개
+										·</span></a>
+								<span class="reply-input-open-button"> 답글 달기</span>
+								<span></span>
+								<div class="reply-input-outer">
+								</div>
+							</div>
 						</div>
-						<div class="comment-body" th:text="${comment.content}">
-							댓글입니다. 댓글이에요. 댓글이요~~
-						</div>
-
-						<div class="comment-info">
-							<span class="comment-days" th:if="${comment.daysAgo}!=0"
-								th:text="|${comment.daysAgo}일 전|">3일 전 ·</span>
-							<span class="comment-days" th:if="${comment.daysAgo}==0" th:text="오늘">3일 전 ·</span>
-							<a href="#" class="reply-open-button"><span class="comment-replies"
-									th:text="|답글 ${comment.childCount}개|" th:data-comment-id="${comment.id}"> 답글 1개
-									·</span></a>
-							<span class="comment-reply"> 답글 달기</span>
-						</div>
+						<img src="/img/icon/icon_header_more.png" alt="더보기아이콘">
+					</section>
+					<div class="reply-section">
+	
 					</div>
-					<img src="/img/icon/icon_header_more.png" alt="더보기아이콘">
-				</section>
-				<div class="reply-section">
-					
 				</div>
 			</div>
-
 		</section>
 
 	</main>
