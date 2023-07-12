@@ -10,10 +10,9 @@ window.onload = function () {
     let today = new Date(org.signUpDate);
 
     let gap = nowDate - today;
-    console.log(gap);
     let result = Math.floor(gap / (1000 * 60 * 60 * 24));
     let togetherCount = `${result}`;
-console.log(result);
+
 
     together.innerHTML = togetherCount;
   }

@@ -54,7 +54,6 @@
                   <span class="vol_date" th:utext="${vol.date+'<br/>'}">5월 13일(월)</span>
                   <span class="vol_write_date" th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span><br>
 						
-						
 						<!--북마크 버튼-->
 						<button  
 						type="button" 
@@ -72,7 +71,6 @@
                             </a>
                             <!--북마크 버튼-->
 
-				
 						<ul class="vol_list_btn_box">
 							<li><a class="vol_list_detail_btn" href="#" th:href="@{/user/vol(id=${vol.id})}">상세보기</a></li>
 						</ul>
@@ -81,6 +79,20 @@
 		</li>
 		</ul>
 	</section>
+	<!--페이지버튼-->
+	 <ul class="post-box">
+      <li>
+        <div class="post-container">
+          <p class="post-number">1</p>
+          <p class="post-title">title</p>
+        </div>
+      </li>
+    </ul>
+    <div class="pagination-container">
+      <div class="prev-button">이전</div>
+      <div class="number-button-wrapper"><span class="number-button">1</span></div>
+      <div class="next-button">이후</div>
+    </div>
 <input id="input-member-id" type="hidden"th:value="${#authentication.principal.id}" th:if="${#authorization.expression('isAuthenticated()')}">
 </body>
 

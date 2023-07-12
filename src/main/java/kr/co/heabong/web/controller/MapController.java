@@ -54,7 +54,7 @@ public class MapController {
 		
 		
 		if(district!=null)
-			orgVolList  = orgVolService.getList();
+			orgVolList  = orgVolService.getAllList();
 		else
 			orgVolList  = orgVolService.getList(metropol);
 		

@@ -151,9 +151,10 @@ public class DefaultController {
 	// 메인
 	@GetMapping("/")
 	public String getIndex(Model model) {
-		List<OrgVol> list = orgVolService.getList();
 
-		List<OrgVolAddressView> summerList = orgVolService.getListByRandom();
+		List<OrgVol> list = orgVolService.getAllList();
+		List<OrgVolAddressView>summerList = orgVolService.getListByRandom();
+
 
 		model.addAttribute("orgVOl", list);
 		model.addAttribute("summerList", summerList);
@@ -334,6 +335,7 @@ public class DefaultController {
 	public String getOrgVolListByCategory(
 			@RequestParam(name = "cid", required = true) Integer categoryId,
 			@RequestParam(name = "sk", required = false) String searchKeyword,
+			@RequestParam(name = "p", defaultValue = "1")Integer page,
 			@AuthenticationPrincipal MyUserDetails user,
 			Model model) {
 
@@ -346,16 +348,19 @@ public class DefaultController {
 		List<UserWishView> orgVolList = null;
 
 		if (searchKeyword == null & categoryId == 1) {
-			orgVolList = orgVolService.getView(userId);
-			System.out.println("디폴트조건1");
-		} else if (searchKeyword == null & categoryId != null) {
-			orgVolList = orgVolService.getViewOrgVolListByCategoryId(userId, categoryId);
+			orgVolList = orgVolService.getView(userId,page);
+		System.out.println("디폴트조건1");
+		}
+		else if (searchKeyword == null & categoryId != null) {
+			orgVolList = orgVolService.getViewOrgVolListByCategoryId(userId, categoryId,page);
 			System.out.println("디폴트조건2");
-		} else if (searchKeyword != null && categoryId != 1) {
-			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, searchKeyword);
-			System.out.println("디폴트조건3");
-		} else if (searchKeyword != null & categoryId == 1) {
-			orgVolList = orgVolService.getVolListBySearch(userId, searchKeyword);
+		}
+		else if (searchKeyword != null && categoryId !=1) { 
+			orgVolList = orgVolService.getViewOrgVolListBySearch(categoryId, searchKeyword,page);
+		System.out.println("디폴트조건3");
+		}
+		else if (searchKeyword != null&categoryId == 1) { 
+			orgVolList = orgVolService.getVolListBySearch(userId,searchKeyword,page);
 			System.out.println("디폴트조건4");
 		}
 

@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.heabong.web.entity.ApplyOrgVol;
 import kr.co.heabong.web.entity.Org;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.OrgVolAddressView;
 import kr.co.heabong.web.entity.UserWishView;
+import kr.co.heabong.web.repository.ApplyOrgVolRepository;
 import kr.co.heabong.web.repository.OrgVolRepository;
 
 @Service
@@ -22,13 +24,46 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	@Autowired
 	private OrgVolRepository repository;
+	@Autowired
+	private ApplyOrgVolRepository applyOrgVolRepository;
 	
+	@Override
+	public List<OrgVol> getAllList() {
+
+		List<OrgVol> list = repository.findAllList();
+		return list;
+	}
 
 	@Override
-	public List<OrgVol> getList() {
-		List<OrgVol> list = repository.findAll();
+	public List<OrgVol> getList(Integer offset) {
+		offset = (offset-1) * 5;  
+		List<OrgVol> list = repository.findAll(offset);
 		return list;
+	}
+	
+	@Override
+	public List<OrgVol> getOrgVolListByCategoryId(int categoryId,Integer offset) {
+		offset = (offset-1) * 5;  
+		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId,offset);
+		return list;
+	}
 
+	@Override
+	public List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword,Integer offset) {
+		offset = (offset-1) * 5;  
+		List<OrgVol> list = repository.FindOrgVolListBySearch(categoryId, serchKeyword,offset);
+		return list;
+	}
+
+	
+	@Override
+	public List<OrgVol> getList(Integer offset, int size) {
+		
+		offset = (offset-1) * 5;  
+		
+		List<OrgVol> list = repository.findByOffsetAndSize(offset,5);
+		return list;
+		
 	}
 
 	@Override
@@ -64,18 +99,7 @@ public class OrgVolServiceImp implements OrgVolService {
 		return save;
 	}
 
-	@Override
-	public List<OrgVol> getOrgVolListByCategoryId(int categoryId) {
-		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId);
-		return list;
-	}
-
-	@Override
-	public List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword) {
-		List<OrgVol> list = repository.FindOrgVolListBySearch(categoryId, serchKeyword);
-		return list;
-	}
-
+	
 	// My page category section ----------------------------
 	@Override
 	public List<OrgVol> getMyApplyOrgVolList(int userId) {
@@ -157,46 +181,56 @@ public class OrgVolServiceImp implements OrgVolService {
 		
 //  로그인이 된상태에서 메인에서 검색 
 	@Override
-	public List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword) {
+	public List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword,Integer offset) {
+		
+		offset = (offset-1) * 5;  
 
-		return repository.findViewAll(userId,null,searchKeyword,null);
+		return repository.findViewAll(userId,null,searchKeyword,null,offset);
 	}
 
 // 비로그인 상태에서 메인에서 검색 
 
 	@Override
-	public List<UserWishView> getVolListBySearchNotLogin(String searchKeyword) {
+	public List<UserWishView> getVolListBySearchNotLogin(String searchKeyword,Integer offset) {
+		offset = (offset-1) * 5;  
 
-		return repository.findViewAll(null,null,searchKeyword,null);
+		return repository.findViewAll(null,null,searchKeyword,null,offset);
 	}
 
 	@Override
-	public List<UserWishView> getView(Integer userId) {
+	public List<UserWishView> getView(Integer userId,Integer offset) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(userId, null, null,null);
+		offset = (offset-1) * 5;  
+		return repository.findViewAll(userId, null, null,null,offset);
 	}
 
 	@Override
-	public List<UserWishView> getView(Integer userId, Integer volCategoryId, String searchKeyword) {
+	public List<UserWishView> getView(Integer userId, Integer volCategoryId, String searchKeyword,Integer offset) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(userId, volCategoryId, searchKeyword,null);
+		offset = (offset-1) * 5;  
+		return repository.findViewAll(userId, volCategoryId, searchKeyword,null,offset);
 	}
 	@Override
-	public List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer categoryId) {
+	public List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer categoryId,Integer offset) {
 		// TODO Auto-generated method stub
-		return repository.findViewAll(userId, categoryId, null,null);
-	}
-
-	@Override
-	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String searchKeyword) {
-		// TODO Auto-generated method stub
-		return repository.findViewAll(null, categoryId, searchKeyword,null);
+		offset = (offset-1) * 5;  
+		return repository.findViewAll(userId, categoryId, null,null,offset);
 	}
 
 	@Override
-	public List<UserWishView> getViewOrgVolByOrgVolId(Integer userId,Integer orgVolId) {
+	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String searchKeyword,Integer offset) {
+		// TODO Auto-generated method stub
+		offset = (offset-1) * 5;  
+		return repository.findViewAll(null, categoryId, searchKeyword,null,offset);
+	}
+
+	@Override
+	public List<UserWishView> getViewOrgVolByOrgVolId(Integer userId,Integer orgVolId,Integer offset) {
 		
-		return repository.findViewAll(userId, null, null, orgVolId);
+
+			offset = (offset-1) * 5;  
+		
+		return repository.findViewAll(userId, null, null, orgVolId,offset);
 	}
 	@Override
 	public UserWishView getViewById(Integer id) {
@@ -214,6 +248,23 @@ public class OrgVolServiceImp implements OrgVolService {
 	public List<OrgVolAddressView> getListByRandom() {
 	
 		return repository.findOrgVolRand();
+	}
+
+	@Override
+	public boolean checkApply(int id, int orgVolId) {
+		
+		ApplyOrgVol applyOrgVol =applyOrgVolRepository.get(orgVolId, id);
+		
+		if(applyOrgVol!=null)
+			return true;
+		
+		return false;
+	}
+
+	@Override
+	public int getMetHaeVong(int orgId) {
+		
+		return repository.countHaeVong(orgId);
 	}
 	
 

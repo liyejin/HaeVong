@@ -100,9 +100,9 @@
 
 		<!-- 지금바로봉사신청-->
 		<section class="index_section_2">
-			<div class="index_section_title_2"><span>계절</span></div>
+			<div class="index_section_title_2"><span>올 여름🔥<br> 혼자어때 둘이어때 셋이어때</span></div>
 			<div class="index_section_list_2">
-				<a href="user/vol_list?u=1" class="index_section_item_2" th:each="summer : ${summerList}">
+				<a th:href="@{/user/vol(id=${summer.id})}" class="index_section_item_2" th:each="summer : ${summerList}">
 					<div>
 						<img th:src="@{'/img/org/org_vol/' + ${summer.photo}}" alt="봉사 이미지"
 							class="index_section_item_img_2" />

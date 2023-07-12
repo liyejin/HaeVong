@@ -20,15 +20,15 @@
       <script src="/js/org/org_vol.js"defer ></script>
       <script src="/js/components/apply_modal.js"defer ></script>
 </head>
-
 <script th:inline="javascript">
    //  변수에 데이터를 할당
    var ovData = /*[[${orgVol}]]*/ null;
 
    var oData = /*[[${org}]]*/ null;
-   console.log("html : " + ovData);
+   console.log("html orgVol: " + ovData);
    console.log("html : " + oData);
 </script>
+
 
 <body>
  
@@ -50,16 +50,15 @@
             <ul>
                <div>
                   <li th:text="${volCategory.name}">(주)행복보육원</li>
+                  <li th:text="${orgVol.title}">행복보육원 봉사자 구인합니다.</li>
                   <li th:text="${orgVol.roadAddress}">
                      서울 마포구<img src="/img/icon/icon_heart.png" alt="하트아이콘" />
                   </li>
-                  <li th:text="${orgVol.title}">행복보육원 봉사자 구인합니다.</li>
                   <li th:text="${org.name}">(주)행복보육원</li>
-                  <span th:text="${dDay}">1 </span>시간전
-                  
+                  <span id="orgVolDate">1 </span>
                   <!--봉사 신청 버튼-->
-                    <button class="applybtn">신청</button>
-                  	<button class="canclebtn" style="display: none;">신청취소</button>
+                    <button class="applybtn" th:classappend="${isApply}?'d-none' : ' ' ">신청</button>
+                  	<button class="canclebtn" th:classappend="${isApply}?'' : 'd-none' ">신청취소</button>
 
                   <!-- 북마크 버튼-->
                   <button    type="button" 
@@ -98,7 +97,10 @@
          <div class="user_vol_recruit_box2">
             <ul class="ul_5">
                <li>마감일</li>
-               <li style="color: #ff0c0c" th:text="D-+${diff}+일">D-7</li>
+         	 <li style="color: #ff0c0c" th:if="${diff} < 0" th:text="모집종료"></li>
+			<li style="color: #ff0c0c" th:if="${diff} == 0" th:text="D-day"></li>
+			<li style="color: #ff0c0c" th:if="${diff} > 0" th:text="'D-' + ${diff} + '일'"></li>
+
             </ul>
             <ul class="ul_6">
                <li>찜한사람</li>
@@ -152,6 +154,34 @@
    <input type="hidden" th:value="${orgVol.id}" class="orgVolId" />
 
    <script src="/js/map.js"></script>
+   <script>
+	   function timeForToday() {
+   let today = new Date();
+   let timeValue = new Date(ovData.regdate);
+   let orgVolDate = document.getElementById("orgVolDate");
+
+   let betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+   if (betweenTime < 1) {
+      orgVolDate.innerText = '방금전';
+   } else if (betweenTime < 60) {
+      orgVolDate.innerText = `${betweenTime}분전`;
+   } else {
+      let betweenTimeHour = Math.floor(betweenTime / 60);
+      if (betweenTimeHour < 24) {
+         orgVolDate.innerText = `${betweenTimeHour}시간전`;
+      } else {
+         let betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+         if (betweenTimeDay < 365) {
+            orgVolDate.innerText = `${betweenTimeDay}일전`;
+         } else {
+            orgVolDate.innerText = `${Math.floor(betweenTimeDay / 365)}년전`;
+         }
+      }
+   }
+}
+timeForToday();
+	   
+   </script>
 </body>
 
 </html>

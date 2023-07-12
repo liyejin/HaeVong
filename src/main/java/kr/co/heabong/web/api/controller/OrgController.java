@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,18 +39,20 @@ public class OrgController {
 	
 	@GetMapping
 	public List<OrgVol> list(@RequestParam(name = "s", required = false) String serchKeyword,
-			@RequestParam(name = "c", required = true) Integer categoryId) {
+			@RequestParam(name = "c", required = true) Integer categoryId,
+			@RequestParam(name = "p", defaultValue = "1")Integer page
+			) {
 		
 		List<OrgVol> list = new ArrayList<>();
 		if (serchKeyword == "" && categoryId == 1) {
-		    list = volService.getList();
+		    list = volService.getList(page);
 		} else if (serchKeyword == "" && categoryId != null) {
-		    list = volService.getOrgVolListByCategoryId(categoryId);
+		    list = volService.getOrgVolListByCategoryId(categoryId,page);
 		} else if (serchKeyword != null && categoryId == 1) {
-		    list = volService.getOrgVolListBySearch(null, serchKeyword);
+		    list = volService.getOrgVolListBySearch(null, serchKeyword,page);
 		} 
 		else {
-		    list = volService.getOrgVolListBySearch(categoryId, serchKeyword);
+		    list = volService.getOrgVolListBySearch(categoryId, serchKeyword,page);
 		    list.get(0).getTitle();
 		    System.out.println(list.get(0).getTitle());
 		}

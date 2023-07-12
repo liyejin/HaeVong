@@ -31,8 +31,6 @@ if (Array.isArray(oData)) {
 		if (isDragging) {
 			let y = 887 - event.clientY;
 			if (y <= 700 && y >= 100) box.style.height = y + "px";
-
-			console.log(y);
 		}
 	});
 

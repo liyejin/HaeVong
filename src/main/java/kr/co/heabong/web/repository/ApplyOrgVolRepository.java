@@ -18,7 +18,7 @@ public interface ApplyOrgVolRepository {
 
 
 	ApplyOrgVol get(int orgVolId, int userId);
-
+	
 	int save(ApplyOrgVol  applyOrgVol);
 
 	int update(ApplyOrgVol  applyOrgVol);
