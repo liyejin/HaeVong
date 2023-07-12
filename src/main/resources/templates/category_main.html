@@ -50,10 +50,11 @@
 				<li class="user_category_recommended_item" th:each="mcateList:${mainCateList}">
 
 					<!--기관 사진-->
-					<!--        <img src="/img/user/user_category_banner_main.png" alt="" />-->
-					<img th:src="@{'/img/org/org_vol/'} + ${mcateList.photo}" />
+					<a th:href="@{/user/vol(id=${mcateList.id})}">
+						<img th:src="@{'/img/org/org_vol/'} + ${mcateList.photo}"/>
+						</a>
 
-					<a href="@{./list(c=${mcateList})}">
+					<a href="@{./list(c=${mcateList})}" >
 						<!--이색봉사 제목-->
 						<span
 							th:text="${mcateList.title.length() &gt; 10 ? mcateList.title.substring(0, 10) + '...' : mcateList.title}"
@@ -63,7 +64,6 @@
 						<span
 							th:text="${mcateList.content.length() &gt; 10 ? mcateList.content.substring(0, 10) + '...' : mcateList.content}"
 							class="content"></span>
-
 					</a>
 				</li>
 			</ul>

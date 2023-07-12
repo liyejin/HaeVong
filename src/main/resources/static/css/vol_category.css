@@ -80,6 +80,9 @@
 	font-weight: bold;
 }
 
+
+
+
 .user_category_recommended_list {
 	display: flex;
 	flex-direction: row;
@@ -90,12 +93,19 @@
 }
 
 .user_category_recommended_item {
-	width: 180px;
+	width: 100px;
 }
 
-.user_category_recommended_item>img {
-	width: 170px;
-	height: 140px;
+.user_category_recommended_item > a{
+	    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+.user_category_recommended_item>a>img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
 }
 
 .title {

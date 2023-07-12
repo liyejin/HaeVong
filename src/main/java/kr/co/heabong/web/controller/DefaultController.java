@@ -303,7 +303,7 @@ public class DefaultController {
 			Model model) {
 
 		User userInfo = null;
-		Integer countApplyVol =   nul
+		Integer countApplyVol = null;
 
 		System.out.println(countApplyVol);
 		List<PostPhoto> myPostPhoto = null;
