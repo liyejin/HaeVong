@@ -9,7 +9,7 @@ import kr.co.heabong.web.entity.OrgVolAddressView;
 import kr.co.heabong.web.entity.UserWishView;
 
 public interface OrgVolService {
-	//
+
 	List<UserWishView> getView(Integer userId,Integer volCategoryId,String searchKeyword);
 	//전체보기처럼 다 가져오는애
 	List<UserWishView> getView(Integer userId);

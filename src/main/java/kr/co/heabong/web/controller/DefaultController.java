@@ -334,6 +334,8 @@ public class DefaultController {
 
 	}
 
+	
+	
 	// 분야별 봉사 검색 기능
 	@GetMapping("orgvol")
 	public String getOrgVolListByCategory(

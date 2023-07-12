@@ -1,8 +1,15 @@
+/*★★★봉사 신청하기 페이지 vol_list 입니다★★★*/
+
+
 /* <vol_list>  
 1. user/my_vol_manage.html (유저 내 봉사 관리페이지)
 */
 
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
+
+.main{
+	    background-color: #FEF8EA;
+}
 
 .category {
 	display: flex;

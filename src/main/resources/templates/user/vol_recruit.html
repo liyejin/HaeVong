@@ -31,15 +31,19 @@
 </script>
 
 <body>
-   <main class="main">
-      <header class="header">
-         <div class="header1">
-            <a th:href="@{/orgvol(cid=1)}"><img src="../../img/icon/icon_header_back.png" alt="뒤로가기" /></a>
-            <div>상세보기</div>
-            <a href=""><img src="/img/icon/icon_header_more.png" alt="더보기" /></a>
-         </div>
-      </header>
-
+ 
+   	<header class="header">
+		<div class="header1">
+			<a href="/category_main">
+				<img src="/img/icon/icon_header_back.png" alt="뒤로가기" />
+				</a>
+			<div>상세보기</div>
+			<div>
+			</div>
+		</div>
+	</header>
+	
+  <main class="main">
       <section class="user_vol_recruit_title">
          <img th:src="@{'/img/org/org_vol/'+${orgVol.photo}}" alt="이하늬봉사사진" />
          <section class="user_vol_recruit_title_box">
