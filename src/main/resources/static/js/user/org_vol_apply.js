@@ -49,8 +49,8 @@ window.addEventListener("load", function(e) {
 
 	cancleBtn.onclick = function(e) {
 		console.log("취소끄릭");
-		applybtn.style.display = "block"; 	//확인
-		canclebtn.style.display = "none"; //취소
+		applybtn.classList.remove("d-none");	//확인
+		canclebtn.classList.add("d-none"); //취소
 		applyDelete(`http://localhost:8080/api/apply-org-vols`, json);
 	}
 

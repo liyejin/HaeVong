@@ -31,6 +31,7 @@ public class BookmarkController {
 	@GetMapping
 	public List<UserWishView> orgVolList(@RequestParam(name = "c", required = true) Integer categoryId,
 			@RequestParam(name = "s", required = false) String serchKeyword,
+			@RequestParam(name = "p", defaultValue = "1")Integer page,
 			@AuthenticationPrincipal MyUserDetails user) {
 
 		Integer userId = user.getId();
@@ -38,16 +39,16 @@ public class BookmarkController {
 		List<UserWishView> orgVolList = new ArrayList<>();
 
 		if (categoryId == 1 && serchKeyword != "") {
-		    orgVolList = orgvol.getView(userId, null, serchKeyword);
+		    orgVolList = orgvol.getView(userId, null, serchKeyword,page);
 		    System.out.println("조건2");
 		} else if (categoryId == 1) {
-		    orgVolList = orgvol.getView(userId, null, serchKeyword);
+		    orgVolList = orgvol.getView(userId, null, serchKeyword,page);
 		    System.out.println("조건5");
 		} else if (categoryId != null && serchKeyword == "") {
-		    orgVolList = orgvol.getViewOrgVolListByCategoryId(userId, categoryId);
+		    orgVolList = orgvol.getViewOrgVolListByCategoryId(userId, categoryId,page);
 		    System.out.println("조건1");
 		} else {
-		    orgVolList = orgvol.getView(userId, categoryId, serchKeyword);
+		    orgVolList = orgvol.getView(userId, categoryId, serchKeyword,page);
 		    System.out.println("조건3" + orgVolList);
 		}
 		return orgVolList;

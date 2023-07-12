@@ -12,7 +12,8 @@ import kr.co.heabong.web.entity.UserWishView;
 
 @Mapper
 public interface OrgVolRepository {
-	List<OrgVol> findAll();
+	/*기관 메인*/
+	int countHaeVong(int orgId);
 
 	List<OrgVol> findByOffsetAndSize(int offset, int size);
 
@@ -29,10 +30,14 @@ public interface OrgVolRepository {
 	int update(OrgVol orgVol);
 
 	OrgVol findById(int id);
+	
+	List<OrgVol> findAllList();
+	
+	List<OrgVol> findAll(int offset);
 
-	List<OrgVol> FindOrgVolListByCategoryId(int categoryId);
+	List<OrgVol> FindOrgVolListByCategoryId(int categoryId,int offset);
 
-	List<OrgVol> FindOrgVolListBySearch(Integer categoryId, String serchKeyword);
+	List<OrgVol> FindOrgVolListBySearch(Integer categoryId, String serchKeyword,int offset);
 
 	int delete(int id);
 
@@ -42,7 +47,7 @@ public interface OrgVolRepository {
 	List<String> getPhotoList(int orgId);
 
 	//북마크
-	List<UserWishView> findViewAll(Integer userId,Integer volCategoryId,String title,Integer orgVolId);
+	List<UserWishView> findViewAll(Integer userId,Integer volCategoryId,String title,Integer orgVolId,int offset);
 	List<UserWishView> FindViewByCategoryId(Integer volCategoryId);
 	List<UserWishView> FindViewBySearch(Integer volCategoryId,String title);
 	UserWishView findViewById(Integer id);
@@ -50,5 +55,9 @@ public interface OrgVolRepository {
 
 	List<UserWishView> findViewBySearch(String searchKeyword);
 	List<OrgVolAddressView> findOrgVolRand();
+
+
+
+
 
 }

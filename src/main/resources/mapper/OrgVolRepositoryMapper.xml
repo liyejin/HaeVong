@@ -2,8 +2,13 @@
 <mapper namespace="kr.co.heabong.web.repository.OrgVolRepository">
 	
 	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
-		select * from org_vol
+		select * from org_vol limit #{offset},5
 	</select>
+	
+	<select id="findAllList" resultType="kr.co.heabong.web.entity.OrgVol">
+		select * from org_vol 
+	</select>
+	
 	<select id="findByOrgIdAndStatus"
 		resultType="kr.co.heabong.web.entity.OrgVol"> select * from org_vol
 		where org_id = #{orgId} <if test="status == 'over'"> and date &lt;
@@ -16,7 +21,7 @@
 		resultType="OrgVol">
 		select * from
 		org_vol
-		limit #{offset}, #{size}
+		limit #{offset}, 5
 	</select>
 
 	<select id="findByAddress">
@@ -38,6 +43,9 @@
 		where org_id = #{orgId} 
 	</select>
 	
+		<select id="countHaeVong">
+		SELECT count(*) FROM applyOrgVolView where org_id=#{id} and status =1;
+	</select>
 
 	<!--북마크-->
 	<select id = "countBookmarkUser">
@@ -67,6 +75,7 @@
 				AND id= #{orgVolId}
 			</if>
 		</trim>
+		LIMIT #{offset}, 5
 	</select>
 	
 
@@ -103,7 +112,7 @@
 
 	<!--카테고리 메인 페이지-->
 	<select id="FindOrgVolListByCategoryId">
-		select * from org_vol where vol_category_id = #{categoryId}
+		SELECT * FROM org_vol WHERE vol_category_id = 6 LIMIT #{offset}, 5;
 	</select>
 
 	<!--카테고리 페이지 검색창-->
@@ -114,6 +123,7 @@
 				vol_category_id = ${categoryId}
 			</if> AND (title LIKE
 		'%${serchKeyword}%' OR content LIKE '%${serchKeyword}%'); </trim>
+		LIMIT #{offset}, 5
 	</select>
 
 

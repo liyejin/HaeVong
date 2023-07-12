@@ -41,6 +41,7 @@ function volListLoad(url) {
          };
       })
 }
+
 function formatDate(dateString) {
    const date = new Date(dateString);
    const year = date.getFullYear();
@@ -49,12 +50,18 @@ function formatDate(dateString) {
    return `${year}-${month}-${day}`;
 }
 
+let word = "";
 let userId = null;
+let count = 1; // 초기 숫자 값
+
 window.addEventListener("load", function(e) {
 
 let category = document.querySelector(".category");
 let submit = document.querySelector(".submit");
-         
+let prevbtn = document.querySelector(".prev-button");
+let nextbtn = document.querySelector(".next-button");
+let numberButton = document.querySelector(".number-button");
+
 if (document.querySelector("#input-member-id") )
       userId = document.querySelector("#input-member-id").value;
 
@@ -67,25 +74,55 @@ const searchParams = new URLSearchParams(url.search);
 let cid = searchParams.get('cid');
 
    category.onclick = function(e) {
-      console.log("카테고리클릭");
+   	   console.log("카테고리클릭");
       cid = e.target.value;
-
-      let word = "";
+	count = 1;
+  numberButton.innerText=1;
 
    /*클릭 이벤트가 발생한 요소의 value 속성을 가져와,해당 값을 사용하여 서버로 http 요청을 보내는 역할*/
-   if(userId!=null)
-   volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${word}`);
+       if(userId!=null)
+   volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${word}&p=${count}`);
    
    else
-   volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}`);
+   volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}&p=${count}`);
+ 
 }
 
+    prevbtn.onclick = function() {
+  if (count > 1) { // 1 밑으로 내려가지 않도록 조건 확인
+    count--;
+       if(userId!=null)
+   volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${word}&p=${count}`);
+   
+   else
+   volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}&p=${count}`);
+        
+    updateNumber();
+  }
+};
+
+nextbtn.onclick = function() {
+	console.log("다음버튼~");
+  count++;
+	       if(userId!=null)
+   volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${word}&p=${count}`);
+   
+   else
+   volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${word}&p=${count}`);
+        
+  updateNumber();
+};
+
+function updateNumber() {
+  numberButton.textContent = count;
+}
 
    document.querySelector('.submit_form').addEventListener('submit', function(e) {
-      e.preventDefault(); // 폼 제출 기본 동작 막기
-
-      let searchInput = document.querySelector('input[name="sk"]');
-      let searchValue = searchInput.value;
+    e.preventDefault(); // 폼 제출 기본 동작 막기
+	count = 1;
+	numberButton.innerText=1;
+    let searchInput = document.querySelector('input[name="sk"]');
+    let searchValue = searchInput.value;
 
 
       // 검색어 값을 확인하기 위해 콘솔에 출력
@@ -93,10 +130,10 @@ let cid = searchParams.get('cid');
 
    // 검색 결과를 로드하는 함수 호출
 if(userId!=null){
-   volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${searchValue}`);
+   volListLoad(`http://localhost:8080/api/wish?c=${cid}&s=${searchValue}&p=${count}`);
    }
 else
-   volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}`);
+   volListLoad(`http://localhost:8080/api/org?c=${cid}&s=${searchValue}&p=${count}`);
 });
 
 }

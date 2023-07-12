@@ -4,8 +4,6 @@ let modalAlert = document.querySelector("modal-alert");
 let canclebtn = document.querySelector(".canclebtn");
 
 window.addEventListener("load", function() {
-	console.log("산책존잼");
-
 	applybtn.onclick = function(e) {
 		e.preventDefault();
 		modalAlert.show(true);
@@ -146,8 +144,8 @@ class ModalAlertElement extends HTMLElement {
 			e.preventDefault();
 			this.classList.add("d-none");
 
-			applybtn.style.display = "none"; 	//확인
-			canclebtn.style.display = "block"; //취소
+			applybtn.classList.add("d-none");	//확인
+			canclebtn.classList.remove("d-none");//취소
 		};
 	}
 

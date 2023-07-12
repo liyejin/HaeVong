@@ -42,16 +42,18 @@ public class UserVolController {
 	
 	/* 봉사 상세보기 */
 	@GetMapping("/vol")
-	public String getList(@RequestParam("id") int OrgVolId
-													,@AuthenticationPrincipal MyUserDetails user,Model model) {
+	public String getList(@RequestParam("id") int OrgVolId,
+			@AuthenticationPrincipal MyUserDetails user,Model model) {
 		//기관의 게시글 가져오기
 		OrgVol orgVol = orgVolService.getById(OrgVolId);
 		//게시글 쓴 기관 찾기 
 		Org org = OrgService.getById(orgVol.getOrgId());
-		
+		// 신청여부 확인중 
+		boolean isApply = orgVolService.checkApply(user.getId(),OrgVolId);
+
 		int countBookmarkUser = orgVolService.getBooKmarkUser(OrgVolId);
-		
-		List<UserWishView> userWishView = orgVolService.getViewOrgVolByOrgVolId(user.getId(), OrgVolId);
+	
+		List<UserWishView> userWishView = orgVolService.getViewOrgVolByOrgVolId(user.getId(), OrgVolId,1);
 		
 		VolCategory VolCategory = cateService.getById(orgVol.getVolCategoryId());
 		
@@ -64,8 +66,9 @@ public class UserVolController {
 	    int diff = orgVolService.calculateDeadLineDate(dateString, deadLine);
 
 		model.addAttribute("orgVol",orgVol);
+		model.addAttribute("isApply",isApply);
 		model.addAttribute("org",org);
-	    model.addAttribute("dDay", restDate);
+	  // model.addAttribute("dDay", restDate);
 	    model.addAttribute("diff", diff);
 	    model.addAttribute("userWishView", userWishView.get(0));
 	    model.addAttribute("countBookmarkUser", countBookmarkUser);

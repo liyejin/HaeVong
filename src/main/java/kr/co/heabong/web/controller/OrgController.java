@@ -69,8 +69,10 @@ public class OrgController {
 	
 	Org org = orgService.getById(user.getId());
 	int ingCount = volService.ingOrgVol(user.getId());
+	int metHaeVong = volService.getMetHaeVong(user.getId());
 	model.addAttribute("org",org);
 	model.addAttribute("ingCount",ingCount);
+	model.addAttribute("metHaeVong",metHaeVong);
 
 
 		return "org/main";
@@ -125,7 +127,7 @@ public class OrgController {
 	}
 
 	@RequestMapping("vol/applicants")
-	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model) {
+	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model ){
 
 		OrgVol orgVol = volService.getById(orgVolID);
 		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
@@ -214,7 +216,7 @@ public class OrgController {
 		Period period = Period.between(nowDate, date);
 
 		int restDate = period.getDays() + (period.getMonths() * 30);
-		// System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
+		 System.out.println("현재 시간: " + (period.getDays()+(period.getMonths()*30)));
 
 		model.addAttribute("dDay", restDate);
 
@@ -229,7 +231,7 @@ public class OrgController {
 		return "org/vol_post_write";
 	}
 
-	@PostMapping("vol_write") // 정보를 받기
+	@PostMapping("vol_post_write") // 정보를 받기
 	public String postMethod(OrgVol orgVol) {
 
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
