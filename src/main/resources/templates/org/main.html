@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
 >
   <head>
     <meta charset="UTF-8" />
@@ -14,8 +16,8 @@
   <body>
     <header class="header">
       <div class="header1">
-       <img class="title" src="/img/icon/icon_header_title.png" alt="헤더">
-        <a href ="/logout"  
+        <img class="title" src="/img/icon/icon_header_title.png" alt="헤더" />
+        <a href="/logout"
           ><img class="logout" src="/img/icon/logout_.svg" alt="로그아웃"
         /></a>
       </div>
@@ -23,42 +25,62 @@
     <div class="main">
       <section class="org_profile">
         <div class="org_profile_pic">
-          <img th:src="@{'/img/org/orgprofile/' + ${org.profilePhoto}}" alt="기관이미지" />
-      
+          <img
+            th:src="@{'/img/org/orgprofile/' + ${org.profilePhoto}}"
+            alt="기관이미지"
+          />
+
           <p class="org_profile_name">
-            어서오세요! <br /><span sec:authentication="principal.name">(주)해봉이네</span><span> 님</span>
+            어서오세요! <br /><span sec:authentication="principal.name"
+              >(주)해봉이네</span
+            ><span> 님</span>
           </p>
         </div>
       </section>
-      
+
       <script th:inline="javascript">
-		  var org = /*[[${org}]]*/ null;
-	  </script>
-      <div class="d_day_content">
-        <span>우리 기관과 함께한지 <span class="d_day_cnt1" ></span>일💛</span>
-        <br />
-        <span
-          >해봉을 통해 만난 봉사자 <span class="d_day_cnt2" th:text="${metHaeVong}"></span>명💎</span
-        >
-      </div>
-      
+        var org = /*[[${org}]]*/ null;
+      </script>
+
       <section class="recruit">
-        <div class="recruit_box">
-          <div class="recruit_post">
-			  <div><a th:href="@{/org/vol_post_write(oid=${#authentication.principal.id})}"><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고작성</p></a></div>
-			  </div>
-          <div class="org_cs">
-			  <div><a th:href="@{/org/vol_list(o=${#authentication.principal.id})}"><img src="/img/icon/org_main_recruit.svg" alt=""><p>공고관리</p></a></div>
-			  </div>
-          <div class="org_cs">
-			  <div><a href="#"><img src="/img/icon/org_main_recruit.svg" alt=""><p>고객센터</p></a></div>
-			  </div>
-          <div class="org_cs">
-			  <div><a href="#"><img src="/img/icon/org_main_edit.svg" alt=""><p>정보수정</p></a></div>
-			  </div>
-        </div>
+        <ul class="recruit_post">
+          <li>
+            <a
+              th:href="@{/org/vol_post_write(oid=${#authentication.principal.id})}"
+            >
+              <div>
+                <span>📝<br /></span>
+                <span>공고작성</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/org/vol_list(o=${#authentication.principal.id})}">
+              <div>
+                <span>📢<br /></span>
+                <span>공고관리</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div>
+                <span>📆<br /></span>
+                <span>달력</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div>
+                <span>⚙️<br /></span>
+                <span>정보수정</span>
+              </div>
+            </a>
+          </li>
+        </ul>
       </section>
-      
+
       <section class="ing">
         <div class="ing_header">
           <div>진행중 모집 <span th:text="${ingCount}"> </span></div>
@@ -71,7 +93,9 @@
             </div>
             <div class="ing_contents">
               <div class="ing_detail">봉사장소</div>
-              <div class="ing_detail" sec:authentication="principal.name">행복보육원</div>
+              <div class="ing_detail" sec:authentication="principal.name">
+                행복보육원
+              </div>
             </div>
             <div class="ing_contents">
               <div class="ing_detail">마감일자</div>
@@ -89,7 +113,9 @@
             </div>
             <div class="ing_contents">
               <div class="ing_detail">봉사장소</div>
-              <div class="ing_detail" sec:authentication="principal.name">행복보육원</div>
+              <div class="ing_detail" sec:authentication="principal.name">
+                행복보육원
+              </div>
             </div>
             <div class="ing_contents">
               <div class="ing_detail">마감일자</div>
@@ -102,7 +128,15 @@
           </div>
         </div>
       </section>
+      <div class="d_day_content">
+        <span>우리 기관과 함께한지 <span class="d_day_cnt1"></span>일💛</span>
+        <br />
+        <span
+          >해봉을 통해 만난 봉사자 <span class="d_day_cnt2">0</span>명💎</span
+        >
+      </div>
     </div>
+
     <script src="/js/org_main.js"></script>
     <nav class="nav_footer">
       <a href="">

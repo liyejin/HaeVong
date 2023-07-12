@@ -50,7 +50,7 @@
 				<li th:each="vol:${orgVolList}" class="org_vol_list">
 					<img class="vol_list_img" th:src="@{'/img/org/org_vol/' + ${vol.photo}}" alt="모집공고이미지" />
 					<div class="vol_list_info">
-<span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 15 ? vol.title : (vol.title.substring(0, 15) + '...')}">행복보육원 봉사자 구인합</span>
+					<span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 15 ? vol.title : (vol.title.substring(0, 15) + '...')}">행복보육원 봉사자 구인합</span>
                   <span class="vol_date" th:utext="${vol.date+'<br/>'}">5월 13일(월)</span>
                   <span class="vol_write_date" th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span><br>
 						

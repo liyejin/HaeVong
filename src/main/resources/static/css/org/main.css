@@ -1,14 +1,7 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 .main {
-  overflow-y: scroll;
-  width: 430px;
-  height: 932px;
-  background-color: #fef8ea;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  -ms-overflow-style: none; /* 인터넷 익스플로러 */
-  scrollbar-width: none; /* 파이어폭스 */
 }
 .main::-webkit-scrollbar {
   display: none; /* 크롬, 사파리, 오페라, 엣지 */
@@ -20,15 +13,15 @@
   display: flex;
   flex-direction: row;
 }
-.header1{
-	align-items: center;
-	gap: 30%;
+.header1 {
+  align-items: center;
+  gap: 30%;
 }
-.header1> .title{
-	margin-left: 35%;
+.header1 > .title {
+  margin-left: 35%;
 }
-.header1>a>.logout{
-	width: 75%;
+.header1 > a > .logout {
+  width: 75%;
 }
 /* 기관메인 프로필*/
 .org_profile {
@@ -38,7 +31,7 @@
 .org_profile > .org_profile_pic {
   position: relative;
   width: 430px;
-  height: 300px;
+  height: 260px;
   overflow: hidden;
   margin: 0 auto;
   display: flex;
@@ -51,78 +44,75 @@
 .org_profile > .org_profile_pic > .org_profile_name {
   position: absolute;
   bottom: 30px;
-  left: 30px;
-  font-size: 20px;
+  left: 32px;
+  font-size: 18px;
   font-weight: bold;
-  color: white;
-  text-shadow: -1px 0px rgb(53, 53, 53), 0px 1px rgb(53, 53, 53),
-    1px 0px rgb(53, 53, 53), 0px -1px rgb(53, 53, 53);
+  color: rgb(46, 46, 46);
+  text-shadow: 6px 6px 6px rgba(255, 255, 255, 1),
+    -3px -3px 6px rgba(255, 255, 255, 1), 6px -6px 6px rgba(255, 255, 255, 1),
+    -6px 6px 6px rgba(255, 255, 255, 0.8);
 }
 /* 기관메인 회사이름 */
 .org_profile > .org_profile_pic > .org_profile_name > span {
-  font-size: 20px;
-  color: white;
+  font-size: 18px;
+  color: rgb(32, 32, 32);
 }
 /* 기관메인 디데이체크*/
 .d_day_content {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 365px;
-  height: 60px;
+  gap: 5px;
   margin-left: 20px;
   text-align: center;
+  font-size: 14px;
   padding: 10px;
 }
-/* 공고관리,고객센터 */
-.recruit > .recruit_box {
-  width: 390px;
-  height: 80px;
+.recruit_post {
+  background-color: white;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+
+  background-color: #ffffff;
+  border-radius: 15px;
   margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  padding: 4px;
+  padding-left: 14px;
+  gap: 24px;
 }
 
-/* 공고관리 */
-.recruit > .recruit_box > .recruit_post > div {
-  background-color: #ffffff;
-  width: 80px;
-  height: 80px;
-  gap: 5px;
+.recruit_post > li {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  list-style: none;
+  text-align: center;
+  /* background-color: #5d5fa1; */
+}
+
+.recruit_post > li > a > div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 14px;
-}
-
-.recruit > .recruit_box > .recruit_post > div:hover {
-  background: #fff1a7;
-  font-weight: bold;
-}
-
-.recruit_post > div > a > img{
-	margin-left: 40px;
-}
-
-/* 고객센터 */
-.recruit > .recruit_box > .org_cs > div {
-  background-color: #ffffff;
-  width: 80px;
-  height: 80px;
   gap: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 14px;
+  padding: 10px;
+  transition: color 2s ease, background-color 1s ease;
 }
 
-.recruit > .recruit_box > .org_cs > div:hover {
-  background: #fff1a7;
-  font-weight: bold;
+.recruit_post > li > a > div:hover {
+  background-color: rgba(255, 255, 0, 0.2);
+  border-radius: 20px;
 }
-/* 진행중 모집 */
+
+.recruit_post > li > a > div:not(:hover) {
+  border-radius: 20px;
+}
+
+.recruit_post > div > a > img {
+  margin-left: 40px;
+}
+
 .ing {
   background-color: #ffffff;
   border-radius: 14px;
@@ -180,7 +170,7 @@
   flex-direction: row;
   margin-top: 5px;
   margin-left: 5px;
-     white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 180px; /* 텍스트를 표시할 최대 너비 */
