@@ -70,13 +70,15 @@
 /* <공고관리 게시글들>------------------------------------------------- */
 
 .vol_list {
-  display: flex;
+  /*그리드 컨테이너*/
+  display: grid;
   flex-direction: column;
   align-items: center;
 }
 
 .org_vol_list {
-  position: relative;
+  /*그리드 아이템*/
+  /* position: relative; */
 }
 
 .vol_list > li {
@@ -88,8 +90,8 @@
 
   margin-bottom: 20px;
 
-  width: 410px;
-  height: 174px;
+  width: 200px;
+  height: 240px;
 
   /*  background: rgb(227, 236, 232);*/
   border-bottom: 3px solid #64987f;

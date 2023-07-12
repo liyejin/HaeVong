@@ -63,7 +63,6 @@ body {
   object-fit: cover;
 }
 
-/*  */
 .profile-img {
   border-radius: 100px;
 }
@@ -312,15 +311,15 @@ body {
 .cs {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 20px;
   margin-bottom: 50px;
-  font-size: 18px;
-  background-color: #ffffff;
   border-radius: 15px;
   padding: 20px;
+  font-size: 18px;
+  gap: 5px;
+  background-color: #ffffff;
 }
 
 .cs > span {
@@ -331,15 +330,3 @@ body {
 .cs > span > a {
   text-decoration: underline;
 }
-
-/*
-.cs > a > div {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}*/
-
-/*.cs > div > img {
-  width: 30px;
-  height: 30px;
-}*/
