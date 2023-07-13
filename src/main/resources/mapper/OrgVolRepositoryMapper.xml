@@ -80,7 +80,8 @@
 	
 
 
-	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> UPDATE
+	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> 
+		UPDATE
 		haevongdb.org_vol <set>
 			<if test="title != null">title = #{title},</if>
 			<if test="regdate != null">regdate = #{regdate},</if>
@@ -95,10 +96,13 @@
 			<if test="deadLine != null"> dead_line= #{deadLine},</if>
 			<if test="volCategoryId != null">vol_category_id = #{volCategoryId},</if>
 		</set>
-		WHERE id = #{id} </update>
+		WHERE id = #{id} 
+		</update>
+		
 	<delete id="delete">
 		delete from org_vol where id=${id}
 	</delete>
+	
 	<insert id="save" parameterType="kr.co.heabong.web.entity.OrgVol"
 		useGeneratedKeys="true"
 		keyProperty="id">
