@@ -12,6 +12,28 @@
 	<link rel="stylesheet" href="../css/vol_list.css" />
 	<script src="/js/org/org_vol.js" defer></script>
 	<script src="/js/user/bookmark.js" defer></script>
+	
+<script defer>
+	const catelists = document.querySelectorAll('.category > .catelist');
+	
+	catelists.forEach(catelist => {
+	  catelist.addEventListener('mouseover', () => {
+		catelists.forEach(otherCatelist => {
+		  if (otherCatelist !== catelist) {
+			otherCatelist.style.transform = 'translateX(-10px)';
+		  }
+		});
+	  });
+	
+	  catelist.addEventListener('mouseout', () => {
+		catelists.forEach(otherCatelist => {
+		  if (otherCatelist !== catelist) {
+			otherCatelist.style.transform = 'none';
+		  }
+		});
+	  });
+	});
+	</script>
 </head>
 
 <header class="header">
@@ -34,7 +56,7 @@
 
 		<div class="search_bar">
 			<div class="category" name="volCategoryId">
-					<option class="catelist" th:each="c : ${volCategory}" th:value="${c.id}" th:text="${c.name}">카테고리
+					<option class="catelist" th:each=" c : ${volCategory}" th:value="${c.id}"  th:text="'#' + ${c.name}">카테고리
 				</option>
 				</option>
 			</div>
@@ -48,12 +70,10 @@
 
 			<ul class="vol_list">
 				<li th:each="vol:${orgVolList}" class="org_vol_list">
+					<a  href="#" th:href="@{/user/vol(id=${vol.id})}">
+
+						<div>
 					<img class="vol_list_img" th:src="@{'/img/org/org_vol/' + ${vol.photo}}" alt="모집공고이미지" />
-					<div class="vol_list_info">
-					<span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 15 ? vol.title : (vol.title.substring(0, 15) + '...')}">행복보육원 봉사자 구인합</span>
-                  <span class="vol_date" th:utext="${vol.date+'<br/>'}">5월 13일(월)</span>
-                  <span class="vol_write_date" th:text="${#temporals.format(vol.regdate, 'yyyy-MM-dd')}">2023/04/26</span><br>
-						
 						<!--북마크 버튼-->
 						<button  
 						type="button" 
@@ -63,7 +83,7 @@
                                 class="bookmark" 
                                 th:classappend="${vol.wish}?'active' : ' '"
 						 />
-				 <a th:href="@{/user/vol(id=${vol.id})}" sec:authorize="isAnonymous()">
+					 <a th:href="@{/user/vol(id=${vol.id})}" sec:authorize="isAnonymous()">
                                 <button
                                     type="button"
                                     class="bookmark" th:classappend="${#authorization.expression('isAnonymous()')} ? 'd-none'">
@@ -71,13 +91,18 @@
                             </a>
                             <!--북마크 버튼-->
 
-						<ul class="vol_list_btn_box">
-							<li><a class="vol_list_detail_btn" href="#" th:href="@{/user/vol(id=${vol.id})}">상세보기</a></li>
-						</ul>
-					</div>
-		</div>
-		</li>
-		</ul>
+				
+				</div>
+					
+					<div class="vol_list_info">
+					<!-- <span class="vol_title"  th:utext="${#strings.length(vol.title) &lt;= 10 ? vol.title : (vol.title.substring(0, 10) + '...')}"></span> -->
+					<span class="vol_org" th:utext="${vol.orgId+'<br/>'}">기관</span>
+					<!-- <span class="vol_date" th:utext="'봉사일자 &nbsp;' +${vol.date+'<br/>'}">5월 13일(월)</span> -->
+					<span class="vol_title"  th:utext="${vol.title}"></span>
+                
+					</a>
+				</li>
+				</ul>
 	</section>
 	<!--페이지버튼-->
 	 <ul class="post-box">

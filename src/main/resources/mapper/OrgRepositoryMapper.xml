@@ -19,7 +19,8 @@
 	   SELECT profile_photo FROM org WHERE id = ${id}
    </select>
    
-	<update id="update">
+
+   	<update id="update">
 		UPDATE haevongdb.org
 		 <set>
 			 <if test="name">name=#{name},</if>

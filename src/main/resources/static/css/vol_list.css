@@ -1,14 +1,13 @@
 /*★★★봉사 신청하기 페이지 vol_list 입니다★★★*/
 
-
 /* <vol_list>  
 1. user/my_vol_manage.html (유저 내 봉사 관리페이지)
 */
 
 /* 카테고리(모집중/모집완료) --------------------------------------------- */
 
-.main{
-	    background-color: #FEF8EA;
+.main {
+  background-color: #fef8ea;
 }
 
 .category {
@@ -16,7 +15,7 @@
   flex-direction: row;
   overflow: auto;
   overflow-x: auto;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -26,22 +25,32 @@
 }
 
 .category > .catelist {
-  background-color: #64987f;
-  width: 100px;
-  color: white;
+  height: 25px;
+
+  border-radius: 100px;
+  background-color: white;
+  border: 0.3px solid #e9e9e9;
+  color: rgb(85, 84, 84);
+  font-size: 14px;
+
   text-align: center;
-  border-radius: 15px;
   white-space: nowrap;
-  padding: 6px;
-  margin-left: 3px;
-  margin-right: 3px;
+  /* margin-left: 6px;
+  margin-right: 6px; */
+  margin: 3px;
+  padding: 4px;
+
   cursor: pointer;
 }
 
 .category > .catelist:hover {
-  font-weight: bold;
   background-color: white;
-  color: #64987f;
+  color: black;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+.category > .catelist:not(:hover) {
+  color: rgb(112, 111, 111);
 }
 
 .vol_category {
@@ -77,21 +86,25 @@
 /* <공고관리 게시글들>------------------------------------------------- */
 
 .vol_list {
-  /*그리드 컨테이너*/
   display: grid;
-  flex-direction: column;
-  align-items: center;
+  grid-template-columns: repeat(2, 1fr); /* 2개의 열을 가진 그리드 설정 */
+  position: relative;
 }
 
 .org_vol_list {
-  /*그리드 아이템*/
-  /* position: relative; */
+  height: 200px;
+  width: 150px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .vol_list > li {
   /* Auto layout */
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -99,46 +112,41 @@
 
   width: 200px;
   height: 240px;
-
-  /*  background: rgb(227, 236, 232);*/
-  border-bottom: 3px solid #64987f;
-  border-radius: 15px;
-
-  position: relative;
 }
 
 .vol_list_img {
-  width: 130px;
-  height: 130px;
-  border-radius: 10px;
+  position: relative;
+  width: 156px;
+  height: 156px;
+  border-radius: 1px;
 }
 
 .vol_list_info {
-  /* display: flex;
-  flex-direction: column; */
-  width: 220px;
-  height: 116px;
-  margin-left: 10px;
-  position: relative;
-
-  /* Inside auto layout */
-
+  margin-top: 5px;
+  width: 156px;
   flex: none;
+
   order: 1;
   flex-grow: 0;
 }
 
 .vol_title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  overflow: hidden; /* 추가 */
+  text-overflow: ellipsis; /* 추가 */
+  white-space: normal;
+}
+
+.vol_org {
+  font-size: 12px;
 }
 
 .vol_date {
-  font-size: 14px;
-}
-
-.vol_write_date {
-  font-size: 14px;
+  font-size: 12px;
+  white-space: nowrap; /* 추가 */
+  overflow: hidden; /* 추가 */
+  text-overflow: ellipsis; /* 추가 */
 }
 
 .vol_list_btn_box {
@@ -172,8 +180,8 @@
   width: 82px;
   height: 28px;
   position: absolute;
-  left: 130px;
-  bottom: 0;
+  right: 0; /* 우측 정렬을 위한 추가 속성 */
+  bottom: 100px;
   font-size: 14px;
 }
 
@@ -190,19 +198,19 @@
 .submit_form {
   position: relative;
   padding: 30px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .querytext {
   display: flex;
-  width: 320px;
+  width: 300px;
   height: 36px;
-  border-radius: 25px;
+  border-radius: 100px;
   background-color: #ffffff;
   border: 0.5px solid gainsboro;
   position: absolute;
   top: 0;
-  left: 10px;
+  left: 30px;
 }
 
 .querytext::placeholder {
@@ -332,7 +340,9 @@
 
 .category {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   align-items: center;
 }
 
@@ -346,11 +356,13 @@
   border-radius: 100px;
   padding: 5px 10px;
   margin: 5px 10px;
-  /* 요소 사이에 간격을 주기 위해 마진 추가 */
 }
 
 /*북마크*/
 .bookmark {
+  position: absolute;
+  top: 12px; /* 상단 여백 */
+  right: 32px;
   background-image: url("/img/icon/icon_bookmark.svg");
   background-size: cover;
   height: 31px;
@@ -359,14 +371,13 @@
 }
 
 .bookmark.active {
-
   background-image: url("/img/icon/boomark-fill.svg");
 }
 
-.post-box{
-	z-index: 100;
-	background-color: aquamarine;
-	position: absolute;
+.post-box {
+  z-index: 100;
+  background-color: aquamarine;
+  position: absolute;
 }
 
 li {
@@ -379,7 +390,7 @@ li {
   border-radius: 10px;
   border: 2px solid #d7d7d7;
   margin: 15px;
-    width: 100px;
+  width: 100px;
 }
 
 .post-title {
@@ -417,4 +428,3 @@ li {
   font-size: 1.1rem;
   color: dodgerblue;
 }
-

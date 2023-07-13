@@ -11,16 +11,17 @@ public interface OrgRepository {
 	List<Org> findAll();
 
 	Org findById(int id);
-	
-	String  findByOrgPhoto(int id);
+
+	String findByOrgPhoto(int id);
 
 	Org findByRegNum(String regNum);
-	
+
 	void update(int id);
 
 	void save(Org org);
 
 	void delete(Org org);
-	
-	
+
+	Org findByOrgName(int id);
+
 }
