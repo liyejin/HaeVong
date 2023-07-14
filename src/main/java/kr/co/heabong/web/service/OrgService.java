@@ -8,8 +8,6 @@ public interface OrgService {
 
 	List<Org> getList();
 
-	Org getOrg(int id);
-
 	Org getById(int id);
 
 	Org getByRegNum(String regNum);

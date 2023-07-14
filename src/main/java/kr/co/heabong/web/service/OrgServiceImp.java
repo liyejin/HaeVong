@@ -82,10 +82,5 @@ public class OrgServiceImp implements OrgService {
 		return orgProfile;
 	}
 
-	@Override
-	public Org getOrg(int id) {
-		// TODO Auto-generated method stub
-		return repository.findByOrgName();
-	};
 
 }
