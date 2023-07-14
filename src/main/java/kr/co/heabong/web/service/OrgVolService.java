@@ -45,7 +45,6 @@ public interface OrgVolService {
 
 	int edit(OrgVol orgVol);
 
-
 	int delete(int id);
 
 	List<OrgVol> getMyApplyOrgVolList(int userId);
@@ -60,5 +59,8 @@ public interface OrgVolService {
 	boolean checkApply(int id, int orgVolId);
 	int getMetHaeVong(int id);
 
+	OrgVol update(OrgVol orgVol);
+
+	OrgVol add(OrgVol orgVol);
 	
 }

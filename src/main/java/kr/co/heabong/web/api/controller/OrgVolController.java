@@ -3,13 +3,19 @@ package kr.co.heabong.web.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.heabong.web.entity.ApplyOrgVol;
 import kr.co.heabong.web.entity.OrgVol;
 import kr.co.heabong.web.entity.UserWishView;
 import kr.co.heabong.web.entity.VolCategory;
@@ -52,6 +58,37 @@ public class OrgVolController {
 	@DeleteMapping
 	public int delete(Integer id) {
 		return service.delete(id);
+	}
+	
+	
+	
+	@PostMapping(consumes = "application/json", produces = "application/json")
+	public ResponseEntity<Object> insert(@RequestBody OrgVol orgVol) {
+		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
+		int districtId = districtService.getById(orgVol.getRoadAddress().split(" ")[1], metropolId);
+		orgVol.setMetropolId(metropolId);
+		orgVol.setDistrictId(districtId);
+
+		OrgVol newOne = service.add(orgVol);
+		
+		if(newOne == null) {
+			return new ResponseEntity<Object> ("저장 실패",HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<Object>(newOne,HttpStatus.OK);
+	}
+	
+	
+	//업데이트 된 메뉴를 받기 위한 풋매핑
+	@PutMapping
+	public OrgVol edit(OrgVol orgVol) {
+		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);
+		int districtId = districtService.getById(orgVol.getRoadAddress().split(" ")[1], metropolId);
+		System.out.printf("%d,%d",metropolId,districtId);
+		System.out.println(orgVol);
+		orgVol.setMetropolId(metropolId);
+		orgVol.setDistrictId(districtId);
+		OrgVol updatedOrgVol = service.update(orgVol);
+		return updatedOrgVol;
 	}
 
 

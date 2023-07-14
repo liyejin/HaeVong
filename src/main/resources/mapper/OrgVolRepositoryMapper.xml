@@ -1,14 +1,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.heabong.web.repository.OrgVolRepository">
-	
+
 	<select id="findAll" resultType="kr.co.heabong.web.entity.OrgVol">
 		select * from org_vol limit #{offset},5
 	</select>
-	
+
 	<select id="findAllList" resultType="kr.co.heabong.web.entity.OrgVol">
-		select * from org_vol 
+		select * from org_vol
 	</select>
-	
+
 	<select id="findByOrgIdAndStatus"
 		resultType="kr.co.heabong.web.entity.OrgVol"> select * from org_vol
 		where org_id = #{orgId} <if test="status == 'over'"> and date &lt;
@@ -16,7 +16,7 @@
 		<if test="status == 'on'"> and date &gt;
 		current_date()+1 </if>
 	</select>
-	
+
 	<select id="findByOffsetAndSize"
 		resultType="OrgVol">
 		select * from
@@ -33,38 +33,38 @@
 	<select id="findById" resultType="OrgVol">
 		select * from org_vol where id=#{id}
 	</select>
-	
+
 	<select id="findOrgVolRand" resultType="OrgVolAddressView">
-		SELECT * FROM org_vol_address_view order by RAND() LIMIT 3 
+		SELECT * FROM org_vol_address_view order by RAND() LIMIT 3
 	</select>
-		
-		<select id="findIngOrgVol">
-		 select COUNT(*) from org_vol
-		where org_id = #{orgId} 
+
+	<select id="findIngOrgVol">
+		select COUNT(*) from org_vol
+		where org_id = #{orgId}
 	</select>
-	
-		<select id="countHaeVong">
+
+	<select id="countHaeVong">
 		SELECT count(*) FROM applyOrgVolView where org_id=#{id} and status =1;
 	</select>
 
 	<!--북마크-->
-	<select id = "countBookmarkUser">
-		SELECT COUNT(*) AS count FROM wish WHERE org_vol_id =#{id} 
+	<select id="countBookmarkUser">
+		SELECT COUNT(*) AS count FROM wish WHERE org_vol_id =#{id}
 	</select>
-	
-	<select id="findViewAll" resultType="UserWishView"> 
-		SELECT uv.* from(SELECT id,title,regdate,date,org_id,vol_category_id,photo,
-		<if test="userId == null">
-		0 AS `wish`
+
+
+	<select id="findViewAll" resultType="UserWishView"> SELECT uv.* from(SELECT
+		id,title,regdate,date,org_id,vol_category_id,photo, <if
+			test="userId == null">
+			0 AS `wish`
 		</if>
    <if test="userId != null">
-		(select count(org_vol_id) from wish where user_id =#{userId}
-		and org_vol_id = id) AS `wish`
-			</if>
-			from (org_vol o
-        LEFT JOIN wish w ON (id = w.org_vol_id))
-    GROUP BY id,title,regdate,date,org_id,vol_category_id, photo)uv
-		<trim prefix="where" prefixOverrides="AND|OR">
+			(select count(org_vol_id) from wish where user_id =#{userId}
+			and org_vol_id = id) AS `wish`
+		</if>
+		from (org_vol o LEFT JOIN wish w ON (id = w.org_vol_id)) GROUP BY
+		id,title,regdate,date,org_id,vol_category_id, photo)uv <trim
+			prefix="where" prefixOverrides="AND|OR">
 			<if test="volCategoryId != null">
 				vol_category_id=#{volCategoryId}
 			</if>
@@ -74,10 +74,13 @@
 			<if test="orgVolId != null">
 				AND id= #{orgVolId}
 			</if>
-		</trim>
-		LIMIT #{offset}, 5
-	</select>
+		</trim> LIMIT #{offset},
+		5 </select>
 	
+	<!--파일업로드용-->
+	<select id="lastOne" resultType="OrgVol">
+		select * from org_vol order by regdate desc limit 1 ;
+	</select>
 
 
 	<update id="update" parameterType="kr.co.heabong.web.entity.OrgVol"> UPDATE
@@ -94,6 +97,7 @@
 			<if test="metropolId != null"> metropol_id= #{metropolId},</if>
 			<if test="deadLine != null"> dead_line= #{deadLine},</if>
 			<if test="volCategoryId != null">vol_category_id = #{volCategoryId},</if>
+			<if test="photo != null">photo = #{photo}</if>
 		</set>
 		WHERE id = #{id} </update>
 	<delete id="delete">
@@ -107,7 +111,7 @@
 		vol_category_id,dead_line)
 		values (#{title}, #{date}, #{capacity},
 		#{content}, #{roadAddress}, #{address}, #{orgId}, #{districtId},
-		#{metropolId}, #{volCategoryId}),#{deadLine}
+		#{metropolId}, #{volCategoryId},#{deadLine})
 	</insert>
 
 	<!--카테고리 메인 페이지-->
@@ -122,9 +126,8 @@
 			<if test="categoryId != null">
 				vol_category_id = ${categoryId}
 			</if> AND (title LIKE
-		'%${serchKeyword}%' OR content LIKE '%${serchKeyword}%'); </trim>
-		LIMIT #{offset}, 5
-	</select>
+		'%${serchKeyword}%' OR content LIKE '%${serchKeyword}%'); </trim> LIMIT
+		#{offset}, 5 </select>
 
 
 	<!-- 마이페이지 -->
