@@ -10,26 +10,31 @@
     <title>카테고리 페이지</title>
   </head>
 
-  <body>
-    <header class="header">
-      <div class="header2">
-        <img src="/img/icon/icon_header_title.png" alt="로고" />
-      </div>
-    </header>
-    <main class="main">
-      <div class="user_category_box">
-        <ul class="user_category_list">
-          <li class="user_category_list_item" th:each="cateList:${cateList}">
-            <a th:href="@{/orgvol?(cid=${cateList.id})}">
-              <!--카테고리 아이콘 이미지-->
-              <div class="user_category_list_item_icon">
-                <img th:src="@{/img/icon/} + ${cateList.icon}" />
-              </div>
-              <span th:text="${cateList.name}"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
+<body>
+	<header class="header">
+		<div class="header2">
+			<img src="/img/icon/icon_header_title.png" alt="로고" />
+		</div>
+	</header>
+	<main class="main">
+		<div class="user_category_banner_main"></div>
+		<!-- 상단 배너 -->
+		<div class="user_category_box">
+			<ul class="user_category_list">
+				<li class="user_category_list_item" th:each="cateList:${cateList}">
+					<a th:href="@{/orgvol?(cid=${cateList.id})}">
+						<!--참여해봉?(cid=${참여해봉의.id}) / cid=키 cateList.id=값-->
+						<!--로컬호스트8080/orgvol?cid=1-->
+
+						<!--카테고리 아이콘 이미지-->
+						<div class="user_category_list_item_icon">
+							<img th:src="@{/img/icon/} + ${cateList.icon}" />
+						</div>
+						<span th:text="${cateList.name}"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
 
       <a href="https://marcoroho.com" target="_blank"
         ><div class="user_category_banner_sub_1"></div

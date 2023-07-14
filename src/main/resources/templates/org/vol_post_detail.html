@@ -46,7 +46,7 @@
 		</script>
 
       <section class="org_vol_recruit_title">
-        <img src="/img/org/vol_img.png" alt="이하늬봉사사진" />
+        <img src="/img/org/vol_img.png" alt="이하늬봉사사진" th:src="@{'/file/upload/'+${orgVol.photo}}" />
         <section class="org_vol_recruit_title_box">
           <ul>
             <div>
@@ -93,7 +93,7 @@
             <li>12</li>
           </ul>
         </div>
-        <a th:href="@{./applicants(id=${org.id})}">
+        <a th:href="@{./vol/applicants(id=${orgVol.id})}">
         <div class="org_vol_recruit_box3">
           <ul class="ul_8">
             <li>신청자 관리</li>
@@ -101,6 +101,7 @@
         </div>
         </a>
       </section>
+      
 
       <div class="br2"></div>
 

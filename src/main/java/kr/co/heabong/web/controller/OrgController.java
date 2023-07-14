@@ -126,13 +126,23 @@ public class OrgController {
 		return "org/pwd_chang_insert";
 	}
 
+	
+	
 	@RequestMapping("vol/applicants")
 	public String getRecruit_vol_list(@RequestParam("id") int orgVolID, Model model ){
 
 		OrgVol orgVol = volService.getById(orgVolID);
+		String metro = metroService.getNameById(orgVol.getMetropolId());
+		String district = districtService.name(orgVol.getDistrictId(),orgVol.getMetropolId());
+		Org org = orgService.getById(orgVol.getOrgId());
+		
 		List<UserApplyView> userList = applyOrgVolService.getApplicantlList(orgVolID);
+		
 		model.addAttribute("userList", userList);
 		model.addAttribute("orgVol", orgVol);
+		model.addAttribute("metro", metro);
+		model.addAttribute("district", district);
+		model.addAttribute("org", org);
 
 		return "org/applicants";
 	}
@@ -223,6 +233,7 @@ public class OrgController {
 		return "org/vol_post_detail";
 	}
 
+	
 	@GetMapping("vol_post_write")
 	public String getRecruit_write(@RequestParam("oid") int orgId, Model model) {
 		List<VolCategory> cateList = volCategoryService.getCateList();
@@ -231,6 +242,7 @@ public class OrgController {
 		return "org/vol_post_write";
 	}
 
+	
 	@PostMapping("vol_post_write") // 정보를 받기
 	public String postMethod(OrgVol orgVol) {
 
@@ -244,6 +256,8 @@ public class OrgController {
 		return "redirect:vol_post_detail?id=" + orgVol.getId();
 
 	}
+	
+	//수정하기 눌렀을때 수정하기를 가져오는애
 	@PostMapping("vol_edit")
 	public String volEdit(OrgVol orgVol) {
 		int metropolId = metroService.getById(orgVol.getRoadAddress().split(" ")[0]);

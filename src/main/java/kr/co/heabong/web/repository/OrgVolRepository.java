@@ -56,6 +56,10 @@ public interface OrgVolRepository {
 	List<UserWishView> findViewBySearch(String searchKeyword);
 	List<OrgVolAddressView> findOrgVolRand();
 
+	OrgVol add(OrgVol orgVol);
+
+	OrgVol lastOne();
+
 
 
 

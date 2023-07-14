@@ -98,6 +98,18 @@ public class OrgVolServiceImp implements OrgVolService {
 		return save;
 	}
 
+	
+	@Override
+	public OrgVol add(OrgVol orgVol) {
+		OrgVol newOne = null;
+		int add = repository.save(orgVol);
+		if(add != 0) {
+			newOne = repository.lastOne();
+		}
+		
+		return newOne;
+	}
+	
 	// My page category section ----------------------------
 	@Override
 	public List<OrgVol> getMyApplyOrgVolList(int userId) {
@@ -259,5 +271,15 @@ public class OrgVolServiceImp implements OrgVolService {
 
 		return repository.countHaeVong(orgId);
 	}
+
+	@Override
+	public OrgVol update(OrgVol orgVol) {
+		
+		repository.update(orgVol);
+		//내가 수정하고 싶은걸 찾아주고 반환
+		return repository.findById(orgVol.getId());
+	}
+	
+
 
 }

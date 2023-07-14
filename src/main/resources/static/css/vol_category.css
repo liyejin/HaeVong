@@ -3,10 +3,46 @@
   background-color: #fef8ea;
 }
 
+/*이미지 슬라이드*/
 .user_category_banner_main {
-  width: 100%;
-  height: 100px;
-  background-image: url(../img/user/user_category_banner_sub.png);
+	width: 100%;
+	height: 120px;
+	background-image: url('../img/user/user_category_banner_main.png');
+	transition: 5s;
+	
+	animation-name: animate;
+	animation-direction:alternate;
+	animation-play-state: running;
+	animation-timing-function: ease-in-out;
+	animation-duration: 30s;
+	animation-fill-mode:both;
+	animation-iteration-count: infinite;
+}
+
+@keyframes animate {
+	0% {
+		background-image: url('../img/user/user_category_banner_1.png');
+	}
+
+	20% {
+		background-image: url('../img/user/user_category_banner_main.png');
+	}
+
+	40% {
+		background-image: url('../img/user/user_category_banner_1.png');
+	}
+
+	60% {
+		background-image: url('../img/user/user_category_banner_main.png');
+	}
+
+	80% {
+		background-image: url('../img/user/user_category_banner_1.png');
+	}
+
+	100% {
+		background-image: url('../img/user/user_category_banner_main.png');
+	}
 }
 
 .user_category_box {

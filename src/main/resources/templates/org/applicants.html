@@ -15,21 +15,22 @@
 </head>
 
 <body id="body">
-	<header class="header">
-		<div class="header1">
-			<a href="#" id="back_btn"><img src="/img/icon/icon_header_back.png" alt="뒤로가기"></a>
-			<div>신청자 내역</div>
-			<div href="#" id="more_btn"><img src="/img/icon/icon_header_more.png" alt="더보기"></div>
-		</div>
-	</header>
+	 <header class="header">
+      <div class="header1">
+        <a href="/org/main">
+          <img src="/img/icon/icon_header_back.png" alt="뒤로가기" />
+        </a>
+        <div>신청자 내역</div>
+      </div>
+    </header>
 	<section class="main" id="main">
 		<div class="org_vol_list">
 			<div class="org-vol-id" th:data-org-vol-id="${orgVol.id}"></div>
-			<div class="org_district"><span th:text="${orgVol.metropolId}">광주광역시</span> <span
-					th:text="${orgVol.districtId}">북구</span></div>
+			<div class="org_district"><span th:text="${metro}">광주광역시</span> <span
+					th:text="${district}">북구</span></div>
 			<div class="org_vol_title" th:text="${orgVol.title}">행복보육원 봉사자 구인합니다 장소는 어디냐면요</div>
 			<div class="org">
-				<span class="org_name" th:text="${orgVol.orgId}">(주)행복보육원</span>
+				<span class="org_name" th:text="${org.name}">(주)행복보육원</span>
 				<span> | </span>
 				<span class="org_time">1시간전</span>
 				<!--시간계산 아직 남음-->
