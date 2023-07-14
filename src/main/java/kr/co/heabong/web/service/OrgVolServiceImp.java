@@ -26,7 +26,7 @@ public class OrgVolServiceImp implements OrgVolService {
 	private OrgVolRepository repository;
 	@Autowired
 	private ApplyOrgVolRepository applyOrgVolRepository;
-	
+
 	@Override
 	public List<OrgVol> getAllList() {
 
@@ -36,34 +36,33 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	@Override
 	public List<OrgVol> getList(Integer offset) {
-		offset = (offset-1) * 5;  
+		offset = (offset - 1) * 5;
 		List<OrgVol> list = repository.findAll(offset);
 		return list;
 	}
-	
+
 	@Override
-	public List<OrgVol> getOrgVolListByCategoryId(int categoryId,Integer offset) {
-		offset = (offset-1) * 5;  
-		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId,offset);
+	public List<OrgVol> getOrgVolListByCategoryId(int categoryId, Integer offset) {
+		offset = (offset - 1) * 5;
+		List<OrgVol> list = repository.FindOrgVolListByCategoryId(categoryId, offset);
 		return list;
 	}
 
 	@Override
-	public List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword,Integer offset) {
-		offset = (offset-1) * 5;  
-		List<OrgVol> list = repository.FindOrgVolListBySearch(categoryId, serchKeyword,offset);
+	public List<OrgVol> getOrgVolListBySearch(Integer categoryId, String serchKeyword, Integer offset) {
+		offset = (offset - 1) * 5;
+		List<OrgVol> list = repository.FindOrgVolListBySearch(categoryId, serchKeyword, offset);
 		return list;
 	}
 
-	
 	@Override
 	public List<OrgVol> getList(Integer offset, int size) {
-		
-		offset = (offset-1) * 5;  
-		
-		List<OrgVol> list = repository.findByOffsetAndSize(offset,5);
+
+		offset = (offset - 1) * 5;
+
+		List<OrgVol> list = repository.findByOffsetAndSize(offset, 5);
 		return list;
-		
+
 	}
 
 	@Override
@@ -99,7 +98,6 @@ public class OrgVolServiceImp implements OrgVolService {
 		return save;
 	}
 
-	
 	// My page category section ----------------------------
 	@Override
 	public List<OrgVol> getMyApplyOrgVolList(int userId) {
@@ -126,112 +124,107 @@ public class OrgVolServiceImp implements OrgVolService {
 		int edit = repository.update(orgVol);
 		return edit;
 	}
-	
 
-	/* 기관 사진*/
+	/* 기관 사진 */
 	@Override
 	public List<String> getPhotoList(int orgId) {
-	    List<String> photoList = repository.getPhotoList(orgId);
-	    return photoList;
+		List<String> photoList = repository.getPhotoList(orgId);
+		return photoList;
 	}
-	
-	
-	
-//	게시글 작성 시간
+
+	// 게시글 작성 시간
 	@Override
 	public int calculateRestDate(String dateString) {
-	    String pattern = "yyyy-MM-dd";
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-	    LocalDate date = LocalDate.parse(dateString, formatter);
+		String pattern = "yyyy-MM-dd";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+		LocalDate date = LocalDate.parse(dateString, formatter);
 
-	    LocalDateTime currentTime = LocalDateTime.now();
-	    LocalDate nowDate = currentTime.toLocalDate();
+		LocalDateTime currentTime = LocalDateTime.now();
+		LocalDate nowDate = currentTime.toLocalDate();
 
-	    Period period = Period.between(nowDate, date);
-	    
-	    int restDate = period.getDays() + (period.getMonths() * 30);
+		Period period = Period.between(nowDate, date);
 
-	    return restDate;
+		int restDate = period.getDays() + (period.getMonths() * 30);
+
+		return restDate;
 	}
-	
+
 	@Override
-	public int calculateDeadLineDate(String dateString,String deadLine) {
-		
+	public int calculateDeadLineDate(String dateString, String deadLine) {
+
 		String pattern = "yyyy-MM-dd";
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
 		LocalDate date = LocalDate.parse(dateString, formatter);
 		LocalDate deadLineDate = LocalDate.parse(deadLine, formatter);
-		
-// 날짜 차이 구해주는 메서드
+
+		// 날짜 차이 구해주는 메서드
 		long daysDiff = ChronoUnit.DAYS.between(date, deadLineDate);
 
 		int diff = (int) daysDiff;
 
-
 		return diff;
 	}
-	
+
 	@Override
 	public int ingOrgVol(int orgId) {
 		int ingCount = repository.findIngOrgVol(orgId);
 		return ingCount;
 	}
-	
 
-		
-//  로그인이 된상태에서 메인에서 검색 
+	// 로그인이 된상태에서 메인에서 검색
 	@Override
-	public List<UserWishView> getVolListBySearch(Integer userId,String searchKeyword,Integer offset) {
-		
-		offset = (offset-1) * 5;  
+	public List<UserWishView> getVolListBySearch(Integer userId, String searchKeyword, Integer offset) {
 
-		return repository.findViewAll(userId,null,searchKeyword,null,offset);
+		offset = (offset - 1) * 6;
+
+		return repository.findViewAll(userId, null, searchKeyword, null, offset);
 	}
 
-// 비로그인 상태에서 메인에서 검색 
+	// 비로그인 상태에서 메인에서 검색
 
 	@Override
-	public List<UserWishView> getVolListBySearchNotLogin(String searchKeyword,Integer offset) {
-		offset = (offset-1) * 5;  
+	public List<UserWishView> getVolListBySearchNotLogin(String searchKeyword, Integer offset) {
+		offset = (offset - 1) * 6;
 
-		return repository.findViewAll(null,null,searchKeyword,null,offset);
+		return repository.findViewAll(null, null, searchKeyword, null, offset);
 	}
 
 	@Override
-	public List<UserWishView> getView(Integer userId,Integer offset) {
+	public List<UserWishView> getView(Integer userId, Integer offset) {
 		// TODO Auto-generated method stub
-		offset = (offset-1) * 5;  
-		return repository.findViewAll(userId, null, null,null,offset);
+		offset = (offset - 1) * 6;
+		return repository.findViewAll(userId, null, null, null, offset);
 	}
 
 	@Override
-	public List<UserWishView> getView(Integer userId, Integer volCategoryId, String searchKeyword,Integer offset) {
+	public List<UserWishView> getView(Integer userId, Integer volCategoryId, String searchKeyword, Integer offset) {
 		// TODO Auto-generated method stub
-		offset = (offset-1) * 5;  
-		return repository.findViewAll(userId, volCategoryId, searchKeyword,null,offset);
+		offset = (offset - 1) * 6;
+		return repository.findViewAll(userId, volCategoryId, searchKeyword, null, offset);
 	}
+
 	@Override
-	public List<UserWishView> getViewOrgVolListByCategoryId(Integer userId,Integer categoryId,Integer offset) {
+	public List<UserWishView> getViewOrgVolListByCategoryId(Integer userId, Integer categoryId, Integer offset) {
 		// TODO Auto-generated method stub
-		offset = (offset-1) * 5;  
-		return repository.findViewAll(userId, categoryId, null,null,offset);
+		offset = (offset - 1) * 6;
+		return repository.findViewAll(userId, categoryId, null, null, offset);
 	}
 
 	@Override
-	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String searchKeyword,Integer offset) {
+	public List<UserWishView> getViewOrgVolListBySearch(Integer categoryId, String searchKeyword, Integer offset) {
 		// TODO Auto-generated method stub
-		offset = (offset-1) * 5;  
-		return repository.findViewAll(null, categoryId, searchKeyword,null,offset);
+		offset = (offset - 1) * 6;
+		return repository.findViewAll(null, categoryId, searchKeyword, null, offset);
 	}
 
 	@Override
-	public List<UserWishView> getViewOrgVolByOrgVolId(Integer userId,Integer orgVolId,Integer offset) {
-		
+	public List<UserWishView> getViewOrgVolByOrgVolId(Integer userId, Integer orgVolId, Integer offset) {
 
-			offset = (offset-1) * 5;  
-		
-		return repository.findViewAll(userId, null, null, orgVolId,offset);
+		offset = (offset - 1) * 6;
+
+		return repository.findViewAll(userId, null, null, orgVolId, offset);
 	}
+
 	@Override
 	public UserWishView getViewById(Integer id) {
 		// TODO Auto-generated method stub
@@ -246,27 +239,25 @@ public class OrgVolServiceImp implements OrgVolService {
 
 	@Override
 	public List<OrgVolAddressView> getListByRandom() {
-	
+
 		return repository.findOrgVolRand();
 	}
 
 	@Override
 	public boolean checkApply(int id, int orgVolId) {
-		
-		ApplyOrgVol applyOrgVol =applyOrgVolRepository.get(orgVolId, id);
-		
-		if(applyOrgVol!=null)
+
+		ApplyOrgVol applyOrgVol = applyOrgVolRepository.get(orgVolId, id);
+
+		if (applyOrgVol != null)
 			return true;
-		
+
 		return false;
 	}
 
 	@Override
 	public int getMetHaeVong(int orgId) {
-		
+
 		return repository.countHaeVong(orgId);
 	}
-	
-
 
 }

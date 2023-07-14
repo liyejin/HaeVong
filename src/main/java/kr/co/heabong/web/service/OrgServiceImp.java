@@ -82,5 +82,4 @@ public class OrgServiceImp implements OrgService {
 		return orgProfile;
 	}
 
-
 }

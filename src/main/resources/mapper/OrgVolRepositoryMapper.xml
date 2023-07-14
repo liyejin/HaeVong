@@ -57,14 +57,14 @@
 		<if test="userId == null">
 		0 AS `wish`
 		</if>
-   <if test="userId != null">
+   		<if test="userId != null">
 		(select count(org_vol_id) from wish where user_id =#{userId}
 		and org_vol_id = id) AS `wish`
 			</if>
 			from (org_vol o
-        LEFT JOIN wish w ON (id = w.org_vol_id))
-    GROUP BY id,title,regdate,date,org_id,vol_category_id, photo)uv
-		<trim prefix="where" prefixOverrides="AND|OR">
+     	   LEFT JOIN wish w ON (id = w.org_vol_id))
+  			  GROUP BY id,title,regdate,date,org_id,vol_category_id, photo )uv
+			<trim prefix="where" prefixOverrides="AND|OR">
 			<if test="volCategoryId != null">
 				vol_category_id=#{volCategoryId}
 			</if>
@@ -75,7 +75,7 @@
 				AND id= #{orgVolId}
 			</if>
 		</trim>
-		LIMIT #{offset}, 5
+		LIMIT #{offset}, 6
 	</select>
 	
 
